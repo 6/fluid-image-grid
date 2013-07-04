@@ -17,16 +17,17 @@ li {
 line-height: 1.2;
 }
 
-.med {
-font-size: medium;
-font-weight: normal;
-}
-
 #main {
 width: 100%;
 }
 #res {
   padding-left: 8px;
+  font-size: medium;
+  font-weight: normal;
+}
+
+#rcnt {
+  clear:both;position:relative;zoom:1;
 }
 
 #cnt {
@@ -52,6 +53,7 @@ clear: both;
   height: 100%;
 width: 100%;
 position: relative;
+visibility:hidden;
 }
 
 .rg_di {

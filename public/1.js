@@ -18707,7 +18707,6 @@ var _ = _ || {};
                 window.google.stb.csi.onBg();
                 _.KK || Pwa();
                 NK();
-                window.document.getElementById("foot").style.display = "inline";
                 window.setTimeout(function () {
                     wK(5);
                     zK || (window.google.isr.prs || _.KK) || gL()
@@ -18951,10 +18950,8 @@ var _ = _ || {};
                 var b = ["ls", "bg"],
                     c = window.document.getElementById("smc");
                 _.kL ? b.push("sbg") : c && (c.style.display = "none");
-                window.document.getElementById("foot").style.display = "none";
                 EL(b, function () {
                     c && Pwa();
-                    window.document.getElementById("foot").style.display = "inline";
                     _.vL = -1;
                     uL(null);
                     a && a();
@@ -19248,7 +19245,6 @@ var _ = _ || {};
         };
         var axa = function (a) {
             fL("chunking.reloadResults_");
-            window.document.querySelector("#foot").style.display = "none";
             AL();
             IL = [];
             HL = [0];
@@ -19261,7 +19257,6 @@ var _ = _ || {};
                 mL(0);
                 a && a();
                 DL();
-                window.document.querySelector("#foot").style.display = "inline";
                 window.google.isr.pending_res = 0
             })
         };
@@ -19719,7 +19714,6 @@ var _ = _ || {};
             _.vL = 0;
             (a = (0, _.v)("smc")) && (0, _.Pe)(a, "display",
                 "none");
-            (a = (0, _.v)("foot")) && (0, _.Pe)(a, "display", "none");
             delete window.google.isr.bg_ready;
             delete window.google.isr.bgd;
             delete window.google.isr.bg_done;

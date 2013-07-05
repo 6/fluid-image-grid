@@ -132,7 +132,7 @@
         q = {}, w = [],
         P = function () {
             if (n) return n;
-            var a = document.getElementById("rg_s");
+            var a = document.getElementById("rg");
             return a && (a = a.getElementsByTagName("ul")[0]) ? n = a.getElementsByTagName("li").length : 0
         }, l = function () {
             var a = B();

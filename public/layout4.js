@@ -94,7 +94,7 @@
     f.images.a.TEXT_NODE = 3;
     f.images.a.Fe = "ires";
     f.images.a.Zf = "rg";
-    f.images.a.Vf = "rg_s";
+    f.images.a.Vf = "rg";
     f.images.a.Qf = "rg_add";
     f.images.a.Xf = "rg_ls";
     f.images.a.Rf = "rg_bg";
@@ -448,7 +448,7 @@
         },
         loadDataForScreen: function (a) {
             M.Gb("loadDataForScreen");
-            for (var c = document.getElementById("rg_s").getElementsByTagName("ul"), d = M.getPagesPerScreen(), e = a * d, g; e < (a + 1) * d && (g = c[e++]);) {
+            for (var c = document.getElementById("rg").getElementsByTagName("ul"), d = M.getPagesPerScreen(), e = a * d, g; e < (a + 1) * d && (g = c[e++]);) {
                 var h = g.getElementsByTagName(M.Da)[0],
                     h = M.populateResultInfo(h);
                 M.loadData(h)
@@ -481,7 +481,7 @@
                             Sa: []
                         }, c = c + g;
                     M.R.push(e)
-                } else if (a = M.getPagesPerScreen(), c = document.getElementById("rg_s"))
+                } else if (a = M.getPagesPerScreen(), c = document.getElementById("rg"))
                     for (d = c.getElementsByTagName("ul"), g = c = 0; g < d.length; g += a) {
                         e = {
                             S: 0

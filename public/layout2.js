@@ -720,7 +720,7 @@
     t("getResultsForPage", s.prototype.la);
     s.prototype.k = function (a) {
         this.s = this.a.length ? a ? 3 : this.H ? 2 : 1 : 0;
-        this.c = document.getElementById("rg_s");
+        this.c = document.getElementById("rg");
         switch (this.s) {
         case 0:
             this.l.L();
@@ -750,7 +750,7 @@
     };
     t("layoutResults", s.prototype.k);
     s.prototype.oa = function () {
-        var a = document.getElementById("rg_s"),
+        var a = document.getElementById("rg"),
             b = document.querySelectorAll("div.rg_add_chunk");
         if (a && 0 != b.length) {
             for (var c, d = 0; c = b[d]; ++d) {
@@ -922,7 +922,7 @@
         this.a = Xb
     }, rd = function (a) {
             this.a = a;
-            this.e = document.getElementById("rg_s");
+            this.e = document.getElementById("rg");
             this.c = [];
             a = document.getElementById("isr_spnm");
             this.s = !! a;

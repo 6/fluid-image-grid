@@ -18677,7 +18677,7 @@ var _ = _ || {};
                             gF: f
                         }, c = c + f;
                     a.push(e)
-                } else if (c = window.document.getElementById("rg_s"), b = cL(), c)
+                } else if (c = window.document.getElementById("rg"), b = cL(), c)
                     for (d = c.getElementsByTagName(eL()), f = c = 0; f < d.length; f += b) {
                         e = {
                             gF: 0
@@ -18692,7 +18692,7 @@ var _ = _ || {};
         };
         var Owa = function () {
             fL("getAllResultPages");
-            var a = window.document.getElementById("rg_s");
+            var a = window.document.getElementById("rg");
             return a ? a.querySelectorAll(eL() + ".rg_ul") : []
         };
         var TK = function () {
@@ -18779,7 +18779,7 @@ var _ = _ || {};
             var a = [],
                 b = SK(),
                 c = b + QK;
-            if (window.document.getElementById("rg_s"))
+            if (window.document.getElementById("rg"))
                 for (var d = Owa(), e = 0, f = 0, g; g = d[f]; f++) {
                     var h = (0, _.se)(g);
                     g = h + g.offsetHeight;
@@ -18985,14 +18985,14 @@ var _ = _ || {};
         };
         var bxa = function (a, b, c, d, e) {
             if (!c || c())
-                if ((c = window.document.getElementById("rg_s")) && (_.oK ? 0 <= (0, window.parseInt)(a, 10) : "ls" == a || "bg" == a || "sbg" == a)) {
+                if ((c = window.document.getElementById("rg")) && (_.oK ? 0 <= (0, window.parseInt)(a, 10) : "ls" == a || "bg" == a || "sbg" == a)) {
                     if (FL(a)) {
                         var f = c.parentNode,
                             g = window.document.getElementById("rg_h");
                         window.google.isr.Hover && window.google.isr.Hover.hide();
                         f.removeChild(c);
                         c = window.document.createElement("div");
-                        c.id = "rg_s";
+                        c.id = "rg";
                         g && c.appendChild(g);
                         f.appendChild(c);
                         dL = _.oL = 0
@@ -19050,7 +19050,7 @@ var _ = _ || {};
                 if (_.oK)(b = window.document.getElementById("rg_c" + a)) || ("0" == a ? b = window.document.querySelector(eL() + ".rg_ul") : "1" == a && (b = window.document.querySelector("#rg_bg")));
                 else if ("ls" != a || window.document.getElementById("rg_ls")) b = window.document.getElementById("ls" == a ? "rg_ls" : "bg" == a ? "rg_bg" : "rg_sbg");
                 else {
-                    var c = window.document.getElementById("rg_s");
+                    var c = window.document.getElementById("rg");
                     b = c && c.getElementsByTagName(eL())[0]
                 }
                 c = 0;
@@ -19230,7 +19230,7 @@ var _ = _ || {};
                     1 == b ? (c = xL(c, "sprg", "1"), d = 1) : 1 < b && (d = hL(), c = xL(c, "sprg", d), d = Math.floor(d / cL()) + 1);
                     c = xL(c, "page", d)
                 }
-                var d = (d = window.document.querySelector("#rg_s")) ? d.querySelectorAll(AK + "." + yK).length : 0,
+                var d = (d = window.document.querySelector("#rg")) ? d.querySelectorAll(AK + "." + yK).length : 0,
                     e = 100 * (HK ? b - 1 : b);
                 0 == b && (e = 0);
                 1 == b && HK && (e = 20);
@@ -19275,10 +19275,10 @@ var _ = _ || {};
             }
             a && SK() + QK - sL() >= LL && SK() > QK ? (b || (b = (0, _.Ne)("div"), b.id = "isr_cld", a = window.innerHeight || window.document.documentElement.offsetHeight, (0, _.v)("leftnav"), a = FK ? sL() : a - LL, c = (0, _.v)("rg").offsetWidth, b.setAttribute("style", ["text-align:center;margin-top:100px;z-index:50;position:", FK ? "absolute;" : "fixed;",
                 "top:", a, "px;width:", c, "px"
-            ].join("")), a = (0, _.Ne)("img"), a.src = "images/loading.gif", a.width = 80, a.height = 80, b.appendChild(a), (0, _.v)("rg_s").appendChild(b)), b.style.display = "block") : b && (b.style.display = "none")
+            ].join("")), a = (0, _.Ne)("img"), a.src = "images/loading.gif", a.width = 80, a.height = 80, b.appendChild(a), (0, _.v)("rg").appendChild(b)), b.style.display = "block") : b && (b.style.display = "none")
         };
         var sL = function () {
-            var a = (0, _.v)("rg_s");
+            var a = (0, _.v)("rg");
             if (zK) return (0, _.se)(a) + SL();
             a = GL;
             return a.length ? (a = a[a.length - 1], (0, _.se)(a) + a.offsetHeight) : 0
@@ -19353,7 +19353,7 @@ var _ = _ || {};
         };
         var aM = function () {
             if (!zK) {
-                var a = window.document.getElementById("rg_s").getElementsByTagName("SPAN");
+                var a = window.document.getElementById("rg").getElementsByTagName("SPAN");
                 bM = [];
                 for (var b = 0, c; c = a[b]; b++) "rg_ctlv" != c.className && "rg_ctl" != c.className || !c.querySelector(eL() + ".rg_ul") || bM.push(c)
             }
@@ -19485,7 +19485,7 @@ var _ = _ || {};
         _.Bxa = function () {
             AL();
             jM = 0;
-            var a = window.document.getElementById("rg_s");
+            var a = window.document.getElementById("rg");
             if (a && 0 != a.childNodes.length) {
                 wxa = 128 < (window.google.stb.csi.getBandwidth ? window.google.stb.csi.getBandwidth() : 0) ? 2 : 1;
                 if (bM.length || zK && window.google.isr.layout.getNumPages()) zK || (iM[0] = !0, eM[0] = !0), uK(4, xxa), cM = 1, zK || sM();
@@ -19515,9 +19515,9 @@ var _ = _ || {};
             var a = [],
                 b = SK(),
                 c = b + QK;
-            if (window.document.getElementById("rg_s")) {
+            if (window.document.getElementById("rg")) {
                 var d;
-                d = (d = window.document.getElementById("rg_s")) ? d.querySelectorAll("div.rgsh") : [];
+                d = (d = window.document.getElementById("rg")) ? d.querySelectorAll("div.rgsh") : [];
                 if (!d.length) return [0];
                 for (var e = 0; e < d.length; e++) {
                     var f = Cxa(d[e]);
@@ -19532,7 +19532,7 @@ var _ = _ || {};
         var SL = function (a) {
             var b = void 0 === a ? window.google.isr.layout.getResults() : window.google.isr.layout.getResultsForPage(a);
             if (!b || !b.length) return 0;
-            a = void 0 === a ? (0, _.v)("rg_s") : b[0];
+            a = void 0 === a ? (0, _.v)("rg") : b[0];
             b = b[b.length - 1];
             return (0, _.se)(b) - (0, _.se)(a) + b.offsetHeight
         };
@@ -19711,7 +19711,7 @@ var _ = _ || {};
             _.oK && (0 <= _.JL && (_.VL = _.JL, _.JL = -1), _.PL = !0, _.lL = 0);
             window.clearTimeout(_.ZK); - 1 != _.wL && (window.clearTimeout(_.wL), _.wL = -1);
             for (var a = (0, _.v)("topstuff"), b = 0; a && b < a.childNodes.length; ++b)(0, _.Pe)(a.childNodes[b], "display", "none");
-            if (a = window.document.getElementById("rg_s")) b = window.document.createElement("div"), b.id = a.id, a.parentNode.replaceChild(b, a);
+            if (a = window.document.getElementById("rg")) b = window.document.createElement("div"), b.id = a.id, a.parentNode.replaceChild(b, a);
             _.oL = 0;
             _.kL = !1;
             _.rK = {};

@@ -18813,7 +18813,7 @@ var _ = _ || {};
             if (!a.altKey && !a.ctrlKey) {
                 if (27 == b && !a.shiftKey && window.google.isr.Hover && window.google.isr.Hover.isActive()) return window.google.isr.Hover.hide(), !1;
                 var c = window.google.isr.ircin && window.google.isr.ircin() && window.google.isr.ircv && window.google.isr.ircv();
-                if (window.google.isr.Hover && !(c || window.google.isr.util.typeHasFocus("INPUT") || window.google.isr.util.typeHasFocus("SELECT")))
+                if (window.google.isr.Hover && !c)
                     if (39 != b && 37 != b || a.shiftKey) {
                         if (38 == b) return window.google.isr.Hover.isActive() ?
                             (window.google.isr.Hover.moveHover(2), tL = "hk") : (rL(-1), tL = "rk"), !1;

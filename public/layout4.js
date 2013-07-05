@@ -1146,7 +1146,6 @@
                     e = d.docid,
                     g = d.resultImg,
                     h = google.isr.ircin && google.isr.ircin() && google.isr.ircv && google.isr.ircv();
-                !c || (M.$ || google.isr.util.typeHasFocus("INPUT") || h) || (h = M.v(g, "rg_l")) && h.focus();
                 M.e && M.hide(c);
                 document.getElementById("rg_hc").style.overflow = "hidden";
                 var k = !1;
@@ -1333,68 +1332,6 @@
             M.Oa = !1
         },
         ba: function () {
-            var a = !1;
-            switch (M.N) {
-            case 1:
-                a = 3 == M.p;
-                break;
-            case 2:
-                a = 3 == M.p || 2 == M.p
-            }
-            if (a) {
-                M.p = 4;
-                var c = M.e.rect,
-                    a = p || u ? c.width : +M.k.getAttribute("data-width"),
-                    c = p || u ? c.height : +M.k.getAttribute("data-height"),
-                    d = M.c.style,
-                    e = M.k.style,
-                    g = document.getElementById("rg_hx").style;
-                e.width = e.height = d.height = "";
-                M.c.className = "rg_hp";
-                e = a;
-                p || u || (e = Math.max(e, document.getElementById("rg_ha").offsetWidth + 2, document.getElementById("rg_hr").offsetWidth +
-                    2, 160));
-                g.width = d.width = e + "px";
-                var g = p || u ? M.c.offsetHeight + M.e.rect.height + 1 : M.c.offsetHeight + 1,
-                    h = M.e.imgRect,
-                    d = new L([0, 0, h.width, h.height]),
-                    e = new L([0, 0, e, c]),
-                    a = new L([0, 0, a, c]);
-                h.sb(d);
-                h.sb(e);
-                e.sc(g);
-                c = {
-                    x: 0,
-                    y: 0
-                };
-                c = {
-                    x: 0 - M.Fa(),
-                    y: 0 - M.J()
-                };
-                d.Q(c);
-                e.Q(c);
-                p || u || (d.rb(M.Ga), e.rb(M.Ga));
-                M.A = e.Ea();
-                M.lb();
-                u || M.ob(d, e, a, D());
-                M.c.onmouseout = function (a) {
-                    a || (a = window.event);
-                    var c = a.target || a.srcElement;
-                    if (c == this) {
-                        for (a = a.relatedTarget ? a.relatedTarget : a.toElement; a && a != c && "BODY" != a.nodeName;) a = a.parentNode;
-                        a != c && M.hide()
-                    }
-                };
-                a = M.v(M.o, M.n, M.g);
-                c = M.v(M.o, "rg_ul");
-                (p || u) && (a && y(a, M.n)) && (C(a, M.g), u && M.Za(a, M.bd));
-                m && (google.isr.scb && a) && google.isr.scb(a);
-                a && (c || M.w) && (c = a.parentNode, (a = a.nextSibling) ? c.insertBefore(M.c, a) : c.appendChild(M.c));
-                M.c.className = "rg_hv";
-                a = google.isr.ircin && google.isr.ircin() &&
-                    google.isr.ircv && google.isr.ircv();
-                google.isr.util.typeHasFocus("INPUT") || a || M.c.getElementsByTagName("a")[0].focus()
-            }
         },
         ob: function (a, c, d, e) {
             var g;

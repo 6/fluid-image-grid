@@ -4034,7 +4034,7 @@ var _ = _ || {};
                         }
                     window.setTimeout(function () {
                         try {
-                            (0, _.yd)(b), b.src = _.sc.Hc ? "blank.html" : "about:blank"
+                            (0, _.yd)(b), b.src = "about:blank"
                         } catch (a) {}
                     }, 0);
                     m[a] && (m[a](), delete m[a])

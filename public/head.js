@@ -866,9 +866,6 @@ window.rwt = function (a, g, h, m, n, i, c, o, j, d) {
         q.j = mb;
         var pb = {};
         y.base = pb;
-        z.push(["m", {
-            url: "/blank.html"
-        }]);
         n.sg = {
             c: "1"
         };

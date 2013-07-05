@@ -18575,10 +18575,6 @@ var _ = _ || {};
                 for (var c = 0, d; d = _.vK[a][c++];) d(b)
         };
         var xK = function (a, b, c) {
-            var d = (0, _.pi)();
-            d && (d.open("GET", a), d.onreadystatechange = function () {
-                4 == d.readyState && (200 == d.status ? b(d.responseText) : 0 != d.status || c ? b(null) : xK(a, b, !0))
-            }, d.send(null))
         };
         var ywa = function (a) {
             yK = (_.nK = zK = a) ? "rg_di" : "rg_li";

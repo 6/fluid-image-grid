@@ -1,17 +1,4 @@
 if (google.y) google.y.first = [];
-(function () {
-    function b(a) {
-        window.setTimeout(function () {
-            var c = document.createElement("script");
-            c.src = a;
-            document.getElementById("xjsd").appendChild(c)
-        }, 0)
-    }
-    google.dljp = function (a) {
-        google.xjsi || (google.xjsu = a, b(a))
-    };
-    google.dlj = b;
-})();
 if (!google.xjs) {
     window._ = window._ || {};
     window._._DumpException = function (e) {
@@ -20,7 +7,6 @@ if (!google.xjs) {
     if (google.timers && google.timers.load.t) {
         google.timers.load.t.xjsls = new Date().getTime();
     }
-    google.dljp('/1.js');
     google.xjs = 1;
 }
 window.mbtb1 = {

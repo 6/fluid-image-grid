@@ -310,13 +310,6 @@
             return a ? RegExp("(\\s|^)" + b + "(\\s|$)").test(a.className) : !1
         }, nb = function (a) {
             return window.JSON ? window.JSON.parse(a) : eval("(" + a + ")")
-        }, ob =
-            function (a) {
-                if (a = a.getAttribute("data-meta")) return nb(a);
-                google.ml(Error("csl:no_box_meta"), !1, {
-                    url: window.location.href
-                });
-                return {}
         }, pb = function (a, b) {
             var c = a.parentNode,
                 d = a.nextSibling,
@@ -755,7 +748,6 @@
         if (a && 0 != b.length) {
             for (var c, d = 0; c = b[d]; ++d) {
                 var e = c.getAttribute("data-cei");
-                e || google.ml(Error("stb_nocei"), !1);
                 if (e && !this.R[e]) {
                     this.R[e] = !0;
                     var f = 1 == this.a.length && 100 > this.a[0],
@@ -824,10 +816,7 @@
             var c = b.length;
             if (0 < c) {
                 var d = a.a.length;
-                !oc && 1 == d && 100 > a.a[0] ? (a.a[0] += c, a.V = !0, 100 < a.a[0] && google.ml(Error("csl:xl_chunk"), !1, {
-                    url: window.location.href,
-                    size: a.a[0]
-                })) : (b[0].setAttribute("data-ci", d), a.a.push(c))
+                (b[0].setAttribute("data-ci", d), a.a.push(c))
             }
             jd(a) && (a.F = !0);
             return c
@@ -1093,9 +1082,7 @@
                     if ("rg_meta" == Ea.className) {
                         Wa = nb(Ea.innerText || Ea.textContent || Ea.innerHTML);
                         break
-                    } if (!Wa) throw google.ml(Error("csl:no_meta"), !1, {
-                url: window.location.href
-            }), Error("No metadata for image.");
+                    } if (!Wa) throw Error("No metadata for image.");
             Ad[Bd] = new rb(Va, Wa, Cb)
         }
         if (c.a) {

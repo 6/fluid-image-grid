@@ -1773,7 +1773,6 @@ var _ = _ || {};
                 d = d.parentNode
             }
             d = d ? d.querySelectorAll("div.obselector") : [];
-            window.google.log("prose_onebox_dropdown", "&id=" + b);
             for (b = 0; b < d.length; ++b) d[b].style.display = "none";
             "undefined" == typeof c ? d[a.selectedIndex].style.display = "inline" : d[c].style.display = "inline"
         };
@@ -1817,7 +1816,6 @@ var _ = _ || {};
                 dh && (e = c = 0);
                 Laa(d, g, b, c, e, f);
                 a = a.getAttribute("data-log-id") || "";
-                window.google.log("prose_onebox_show_more", (d ? "close" : "open") + "&id=" + a)
             }
         };
         _.fh = function () {
@@ -2328,9 +2326,6 @@ var _ = _ || {};
         var dba = function (a, b) {
             (0, _.Yf)(b.url)
         };
-        var eba = function (a, b) {
-            window.google.log(b.ct, b.data || "", b.src)
-        };
         var fba = function (a, b) {
             window.open(b.url, b.target || "_blank", b.opt || "")
         };
@@ -2449,14 +2444,6 @@ var _ = _ || {};
             for (k = 0; k < p; k++) k >= m || e[k] ? (0, _.wi)(n, l[k], d[k]) : xi(n, l[k], d[k]);
             0 == p && (0 < e.length && !e[0]) && xi(n);
             l = (0, _.zi)(n);
-            (k = b || d && d[0]) ? window.google.log(f, g + h + l, "", k) : window.google.ml(Error("lbved"), !1, {
-                ved: a,
-                trE: b,
-                vet: c && c[0],
-                taE: d && d[0],
-                ct: f,
-                data: g
-            })
         };
         _.Hi = function (a, b, c, d, e) {
             var f = a ? (0, _.ti)(a) : "",
@@ -3116,7 +3103,7 @@ var _ = _ || {};
                     ca = [w, "/url?sa=", l ? "i" : "t", this.B || this.A ? "&rct=j" : "", u ? "&q=" + (J || "") : "", E ? "&q=&esrc=s" : "", this.A && this.L ? "&frm=1" : "", "&source=", window.google.sn, "&cd=", b(e), F, c ? "&" + G : "", window.google.j && window.google.j.pf ? "&sqi=2" : "", "&ved=", b(h), "&url=", m, "&ei=", p, k ? "&authuser=" + b(k.toString()) : "", t ? "&v6u=" + b(t) + "&v6s=" + s + "&v6t=" + r : "", f ? "&usg=" + f : "", g, _.Lj ? (0, _.Fj)() : "", l ? "&psig=" + l : ""].join("");
                 if (2038 < ca.length)
                     if (u && 2038 >= ca.length - J.length) ca = ca.replace(J, J.substring(0, J.length - (ca.length - 2038)));
-                    else return window.google.log("uxl", "&ei=" + window.google.kEI), !0;
+                    else return !0;
                 var P = a.href;
                 a.href = ca;
                 (this.B || this.A) && this.jt.B(P, ca, a);
@@ -3849,9 +3836,6 @@ var _ = _ || {};
             if (!b || !b.ei) {
                 for (var b = "{", c = (0, _.dc)(_.rK), d = 0, e; e = c[d]; ++d) 0 < d && (b += ","), b += "[" + e + "," + _.rK[e].ei + "]";
                 b += "}";
-                window.google.ml(Error("no-cm:" + a + "," + b), !1, {
-                    url: window.google.isr.url
-                });
                 return window.google.kEI
             }
             return b.ei
@@ -4508,9 +4492,6 @@ var _ = _ || {};
             if (a) return /\/im(ages|gres|ghp)\?|\/search\?(.*&)?tbm=isch(&|$)/.test(a.href) && (a.href = yL(a.href)), !0
         };
         var fL = function (a) {
-            zK && window.google.ml(Error("csl: " + a), !1, {
-                url: window.google.isr.url
-            })
         };
         var Qwa = function () {
             var a = (0, _.v)("rg");
@@ -4645,7 +4626,6 @@ var _ = _ || {};
                 if (d != e) {
                     var f = -1;
                     (0, _.Ma)(window.google.isr.layout) && (f = window.google.isr.layout.getResults().length);
-                    window.google.log("stb_ws_c" + b + "_e" + e + "_a" + d + "_l" + f, "")
                 }
                 c = xL(c, "start", 0 < b ? d : 0);
                 c = xL(c, "csl", zK ? 1 : 0);

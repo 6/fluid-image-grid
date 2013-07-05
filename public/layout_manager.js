@@ -155,11 +155,11 @@
                                 v()
                             } else c != Number.MAX_VALUE && c > M && (M = c);
                             !z && (y && d < y) && (++A == y ? (f = c == Number.MAX_VALUE ? K : c, z = !0, u("stb_lii", f), v()) : c != Number.MAX_VALUE && (K = c))
-                    } else n ? google.ml(Error("csl:no_ri"), !1, {
-                        url: window.location.href
-                    }) : w.push(function () {
-                        k(a, c)
-                    })
+                    } else if(!n) {
+                        w.push(function () {
+                            k(a, c)
+                        })
+                    }
                 }
             }
         };

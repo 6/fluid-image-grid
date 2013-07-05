@@ -810,7 +810,7 @@
             for (var b = a.d.c = window.innerHeight || document.documentElement.offsetHeight, c = a.c, d = 0; c && !isNaN(c.offsetTop);) d += c.offsetTop, c = c.offsetParent;
             c = a.d.e = d;
             a.d.d = b - c;
-            b = document.getElementById("rso").offsetWidth;
+            b = document.getElementById("images-grid-inner").offsetWidth;
             0 < b && (a.d.a = b);
             document.getElementById("rg").style.width = (a.d.a || 0) + "px"
         }, rc = function (a) {

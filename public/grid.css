@@ -7,7 +7,7 @@ body {
   background-color: #eee;
 }
 
-.images-grid {
+#images-grid {
   clear:both;
   position:relative;
   zoom:1;

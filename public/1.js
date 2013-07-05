@@ -18884,7 +18884,7 @@ var _ = _ || {};
         };
         var Vwa = function () {
             window.google.isr.ircbr && window.google.isr.ircbr();
-            var a = (0, _.se)(window.document.getElementById("ires")),
+            var a = (0, _.se)(window.document.getElementById("images-grid")),
                 a = SK() > a,
                 b = null;
             if (a) n: {
@@ -18898,7 +18898,7 @@ var _ = _ || {};
                 b = null
             }
             Wwa();
-            c = +window.document.getElementById("rso").offsetWidth;
+            c = +window.document.getElementById("images-grid-inner").offsetWidth;
             Xwa(c);
             window.google.isr.layout.layoutResults(!0);
             window.google.isr.Hover &&
@@ -19456,7 +19456,7 @@ var _ = _ || {};
                 a = Math.abs(d / b); - 1 != rM && (window.clearTimeout(rM), rM = -1);
                 if (window.google.stb.csi.onScl) {
                     var b = zK ? zL() : qL(),
-                        c = (0, _.se)(window.document.getElementById("ires")),
+                        c = (0, _.se)(window.document.getElementById("images-grid")),
                         d = SK() + c,
                         e = d + QK;
                     FK && (d -= c);
@@ -19469,7 +19469,7 @@ var _ = _ || {};
         };
         var sM = function () {
             fL("thumbnails.renderBigGulp_");
-            if ((0, _.Ma)(window.google.isr.bg_done) && window.document.getElementById("ires")) {
+            if ((0, _.Ma)(window.google.isr.bg_done) && window.document.getElementById("images-grid")) {
                 -1 == _.pM && (0 == _.nM && EK.shouldLogBgTimeout && bL()) && (_.pM = window.setTimeout(function () {
                     window.google.log("stbbgt", "&speed=" + EK.connectionSpeed)
                 }, 1E4));
@@ -20482,7 +20482,7 @@ var _ = _ || {};
             this.$ = null;
             if (this.A = (0, _.v)("lu_map")) {
                 for (this.J = this.A; this.J && "A" != this.J.tagName;) this.J = this.J.parentNode;
-                if (this.M.SO && ((0, _.v)("lu_pinned_rhs"), this.Wa = (a = (0, _.v)("center_col")) && a.parentNode || (0, _.v)("ires"), this.J && this.Wa && (this.T = this.J.href, this.Gb = -1 != this.T.search(/&iwloc=|&cid=0,0,/), a = Iga(this, this.A)))) {
+                if (this.M.SO && ((0, _.v)("lu_pinned_rhs"), this.Wa = (a = (0, _.v)("center_col")) && a.parentNode || (0, _.v)("images-grid"), this.J && this.Wa && (this.T = this.J.href, this.Gb = -1 != this.T.search(/&iwloc=|&cid=0,0,/), a = Iga(this, this.A)))) {
                     var b = a.indexOf(",") + 1;
                     this.Md = a.substring(0, b);
                     var c = a.indexOf("data=") + 5;
@@ -21938,7 +21938,7 @@ var _ = _ || {};
                     if (mw = c, jw(c)) lw || mia(c, d);
                     else if (nw()) {
                     var e;
-                    if (!(e = c == window.document || c == window.document.documentElement) && (e = Dv.exp.lru) && !(e = "rso" == c.id)) {
+                    if (!(e = c == window.document || c == window.document.documentElement) && (e = Dv.exp.lru) && !(e = "images-grid-inner" == c.id)) {
                         n: {
                             e = 0;
                             for (var f; f = c.childNodes[e]; e++)
@@ -24124,7 +24124,7 @@ var _ = _ || {};
                         a != b && hm()
                     }
                 };
-                _.sc.Hc || (a = (0, _.jm)(gm.targetDocId, "uh_r"), b = (0, _.jm)(gm.targetDocId, "ires"), a && b && ((a = a.nextSibling) ? b.insertBefore(gm.element, a) : b.appendChild(gm.element)));
+                _.sc.Hc || (a = (0, _.jm)(gm.targetDocId, "uh_r"), b = (0, _.jm)(gm.targetDocId, "image-grid"), a && b && ((a = a.nextSibling) ? b.insertBefore(gm.element, a) : b.appendChild(gm.element)));
                 gm.element.className = "uh_hv"
             }
         };

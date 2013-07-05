@@ -1,7 +1,7 @@
 (function () {
     window.google = {
         time: function () {
-            return (new Date).getTime()
+            return new Date().getTime();
         },
         y: {}
     };
@@ -33,19 +33,14 @@
 })();
 
 (function () {
-    google.sn = "images";
     google.timers = {};
-    google.startTick = function (a, b) {
-        google.timers[a] = {
+    google.startTick = function (timerName, buffer) {
+        google.timers[timerName] = {
             t: {
                 start: google.time()
             },
-            bfr: !! b
-        }
+            bfr: !! buffer
+        };
     };
-    google.tick = function (a, b, g) {
-        google.timers[a] || google.startTick(a);
-        google.timers[a].t[b] = g || google.time()
-    };
-    google.startTick("load", !0);
+    google.startTick("load", true);
 })();

@@ -90,7 +90,7 @@
     f.images.a.Cd = "iszw";
     f.images.a.qf = "tbtro";
     f.images.a.sg = "tbd";
-    f.images.a.tg = "hdtbMenus";
+    f.images.a.tg = "images-grid";
     f.images.a.TEXT_NODE = 3;
     f.images.a.Fe = "ires";
     f.images.a.Zf = "rg";

@@ -18925,7 +18925,7 @@ var _ = _ || {};
         };
         var Wwa = function () {
             if (!FK) {
-                var a = window.document.getElementById("hdtbMenus");
+                var a = window.document.getElementById("images-grid");
                 a || (a = window.document.getElementById("tbd"));
                 for (var b = a.getElementsByTagName("a"), a = 0, c; c = b[a]; a++) c.href && (c.href = yL(c.href))
             }
@@ -23668,7 +23668,7 @@ var _ = _ || {};
                 f = {
                     x: (0, _.re)(a),
                     y: (0, _.me)(a).y
-                }, g = (0, _.re)((0, _.ad)("hdtb-mn-cont")) - (0, _.re)((0, _.v)("hdtbMenus")),
+                }, g = (0, _.re)((0, _.ad)("hdtb-mn-cont")) - (0, _.re)((0, _.v)("images-grid")),
                 h = f.x - 15 - g,
                 k = (0, _.ze)(a);
             d && (h = (0, _.ze)(c).width - f.x - k.width - 15 + g);
@@ -23780,7 +23780,7 @@ var _ = _ || {};
                     c = (0, _.v)("hdtb_more_mn");
                 b && c && new Z0(b, c, !0, vOa);
                 b = (0, _.v)("hdtb_tls");
-                c = (0, _.v)("hdtbMenus");
+                c = (0, _.v)("images-grid");
                 b && c && new $0(b, c, wOa);
                 (xOa = a.t) && (null !== c && (0, _.Vf)(c, "hdtb-td-o")) && yOa();
                 if (b = (0, _.v)("hdtbSum")) {

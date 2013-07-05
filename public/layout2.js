@@ -295,7 +295,7 @@
             })
         }, Qa, T, jb = function () {
             T = {};
-            var a = document.getElementById("isr_param");
+            var a = document.getElementById("images-grid");
             if (a)
                 for (var b = 0; b < a.attributes.length; ++b) {
                     var c = a.attributes[b];

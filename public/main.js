@@ -18666,7 +18666,6 @@ var _ = _ || {};
             return "ul"
         };
         var NK = function () {
-            window.google.isr.page.invalidateResultsRows();
             var a = Nwa = [];
             if (zK)
                 for (var b = window.google.isr.layout.getNumPages(), c = 0, d = 0; d < b; d++) {

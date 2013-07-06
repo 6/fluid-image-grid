@@ -2997,7 +2997,7 @@ var _ = _ || {};
             jM = 0;
             var a = window.document.getElementById("rg");
             if (a && 0 != a.childNodes.length) {
-                wxa = 128 < (window.google.stb.csi.getBandwidth ? window.google.stb.csi.getBandwidth() : 0) ? 2 : 1;
+                wxa = 2;
                 if (bM.length || zK && window.google.isr.layout.getNumPages()) zK || (iM[0] = !0, eM[0] = !0), uK(4, xxa), cM = 1, zK || sM();
                 BL();
                 uK(5, function () {

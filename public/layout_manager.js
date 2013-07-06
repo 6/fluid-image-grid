@@ -51,11 +51,6 @@
             var b = B() - this.data.stb_lsi_s;
             1E3 < b && 1E4 < a && (u("stb_lsi_sz", a, !0), u("stb_lsi_t", b, !0));
         },
-        getBandwidth: function () {
-            var a = 0;
-            this.data.stb_lsi_t && (a = Math.floor(this.data.stb_lsi_sz / this.data.stb_lsi_t));
-            return a
-        },
         onScl: function (a, b, d) {},
         updateRowsInfo: function () {},
         startChunk0Layout: function () {

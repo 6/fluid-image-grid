@@ -720,7 +720,6 @@
             this.l.K();
             this.l.T();
             pc(this);
-            google.stb.csi.setNumInlined(qc(this));
             rc(this);
             break;
         case 1:
@@ -752,14 +751,12 @@
                     this.R[e] = !0;
                     var f = 1 == this.a.length && 100 > this.a[0],
                         g = 3 == this.a.length;
-                    f ? google.stb.csi.startChunk1Layout() : g && google.stb.csi.startChunk3Layout();
                     for (this.e = document.createDocumentFragment(); 0 < c.childNodes.length;) this.e.appendChild(c.childNodes[0]);
                     this.k();
                     a.appendChild(this.e);
                     this.e = null
                 }
                 c.parentNode.removeChild(c);
-                f ? google.stb.csi.endChunk1Layout() : g && google.stb.csi.endChunk3Layout()
             }
             tc(this)
         } else 1 == this.a.length && 20 >= this.a[0] && this.O()
@@ -832,7 +829,6 @@
             } else return 100 > a.a[a.a.length -
                 1]
         }, ld = function (a) {
-            google.stb.csi.setFirstPageSize(a)
         }, qc = function (a) {
             a = a.c.getElementsByTagName("img");
             for (var b = 0, c;
@@ -1358,10 +1354,8 @@
             this.a = c;
             this.width = d
         };
-    google.stb.csi.startChunk0Layout();
     var vd = new s;
     vd.k();
-    google.stb.csi.endChunk0Layout();
     var wd = ["google", "isr", "layout"],
         $ = this;
     wd[0] in $ || !$.execScript || $.execScript("var " + wd[0]);

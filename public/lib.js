@@ -2254,7 +2254,6 @@ var _ = _ || {};
                 RK("bg");
                 window.google.isr.bg_done = !0;
                 _.$K = !1;
-                window.google.stb.csi.onBg();
                 _.KK || Pwa();
                 NK();
                 window.setTimeout(function () {
@@ -2867,7 +2866,6 @@ var _ = _ || {};
                 bM = [];
                 for (var b = 0, c; c = a[b]; b++) "rg_ctlv" != c.className && "rg_ctl" != c.className || !c.querySelector(eL() + ".rg_ul") || bM.push(c)
             }
-            1 < cM && window.google.stb.csi.updateRowsInfo && window.google.stb.csi.updateRowsInfo()
         };
         var dM = function (a) {
             if ((zK || bM && !(0 > a) && bM[a]) && !(0 > a || eM[a] || zK && 1 < a && 0 == SK())) {
@@ -2964,14 +2962,6 @@ var _ = _ || {};
                 zxa = c;
                 Axa++;
                 a = Math.abs(d / b); - 1 != rM && (window.clearTimeout(rM), rM = -1);
-                if (window.google.stb.csi.onScl) {
-                    var b = zK ? zL() : qL(),
-                        c = (0, _.se)(window.document.getElementById("images-grid")),
-                        d = SK() + c,
-                        e = d + QK;
-                    FK && (d -= c);
-                    window.google.stb.csi.onScl(b, d, e)
-                }
                 1 < a || 3 >= Axa ? rM = window.setTimeout(function () {
                     BL()
                 }, 250) : BL()

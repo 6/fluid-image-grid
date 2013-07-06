@@ -2160,107 +2160,6 @@ var _ = _ || {};
         var GK;
         var Bwa;
         var dL;
-        var sK = function () {
-            var a = window.document.getElementById("iszlt_sel");
-            return a ? a.getElementsByTagName("select")[0] : null
-        };
-        var uwa = function () {
-            var a = sK();
-            return a ? a.options[a.selectedIndex].value : ""
-        };
-        var vwa = function (a) {
-            a = a || window.event;
-            var b = a.target || a.srcElement;
-            if (b && "A" == b.tagName.toUpperCase() && (0, _.Vf)(b, "isrnj")) {
-                var b = b.parentNode,
-                    c = b.id;
-                if ("isz_lt" == c || "isz_ex" == c) {
-                    if (b.id && "tbos" != b.className) {
-                        for (var d = b.parentNode.childNodes, e, f = 0, g; g = d[f++];)
-                            if ("tbos" == g.className) {
-                                e = g;
-                                break
-                            }
-                        if ("color-specific" != e.id) {
-                            e.className = "tbou";
-                            d = e.getElementsByTagName("a")[0];
-                            d && "none" != d.style.display || (d = window.document.createElement("a"), d.className = "q isrnj", window.google.isr.url ? d.href = window.google.isr.url :
-                                d.href = window.location.href);
-                            for (f = 0; g = e.childNodes[f++];)
-                                if (3 == g.nodeType) {
-                                    d.appendChild(g);
-                                    break
-                                }
-                            e.insertBefore(d, e.firstChild)
-                        }
-                        e = b.getElementsByTagName("a")[0];
-                        b.className = "tbos";
-                        b.insertBefore(e.firstChild, b.firstChild)
-                    }
-                    b = window.document.getElementById("iszlt_sel");
-                    e = window.document.getElementById("iszex");
-                    b.className = "tbcontrol";
-                    e.className = "tbcontrol";
-                    "isz_lt" == c ? (b.className = "tbcontrol_vis", sK().focus()) : (e.className = "tbcontrol_vis", window.document.getElementById("iszw").focus())
-                }
-                a.cancelBubble = !0;
-                a.stopPropagation && a.stopPropagation();
-                return !1
-            }
-            return !0
-        };
-        var wwa = function () {
-            function a() {
-                (0, _.lK)(function () {
-                    var a;
-                    a = (0, _.kK)((0, window.decodeURIComponent)(window.document.getElementById("iszw").value));
-                    var b = (0, _.kK)((0, window.decodeURIComponent)(window.document.getElementById("iszh").value));
-                    if (0 < a || 0 < b) {
-                        a = 0 < a ? a : b;
-                        var b = 0 < b ? b : a,
-                            c = window.document.getElementById("iszex").getElementsByTagName("a")[0].href;
-                        a = (0, _.jK)(c, "iszw:" + a + ",iszh:" + b)
-                    } else a = null;
-                    return a
-                })
-            }
-            _.mK || (window.document.getElementById("tbd").onclick = vwa);
-            var b = sK();
-            if (b) {
-                b.onchange = function () {
-                    var a =
-                        uwa();
-                    a && (0, _.lK)(function () {
-                        var b = window.document.getElementById("iszlt_url").href;
-                        return (0, _.jK)(b, "islt:" + a)
-                    })
-                };
-                var c;
-                if (_.sc.vx && 0 <= window.navigator.platform.indexOf("Linux") && (c = window.document.getElementById("leftnav"))) {
-                    var d;
-                    b.onmouseover = function () {
-                        (0, window.clearTimeout)(d);
-                        c.style.overflowY = "auto"
-                    };
-                    b.onmouseout = function () {
-                        d = (0, window.setTimeout)(function () {
-                            c.style.overflowY = null
-                        }, 50)
-                    }
-                }
-            }
-            if (b = window.document.getElementById("iszex")) window.document.getElementById("iszex_btn").onclick = a, b.onkeydown =
-                function (b) {
-                    13 == (b || window.event).keyCode && a()
-            }
-        };
-        _.tK = function () {
-            var a = window.document.getElementById("leftnav");
-            if (a) {
-                var b = window.document.documentElement.clientHeight - (0, _.se)(a) - (a.firstChild.offsetTop - a.offsetTop);
-                a.style.height = Math.max(0, b) + "px"
-            }
-        };
         _.xwa = function (a) {
             window.document.getElementById("tbd") && (_.mK = a || !1, (0, _.tK)(), (0, _.$e)(window, "resize", _.tK), wwa())
         };
@@ -2271,8 +2170,6 @@ var _ = _ || {};
         var wK = function (a, b) {
             if (_.vK[a])
                 for (var c = 0, d; d = _.vK[a][c++];) d(b)
-        };
-        var xK = function (a, b, c) {
         };
         var ywa = function (a) {
             yK = (_.nK = zK = a) ? "rg_di" : "rg_li";
@@ -2315,49 +2212,9 @@ var _ = _ || {};
             _.XK = !0;
             _.YK && Kwa()
         };
-        var Gwa = function (a, b) {
-            _.ZK = window.setTimeout(function () {
-                !_.$K && CK && (_.aL = !0, Kwa());
-                _.ZK = window.setTimeout(function () {
-                    (0, _.yd)((0, _.v)("isr_ld"));
-                    window.google.ml(Error("isr:ldtm"), !1, {
-                        url: window.google.isr.url,
-                        e_bg: bL(),
-                        speed: EK.connectionSpeed,
-                        is_j: CK,
-                        is_pr: DK,
-                        bg_r: _.YK,
-                        bg_p: _.$K,
-                        retry: _.aL
-                    })
-                }, b)
-            }, a)
-        };
         var IK = function (a, b, c) {
             (0, _.$e)(a, b, c);
             _.Lwa.push([a, b, c])
-        };
-        var WK = function (a, b) {
-            (0, _.Nf)(a, b);
-            _.Mwa.push([a, b])
-        };
-        var Iwa = function (a) {
-            var b = a.target || a.srcElement;
-            if (null !== b && (0, _.Vf)(b, "isrnj")) return vwa(a), !1;
-            for (a = b; a && a != window.document.body && a != window.document.documentElement && !(0, _.Vf)(a, yK) && !(0, _.Vf)(a, "rg_hv"); a = a.parentNode);
-            return !0
-        };
-        var cL = function () {
-            if (!dL) {
-                var a = window.document.getElementById("isr_pps");
-                if (a) dL = +a.innerHTML;
-                else return 1
-            }
-            return dL
-        };
-        var eL = function () {
-            fL("getPageTagName");
-            return "ul"
         };
         var NK = function () {
             var a = Nwa = [];
@@ -2434,25 +2291,6 @@ var _ = _ || {};
                 var b = window.JSON.stringify(a);
                 window.sessionStorage.setItem("images-sh", b)
             } catch (c) {}
-        };
-        var Dwa = function () {
-            var a;
-            try {
-                a = window.JSON.parse(window.sessionStorage.getItem("images-sh"))[window.location.href]
-            } catch (b) {}
-            if (a) {
-                var c = a.l;
-                if (_.oK) a.p ? mL(c) : (mL(0), nL(!1));
-                else {
-                    var d = a.s && !_.KK,
-                        e = 0;
-                    if (c || d) var f = window.setInterval(function () {
-                        d && 1 < hL() && (Rwa(), d = !1);
-                        c && c <= window.document.body.clientHeight && (mL(c), c = 0);
-                        (!d && !c || 75 <= ++e) && window.clearInterval(f)
-                    }, 200)
-                }
-            }
         };
         var hL = function () {
             fL("getLastPageNumber");
@@ -2927,9 +2765,7 @@ var _ = _ || {};
                 }
                 c = xL(c, "start", 0 < b ? d : 0);
                 c = xL(c, "csl", zK ? 1 : 0);
-                xK(c, function (c) {
-                    _.VL != b ? bxa(b + "", a, null, null, c) : (nL(!1), _.VL = -1)
-                })
+                console.log("start loading more results now");
             } else _.JL = -1
         };
         var axa = function (a) {
@@ -3430,87 +3266,6 @@ var _ = _ || {};
         _._DumpException(e)
     }
     try {
-        var sk = function (a) {
-            a = (0, _.v)(a);
-            if ((0, _.rk)(a)) {
-                var b = (0, _.jg)(a, "margin-top", !1) || 0,
-                    c = (0, _.jg)(a, "margin-bottom", !1) || 0;
-                return a.offsetHeight + b + c
-            }
-            return 0
-        };
-        var tk = function (a, b, c) {
-            var d = a.t[b],
-                e = a.t.start;
-            if (d && (e || c)) return uk && (d = a.t[b][0]), void 0 != c ? e = c : uk && (e = e[0]), vk ? d > e ? d - e : e - d : d - e
-        };
-        var Mba = function (a, b, c) {
-            var d = "";
-            if (wk && (window[xk].pt && (d += "&srt=" + window[xk].pt, delete window[xk].pt), yk)) try {
-                window.external && window.external.tran ? d += "&tran=" + window.external.tran : window.gtbExternal && window.gtbExternal.tran ? d += "&tran=" + window.gtbExternal.tran() : window.chrome && window.chrome.csi && (d += "&tran=" + window.chrome.csi().tran)
-            } catch (e) {}
-            if (zk) {
-                var f = (0, _.v)("csi");
-                if (f) {
-                    var g;
-                    void 0 != window[xk]._bfr ? g = window[xk]._bfr : (g = f.value, window[xk]._bfr = g, f.value = 1);
-                    if (Ak) {
-                        if (g) return ""
-                    } else g && (d +=
-                        "&bfr=1")
-                }
-            }
-            Bk && (f = window.chrome) && (f = f.loadTimes) && (f().wasFetchedViaSpdy && (d += "&p=s"), f().wasNpnNegotiated && (d += "&npn=1"), f().wasAlternateProtocolAvailable && (d += "&apa=1"));
-            a.oV && (d += "&" + a.oV);
-            Ck && window.parent != window && (d += "&wif=1");
-            if ("undefined" != typeof window.navigator && window.navigator && window.navigator.connection) {
-                f = window.navigator.connection;
-                g = f.type;
-                for (var h in f)
-                    if ("type" != h && f[h] == g) {
-                        d += "&conn=" + h;
-                        break
-                    }
-            }
-            f = a.t;
-            g = f.start;
-            h = [];
-            var k = !1;
-            if (uk) var l = [];
-            for (var n in f)
-                if ("jsrt" == n && (k = !0),
-                    "start" != n) {
-                    if (uk) {
-                        if (0 == n.indexOf("_")) continue;
-                        var p = f[n][1];
-                        if (p) {
-                            f[p] && l.push(n + "." + tk(a, n, f[p][0]));
-                            continue
-                        }
-                    }
-                    g && h.push(n + "." + tk(a, n))
-                }
-            if (!k) {
-                var p = [],
-                    m = window.performance && window.performance.timing;
-                m && (k = m.navigationStart, k || (k = m.fetchStart), k && g && p.push("wsrt." + (g - k)), m.connectEnd && m.connectStart && p.push("cst." + (m.connectEnd - m.connectStart)), m.domainLookupEnd && m.domainLookupStart && p.push("dnst." + (m.domainLookupEnd - m.domainLookupStart)), m.redirectEnd && m.redirectStart && p.push("rdxt." + (m.redirectEnd -
-                    m.redirectStart)), m.responseEnd && m.requestStart && p.push("rqst." + (m.responseEnd - m.requestStart)), m.responseEnd && m.responseStart && p.push("rspt." + (m.responseEnd - m.responseStart)));
-                (k = p.join(",")) && h.push(k)
-            }
-            if ((k = window.google.timers.session) && k.t && g)
-                for (n in k.t) "start" != n && h.push(n + "." + (g - k.t[n]));
-            delete f.start;
-            if (b)
-                for (var t in b) d += "&" + t + "=" + b[t];
-            (b = c) || (b = "https:" == window.document.location.protocol ? Dk : Ek);
-            return [b, "?v=3", "&s=" + (window[xk].sn || Fk) + "&action=", a.name, uk && l.length ? "&it=" + l.join(",") :
-                "", "", d, "&rt=", h.join(",")].join("")
-        };
-        var Gk = function (a, b, c) {
-            a = Mba(a, b, c);
-            if (!a) return "";
-            return a
-        };
         var Hk = function (a, b, c) {
             if ("prerender" == window.document.webkitVisibilityState) {
                 var d = !1,
@@ -3529,88 +3284,6 @@ var _ = _ || {};
             }
             return Gk(a, b, c)
         };
-        _.Ik = function (a, b) {
-            void 0 === a && (a = !0);
-            if (!a || window.google.timers.load.t && window.google.timers.load.t.xjs && window.google.timers.load.t.ol) {
-                var c = (0, _.jc)(b || window.google.kCSI);
-                window.google.browser.engine.IE && (c.dM = window.document.documentMode);
-                c.atyp = "csi";
-                if (Jk && c) {
-                    var d = sk("tvcap"),
-                        e = sk("tads"),
-                        f = sk("mbEnd"),
-                        g = sk("tadsb"),
-                        h = [];
-                    d && h.push("tv." + d);
-                    e && h.push("t." + e);
-                    f && h.push("r." + f);
-                    g && h.push("b." + g);
-                    c.adh = h.join(",")
-                }
-                if (Kk && 0 != Lk.length && !Mk) {
-                    if (!Mk) {
-                        d = Lk.split(",");
-                        for (e = 0; e < d.length; e++) d[e] =
-                            String.fromCharCode((0, window.parseInt)(d[e], 10));
-                        Nk = Boolean((0, _.v)(d.join("")));
-                        Mk = !0
-                    }
-                    c.dck = Nk ? "1" : "0"
-                }
-                Hk(window.google.timers.load, c)
-            }
-        };
-        var Nba = function (a) {
-            if (window[xk].VR <= (a || 1)) return !1;
-            for (var b in window[xk].QJ) return !1;
-            return !0
-        };
-        (0, _.Vg)(_.x.G(), "sy8");
-        var wk = !0,
-            yk = !1,
-            Fk = "GWS",
-            xk = "google",
-            Ek = "/csi",
-            Dk = "/csi",
-            Jk = !1,
-            Lk = "",
-            Kk = !1,
-            zk = !0,
-            Ak = !0,
-            uk = !1,
-            vk = !0,
-            Ok = !1,
-            Ck = !0,
-            Bk = !0;
-        (0, _.vf)("csi", {
-                csi: function (a) {
-                    a.csbu && (Dk = a.csbu);
-                    a.cbu && (Ek = a.cbu);
-                    a.ert && (uk = a.ert);
-                    a.esd && (Bk = a.esd);
-                    a.fpt && (vk = a.fpt);
-                    a.ibd && (zk = a.ibd);
-                    a.ifr && (Ok = a.ifr);
-                    a.itpt && (wk = a.itpt);
-                    a.itptt && (yk = a.itptt);
-                    a.iwi && (Ck = a.iwi);
-                    a.nsp && (xk = a.nsp);
-                    a.sn && (Fk = a.sn);
-                    a.srb && (Ak = a.srb);
-                    a.acsi && (Jk = a.acsi);
-                    a.dck && (Kk = a.dck);
-                    a.dckid && (Lk = a.dckid)
-                }
-            });
-        (0, _.Bf)("csi");
-        var Nk = !1,
-            Mk = !1;
-        window[xk] && (window[xk].QJ = {}, window[xk].VR = 1);
-        (0, _.za)(xk + ".report", Hk, void 0);
-        (0, _.za)(xk + ".csiReport", _.Ik, void 0);
-        Ok && (0, _.za)(xk + ".reportDone", Nba, void 0);
-        (0, _.Sg)(_.x.G(), "sy8");
-        (0, _.Wg)(_.x.G(), "sy8");
     } catch (e) {
         _._DumpException(e)
     }

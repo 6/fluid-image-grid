@@ -559,13 +559,6 @@
         }, cc = function () {}, ec = function (a) {
             var b =
                 dc;
-            if (a.p) ac(a.prototype instanceof b, "delegate is not a subclass of the delegate base");
-            else {
-                for (var c in a.prototype)
-                    if (a.prototype.hasOwnProperty(c)) throw Error("delegate registered after defining methods. you should extend your delegate base explicitly immediately after defining your delegate class");
-                u(a, b)
-            }
-            ac(!b.N, "delegate registered after first delegator instantiation");
             a.$ = 0;
             if (b.m) {
                 b = b.m;
@@ -678,7 +671,6 @@
         }, s = function () {
             if (!this.l) {
                 for (var a = this.constructor; a && !a.w;) a = a.p && a.p.constructor;
-                ac(a, "trying to create delegate for non-delegating class: did you forget to use fava.delegate.Delegate.setBase?");
                 a.w.N || (a.w.N = hc(a));
                 this.l = new a.w.N(this);
                 this.A ? ac(this.A == mc, "conflicting definitions of findDelegate") : this.A =
@@ -716,7 +708,6 @@
         this.c = document.getElementById("rg");
         switch (this.s) {
         case 0:
-            this.l.L();
             this.l.K();
             this.l.T();
             pc(this);
@@ -866,7 +857,6 @@
     p.ca = jc();
     p.da = jc();
     p.ba = lc();
-    p.L = lc();
     p.K = lc();
     p.T = kc();
     p.M = kc();
@@ -928,11 +918,6 @@
     };
     p.ba = function () {
         this.h && this.h.length && (this.a.k(), tc(this.a))
-    };
-    p.L = function () {
-        for (var a = [document.getElementById("search"), document.getElementById("rhscol")], b = 0; b < a.length; b++)
-            if (a[b])
-                for (var c = a[b].childNodes, d = 0, e; e = c[d]; d++)(U(e, "rg_bb_c") || U(e, "rg_bb")) && this.e.appendChild(e)
     };
     p.K = function () {
         for (var a = 0, b; b = this.e.childNodes[a]; a++)
@@ -1001,54 +986,6 @@
     var sd = function (a, b, c, d, e) {
         for (var f, g, h, k = null, l = null, n = 0; n < d.length; n++) {
             for (var r = d[n], v = r.childNodes, m = 0, q = Number.MAX_VALUE, w = [], F = 0, aa; aa = v[F]; F++)
-                if (U(aa, "rg_bb")) {
-                    var ja = ob(aa),
-                        V = new td(aa, ja);
-                    if (!V.width) {
-                        var xd = V,
-                            Ab;
-                        var Aa = V.c,
-                            L = V.a * a.k + (V.a - 1) * Xb;
-                        if (Aa.k) Ab = 2 * L;
-                        else {
-                            L -= 2;
-                            Aa.e || (L -= 41);
-                            var Ra = void 0,
-                                y = Aa.c,
-                                Ba = 0,
-                                Ca = Math.ceil((L - 1) / 2),
-                                Da = Math.floor((L - 1) / 2),
-                                Sa = 0.6 * (L - 1),
-                                Ta = L - 1 - Sa,
-                                M = ua;
-                            switch (y.length) {
-                            case 1:
-                                Ba = M(y[0], L);
-                                break;
-                            case 2:
-                                1 > E(y[0]) && 1 <= E(y[1]) ? (Ca = Sa, Da = Ta) : 1 <= E(y[0]) && 1 > E(y[1]) &&
-                                    (Ca = Ta, Da = Sa);
-                                Ba = Math.min(M(y[0], Ca), M(y[1], Da));
-                                break;
-                            case 3:
-                                Ba = Math.min(M(y[0], Sa), M(y[1], Ta) + M(y[2], Ta));
-                                break;
-                            case 4:
-                                Ba = Math.min(M(y[0], Ca) + M(y[1], Ca), M(y[2], Da) + M(y[3], Da));
-                                break;
-                            default:
-                                throw Error("Box Layout is currently only for four or fewer results.");
-                            }
-                            Ra = Ba;
-                            Aa.e && (Ra += zb(Aa, !0));
-                            Ab = Math.min(Ra + 0 + 2, 400)
-                        }
-                        xd.width = Ab
-                    }
-                    w.push(V);
-                    m += V.a;
-                    q = Math.min(q, V.width)
-                }
             for (F = 0; F < w.length; F++) w[F].width = q;
             var vc = new ud(r, w, m, q);
             w[0].ea ? l = vc : k = vc

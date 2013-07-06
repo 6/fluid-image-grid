@@ -10,9 +10,6 @@
     google.isr || (google.isr = {});
     google.stb.csi = {
         data: {},
-        onTbn: function (a, b) {
-            g && "function" == typeof k ? k(b) : a ? "function" == typeof l && l() : "function" == typeof m && b && m(b)
-        },
         setFirstPageSize: function (a) {
             n = a;
             var b = n;

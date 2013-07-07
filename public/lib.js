@@ -986,9 +986,14 @@ window.google = {
         _.wL = window.setTimeout(function () {
           var a = window.innerWidth || window.document.documentElement.offsetWidth,
             b = window.innerHeight || window.document.documentElement.offsetHeight;
-            if (a > 0 && b > 0) {
-              Vwa();
-            }
+          if (a > 0 && b > 0) {
+            var grid = _.se(window.document.getElementById("images-grid")),
+              a = scrollTop() > grid,
+              b = null;
+            c = +window.document.getElementById("images-grid-inner").offsetWidth;
+            window.google.isr.layout.layoutResults(true);
+            a ? (a = 0, mL(a)) : BL();
+          }
         }, 50);
       });
       window.google.isr.url = "/";
@@ -2136,30 +2141,6 @@ window.google = {
       (0, _.$e)(a, b, c);
       _.Lwa.push([a, b, c])
     };
-    var NK = function () {
-      var a = Nwa = [];
-      if (zK)
-        for (var b = window.google.isr.layout.getNumPages(), c = 0, d = 0; d < b; d++) {
-          var e = window.google.isr.layout.getResultsForPage(d),
-            f = e ? e.length : 0,
-            e = {
-              start: c,
-              gF: f
-            }, c = c + f;
-          a.push(e)
-        } else if (c = window.document.getElementById("rg"), b = cL(), c)
-          for (d = c.getElementsByTagName(eL()), f = c = 0; f < d.length; f += b) {
-            e = {
-              gF: 0
-            };
-            e.start = c;
-            for (var g = 0; g < b && f + g < d.length; g++) e.gF += +d[f + g].getAttribute("data-cnt");
-            c += e.gF;
-            a.push(e)
-          }
-      window.google.isr.Hover &&
-        window.google.isr.Hover.initHoverHtml()
-    };
     var Owa = function () {
       fL("getAllResultPages");
       var a = window.document.getElementById("rg");
@@ -2171,7 +2152,6 @@ window.google = {
       window.google.isr.bg_done = true;
       _.$K = false;
       _.KK || Pwa();
-      NK();
       window.setTimeout(function () {
         zK || (window.google.isr.prs || _.KK)
       }, 0);
@@ -2282,44 +2262,6 @@ window.google = {
       var b;
       (b = (b = window.location.href.match(/[?&#]imgrc=([^&#]+)/)) ? b[1] : "") && (0, _.As)(a, "imgrc", (0, window.decodeURIComponent)(b));
       (0, _.Yf)(a.toString())
-    };
-    var Vwa = function () {
-      window.google.isr.ircbr && window.google.isr.ircbr();
-      var a = (0, _.se)(window.document.getElementById("images-grid")),
-        a = scrollTop() > a,
-        b = null;
-      if (a) n: {
-        // for (var b = zL(), b = window.google.isr.layout.getResultsForPage(b[0] || 0), c = scrollTop(), d = 0; d < b.length; ++d) {
-        //   var e = b[d];
-        //   if ((0, _.se)(e) + e.offsetHeight > c) {
-        //     b = e;
-        //     break n
-        //   }
-        // }
-        b = null
-      }
-      Wwa();
-      c = +window.document.getElementById("images-grid-inner").offsetWidth;
-      Xwa(c);
-      window.google.isr.layout.layoutResults(true);
-      window.google.isr.Hover &&
-        window.google.isr.Hover.resetResultsArea();
-      NK();
-      AL();
-      a ? (a = b ? (0, _.se)(b) : 0, mL(a)) : BL();
-      for (a = 0; a < _.CL.length; ++a) try {
-        _.CL[a].call()
-      } catch (f) {}
-      window.google.isr.ircar && window.google.isr.ircar()
-    };
-    var Wwa = function () {
-      if (!FK) {
-        var a = window.document.getElementById("images-grid");
-        a || (a = window.document.getElementById("tbd"));
-        for (var b = a.getElementsByTagName("a"), a = 0, c; c = b[a]; a++) c.href && (c.href = yL(c.href))
-      }
-      if (a = window.document.getElementById("tsf"))
-        for (b = a.getElementsByTagName("input"), a = 0; c = b[a]; a++) "biw" == c.name ? c.value = OK : "bih" == c.name && (c.value = QK)
     };
     var Kwa = function () {
       zK ? null : _.XK ? (_.YK = false, window.google.isr.bg_done || _.$K || (_.$K = true, _.oK ? $wa(function () {
@@ -2591,23 +2533,6 @@ window.google = {
         c = xL(c, "csl", zK ? 1 : 0);
         console.log("start loading more results now");
       } else _.JL = -1
-    };
-    var axa = function (a) {
-      fL("chunking.reloadResults_");
-      AL();
-      IL = [];
-      HL = [0];
-      OL(false);
-      _.lL = 0;
-      _.PL = _.BK;
-      0 <= _.JL && (_.VL = _.JL, _.JL = -1);
-      ML = 1;
-      UL(function () {
-        mL(0);
-        a && a();
-        DL();
-        window.google.isr.pending_res = 0
-      })
     };
     var nL = function (a) {};
     var sL = function () {

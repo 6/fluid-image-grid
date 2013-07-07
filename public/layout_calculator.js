@@ -80,101 +80,8 @@
       a.p = b.prototype;
       a.prototype = new c;
       a.prototype.constructor = a
-    }, ia = function (a, b, c) {
-      this.c = c;
-      this.d = b;
-      this.a = a
     };
-  var ka = function (a, b, c, d) {
-    a = Math.min(c, a.height);
-    return {
-      g: [{
-        width: b,
-        height: a,
-        B: d,
-        C: !0
-      }],
-      v: a
-    }
-  };
-  ia.prototype.e = function (a, b, c, d, e) {
-    var f = [],
-      g = 1 / aspectRatio(a[0]),
-      h = Math.floor(Math.min(c * g / (g + 1 / aspectRatio(a[1])), 0.6 * c)),
-      h = Math.max(h, 0.4 * c),
-      g = Math.min(h, a[0].height);
-    a = Math.min(c - h - this.a, a[1].height);
-    f.push({
-      width: b,
-      height: g,
-      B: !1,
-      C: e
-    });
-    f.push({
-      width: b,
-      height: a,
-      B: d,
-      C: e
-    });
-    return {
-      g: f,
-      v: g + this.a + a
-    }
-  };
-  var ta = function (a, b, c, d, e, f) {
-    var g = [ua(b[0], d), ua(b[1], d)],
-      h = g[0] + g[1] + a.a + 0 - c;
-    if (0 < h && 1 > aspectRatio(b[0]) ^ 1 > aspectRatio(b[1])) {
-      var k = 1 > aspectRatio(b[0]) ? 1 : 0,
-        l = Math.min(h, Math.floor(g[k] / 2));
-      g[k] -= l;
-      h -= l
-    }
-    0 < h ? (k = Math.floor(h * g[0] / (g[0] + g[1])), g[0] -= k, g[1] -= h - k) : 0 > h && (k = Math.ceil(h / 2), g[0] -= k, g[1] = c - g[0] - a.a - 0);
-    if (f) {
-      i: {
-        var h = g[0],
-          l = h - f,
-          n = Math.abs(l);
-        if (!(20 <= n) && l) {
-          var r = f - 20,
-            v = f + 20,
-            k = [];
-          f < c / 3 ? k = [v, f] : f > 2 * c / 3 ? k = [r, f] : 10 > n ? (k = [f], 0 > l ? k.push(r, v) : k.push(v, r)) : k = 0 > l ? [r, f, v] : [v, f, r];
-          for (f = 0; f < k.length; f++)
-            if (k[f] <= b[0].width && c - k[f] -
-              a.a <= b[1].width) {
-              b = k[f];
-              break i
-            }
-        }
-        b = h
-      }
-      g[0] = b;
-      g[1] = c - g[0] - a.a - 0
-    }
-    a = [];
-    a.push({
-      width: g[0],
-      height: d,
-      B: e,
-      C: !1
-    });
-    a.push({
-      width: g[1],
-      height: d,
-      B: e,
-      C: !0
-    });
-    return {
-      g: a,
-      v: d
-    }
-  }, ua = function (a, b) {
-      var c = a.width,
-        d = Math.min(c, Math.floor(aspectRatio(a) * b)) * b;
-      return Math.min(c, Math.floor(Math.sqrt((d + c * b) / 2 * aspectRatio(a))))
-    }, xa = function (a, b, c, d, e, f, g, h, k) {
+  var xa = function (a, b, c, d, e, f, g, h, k) {
       var l = [];
       if (!a.length) return l;
       var n = b - c,
@@ -208,117 +115,8 @@
       a = Math.min(a, e || Number.MAX_VALUE);
       return Math.max(Math.min(b *
         a, d), c)
-    }, ya = function (a, b, c, d) {
-      ia.call(this, a, b, c);
-      this.k = void 0 !== d ? d : 1
     };
-  u(ya, ia);
-  ya.prototype.h = function (a) {
-    var b;
-    if (a.length)
-      if (1 == a.length) a = ka(a[0], this.d, this.c, !0);
-      else if (2 == a.length) a = this.e(a, this.d, this.c);
-    else {
-      var c = this.d,
-        d = this.c,
-        e = za(a.length, this.k),
-        f = La(a.slice(0, e), d, this.a, e == a.length);
-      1 == e && (f = Math.min(f, Math.floor(0.75 * c)));
-      b = Math.min(Math.floor(c / 2), Math.floor(d / 3));
-      b = Math.floor(0.9 * b);
-      for (var g = a.length - e, h = 0, k = e; k < a.length; k++) h += aspectRatio(a[k]);
-      h /= g;
-      1 > h && (b = Math.floor(b * h));
-      var k = h = 0,
-        l = 2;
-      do {
-        var h = Math.floor(g / l),
-          f = Math.min(c - h * b, f),
-          f = Math.max(b, f),
-          n = c - f,
-          k = Math.round((n +
-            this.a) / h) - this.a;
-        k < b && (k = Math.round((n + this.a) / h) - this.a);
-        n = h * (k + this.a) - this.a;
-        f = c - n
-      } while (k < b && l < g && f > b && l++);
-      b = a.slice(0, e);
-      var n = e == a.length,
-        r = {
-          width: f,
-          height: d,
-          Q: b.length
-        }, c = [],
-        v = d - 0,
-        m = [],
-        q = 0;
-      n && (f += this.a);
-      for (var w = 0; w < b.length; w++) {
-        var F = Ma(b[w], v);
-        m.push(F);
-        q += F;
-        q += this.a
-      }
-      f = m = xa(b, f, q, v, this.a, 0);
-      for (m = 0; m < b.length; m++) q = m == b.length - 1, c.push({
-        width: f[m],
-        height: v,
-        B: !0,
-        C: n && q
-      });
-      b = [r];
-      n = a.length;
-      0 != g % l && (n -= l + g % l);
-      for (g = 0; e < n; e += l) g++, r = g == h, r = Na(this, a.slice(e, e + l), k + (r ? 0 : this.a), d, r), c.push.apply(c, r.g), b.push(r.D[0]);
-      n < a.length && (r = Na(this, a.slice(e), k, d, !0), c.push.apply(c, r.g), b.push(r.D[0]));
-      a = {
-        g: c,
-        D: b
-      }
-    } else a = {
-      g: []
-    };
-    return a
-  };
-  var Ma = function (a, b) {
-    return Q(aspectRatio(a), b, 0, a.width, void 0)
-  }, za = function (a, b) {
-      var c;
-      return c = Math.max(0, Math.min(void 0 !== b ? b : 1, a - 2))
-    };
-  ya.prototype.e = function (a, b, c) {
-    return ta(this, a, b, c, !0)
-  };
-  var Na = function (a, b, c, d, e) {
-    var f = b.length,
-      g = Math.round((d + a.a) / f) - a.a,
-      h = d - (f - 1) * (a.a + g);
-    d = {
-      width: c,
-      height: d,
-      Q: f
-    };
-    for (var f = [], k = 0; k < b.length; k++) {
-      var l = k == b.length - 1;
-      f.push({
-        width: c - (e ? 0 : a.a),
-        height: l ? h : g,
-        B: l,
-        C: e
-      })
-    }
-    return {
-      g: f,
-      D: [d]
-    }
-  }, La = function (a, b, c, d) {
-      for (var e = 0, f = 0; f < a.length; ++f) e += Ma(a[f], b), e += c;
-      d && (e -= c);
-      return e
-    }, Oa = function (a, b) {
-      for (var c = a.split("%s"), d = "", e = Array.prototype.slice.call(arguments, 1); e.length && 1 < c.length;) d += c.shift() + e.shift();
-      return d + c.join("%s")
-    }, Pa = function (a) {
+  var Pa = function (a) {
       return String(a).replace(/\-([a-z])/g, function (a, c) {
         return c.toUpperCase()
       })
@@ -327,38 +125,11 @@
     mb = numericalSetting("data-isuf", defaults.isuf),
     nb = function (a) {
       return window.JSON ? window.JSON.parse(a) : eval("(" + a + ")")
-    }, pb = function (a, b) {
-      var c = a.parentNode,
-        d = a.nextSibling,
-        e = a.style,
-        f = e.display,
-        g = e.visibility,
-        h = e.position;
-      e.display = "inline";
-      e.visibility = "hidden";
-      e.position = "absolute";
-      document.documentElement.appendChild(a);
-      var k = b.call();
-      e.display = f;
-      e.visibility = g;
-      e.position = h;
-      c ? c.insertBefore(a, d) : document.documentElement.removeChild(a);
-      return k
     }, qb = function (a, b, c, d) {
-      var e = "",
-        f = "",
-        g = !1;
-      if (c < b && (a = a.getElementsByTagName("div")) && a.length)
-        for (var h = 0, k; k = a[h]; ++h)
-          if ("rg_anbg" == k.className) {
-            c < lb && (f = (b - lb) / 2 + "px", g = !0);
-            break
-          }
-      g || (e = d + "px");
       return {
-        P: e,
-        r: f
-      }
+        P: d + "px",
+        r: ""
+      };
     }, Z = function (a, b) {
       if (void 0 === Qa) {
         var c = google.ua || window.navigator.userAgent;
@@ -395,81 +166,15 @@
       return Math.floor(0.5 * b)
     }, ub = function (b) {
       return Math.floor(b / 2)
-    }, wb = function (a) {
-      this.d = a;
-      this.a = null;
-      this.c = [];
-      this.e = this.k = !1;
-      this.h = 1;
-      a = this.d.childNodes;
-      if (this.a)
-        for (b = a = this.a.firstChild; b; b = a)
-          if (a = b.nextSibling, hasClass(b, "rg_di")) this.c.push(vb(b));
-      this.k = (a = ob(this.d)) && "2" == a.fl;
-      this.e = a && "1" == a.hz
-    }, vb = function (a) {
-      var b;
-      i: {
-        b = a.getElementsByTagName("div");
-        for (var c = 0, d; d = b[c]; c++)
-          if ("rg_meta" == d.className) {
-            b = nb(d.innerText || d.textContent || d.innerHTML);
-            break i
-          }
-        b = null
-      }
-      if (!b) throw Error("No metadata for image.");
-      return new xb(a, b)
-    }, yb = function (a, b, c) {
-      var d;
-      d = a.c;
-      b = b - c - 2;
-      a = a.h;
-      if (d.length)
-        if (1 == d.length) d = Math.floor(Ma(d[0], b));
-        else if (2 == d.length) d = Math.floor(Ma(d[0], b) + Ma(d[1], b) + 1);
-      else {
-        a = za(d.length, a);
-        c = La(d.slice(0, a), b, 1, a == d.length);
-        for (var e = Math.floor((d.length - a) / 2), f = 0, g = a; g < d.length; g++) f += aspectRatio(d[g]);
-        f /= d.length - a;
-        d = Math.floor(c + (b - 1) * e * f / 2 + 1 * e - 1)
-      } else d = 0;
-      return d + 2
-    }, xb = function (a, b) {
-      rb.call(this, a, b);
-      this.width = b.hw || b.tw;
-      this.height = b.hh || b.th
     };
-  u(xb, rb);
   var Yb = function (a, b) {
     var c = Xb;
     this.d = a;
     this.a = c;
     this.e = !! b;
     this.c = lb || 0
-  }, Zb = function (a) {
-      Error.captureStackTrace ? Error.captureStackTrace(this, Zb) : this.stack = Error().stack || "";
-      a && (this.message = String(a))
-    };
-  u(Zb, Error);
-  Zb.prototype.name = "CustomError";
-  var $b = function (a, b) {
-    b.unshift(a);
-    Zb.call(this, Oa.apply(null, b));
-    b.shift()
   };
-  u($b, Zb);
-  $b.prototype.name = "AssertionError";
-  var ac = function (a, b, c) {
-    if (!a) {
-      var d = Array.prototype.slice.call(arguments, 2),
-        e = "Assertion failed";
-      if (b) var e = e + (": " + b),
-      f = d;
-      throw new $b("" + e, f || []);
-    }
-  }, bc = function (a, b) {
+  var bc = function (a, b) {
       for (var c = 1; c < arguments.length; c++) {
         var d = arguments[c],
           e, f;
@@ -572,12 +277,6 @@
     }, ic = function () {
       return []
     };
-  cc.prototype.A = function (a) {
-    if (this.d)
-      for (var b = 0; b < this.d.length; ++b)
-        if (this.d[b] instanceof a) return this.d[b];
-    return null
-  };
   var jc = function () {
     var a = function () {};
     a.Y = !0;
@@ -590,15 +289,11 @@
       var a = function () {};
       a.Z = !0;
       return a
-    }, mc = function (a) {
-      return this.l.A(a)
     }, s = function () {
       if (!this.l) {
         for (var a = this.constructor; a && !a.w;) a = a.p && a.p.constructor;
         a.w.N || (a.w.N = hc(a));
         this.l = new a.w.N(this);
-        this.A ? ac(this.A == mc, "conflicting definitions of findDelegate") : this.A =
-          mc
       }
       this.d = new nc;
       this.a = [];
@@ -666,11 +361,6 @@
     } else 1 == this.a.length && 20 >= this.a[0]
   };
   definePublicFunction("moveAndLayoutNewResults", s.prototype.moveAndLayoutNewResults);
-  var tc = function (a) {
-    for (var b = 0; b < a.n.length; ++b) try {
-      a.n[b]()
-    } catch (c) {}
-  };
   s.prototype.areAllResultsLoaded = function () {
     return this.F
   };
@@ -708,14 +398,6 @@
       a.l.W(a.s, a.d, a.e);
       a.c.style.visibility = "visible";
       b.insertBefore(a.c, c)
-    }, kd = function (a, b) {
-      var c = b.length;
-      if (0 < c) {
-        var d = a.a.length;
-        (b[0].setAttribute("data-ci", d), a.a.push(c))
-      }
-      jd(a) && (a.F = !0);
-      return c
     }, jd = function (a) {
       if (!a.a.length) return !1;
       if (oc || !a.V) switch (a.a.length) {
@@ -754,7 +436,6 @@
     }, md = dc,
     nd = s;
   md.p ? ac(md.prototype instanceof cc, "delegate base class is not a subclass of fava.delegate.Delegate") : u(md, cc);
-  ac(!nd.w, "delegator already has a delegate base set");
   nd.w = md;
   var od = nd;
   do od = od.p && od.p.constructor; while (od && !od.w);
@@ -773,28 +454,6 @@
   };
   u(pd, dc);
   ec(pd);
-  pd.prototype.L = function () {
-    var a = document.getElementById("ifb");
-    if (a) {
-      var b = parseInt(document.getElementById("ifbc").getAttribute("data-h"), 10) - 8,
-        c = a.parentNode,
-        d = a.nextSibling;
-      c.removeChild(a);
-      for (var e = a.querySelectorAll("div.rg_fb"), f = 0, g; g = e[f]; f++) {
-        var h = new wb(g),
-          k = Math.max(1, h.c.length - 2);
-        h.h = k;
-        k = yb(h, b, 30);
-        Z(g, {
-          width: k - 2 + "px",
-          height: b - 2 + "px"
-        });
-      }
-      document.getElementById("ifbc").style.display = "";
-      document.getElementById("ifbd").style.display = "";
-      c.insertBefore(a, d)
-    }
-  };
   var qd = function (a, b) {
     this.d = a;
     this.c = new Yb(a, b);
@@ -819,9 +478,6 @@
   };
   p.da = function (a) {
     return (a = this.c[a]) ? a.g : null
-  };
-  p.ba = function () {
-    this.h && this.h.length && (this.a.k(), tc(this.a))
   };
   p.T = function () {
     for (var a = this.a.getChunkSizeArray(), b = 0, c = this.e.childNodes, d = 0, e; e = c[d]; d++)

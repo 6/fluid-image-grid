@@ -247,7 +247,7 @@
               break i
             }
           }
-          d = !1
+          d = false
         }
         return d
       } : b[a].Y ? function (b) {
@@ -283,15 +283,15 @@
     };
   var jc = function () {
     var a = function () {};
-    a.Y = !0;
+    a.Y = true;
     return a
   }, kc = function () {
       var a = function () {};
-      a.ga = !0;
+      a.ga = true;
       return a
     }, lc = function () {
       var a = function () {};
-      a.Z = !0;
+      a.Z = true;
       return a
     }, s = function () {
       if (!this.l) {
@@ -305,14 +305,14 @@
       this.U = [];
       this.n = [];
       this.h = numericalSetting("data-row-height", defaults.row_height);
-      this.V = !1;
+      this.V = false;
       this.l.initialize(this.h)
     }, Xb = numericalSetting("data-ma", defaults.ma);
   numericalSetting("data-mrw", defaults.mrw);
   settings || initializeSettingsCache();
   var oc = settings.hasOwnProperty("data-bge") ? "true" == settings["data-bge"] : defaults.bge;
-  s.prototype.F = !1;
-  s.prototype.H = !1;
+  s.prototype.F = false;
+  s.prototype.H = false;
   s.prototype.qa = 0;
   s.prototype.getResults = function () {
     return this.U
@@ -351,7 +351,7 @@
       for (var c, d = 0; c = b[d]; ++d) {
         var e = c.getAttribute("data-cei");
         if (e && !this.R[e]) {
-          this.R[e] = !0;
+          this.R[e] = true;
           var f = 1 == this.a.length && 100 > this.a[0],
             g = 3 == this.a.length;
           for (this.e = document.createDocumentFragment(); 0 < c.childNodes.length;) this.e.appendChild(c.childNodes[0]);
@@ -403,7 +403,7 @@
       a.c.style.visibility = "visible";
       b.insertBefore(a.c, c)
     }, jd = function (a) {
-      if (!a.a.length) return !1;
+      if (!a.a.length) return false;
       if (oc || !a.V) switch (a.a.length) {
       case 1:
         return 20 > a.a[0];
@@ -597,7 +597,7 @@
           1].G += Za - Ob);
         da = W;
         da.length != na.length && (na.length = da.length, yc = na.length * (Ac + ma.a));
-        for (var Gc = !1, oa = 0; oa < da.length; oa++) na[oa] != da[oa].G && (na[oa] = da[oa].G, Gc = !0);
+        for (var Gc = false, oa = 0; oa < da.length; oa++) na[oa] != da[oa].G && (na[oa] = da[oa].G, Gc = true);
         if (!Gc) break
       }
       for (var Hc = Ya, Ic = da, Ha = 0, X = [], pa = [], Jc = [], bb = 0; bb < Ic.length; bb++) {
@@ -615,30 +615,30 @@
         X.push(H.count);
         pa.push(H.height)
       }
-      for (var Qb = [], Mc = !1, G = 0; G < N.length; G++)
+      for (var Qb = [], Mc = false, G = 0; G < N.length; G++)
         if (ca = N[G]) {
-          for (var ga = 0, O = 0; O < ca.a; O++) pa[O] ? ga += pa[O] : (ga += Xa.d, Mc = !0, la[O]--);
+          for (var ga = 0, O = 0; O < ca.a; O++) pa[O] ? ga += pa[O] : (ga += Xa.d, Mc = true, la[O]--);
           ga += Xa.a * (ca.a - 1);
           Qb[G] = ga
         }
       for (var images = [], Md = 0, R = 0; R < X.length; R++) {
         var Ia = X[R];
         0 < la[0] && (Ia++, la[0]--, 0 == R && (Ia++, images.push({
-          I: !0,
+          I: true,
           width: N[0].width,
           height: Qb[0]
         })), images.push({
-          padding: !0,
+          padding: true,
           width: N[0].width,
           height: pa[R]
         }));
         for (G = 0; G < X[R]; G++) images.push(Jc[Md++]);
         0 < la[1] && (Ia++, la[1]--, 0 == R && (Ia++, images.push({
-          I: !0,
+          I: true,
           width: N[1].width,
           height: Qb[1]
         })), images.push({
-          padding: !0,
+          padding: true,
           width: N[1].width,
           height: pa[R]
         }));

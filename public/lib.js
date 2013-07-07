@@ -288,7 +288,6 @@ window.google = {
     _.vf = function (a, b) {
       wf.push(a);
       xf[a] = b;
-      yf && zf("init", a)
     };
     var Cf = function (a) {
       a = xf[a];
@@ -994,7 +993,7 @@ window.google = {
       lba = _.kf;
     (0, _.za)("google.med", function() {
       xf.jstr.init(window.google.pmc.jstr);
-      yf = false;
+      yf = true;
     }, void 0);
     (0, _.za)("google.register", _.vf, void 0);
     var yaa;

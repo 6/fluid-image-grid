@@ -956,8 +956,8 @@ window.google = {
       yf = false,
       lba = _.kf;
     google.med = function() {
-      (0, _.zwa)(window.google.pmc.jstr);
-      (0, _.Bxa)();
+      _.zwa(window.google.pmc.jstr);
+      _.Bxa();
       yf = true;
     };
     (0, _.za)("google.register", _.vf, void 0);

@@ -630,16 +630,6 @@
       pc(this);
       rc(this);
       break;
-    case 1:
-      this.l.M(this.e);
-      this.l.S(this.s, this.d, this.e);
-      break;
-    case 2:
-      sc(this);
-      this.l.M(this.e);
-      rc(this);
-      this.H = !1;
-      break;
     case 3:
       sc(this);
       rc(this);
@@ -773,7 +763,6 @@
   p.da = jc();
   p.ba = lc();
   p.T = kc();
-  p.M = kc();
   p.W = kc();
   p.S = kc();
   p.aa = lc();
@@ -836,15 +825,6 @@
     for (var a = this.a.X(), b = 0, c = this.e.childNodes, d = 0, e; e = c[d]; d++)
       if (U(e, "rg_di")) uc(this.a, e), e.hasAttribute("data-ci") && (a.push(b), b = 0), b++;
     0 < b && (a.push(b), jd(this.a) && this.a.O())
-  };
-  p.M = function (a) {
-    if (a) {
-      for (var b = [], c = 0, d; d = a.childNodes[c]; c++)
-        uc(this.a, d), b.push(d);
-      kd(this.a, b) && google.isr.Hover && window.setTimeout(function () {
-        google.isr.Hover.loadDataFromResults(b)
-      }, 0)
-    }
   };
   p.W = function (a, b, c) {
     for (var d = [], e = [], f = this.e.childNodes, g = 0, h; h = f[g]; g++) {

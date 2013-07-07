@@ -690,9 +690,7 @@
   var sc = function (a) {
     a.U = [];
     pc(a);
-    this.c = [];
-    this.h = [];
-    this.n = 0;
+    a.l.aa();
   }, uc = function (a, b) {
       b.hasAttribute("data-ri") || b.setAttribute("data-ri", a.qa++)
     }, pc = function (a) {
@@ -851,6 +849,11 @@
       for (c = c.childNodes, g = 0; h = c[g]; g++) d.push(h);
     sd(this, a, b, [], d);
     f && this.e.insertBefore(f, e)
+  };
+  p.aa = function () {
+    this.c = [];
+    this.h = [];
+    this.n = 0
   };
   var sd = function (a, b, c, d, e) {
     for (var f, g, h, k = null, l = null, n = 0; n < d.length; n++) {

@@ -2171,8 +2171,8 @@ window.google = {
         var a = window.JSON.parse(window.sessionStorage.getItem("images-sh")) || {};
         a[window.location.href] = {
           s: _.kL,
-          l: SK(),
-          p: _.oK && SK() < _.lL
+          l: scrollTop(),
+          p: _.oK && scrollTop() < _.lL
         };
         var b = window.JSON.stringify(a);
         window.sessionStorage.setItem("images-sh", b)
@@ -2184,13 +2184,13 @@ window.google = {
       var a = window.document.getElementById("isr_lp");
       return a ? _.oL = +a.innerHTML : 1
     };
-    var SK = function () {
+    var scrollTop = function () {
       return window.pageYOffset || window.document.body.scrollTop || window.document.documentElement.scrollTop || 0
     };
     var qL = function () {
       fL("getVisiblePages");
       var a = [],
-        b = SK(),
+        b = scrollTop(),
         c = b + QK;
       if (window.document.getElementById("rg"))
         for (var d = Owa(), e = 0, f = 0, g; g = d[f]; f++) {
@@ -2203,8 +2203,8 @@ window.google = {
       return a
     };
     var rL = function (a) {
-      var b = SK();
-      if (_.oK && SK() + QK > sL()) {
+      var b = scrollTop();
+      if (_.oK && scrollTop() + QK > sL()) {
         var c = window.document.querySelector(AK + "." + yK);
         a = Math.max(0, b + a * c.offsetHeight);
         mL(a)
@@ -2238,7 +2238,7 @@ window.google = {
       return _.LK ? (0, _.LK)(a) : true
     };
     var mL = function (a) {
-      SK() != a ? window.scrollTo(0, a) : uL(null)
+      scrollTop() != a ? window.scrollTo(0, a) : uL(null)
     };
     var Hwa = function () {
       window.google.isr.Hover && window.google.isr.Hover.dispose()
@@ -2249,7 +2249,7 @@ window.google = {
       uL(a)
     };
     var uL = function () {
-      var a = SK(),
+      var a = scrollTop(),
         b = a - _.vL;
       if (0 != b) {
         window.google.time();
@@ -2298,10 +2298,10 @@ window.google = {
     var Vwa = function () {
       window.google.isr.ircbr && window.google.isr.ircbr();
       var a = (0, _.se)(window.document.getElementById("images-grid")),
-        a = SK() > a,
+        a = scrollTop() > a,
         b = null;
       if (a) n: {
-        for (var b = zL(), b = window.google.isr.layout.getResultsForPage(b[0] || 0), c = SK(), d = 0; d < b.length; ++d) {
+        for (var b = zL(), b = window.google.isr.layout.getResultsForPage(b[0] || 0), c = scrollTop(), d = 0; d < b.length; ++d) {
           var e = b[d];
           if ((0, _.se)(e) + e.offsetHeight > c) {
             b = e;
@@ -2730,7 +2730,7 @@ window.google = {
       }
     };
     var dM = function (a) {
-      if ((zK || bM && !(0 > a) && bM[a]) && !(0 > a || eM[a] || zK && 1 < a && 0 == SK())) {
+      if ((zK || bM && !(0 > a) && bM[a]) && !(0 > a || eM[a] || zK && 1 < a && 0 == scrollTop())) {
         fM.push(a);
         if (!zK || mxa(a)) eM[a] = true;
         gM || hM()
@@ -2809,21 +2809,6 @@ window.google = {
         }
       }
     };
-    var xxa = function () {
-      var a = window.google.time(),
-        b = a - yxa;
-      if (!(15 > b)) {
-        var c = SK(),
-          d = c - zxa;
-        yxa = a;
-        zxa = c;
-        Axa++;
-        a = Math.abs(d / b); - 1 != rM && (window.clearTimeout(rM), rM = -1);
-        1 < a || 3 >= Axa ? rM = window.setTimeout(function () {
-          BL()
-        }, 250) : BL()
-      }
-    };
     var sM = function () {
       fL("thumbnails.renderBigGulp_");
       if ((0, _.Ma)(window.google.isr.bg_done) && window.document.getElementById("images-grid")) {
@@ -2837,19 +2822,26 @@ window.google = {
       zK || (1 > a || tM[a]) || (bM[a].className = "rg_ctlv", tM[a] = true)
     };
     _.Bxa = function () {
-      AL();
-      jM = 0;
       var a = window.document.getElementById("rg");
-      if (a && 0 != a.childNodes.length) {
-        wxa = 2;
-        if (bM.length || zK && window.google.isr.layout.getNumPages()) zK || (iM[0] = true, eM[0] = true), uK(4, xxa), cM = 1, zK || sM();
-        BL();
-        uK(5, function () {
-          aM();
-          gM = false;
-          BL()
-        })
-      }
+      _.vK[4] || (_.vK[4] = []);
+      _.vK[4].push(function() {
+        var a = new Date().getTime(),
+        b = a - yxa;
+        if (b >= 15) {
+          var c = scrollTop(),
+            d = c - zxa;
+          yxa = a;
+          zxa = c;
+          Axa++;
+          a = Math.abs(d / b);
+          if (- 1 != rM) {
+            window.clearTimeout(rM);
+            rM = -1;
+          }
+          BL();
+        }
+      });
+      BL();
     };
     var AL = function () {
       aM();
@@ -2867,7 +2859,7 @@ window.google = {
     };
     var zL = function () {
       var a = [],
-        b = SK(),
+        b = scrollTop(),
         c = b + QK;
       if (window.document.getElementById("rg")) {
         var d;
@@ -3018,7 +3010,6 @@ window.google = {
     _.oM = 0;
     Ywa = 0;
     (0, _.za)("google.isr.lp", hL, void 0);
-    (0, _.za)("google.isr.gsd", SK, void 0);
     (0, _.za)("google.isr.st", mL, void 0);
     (0, _.za)("google.isr.sor", rL, void 0);
     (0, _.za)("google.isr.imgevent", function (a) {

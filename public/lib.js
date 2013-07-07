@@ -956,7 +956,35 @@ window.google = {
       yf = false,
       lba = _.kf;
     google.med = function() {
-      _.zwa(window.google.pmc.jstr);
+      EK = window.google.pmc.jstr.meta;
+      FK = false;
+      GK = EK.showMoreResults;
+      Bwa = EK.numResults;
+      _.oK = EK.genChunk;
+      _.nK = zK = true;
+      yK = "rg_di";
+      AK = "div";
+      HK = false;
+      IK(window, "scroll", function(a) {
+        var currentTime = new Date().getTime();
+        if (40 < currentTime - Swa) {
+          Swa = currentTime;
+          Twa = _.vL;
+        }
+        else {
+          _.vL = Twa;
+        }
+        var top = scrollTop(),
+          b = top - _.vL;
+        if (0 !== b) {
+          _.vL = top;
+          _.vK[4][0]({sp: top, sc: b});
+        }
+      });
+      IK(window, "resize", _.MK);
+      window.google.isr.url = "/";
+      window.google.isr.bgd = TK;
+      _.XK = true;
       _.Bxa();
       yf = true;
     };
@@ -2095,26 +2123,6 @@ window.google = {
       _.vK[a] || (_.vK[a] = []);
       _.vK[a].push(b)
     };
-    var wK = function (a, b) {
-      if (_.vK[a])
-        for (var c = 0, d; d = _.vK[a][c++];) d(b)
-    };
-    _.zwa = function (a) {
-      EK = a.meta
-      FK = false
-      GK = EK.showMoreResults;
-      Bwa = EK.numResults;
-      _.oK = EK.genChunk;
-      _.nK = zK = true;
-      yK = "rg_di";
-      AK = "div";
-      HK = false;
-      IK(window, "scroll", JK);
-      IK(window, "resize", _.MK);
-      window.google.isr.url = "/";
-      window.google.isr.bgd = TK;
-      _.XK = true;
-    };
     var IK = function (a, b, c) {
       (0, _.$e)(a, b, c);
       _.Lwa.push([a, b, c])
@@ -2156,7 +2164,6 @@ window.google = {
       _.KK || Pwa();
       NK();
       window.setTimeout(function () {
-        wK(5);
         zK || (window.google.isr.prs || _.KK) || gL()
       }, 0);
       if (_.oK && (Qwa(), !zK)) {
@@ -2238,28 +2245,6 @@ window.google = {
       return _.LK ? (0, _.LK)(a) : true
     };
     var mL = function (a) {
-      scrollTop() != a ? window.scrollTo(0, a) : uL(null)
-    };
-    var Hwa = function () {
-      window.google.isr.Hover && window.google.isr.Hover.dispose()
-    };
-    var JK = function (a) {
-      var b = window.google.time();
-      40 < b - Swa ? (Swa = b, Twa = _.vL) : _.vL = Twa;
-      uL(a)
-    };
-    var uL = function () {
-      var a = scrollTop(),
-        b = a - _.vL;
-      if (0 != b) {
-        window.google.time();
-        jL();
-        _.vL = a;
-        var c = {};
-        c.sp = a;
-        c.sc = b;
-        wK(4, c)
-      }
     };
     var Pwa = function () {
       var a = window.document.getElementById("smc");
@@ -2330,10 +2315,7 @@ window.google = {
           b = window.innerHeight || window.document.documentElement.offsetHeight,
           c = zK && !FK ? 0 : 100;
         !window.google.isr.prs && (!window.google.isr.pending_res && (Math.abs(a - OK) > c || Math.abs(b - QK) > c) && 0 < a && 0 < b) && (c = OK, OK = a, QK = b, Ywa || (Ywa = c), window.google.isr.url = yL(window.google.isr.url, true), zK ? Vwa() : CK ? Uwa() : (window.google.isr.pending_res = 1, window.google.isr.addh &&
-          (window.google.isr.url = xL(window.google.isr.url, "addh", window.google.isr.addh)), Wwa(), Zwa(function () {
-            window.google.isr.pending_res = 0;
-            gL()
-          })))
+          (window.google.isr.url = xL(window.google.isr.url, "addh", window.google.isr.addh)), Wwa()))
       }
     };
     var Wwa = function () {
@@ -2350,23 +2332,6 @@ window.google = {
         DL();
         TK()
       }) : EL(["bg"], TK))) : _.YK = true
-    };
-    var Zwa = function (a) {
-      fL("handleReloadResults_");
-      if (_.oK) axa(a);
-      else {
-        AL();
-        var b = ["ls", "bg"],
-          c = window.document.getElementById("smc");
-        _.kL ? b.push("sbg") : c && (c.style.display = "none");
-        EL(b, function () {
-          c && Pwa();
-          _.vL = -1;
-          uL(null);
-          a && a();
-          window.google.isr.pending_res = 0
-        })
-      }
     };
     var EL = function (a, b) {
       fL("loadResults_");
@@ -2422,9 +2387,6 @@ window.google = {
               "bg" == a && (!_.oK && window.google.isr.Hover) && window.google.isr.Hover.loadDataForScreen(0);
               RK(a);
               window.google.isr.Hover && window.google.isr.Hover.resetResultsArea();
-              var c = {};
-              c.rt = a;
-              wK(5, c);
               delete _.iL.UB;
               _.oK ? b && b() : d.length ? EL(d, b) : b && b()
             }

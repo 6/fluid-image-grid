@@ -1011,25 +1011,6 @@
         o: 0
       });
       for (var z = a.c[a.c.length - 1], Nc = 1 == a.c.length ? c.d : c.c, Ja = 0; Ja < X.length; Ja++) {
-        if (0 != z.o && 32 > Nc - z.o) {
-          a.n += z.o;
-          z = {
-            g: [],
-            o: 0
-          };
-          a.c.push(z);
-          var Nc = c.c,
-            Y = document.createElement("div");
-          Y.className = "rgsh";
-          a.s ? Y.innerHTML = a.F.replace(/\%1\$d/, String(a.c.length)) : Y.style.display = "none";
-          Y.setAttribute("id", "page" + a.c.length);
-          Y.setAttribute("data-pg", a.c.length);
-          Y.setAttribute("data-offset", c.e + a.n + z.o);
-          Y.setAttribute("data-fri", a.a.getResults().length);
-          e[J].parentNode.insertBefore(Y, e[J]);
-          a.s && (z.o += 32);
-          3 != b && 2 == a.c.length && ld(a.c[0].g.length)
-        }
         z.o += pa[Ja];
         z.o += Xb;
         for (var Nd = J, qa = 0; qa < X[Ja]; qa++) {
@@ -1038,110 +1019,82 @@
         }
         for (qa = 0; qa < X[Ja]; qa++) {
           image = images[cb];
-          if (image.I) {
-            var Oc = 0 < cb,
-              db = Oc ? h[1] : h[0],
-              S = db.d;
-            S.style.position = "absolute";
-            S.style.top = "0";
-            S.style.width = image.width + "px";
-            S.style.height = image.height + "px";
-            for (var Rb = db.c.length, Od = (image.height -
-                (Rb - 1) * Xb) / Rb, Sb = 0; Sb < Rb; Sb++) {
-              var Pc = db.c[Sb];
-              Pc.d.style.marginRight = "0";
-              for (var Qc = 0, Rc; Rc = Pd[Qc]; Qc++) z.g.push(Rc)
-            }
-            e[J] && a.e.insertBefore(S, e[J])
+
+          var ra = Bb[J];
+          var A = ra,
+            B = image.width,
+            K = image.height,
+            eb = A.a,
+            Rd = eb.getElementsByTagName("img")[0],
+            Yc = K,
+            Zc = K,
+            x = A.width,
+            D = A.height;
+          if (A.width > B || A.height > K) {
+            var $c = B / K,
+              fb = Math.min(wa(A), Math.max($c, va(A)));
+            if (aspectRatio(A) > fb) var ad = Math.min(A.height, B / fb),
+            x = ad * aspectRatio(A), D = ad;
+            else var bd = Math.min(A.width, fb > $c ? B : K * fb),
+            x = bd, D = bd / aspectRatio(A)
           }
-          else {
-            var ra = Bb[J];
-            if (ra.A) {
-              var Qd = a,
-                Sc = ra,
-                Tc = image.width,
-                Uc = image.height,
-                Vc = z,
-                Wc = Sc.a;
-              Wc.style.width = Tc - 2 + "px";
-              Wc.style.height = Uc - 2 + "px";
-              Vc.g.push.apply(Vc.g, Xc);
-              Array.prototype.push.apply(Qd.a.getResults(), Xc)
-            } else {
-              var A = ra,
-                B = image.width,
-                K = image.height,
-                eb = A.a,
-                Rd = eb.getElementsByTagName("img")[0],
-                Yc = K,
-                Zc = K,
-                x = A.width,
-                D = A.height;
-              if (A.width > B || A.height > K) {
-                var $c = B / K,
-                  fb = Math.min(wa(A), Math.max($c, va(A)));
-                if (aspectRatio(A) > fb) var ad = Math.min(A.height, B / fb),
-                x = ad * aspectRatio(A), D = ad;
-                else var bd = Math.min(A.width, fb > $c ? B : K * fb),
-                x = bd, D = bd / aspectRatio(A)
-              }
-              if (0 < mb && !A.c) {
-                var gb = mb + 1,
-                  Tb = B / x,
-                  sa = K / D;
-                if (1 < Tb && Tb <= gb) {
-                  var hb = Tb;
-                  sa > hb && sa <= gb && (hb = sa);
-                  x *= hb;
-                  D *= hb
-                } else if (1 <
-                  sa && sa <= gb) {
-                  var Ub = x * sa;
-                  if (Ub > B || Ub * gb < B) D = K, x = Ub
-                }
-              }
-              var x = Math.round(x),
-                D = Math.round(D),
-                cd = 0,
-                dd = 0,
-                ed = 0,
-                Vb = 0,
-                fd = 0,
-                gd = 0;
-              if (x > B) var Sd = x - B,
-              Vb = -1 * ub(x - B), fd = -Sd - Vb;
-              else x < B && (cd = (B - x) / 2); if (D > K) gd = -1 * tb(D - K);
-              else if (D < K) var Yc = Zc = D,
-              hd = K - D, dd = Math.floor(hd / 2), ed = Math.ceil(hd / 2);
-              Z(eb, {
-                width: B + "px",
-                height: Yc + "px",
-                "padding-top": dd + "px",
-                "padding-bottom": ed + "px"
-              });
-              Z(Rd, {
-                width: x + "px",
-                height: D + "px",
-                "margin-left": Vb + "px",
-                "margin-right": fd + "px",
-                "margin-top": gd + "px"
-              });
-              var Td = eb.getElementsByTagName("a")[0],
-                Ud =
-                  Math.min(x, B),
-                id = qb(eb, B, x, cd);
-              Z(Td, {
-                width: Ud + "px",
-                height: Zc + "px",
-                left: id.P,
-                right: id.r
-              });
-              z.g.push(ra.a);
-              a.a.getResults().push(ra.a)
+          if (0 < mb && !A.c) {
+            var gb = mb + 1,
+              Tb = B / x,
+              sa = K / D;
+            if (1 < Tb && Tb <= gb) {
+              var hb = Tb;
+              sa > hb && sa <= gb && (hb = sa);
+              x *= hb;
+              D *= hb
+            } else if (1 <
+              sa && sa <= gb) {
+              var Ub = x * sa;
+              if (Ub > B || Ub * gb < B) D = K, x = Ub
             }
-            ra.a.style.display = "inline-block";
-            J++
           }
+          var x = Math.round(x),
+            D = Math.round(D),
+            cd = 0,
+            dd = 0,
+            ed = 0,
+            Vb = 0,
+            fd = 0,
+            gd = 0;
+          if (x > B) var Sd = x - B,
+          Vb = -1 * ub(x - B), fd = -Sd - Vb;
+          else x < B && (cd = (B - x) / 2); if (D > K) gd = -1 * tb(D - K);
+          else if (D < K) var Yc = Zc = D,
+          hd = K - D, dd = Math.floor(hd / 2), ed = Math.ceil(hd / 2);
+          Z(eb, {
+            width: B + "px",
+            height: Yc + "px",
+            "padding-top": dd + "px",
+            "padding-bottom": ed + "px"
+          });
+          Z(Rd, {
+            width: x + "px",
+            height: D + "px",
+            "margin-left": Vb + "px",
+            "margin-right": fd + "px",
+            "margin-top": gd + "px"
+          });
+          var Td = eb.getElementsByTagName("a")[0],
+            Ud =
+              Math.min(x, B),
+            id = qb(eb, B, x, cd);
+          Z(Td, {
+            width: Ud + "px",
+            height: Zc + "px",
+            left: id.P,
+            right: id.r
+          });
+          z.g.push(ra.a);
+          a.a.getResults().push(ra.a);
+
+          ra.a.style.display = "inline-block";
+          J++;
+
           cb++
         }
       }

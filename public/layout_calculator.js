@@ -396,18 +396,9 @@
       this.e = this.k = !1;
       this.h = 1;
       a = this.d.childNodes;
-      for (var b = 0, c; c = a[b]; b++)
-        if (U(c, "rg_bb_i")) {
-          this.a = c;
-          break
-        }
       if (this.a)
         for (b = a = this.a.firstChild; b; b = a)
           if (a = b.nextSibling, U(b, "rg_di")) this.c.push(vb(b));
-          else if (U(b, "rg_bb_layout")) {
-        for (; b.hasChildNodes();) c = b.firstChild, U(c, "rg_di") && this.c.push(vb(c)), this.a.insertBefore(c, a);
-        this.a.removeChild(b)
-      }
       this.k = (a = ob(this.d)) && "2" == a.fl;
       this.e = a && "1" == a.hz
     }, vb = function (a) {
@@ -439,84 +430,6 @@
         d = Math.floor(c + (b - 1) * e * f / 2 + 1 * e - 1)
       } else d = 0;
       return d + 2
-    }, zb = function (a, b) {
-      for (var c = a.d.childNodes, d = 0, e; e = c[d]; d++)
-        if ("rg_bb_label" == e.className) return c = a.d, U(a.d.parentElement, "rg_bb_c") && (c = a.d.parentNode), pb(c, function () {
-          return b ? e.offsetWidth : e.offsetHeight
-        });
-      return 0
-    }, Wb = function (a, b, c) {
-      var d = a.e,
-        e = zb(a, d),
-        f;
-      (f = document.documentElement.getAttribute("dir")) || (f = document.body.getAttribute("dir"));
-      f = "rtl" == f;
-      d ? b -= e : c -= e;
-      c = c - 0 - 2;
-      d = b - 2;
-      b = null;
-      b = a.k ? new ya(1, d, c, a.h) : new ia(1, d, c);
-      b = b.h(a.c);
-      a.a.style.width = d + "px";
-      for (d = e = 0; b.D && d < b.D.length; d++)
-        if (1 < b.D.length) {
-          var g = b.D[d],
-            h = document.createElement("div");
-          h.className = "rg_bb_layout";
-          h.style.width = g.width + "px";
-          h.style.height = g.height + "px";
-          g.fa && (h.style.cssFloat = g.fa, h.style.color = "white");
-          h.style.display = "inline-block";
-          a.a.appendChild(h);
-          for (var k = 0; k < g.Q; k++, e++) h.appendChild(a.c[e].a)
-        }
-      e = [];
-      for (d = 0; d < b.g.length; d++) {
-        var g = b.g[d],
-          k = a.c[d],
-          h = k.a,
-          l = k,
-          k = g.width,
-          n = g.height,
-          r = l.a,
-          v = r.getElementsByTagName("img")[0],
-          m = l.width,
-          q = l.height,
-          m = k / n,
-          w = aspectRatio(l);
-        !l.c && w < m || l.c && w > m ? (m = Math.min(l.width, Math.floor(k)), q = Math.round(m / w)) : (q = Math.min(l.height, Math.floor(n)), m = Math.round(q * w));
-        var F = 0,
-          aa = 0,
-          ja = Math.round((k - m) / 2),
-          w = Math.round((n - q) / 2);
-        0 > ja && (F = -1 * ub(m - k), ja = 0);
-        0 > w && (aa = -1 * tb(q - n), w = 0);
-        Z(r, {
-          width: k + "px",
-          height: n + "px"
-        });
-        Z(v, {
-          width: m + "px",
-          height: q + "px",
-          "padding-left": ja + "px",
-          "margin-left": F + "px",
-          "margin-top": aa + "px"
-        });
-        if (l = r.getElementsByTagName("a")[0]) v =
-          Math.min(m, k), n = Math.min(q, n), k = qb(r, k, m, ja), Z(l, {
-            width: v + "px",
-            height: n + "px",
-            left: k.P,
-            right: k.r,
-            top: w + "px"
-          });
-        g.C || (f ? h.style.marginLeft = "1px" : h.style.marginRight = "1px");
-        g.B || (h.style.marginBottom = "1px");
-        e.push(h)
-      }
-      f = (c - b.v) / 2;
-      0 < f && (a.a.style.paddingTop = 0 + Math.ceil(f) + "px", a.a.style.paddingBottom = Math.floor(f) + "px");
-      return e
     }, xb = function (a, b) {
       rb.call(this, a, b);
       this.width = b.hw || b.tw;
@@ -713,7 +626,6 @@
     this.c = document.getElementById("rg");
     switch (this.s) {
     case 0:
-      this.l.K();
       this.l.T();
       pc(this);
       rc(this);
@@ -785,7 +697,6 @@
   };
   t("getChunkSizeArray", s.prototype.X);
   var sc = function (a) {
-    a.l.K();
     a.U = [];
     pc(a);
     a.l.aa()
@@ -861,7 +772,6 @@
   p.ca = jc();
   p.da = jc();
   p.ba = lc();
-  p.K = lc();
   p.T = kc();
   p.M = kc();
   p.W = kc();
@@ -888,7 +798,6 @@
           width: k - 2 + "px",
           height: b - 2 + "px"
         });
-        Wb(h, k, b)
       }
       document.getElementById("ifbc").style.display = "";
       document.getElementById("ifbd").style.display = "";
@@ -923,46 +832,24 @@
   p.ba = function () {
     this.h && this.h.length && (this.a.k(), tc(this.a))
   };
-  p.K = function () {
-    for (var a = 0, b; b = this.e.childNodes[a]; a++)
-      if (U(b, "rgsh") || U(b, "rg_pd")) this.e.removeChild(b), a--;
-      else if (U(b, "rg_bb")) {
-      b = b.getElementsByTagName("div");
-      for (var c = 0, d; d = b[c]; c++)
-        if (U(d, "rg_bb_i")) {
-          b = d;
-          for (d = c = b.firstChild; d; d = c)
-            if (c = d.nextSibling, U(d, "rg_bb_layout")) {
-              for (; d.hasChildNodes();) b.insertBefore(d.firstChild, c);
-              b.removeChild(d)
-            }
-          break
-        }
-    }
-  };
   p.T = function () {
     for (var a = this.a.X(), b = 0, c = this.e.childNodes, d = 0, e; e = c[d]; d++)
       if (U(e, "rg_di")) uc(this.a, e), e.hasAttribute("data-ci") && (a.push(b), b = 0), b++;
-      else if (U(e, "rg_bb_c") || U(e, "rg_bb")) {
-      e = e.querySelectorAll("div.rg_di");
-      for (var f = 0, g; g = e[f]; f++) uc(this.a, g), g.hasAttribute("data-ci") && (a.push(b), b = 0), b++
-    }
     0 < b && (a.push(b), jd(this.a) && this.a.O())
   };
   p.M = function (a) {
     if (a) {
       for (var b = [], c = 0, d; d = a.childNodes[c]; c++)
-        if (U(d, "rg_bb")) {
-          d = d.querySelectorAll("div.rg_di");
-          for (var e = 0, f; f = d[e]; e++) uc(this.a, f), b.push(f)
-        } else uc(this.a, d), b.push(d);
+        uc(this.a, d), b.push(d);
       kd(this.a, b) && google.isr.Hover && window.setTimeout(function () {
         google.isr.Hover.loadDataFromResults(b)
       }, 0)
     }
   };
   p.W = function (a, b, c) {
-    for (var d = [], e = [], f = this.e.childNodes, g = 0, h; h = f[g]; g++) U(h, "rg_di") || U(h, "rg_bb") ? d.push(h) : U(h, "rg_bb_c") && e.push(h);
+    for (var d = [], e = [], f = this.e.childNodes, g = 0, h; h = f[g]; g++) {
+      if (U(h, "rg_di")) d.push(h);
+    }
     if (c)
       for (c = c.childNodes, g = 0; f = c[g]; g++) d.push(f);
     (0 < d.length || 0 < e.length) && sd(this, a, b, e, d)
@@ -1003,18 +890,6 @@
         Va = e[Ua],
         Wa = void 0,
         Cb = void 0;
-      if (U(Va, "rg_bb")) Cb = new wb(Va), Wa = {
-        tw: yb(Cb, wc.h, 13),
-        th: wc.h,
-        bc: 0,
-        ct: 10,
-        cb: 0,
-        cr: 4,
-        cl: 0,
-        sc: 0,
-        ps: 1
-      };
-      else
         for (var Cd = Va.getElementsByTagName("div"), xc = 0, Ea = void 0; Ea = Cd[xc]; xc++)
           if ("rg_meta" == Ea.className) {
             Wa = nb(Ea.innerText || Ea.textContent || Ea.innerHTML);
@@ -1169,24 +1044,17 @@
               S = db.d;
             S.style.position = "absolute";
             S.style.top = "0";
-            U(S, "rg_bb_end") || U(S, "rg_bb_start") || (S.className += Oc ? " rg_bb_end" : " rg_bb_start");
             S.style.width = image.width + "px";
             S.style.height = image.height + "px";
             for (var Rb = db.c.length, Od = (image.height -
                 (Rb - 1) * Xb) / Rb, Sb = 0; Sb < Rb; Sb++) {
-              var Pc = db.c[Sb],
-                Pd = Wb(Pc.c, db.width, Od);
+              var Pc = db.c[Sb];
               Pc.d.style.marginRight = "0";
               for (var Qc = 0, Rc; Rc = Pd[Qc]; Qc++) z.g.push(Rc)
             }
             e[J] && a.e.insertBefore(S, e[J])
-          } else if (image.padding) {
-            var Ka = document.createElement("div");
-            Ka.className = "rg_pd";
-            Ka.style.width = image.width + "px";
-            Ka.style.height = image.height + "px";
-            e[J] ? e[J].parentNode.insertBefore(Ka, e[J]) : a.e.appendChild(Ka)
-          } else {
+          }
+          else {
             var ra = Bb[J];
             if (ra.A) {
               var Qd = a,
@@ -1197,8 +1065,6 @@
                 Wc = Sc.a;
               Wc.style.width = Tc - 2 + "px";
               Wc.style.height = Uc - 2 + "px";
-              var Xc =
-                Wb(Sc.A, Tc, Uc);
               Vc.g.push.apply(Vc.g, Xc);
               Array.prototype.push.apply(Qd.a.getResults(), Xc)
             } else {

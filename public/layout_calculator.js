@@ -622,7 +622,7 @@
   };
   t("getResultsForPage", s.prototype.la);
   s.prototype.k = function (a) {
-    this.s = this.a.length ? a ? 3 : this.H ? 2 : 1 : 0;
+    this.s = this.a.length ? 3 : 0;
     this.c = document.getElementById("rg");
     switch (this.s) {
     case 0:

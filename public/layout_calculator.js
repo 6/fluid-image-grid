@@ -990,6 +990,25 @@
         o: 0
       });
       for (var z = a.c[a.c.length - 1], Nc = 1 == a.c.length ? c.d : c.c, Ja = 0; Ja < X.length; Ja++) {
+        if (0 != z.o && 32 > Nc - z.o) {
+          a.n += z.o;
+          z = {
+            g: [],
+            o: 0
+          };
+          a.c.push(z);
+          var Nc = c.c,
+            Y = document.createElement("div");
+          Y.className = "rgsh";
+          a.s ? Y.innerHTML = a.F.replace(/\%1\$d/, String(a.c.length)) : Y.style.display = "none";
+          Y.setAttribute("id", "page" + a.c.length);
+          Y.setAttribute("data-pg", a.c.length);
+          Y.setAttribute("data-offset", c.e + a.n + z.o);
+          Y.setAttribute("data-fri", a.a.getResults().length);
+          e[J].parentNode.insertBefore(Y, e[J]);
+          a.s && (z.o += 32);
+          3 != b && 2 == a.c.length && ld(a.c[0].g.length)
+        }
         z.o += pa[Ja];
         z.o += Xb;
         for (var Nd = J, qa = 0; qa < X[Ja]; qa++) {

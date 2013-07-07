@@ -290,25 +290,6 @@ window.google = {
       xf[a] = b;
       yf && zf("init", a)
     };
-    _.Bf = function (a) {
-      window.google.pmc && (vaa(a), "dispose" == a && (window.google.pmc = null), "init" == a ? yf = !0 : "dispose" == a && (yf = !1))
-    };
-    var vaa = function (a) {
-      ("dispose" == a ? _.Cb : _.Zb)(wf, function (b) {
-        zf(a, b)
-      })
-    };
-    var zf = function (a, b) {
-      try {
-        var c = xf[b];
-        if (c) {
-          var d = c[a],
-            e = window.google.pmc[b];
-          d && (e || Cf(b)) && d(e)
-        }
-      } catch (f) {
-      }
-    };
     var Cf = function (a) {
       a = xf[a];
       return Boolean(a && a._e)
@@ -800,7 +781,7 @@ window.google = {
         if (c in a && a[c] === b) return c;
       return -1
     };
-    _.Zb = Kb.forEach ? function (a, b, c) {
+    _.forEach = Kb.forEach ? function (a, b, c) {
       Kb.forEach.call(a, b, c)
     } : function (a, b, c) {
       for (var d = a.length, e = (0, _.Ra)(a) ? a.split("") : a, f = 0; f < d; f++) f in e && b.call(c, e[f], f, a)
@@ -1011,7 +992,10 @@ window.google = {
     var Ef, Ff, xf = {}, wf = [],
       yf = !1,
       lba = _.kf;
-    (0, _.za)("google.med", _.Bf, void 0);
+    (0, _.za)("google.med", function() {
+      xf.jstr.init(window.google.pmc.jstr);
+      yf = false;
+    }, void 0);
     (0, _.za)("google.register", _.vf, void 0);
     var yaa;
     var Jf;
@@ -1423,11 +1407,6 @@ window.google = {
       this.H = a.qir;
       this.D = a.eup
     };
-    (0, _.vf)("cr", {
-      init: function () {
-        _.Wj.G().init.apply(_.Wj.G(), arguments)
-      }
-    });
     (0, _.za)("rwt", function () {
       _.Wj.G().J.apply(_.Wj.G(), arguments)
     }, void 0);
@@ -1551,12 +1530,6 @@ window.google = {
     zl = !1;
     vl = !1;
     El = !1;
-    (0, _.vf)("hsm", {
-      init: function (a) {
-        vl || (a = a.h5h, a = !(!window.history || !window.history.pushState) && a, vl && zl == a || (zl = !! a, (0, _.af)(window, "popstate", Dl), (0, _.af)(window, "hashchange", Cl), zl ? (0, _.$e)(window, "popstate", Dl) : ("undefined" != typeof window.onhashchange || !_.sc.Hc && window.hasOwnProperty("onhashchange")) && (0, _.$e)(window, "hashchange", Cl)));
-        vl = !0
-      }
-    });
     (0, _.za)("google.hs.init", function () {
       El || Al(void 0, !0);
       El = !0
@@ -1621,7 +1594,7 @@ window.google = {
     };
     _.Bn = function (a) {
       var b = [];
-      (0, _.Zb)(arguments, function (a) {
+      (0, _.forEach)(arguments, function (a) {
         a && (0, _.Nb)(b, (0, _.dc)(a))
       });
       return (0, _.nc)(b)
@@ -3186,14 +3159,9 @@ window.google = {
       for (var c in _.vK) "object" == typeof _.vK[c] && delete _.vK[c]
     };
     (0, _.Vg)(_.x.G(), "jstr");
-    (0, _.za)("google.isr.jsr.strobe_jesr_dispose_", KAa, void 0);
     (0, _.vf)("jstr", {
       init: function (a) {
-        var b = window.document.getElementById("cnt");
-        if (b) {
-          var c = b.parentNode;
-          c && ("tphdr" == c.id && c.parentNode) && c.parentNode.appendChild(b)
-        }(0, _.xwa)(!0);
+        (0, _.xwa)(!0);
         (0, _.zwa)(a);
         (0, _.lxa)();
         (0, _.Bxa)()
@@ -3732,9 +3700,6 @@ window.google = {
     var nq = function () {
       this.A = "/" + (0, _.eo)() || "";
       this.B = new mq
-    };
-    var oq = function (a) {
-      pq && a ? pq = !1 : ((0, _.Bf)("dispose"), (0, _.Qf)(89, []), a || (pq = !0))
     };
     var qq = function (a, b, c) {
       a && "#" != a || (0, _.Xf)().href.replace(/#.*/, "") == _.Yo._h5l || "/search" == (0, _.Xf)().pathname || "/images" == (0, _.Xf)().pathname ? rq(b ? 1 : 0, c, a || (0, _.lp)()) : (0, _.Xf)().replace((0, _.Xf)().href)

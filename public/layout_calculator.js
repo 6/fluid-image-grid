@@ -33,6 +33,10 @@
     return image.width / image.height;
   };
 
+  var hasClass = function (el, cssClass) {
+    return el ? RegExp("(\\s|^)" + cssClass + "(\\s|$)").test(el.className) : false;
+  };
+
   var initializeSettingsCache = function () {
     settings = {};
     var grid = document.getElementById("images-grid");
@@ -317,9 +321,7 @@
     }, Qa, settings,
     lb = numericalSetting("data-mrw", defaults.mrw),
     mb = numericalSetting("data-isuf", defaults.isuf),
-    U = function (a, b) {
-      return a ? RegExp("(\\s|^)" + b + "(\\s|$)").test(a.className) : !1
-    }, nb = function (a) {
+    nb = function (a) {
       return window.JSON ? window.JSON.parse(a) : eval("(" + a + ")")
     }, pb = function (a, b) {
       var c = a.parentNode,
@@ -398,7 +400,7 @@
       a = this.d.childNodes;
       if (this.a)
         for (b = a = this.a.firstChild; b; b = a)
-          if (a = b.nextSibling, U(b, "rg_di")) this.c.push(vb(b));
+          if (a = b.nextSibling, hasClass(b, "rg_di")) this.c.push(vb(b));
       this.k = (a = ob(this.d)) && "2" == a.fl;
       this.e = a && "1" == a.hz
     }, vb = function (a) {
@@ -823,12 +825,12 @@
   };
   p.T = function () {
     for (var a = this.a.X(), b = 0, c = this.e.childNodes, d = 0, e; e = c[d]; d++)
-      if (U(e, "rg_di")) uc(this.a, e), e.hasAttribute("data-ci") && (a.push(b), b = 0), b++;
+      if (hasClass(e, "rg_di")) uc(this.a, e), e.hasAttribute("data-ci") && (a.push(b), b = 0), b++;
     0 < b && (a.push(b), jd(this.a) && this.a.O())
   };
   p.W = function (a, b, c) {
     for (var d = [], e = [], f = this.e.childNodes, g = 0, h; h = f[g]; g++) {
-      if (U(h, "rg_di")) d.push(h);
+      if (hasClass(h, "rg_di")) d.push(h);
     }
     if (c)
       for (c = c.childNodes, g = 0; f = c[g]; g++) d.push(f);

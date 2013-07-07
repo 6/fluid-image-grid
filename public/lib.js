@@ -3199,28 +3199,6 @@ var _ = _ || {};
     _._DumpException(e)
   }
   try {
-    var Hk = function (a, b, c) {
-      if ("prerender" == window.document.webkitVisibilityState) {
-        var d = !1,
-          e = function () {
-            if (!d) {
-              b ? b.prerender = "1" : b = {
-                prerender: "1"
-              };
-              var f;
-              "prerender" == window.document.webkitVisibilityState ? f = !1 : (Gk(a, b, c), f = !0);
-              f && (d = !0, window.document.removeEventListener("webkitvisibilitychange", e, !1))
-            }
-          };
-        window.document.addEventListener("webkitvisibilitychange", e, !1);
-        return ""
-      }
-      return Gk(a, b, c)
-    };
-  } catch (e) {
-    _._DumpException(e)
-  }
-  try {
     _.Wo = function (a) {
       return "#" == a.Ed
     };

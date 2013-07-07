@@ -29,6 +29,10 @@
     bge: true
   };
 
+  var aspectRatio = function (image) {
+    return image.width / image.height;
+  };
+
   var initializeSettingsCache = function () {
     settings = {};
     var grid = document.getElementById("images-grid");
@@ -87,8 +91,8 @@
   };
   ia.prototype.e = function (a, b, c, d, e) {
     var f = [],
-      g = 1 / E(a[0]),
-      h = Math.floor(Math.min(c * g / (g + 1 / E(a[1])), 0.6 * c)),
+      g = 1 / aspectRatio(a[0]),
+      h = Math.floor(Math.min(c * g / (g + 1 / aspectRatio(a[1])), 0.6 * c)),
       h = Math.max(h, 0.4 * c),
       g = Math.min(h, a[0].height);
     a = Math.min(c - h - this.a, a[1].height);
@@ -112,8 +116,8 @@
   var ta = function (a, b, c, d, e, f) {
     var g = [ua(b[0], d), ua(b[1], d)],
       h = g[0] + g[1] + a.a + 0 - c;
-    if (0 < h && 1 > E(b[0]) ^ 1 > E(b[1])) {
-      var k = 1 > E(b[0]) ? 1 : 0,
+    if (0 < h && 1 > aspectRatio(b[0]) ^ 1 > aspectRatio(b[1])) {
+      var k = 1 > aspectRatio(b[0]) ? 1 : 0,
         l = Math.min(h, Math.floor(g[k] / 2));
       g[k] -= l;
       h -= l
@@ -160,8 +164,8 @@
     }
   }, ua = function (a, b) {
       var c = a.width,
-        d = Math.min(c, Math.floor(E(a) * b)) * b;
-      return Math.min(c, Math.floor(Math.sqrt((d + c * b) / 2 * E(a))))
+        d = Math.min(c, Math.floor(aspectRatio(a) * b)) * b;
+      return Math.min(c, Math.floor(Math.sqrt((d + c * b) / 2 * aspectRatio(a))))
     }, xa = function (a, b, c, d, e, f, g, h, k) {
       var l = [];
       if (!a.length) return l;
@@ -171,8 +175,8 @@
       if (0 > n)
         for (c = 0; c < a.length; c++) {
           var m = a[c],
-            q = Q(E(m), d, f, m.width, g),
-            m = q / E(m) * (va(m) - E(m));
+            q = Q(aspectRatio(m), d, f, m.width, g),
+            m = q / aspectRatio(m) * (va(m) - aspectRatio(m));
           if (0 < m) throw Error("thinnest AR > AR");
           m + q < f &&
             (m = f - q);
@@ -181,12 +185,12 @@
         } else if (!k)
           for (c = 0; c < a.length; c++) {
             m = a[c];
-            m = Q(wa(m), d, f, m.width, g) - Q(E(m), d, f, m.width, g);
+            m = Q(wa(m), d, f, m.width, g) - Q(aspectRatio(m), d, f, m.width, g);
             if (0 > m) throw Error("widest AR < AR");
             r[c] = m;
             v += m
           }
-      for (c = m = 0; c < a.length; c++) q = k || 0 == v ? 0 : n * r[c] / v, q = Math.round(Math.max(f, Q(E(a[c]), d, f, a[c].width, g) + q)), m += q + e, l.push(q);
+      for (c = m = 0; c < a.length; c++) q = k || 0 == v ? 0 : n * r[c] / v, q = Math.round(Math.max(f, Q(aspectRatio(a[c]), d, f, a[c].width, g) + q)), m += q + e, l.push(q);
       if (!k)
         if (b = b - m - (h || 0), l[l.length - 1] + b < f)
           for (c = l.length - 1; - 1 < c && (a = Math.max(b, f - l[c]), l[c] += a, b -= a, 0 != b); c--);
@@ -214,7 +218,7 @@
       1 == e && (f = Math.min(f, Math.floor(0.75 * c)));
       b = Math.min(Math.floor(c / 2), Math.floor(d / 3));
       b = Math.floor(0.9 * b);
-      for (var g = a.length - e, h = 0, k = e; k < a.length; k++) h += E(a[k]);
+      for (var g = a.length - e, h = 0, k = e; k < a.length; k++) h += aspectRatio(a[k]);
       h /= g;
       1 > h && (b = Math.floor(b * h));
       var k = h = 0,
@@ -269,7 +273,7 @@
     return a
   };
   var Ma = function (a, b) {
-    return Q(E(a), b, 0, a.width, void 0)
+    return Q(aspectRatio(a), b, 0, a.width, void 0)
   }, za = function (a, b) {
       var c;
       return c = Math.max(0, Math.min(void 0 !== b ? b : 1, a - 2))
@@ -363,34 +367,28 @@
       }
     }, rb = function (a, b, c) {
       this.a = a;
-      this.c = "1" == b.bc;
-      this.e = parseInt(b.ct, 10) ||
-        0;
-      this.h = parseInt(b.cb, 10) || 0;
-      this.d = parseInt(b.cl, 10) || 0;
-      this.k = parseInt(b.cr, 10) || 0;
-      this.n = "1" == b.sc;
+      this.c = false;
+      this.e = 0;
+      this.h = 0;
+      this.d = 0;
+      this.k = 0;
+      this.n = false;
       this.width = b.width;
       this.height = b.height;
-      this.A = c || null;
-      this.s = 1 == b.ps
+      this.s = false
     }, sb = numericalSetting("data-eca", defaults.eca),
-    E = function (a) {
-      return a.width / a.height
-    }, va = function (a) {
-      if (a.c) return E(a);
+    va = function (a) {
       var b = (a.d + a.k) / 100;
-      a.n || (b = Math.min(1, b + sb));
+      b = Math.min(1, b + sb);
       return (a.width - a.width * b) / a.height
     }, wa = function (a) {
-      if (a.c) return E(a);
       var b = (a.e + a.h) / 100;
-      a.n || (b = Math.min(1, b + sb));
+      b = Math.min(1, b + sb);
       return a.width / (a.height - a.height * b)
-    }, tb = function (a, b) {
-      return 0 == a.e && 0 == a.h ? Math.floor(0.5 * b) : Math.round(b * (a.e / (a.e + a.h)))
-    }, ub = function (a, b) {
-      return 0 == a.d && 0 == a.k ? Math.floor(b / 2) : Math.round(b * (a.d / (a.d + a.k)))
+    }, tb = function (b) {
+      return Math.floor(0.5 * b)
+    }, ub = function (b) {
+      return Math.floor(b / 2)
     }, wb = function (a) {
       this.d = a;
       this.a = null;
@@ -436,7 +434,7 @@
       else {
         a = za(d.length, a);
         c = La(d.slice(0, a), b, 1, a == d.length);
-        for (var e = Math.floor((d.length - a) / 2), f = 0, g = a; g < d.length; g++) f += E(d[g]);
+        for (var e = Math.floor((d.length - a) / 2), f = 0, g = a; g < d.length; g++) f += aspectRatio(d[g]);
         f /= d.length - a;
         d = Math.floor(c + (b - 1) * e * f / 2 + 1 * e - 1)
       } else d = 0;
@@ -485,14 +483,14 @@
           m = l.width,
           q = l.height,
           m = k / n,
-          w = E(l);
+          w = aspectRatio(l);
         !l.c && w < m || l.c && w > m ? (m = Math.min(l.width, Math.floor(k)), q = Math.round(m / w)) : (q = Math.min(l.height, Math.floor(n)), m = Math.round(q * w));
         var F = 0,
           aa = 0,
           ja = Math.round((k - m) / 2),
           w = Math.round((n - q) / 2);
-        0 > ja && (F = -1 * ub(l, m - k), ja = 0);
-        0 > w && (aa = -1 * tb(l, q - n), w = 0);
+        0 > ja && (F = -1 * ub(m - k), ja = 0);
+        0 > w && (aa = -1 * tb(q - n), w = 0);
         Z(r, {
           width: k + "px",
           height: n + "px"
@@ -1045,7 +1043,7 @@
         for (var I = ma, Bc = Ya, Dd = Db, Za = yc, Fb = Ac, Cc = na, Ed = zc, Gb = 0, W = [], Hb = [], Ib = 0, Dc = Cc.length || Za / Fb, P = 0; P < Dc; P++) {
           for (var Jb = Ed[P] || 0, $a = Cc[P] || Fb, ea = Dd - Jb, Fd = Math.floor(ea / (I.a + I.c)), Fa = 0, Kb = 0, Lb = 0, Ga = 0, Mb = 0; Gb < Bc.length && Ga < Fd;) {
             var fa = Bc[Gb],
-              Gd = Q(E(fa), $a, I.c, fa.width, 2),
+              Gd = Q(aspectRatio(fa), $a, I.c, fa.width, 2),
               Nb = Fa + Gd + I.a,
               Hd = Q(va(fa), $a, I.c, fa.width, 2),
               Kb = Kb + (Hd + I.a);
@@ -1056,7 +1054,7 @@
             var Fa = Nb,
               Id = Q(wa(fa), $a, I.c, fa.width, 2),
               Lb = Lb + (Id + I.a),
-              Mb = Mb + E(fa);
+              Mb = Mb + aspectRatio(fa);
             Gb++;
             if (Fa > ea) break
           }
@@ -1216,10 +1214,10 @@
               if (A.width > B || A.height > K) {
                 var $c = B / K,
                   fb = Math.min(wa(A), Math.max($c, va(A)));
-                if (E(A) > fb) var ad = Math.min(A.height, B / fb),
-                x = ad * E(A), D = ad;
+                if (aspectRatio(A) > fb) var ad = Math.min(A.height, B / fb),
+                x = ad * aspectRatio(A), D = ad;
                 else var bd = Math.min(A.width, fb > $c ? B : K * fb),
-                x = bd, D = bd / E(A)
+                x = bd, D = bd / aspectRatio(A)
               }
               if (0 < mb && !A.c) {
                 var gb = mb + 1,
@@ -1245,8 +1243,8 @@
                 fd = 0,
                 gd = 0;
               if (x > B) var Sd = x - B,
-              Vb = -1 * ub(A, x - B), fd = -Sd - Vb;
-              else x < B && (cd = (B - x) / 2); if (D > K) gd = -1 * tb(A, D - K);
+              Vb = -1 * ub(x - B), fd = -Sd - Vb;
+              else x < B && (cd = (B - x) / 2); if (D > K) gd = -1 * tb(D - K);
               else if (D < K) var Yc = Zc = D,
               hd = K - D, dd = Math.floor(hd / 2), ed = Math.ceil(hd / 2);
               Z(eb, {

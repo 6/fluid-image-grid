@@ -5,7 +5,7 @@
 
 body {
   background-color: #eee;
-  overflow: scroll;
+  overflow-y: scroll;
 }
 
 #images-grid {

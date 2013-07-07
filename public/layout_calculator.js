@@ -135,7 +135,7 @@
         r: ""
       };
     }, Z = function (a, b) {
-      if (void 0 === Qa) {
+      if (undefined === Qa) {
         var c = window.navigator.userAgent;
         Qa = !(!c || -1 == c.indexOf("WebKit") || 0 == c.indexOf("Opera"))
       }
@@ -263,7 +263,7 @@
               break i
             }
           }
-          d = void 0
+          d = undefined
         }
         return d
       } : b[a].Z ? function (b) {
@@ -374,7 +374,7 @@
   };
   definePublicFunction("getChunkSize", s.prototype.getChunkSize);
   s.prototype.hasRenderedChunk = function (a) {
-    return void 0 !== this.a[a]
+    return undefined !== this.a[a]
   };
   definePublicFunction("hasRenderedChunk", s.prototype.hasRenderedChunk);
   s.prototype.getChunkSizeArray = function () {
@@ -530,9 +530,9 @@
         Bd = Ua,
         wc = zd,
         Va = e[Ua],
-        Wa = void 0,
-        Cb = void 0;
-        for (var Cd = Va.getElementsByTagName("div"), xc = 0, Ea = void 0; Ea = Cd[xc]; xc++)
+        Wa = undefined,
+        Cb = undefined;
+        for (var Cd = Va.getElementsByTagName("div"), xc = 0, Ea = undefined; Ea = Cd[xc]; xc++)
           if ("rg_meta" == Ea.className) {
             Wa = parseJSON(Ea.innerText || Ea.textContent || Ea.innerHTML);
             break
@@ -580,7 +580,7 @@
             count: Ga,
             width: Fa + Jb,
             height: $a,
-            G: void 0
+            G: undefined
           };
           var Ec = 1 / Math.sqrt((Mb + 0.1) / (Ga + 0.1));
           Hb.push(Ec);
@@ -775,5 +775,5 @@
   vd.layoutResults();
   var wd = ["google", "isr", "layout"],
     $ = this;
-  for (var yd; wd.length && (yd = wd.shift());) wd.length || void 0 === vd ? $ = $[yd] ? $[yd] : $[yd] = {} : $[yd] = vd;
+  for (var yd; wd.length && (yd = wd.shift());) wd.length || undefined === vd ? $ = $[yd] ? $[yd] : $[yd] = {} : $[yd] = vd;
 })();

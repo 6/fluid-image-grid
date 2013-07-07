@@ -64,7 +64,7 @@
     if (grid) {
       for (var i = 0; i < grid.attributes.length; ++i) {
         var attribute = grid.attributes[i];
-        if (attribute.specified && 0 == attribute.name.indexOf("data-")) {
+        if (attribute.specified && 0 === attribute.name.indexOf("data-")) {
           settings[attribute.name] = attribute.value;
         }
       }

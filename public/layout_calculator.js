@@ -688,6 +688,7 @@
   };
   definePublicFunction("getChunkSizeArray", s.prototype.getChunkSizeArray);
   var sc = function (a) {
+    console.log("this is called when window width/height changes");
     a.U = [];
     pc(a);
     a.l.aa();

@@ -504,42 +504,6 @@ window.google = {
     var Waa = function (a) {
       return new Uh(a.action, a.actionElement, a.event)
     };
-    _.bi = function (a) {
-      var b;
-      b = a.event;
-      var c = a.eventType,
-        d = c || b.type;
-      if ("keypress" == d || "keydown" == d || "keyup" == d)
-        if (_.Xd && !(0, _.Ec)("12.14") || _.ci) d = di(b, c), d.ctrlKey = b.ctrlKey, d.altKey = b.altKey, d.shiftKey = b.shiftKey, d.metaKey = b.metaKey, d.keyCode = b.keyCode, d.charCode = b.charCode, b = d;
-        else {
-          if (window.document.createEvent)
-            if (d = window.document.createEvent("KeyboardEvent"), d.initKeyboardEvent) {
-              var e;
-              e = b.ctrlKey;
-              var f = b.metaKey,
-                g = b.shiftKey,
-                h = [];
-              b.altKey && h.push("Alt");
-              e && h.push("Control");
-              f && h.push("Meta");
-              g &&
-                h.push("Shift");
-              e = h.join(" ");
-              d.initKeyboardEvent(c || b.type, true, true, window, b.charCode, b.keyCode, b.location, e, b.repeat, b.locale);
-              if (_.jd || _.Jc && (0, _.Ec)("9.0")) b = (0, _.tg)(b.keyCode), Object.defineProperty(d, "keyCode", {
-                get: b
-              }), Object.defineProperty(d, "which", {
-                get: b
-              })
-            } else d.initKeyEvent(c || b.type, true, true, window, b.ctrlKey, b.altKey, b.shiftKey, b.metaKey, b.keyCode, b.charCode);
-            else d = window.document.createEventObject(), d.type = c || b.type, d.repeat = b.repeat, d.ctrlKey = b.ctrlKey, d.altKey = b.altKey, d.shiftKey = b.shiftKey,
-          d.metaKey = b.metaKey, d.keyCode = b.keyCode, d.charCode = b.charCode;
-          b = d
-        } else "click" == d || "dblclick" == d || "mousedown" == d || "mouseover" == d || "mouseout" == d || "mousemove" == d ? (window.document.createEvent ? (d = window.document.createEvent("MouseEvent"), d.initMouseEvent(c || b.type, true, true, window, b.detail || 1, b.screenX || 0, b.screenY || 0, b.clientX || 0, b.clientY || 0, b.ctrlKey || false, b.altKey || false, b.shiftKey || false, b.metaKey || false, b.button || 0, b.relatedTarget || null)) : (d = window.document.createEventObject(), d.type = c || b.type, d.clientX = b.clientX,
-          d.clientY = b.clientY, d.button = b.button, d.detail = b.detail, d.ctrlKey = b.ctrlKey, d.altKey = b.altKey, d.shiftKey = b.shiftKey, d.metaKey = b.metaKey), b = d) : b = di(b, c);
-      a = a.targetElement;
-      a.dispatchEvent ? a.dispatchEvent(b) : a.fireEvent("on" + b.type, b)
-    };
     var di = function (a, b) {
       var c;
       window.document.createEvent ? (c = window.document.createEvent("Event"), c.initEvent(b || a.type, true, true)) : (c = window.document.createEventObject(), c.type = b || a.type);

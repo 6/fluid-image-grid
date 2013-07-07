@@ -37,6 +37,21 @@
     return el ? RegExp("(\\s|^)" + cssClass + "(\\s|$)").test(el.className) : false;
   };
 
+  var typeString = function (obj) {
+    var typeOfString = typeof obj;
+    if ("object" == typeOfString)
+      if (obj) {
+        if (obj instanceof Array) return "array";
+        if (obj instanceof Object) return typeOfString;
+        var toString = Object.prototype.toString.call(obj);
+        if ("[object Window]" == toString) return "object";
+        if ("[object Array]" == toString || "number" == typeof obj.length && "undefined" != typeof obj.splice && "undefined" != typeof obj.propertyIsEnumerable && !obj.propertyIsEnumerable("splice")) return "array";
+        if ("[object Function]" == toString || "undefined" != typeof obj.call && "undefined" != typeof obj.propertyIsEnumerable && !obj.propertyIsEnumerable("call")) return "function";
+      } else return "null";
+      else if ("function" == typeOfString && "undefined" == typeof obj.call) return "object";
+    return typeOfString;
+  };
+
   var initializeSettingsCache = function () {
     settings = {};
     var grid = document.getElementById("images-grid");
@@ -55,20 +70,7 @@
     return settings.hasOwnProperty(key) ? parseFloat(settings[key]) : defaultValue;
   };
 
-  var p, ba = function (a) {
-      var b = typeof a;
-      if ("object" == b)
-        if (a) {
-          if (a instanceof Array) return "array";
-          if (a instanceof Object) return b;
-          var c = Object.prototype.toString.call(a);
-          if ("[object Window]" == c) return "object";
-          if ("[object Array]" == c || "number" == typeof a.length && "undefined" != typeof a.splice && "undefined" != typeof a.propertyIsEnumerable && !a.propertyIsEnumerable("splice")) return "array";
-          if ("[object Function]" == c || "undefined" != typeof a.call && "undefined" != typeof a.propertyIsEnumerable && !a.propertyIsEnumerable("call")) return "function"
-        } else return "null";
-        else if ("function" == b && "undefined" == typeof a.call) return "object";
-      return b
-    }, t = function (a, b) {
+  var p, t = function (a, b) {
       s.prototype[a] = b
     }, u = function (a, b) {
       function c() {}
@@ -469,7 +471,7 @@
       for (var c = 1; c < arguments.length; c++) {
         var d = arguments[c],
           e, f;
-        (f = "array" == ba(d)) || (e = ba(d), f = (e = "array" == e || "object" == e && "number" == typeof d.length) && Object.prototype.hasOwnProperty.call(d, "callee"));
+        (f = "array" == typeString(d)) || (e = typeString(d), f = (e = "array" == e || "object" == e && "number" == typeof d.length) && Object.prototype.hasOwnProperty.call(d, "callee"));
         if (f) a.push.apply(a, d);
         else if (e) {
           f = a.length;
@@ -505,7 +507,7 @@
           var c = c.prototype,
             e;
           for (e in c)
-            if (c.hasOwnProperty(e) && "function" == ba(c[e]) && c[e] !== a) {
+            if (c.hasOwnProperty(e) && "function" == typeString(c[e]) && c[e] !== a) {
               var f = !! c[e].ga,
                 g = fc(e, c, d, f);
               (f = gc(e, c, g, f)) && (b.prototype[e] = f)

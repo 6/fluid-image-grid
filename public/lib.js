@@ -2099,46 +2099,21 @@ window.google = {
       if (_.vK[a])
         for (var c = 0, d; d = _.vK[a][c++];) d(b)
     };
-    var ywa = function (a) {
-      yK = (_.nK = zK = a) ? "rg_di" : "rg_li";
-      AK = a ? "div" : "li"
-    };
     _.zwa = function (a) {
-      _.BK = !! window.document.getElementById("debug_comments");
-      (0, _.ji)("isr", {
-        smr: Awa
-      });
-      window.google.j && window.google.j.init && (CK = true, DK = window.google.j.pf);
-      a && a.meta && (EK = a.meta, FK = !! EK.isBillboard, GK = !! EK.showMoreResults, Bwa = EK.numResults, _.oK = !! EK.genChunk, ywa( !! EK.csLayout), HK = EK.bigGulpEnabled || !zK);
-      var b = window.document.getElementById("rg").style.height;
-      b && (Cwa = b);
-      EK.imgrc || Dwa();
+      EK = a.meta
+      FK = false
+      GK = EK.showMoreResults;
+      Bwa = EK.numResults;
+      _.oK = EK.genChunk;
+      _.nK = zK = true;
+      yK = "rg_di";
+      AK = "div";
+      HK = false;
       IK(window, "scroll", JK);
-      FK && IK(window, _.Rx, JK);
-      _.KK || _.BK || (b = _.tc.qw ? "onkeypress" : "onkeydown", _.LK = window.document[b],
-        window.document[b] = Ewa);
-      _.tc.Eq || _.tc.xt ? (0, _.hD)(_.MK) : _.KK && !FK || IK(window, "resize", _.MK);
-      window.google.isr.Hover && window.google.isr.Hover.handleScroll && uK(4, window.google.isr.Hover.handleScroll);
-      uK(5, NK);
-      CK || IK(window.document, "click", Fwa);
+      IK(window, "resize", _.MK);
       window.google.isr.url = "/";
-      OK = window.google.biw;
-      QK = window.google.bih;
-      zK || (_.oK ? (RK("0"), RK("1"), _.pK["1"] = "0") : (RK("ls"), RK("sbg")));
-      FK && 150 <= SK() && JK(null);
-      zK || Gwa(7E3, 3E3);
-      DK || (window.google.isr.bg_ready ? TK() : window.google.isr.bgd = TK);
-      window.google.y.first.push(function () {
-        var a = window.document.querySelector("table.gssb_c");
-        a || (a = window.document.querySelector("div.gac_od"));
-        a && (a.style.position = "absolute")
-      });
-      !_.UK && CK && (_.UK = true, _.VK = false, WK(88, function (a, b) {
-        _.VK = "isch" != b
-      }), WK(53, Hwa), WK(2, Iwa));
-      Jwa(_.oK ? "0" : "ls");
+      window.google.isr.bgd = TK;
       _.XK = true;
-      _.YK && Kwa()
     };
     var IK = function (a, b, c) {
       (0, _.$e)(a, b, c);

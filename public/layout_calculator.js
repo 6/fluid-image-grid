@@ -5,18 +5,15 @@
     "meta": {
       "bgtprefetch": "1",
       "bgtprefetchlp": 0,
-      "bigGulpEnabled": false,
-      "csLayout": true,
-      "genChunk": "1",
+      "genChunk": true,
       "genChunkMax": 9,
       "genMoreResultsChunkCutoff": 3,
       "genPrefetchCutoff": 1,
-      "imgrc": true,
       "mpfStart": 1,
       "nTbnsPending": 8,
       "numResults": 1230,
       "pageAgeLimitMillis": 172800000,
-      "showMoreResults": "1"
+      "showMoreResults": true
     }
   };
 

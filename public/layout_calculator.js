@@ -132,7 +132,7 @@
       };
     }, Z = function (a, b) {
       if (void 0 === Qa) {
-        var c = google.ua || window.navigator.userAgent;
+        var c = window.navigator.userAgent;
         Qa = !(!c || -1 == c.indexOf("WebKit") || 0 == c.indexOf("Opera"))
       }
       if (Qa)

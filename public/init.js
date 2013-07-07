@@ -4,11 +4,12 @@
             return new Date().getTime();
         },
         y: {}
+        ,biw: 1162
+        ,bih: 370
     };
 
     google.pmc = {
         "jstr": {
-            "baseUrl": "/search?q=san+francisco\u0026biw=1162\u0026bih=370\u0026tbm=isch",
             "meta": {
                 "bgtprefetch": "1",
                 "bgtprefetchlp": 0,
@@ -30,17 +31,4 @@
         },
         "j": {}
     };
-})();
-
-(function () {
-    google.timers = {};
-    google.startTick = function (timerName, buffer) {
-        google.timers[timerName] = {
-            t: {
-                start: google.time()
-            },
-            bfr: !! buffer
-        };
-    };
-    google.startTick("load", true);
 })();

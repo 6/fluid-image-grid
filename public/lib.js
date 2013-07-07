@@ -2193,9 +2193,9 @@ var _ = _ || {};
             window.google.isr.Hover && window.google.isr.Hover.handleScroll && uK(4, window.google.isr.Hover.handleScroll);
             uK(5, NK);
             CK || IK(window.document, "click", Fwa);
-            a && a.baseUrl ? (window.google.isr.url = a.baseUrl, 0 == OK && (OK = PK(window.google.isr.url, "biw", -1), QK = PK(window.google.isr.url, "bih", -1))) : (a = window.location.href.indexOf("#"), window.google.isr.url = 0 <= a ? window.location.href.substring(0, a) : window.location.href, window.google.ml(Error("isr: No base URL"), !1, {
-                url: window.location.href
-            }));
+            window.google.isr.url = "/";
+            OK = window.google.biw;
+            QK = window.google.bih;
             zK || (_.oK ? (RK("0"), RK("1"), _.pK["1"] = "0") : (RK("ls"), RK("sbg")));
             FK && 150 <= SK() && JK(null);
             zK || Gwa(7E3, 3E3);
@@ -2397,8 +2397,8 @@ var _ = _ || {};
             return a += e
         };
         var yL = function (a, b) {
-            var c = PK(window.google.isr.url, "biw", -1),
-                d = PK(window.google.isr.url, "bih", -1),
+            var c = window.google.biw,
+                d = window.google.bih,
                 c = 0 > c || 0 > d;
             if (!window.google.isr.prs || c) a = xL(a, "biw", OK), a = xL(a, "bih", QK);
             c && b && (a = xL(a, "sei", window.google.kEI));
@@ -2460,9 +2460,6 @@ var _ = _ || {};
             }
             if (a = window.document.getElementById("tsf"))
                 for (b = a.getElementsByTagName("input"), a = 0; c = b[a]; a++) "biw" == c.name ? c.value = OK : "bih" == c.name && (c.value = QK)
-        };
-        var PK = function (a, b, c) {
-            return (a = a.match(RegExp("[?&]" + b + "=(\\d+)"))) ? +a[1] : c
         };
         var Kwa = function () {
             zK ? window.google.ml(Error("isr:csl_ldbg"), !1, {

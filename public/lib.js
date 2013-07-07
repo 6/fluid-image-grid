@@ -955,10 +955,13 @@ window.google = {
     var Ef, Ff, xf = {}, wf = [],
       yf = false,
       lba = _.kf;
-    (0, _.za)("google.med", function() {
-      xf.jstr.init(window.google.pmc.jstr);
+    google.med = function() {
+      (0, _.xwa)(true);
+      (0, _.zwa)(window.google.pmc.jstr);
+      (0, _.lxa)();
+      (0, _.Bxa)();
       yf = true;
-    }, void 0);
+    };
     (0, _.za)("google.register", _.vf, void 0);
     var yaa;
     var Jf;
@@ -3122,16 +3125,6 @@ window.google = {
       for (var c in _.vK) "object" == typeof _.vK[c] && delete _.vK[c]
     };
     (0, _.Vg)(_.x.G(), "jstr");
-    (0, _.vf)("jstr", {
-      init: function (a) {
-        (0, _.xwa)(true);
-        (0, _.zwa)(a);
-        (0, _.lxa)();
-        (0, _.Bxa)()
-      },
-      dispose: KAa
-    });
-
     (0, _.Sg)(_.x.G(), "jstr");
     (0, _.Wg)(_.x.G(), "jstr");
   } catch (e) {

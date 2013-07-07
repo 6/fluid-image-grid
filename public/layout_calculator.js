@@ -25,37 +25,6 @@
             this.d = b;
             this.a = a
         };
-    ia.prototype.h = function (a) {
-        if (1 == a.length) return ka(a[0], this.d, this.c, !0);
-        if (2 == a.length) return this.e(a, this.d, this.c, !0, !0);
-        if (3 == a.length) {
-            var b = this.d,
-                c = this.c,
-                d = Math.floor(Math.min(0.6 * c, a[0].height)),
-                c = c - d - this.a,
-                d = ka(a[0], b, d, !1);
-            a = ta(this, a.slice(1), b, c, !0);
-            return {
-                g: [d.g[0], a.g[0], a.g[1]],
-                v: d.v + this.a + a.v
-            }
-        }
-        if (4 == a.length) {
-            var b = this.d,
-                c = this.c,
-                e = Math.floor(Math.min(Math.min(c / 2), Math.min(a[0].height, a[1].height))),
-                d = Math.min(c - e - this.a, Math.min(a[2].height, a[3].height));
-            e + d + this.a < c && (e =
-                Math.min(c - d - this.a, e));
-            c = ta(this, a.slice(0, 2), b, e, !1);
-            a = ta(this, a.slice(2), b, d, !0, c.g[0].width);
-            return {
-                g: [c.g[0], c.g[1], a.g[0], a.g[1]],
-                v: c.v + this.a + a.v
-            }
-        }
-        throw Error("Box Layout is currently only for four or fewer results.");
-    };
     var ka = function (a, b, c, d) {
         a = Math.min(c, a.height);
         return {

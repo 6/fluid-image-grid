@@ -370,8 +370,8 @@
       this.d = parseInt(b.cl, 10) || 0;
       this.k = parseInt(b.cr, 10) || 0;
       this.n = "1" == b.sc;
-      this.width = b.tw;
-      this.height = b.th;
+      this.width = b.width;
+      this.height = b.height;
       this.A = c || null;
       this.s = 1 == b.ps
     }, sb = numericalSetting("data-eca", defaults.eca),

@@ -661,7 +661,7 @@
         c.parentNode.removeChild(c);
       }
       tc(this)
-    } else 1 == this.a.length && 20 >= this.a[0] && this.O()
+    } else 1 == this.a.length && 20 >= this.a[0]
   };
   t("moveAndLayoutNewResults", s.prototype.oa);
   var tc = function (a) {
@@ -669,11 +669,6 @@
       a.n[b]()
     } catch (c) {}
   };
-  s.prototype.O = function () {
-    this.F = !0;
-    this.l.ba()
-  };
-  t("setAllResultsLoaded", s.prototype.O);
   s.prototype.J = function () {
     return this.F
   };
@@ -828,7 +823,7 @@
   p.T = function () {
     for (var a = this.a.X(), b = 0, c = this.e.childNodes, d = 0, e; e = c[d]; d++)
       if (hasClass(e, "rg_di")) uc(this.a, e), e.hasAttribute("data-ci") && (a.push(b), b = 0), b++;
-    0 < b && (a.push(b), jd(this.a) && this.a.O())
+    0 < b && (a.push(b), jd(this.a))
   };
   p.W = function (a, b, c) {
     for (var d = [], e = [], f = this.e.childNodes, g = 0, h; h = f[g]; g++) {

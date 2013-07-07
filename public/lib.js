@@ -2266,17 +2266,6 @@ var _ = _ || {};
         }!CK || (window.google.isr.bg_stored || window.location.href.match(/(#q=|#.*&q=)/)) ||
           (window.google.isr.bg_stored = !0, (0, _.To)());
         a = zK ? window.google.isr.layout.getNumPages() : Owa().length;
-        EK.shouldLogBgTimeout && (bL() && 1 == a) && (a = CK ? "j" : "", a = ["&url=", (0, _.Ai)(_.iL.UB), "&type=", a, "&ispfch=", DK, "&speed=", EK.connectionSpeed].join(""), window.google.log("stbbg1p", a));
-        _.aL && window.google.ml(Error("isr:bgret"), !1, {
-          url: window.google.isr.url,
-          e_bg: bL(),
-          speed: EK.connectionSpeed,
-          is_j: CK,
-          is_pr: DK,
-          bg_r: _.YK,
-          bg_p: _.$K,
-          retry: _.aL
-        })
       }
     };
     var jL = function () {
@@ -2296,9 +2285,6 @@ var _ = _ || {};
       if (_.oL) return _.oL;
       var a = window.document.getElementById("isr_lp");
       return a ? _.oL = +a.innerHTML : 1
-    };
-    var bL = function () {
-      return +EK.numResults > pL.ls
     };
     var SK = function () {
       return window.pageYOffset || window.document.body.scrollTop || window.document.documentElement.scrollTop || 0
@@ -2965,7 +2951,7 @@ var _ = _ || {};
     var sM = function () {
       fL("thumbnails.renderBigGulp_");
       if ((0, _.Ma)(window.google.isr.bg_done) && window.document.getElementById("images-grid")) {
-        -1 == _.pM && (0 == _.nM && EK.shouldLogBgTimeout && bL()) && (_.pM = window.setTimeout(function () {
+        -1 == _.pM && (0 == _.nM) && (_.pM = window.setTimeout(function () {
           window.google.log("stbbgt", "&speed=" + EK.connectionSpeed)
         }, 1E4));
         1 == cM && (aM(), !zK && window.google.isr.Hover && window.google.isr.Hover.loadDataForScreen(0));

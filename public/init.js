@@ -25,7 +25,6 @@
         "nTbnsPending": 8,
         "numResults": 1230,
         "pageAgeLimitMillis": 172800000,
-        "shouldLogBgTimeout": false,
         "showMoreResults": "1"
       }
     },

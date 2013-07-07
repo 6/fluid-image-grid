@@ -1,4 +1,31 @@
 (function () {
+    var defaults = {
+        row_height: 140
+        ,mrw: 80
+        ,isuf: 0
+        ,eca: 0.1
+        ,ma: 12
+        ,bge: true
+    };
+
+    var initializeSettingsCache = function () {
+        settings = {};
+        var grid = document.getElementById("images-grid");
+        if (grid) {
+            for (var i = 0; i < grid.attributes.length; ++i) {
+                var attribute = grid.attributes[i];
+                if (attribute.specified && 0 == attribute.name.indexOf("data-")) {
+                    settings[attribute.name] = attribute.value;
+                }
+            }
+        }
+    };
+
+    var numericalSetting = function (key, defaultValue) {
+        settings || initializeSettingsCache();
+        return settings.hasOwnProperty(key) ? parseFloat(settings[key]) : defaultValue;
+    };
+
     var p, ba = function (a) {
             var b = typeof a;
             if ("object" == b)
@@ -262,19 +289,9 @@
             return String(a).replace(/\-([a-z])/g, function (a, c) {
                 return c.toUpperCase()
             })
-        }, Qa, T, jb = function () {
-            T = {};
-            var a = document.getElementById("images-grid");
-            if (a)
-                for (var b = 0; b < a.attributes.length; ++b) {
-                    var c = a.attributes[b];
-                    c.specified && 0 == c.name.indexOf("data-") && (T[c.name] = c.value)
-                }
-        }, kb = function (a, b) {
-            T || jb();
-            return T.hasOwnProperty(a) ? parseFloat(T[a]) : b
-        }, lb = kb("data-mrw", 80),
-        mb = kb("data-isuf", 0),
+        }, Qa, settings,
+        lb = numericalSetting("data-mrw", defaults.mrw),
+        mb = numericalSetting("data-isuf", defaults.isuf),
         U = function (a, b) {
             return a ? RegExp("(\\s|^)" + b + "(\\s|$)").test(a.className) : !1
         }, nb = function (a) {
@@ -336,7 +353,7 @@
             this.height = b.th;
             this.A = c || null;
             this.s = 1 == b.ps
-        }, sb = kb("data-eca", 0.1),
+        }, sb = numericalSetting("data-eca", defaults.eca),
         E = function (a) {
             return a.width / a.height
         }, va = function (a) {
@@ -650,13 +667,13 @@
             this.R = [];
             this.U = [];
             this.n = [];
-            this.h = kb("data-th", 140);
+            this.h = numericalSetting("data-row-height", defaults.row_height);
             this.V = !1;
             this.l.initialize(this.h)
-        }, Xb = kb("data-ma", 12);
-    kb("data-mrw", 80);
-    T || jb();
-    var oc = T.hasOwnProperty("data-bge") ? "true" == T["data-bge"] : !0;
+        }, Xb = numericalSetting("data-ma", defaults.ma);
+    numericalSetting("data-mrw", defaults.mrw);
+    settings || initializeSettingsCache();
+    var oc = settings.hasOwnProperty("data-bge") ? "true" == settings["data-bge"] : defaults.bge;
     s.prototype.F = !1;
     s.prototype.H = !1;
     s.prototype.qa = 0;

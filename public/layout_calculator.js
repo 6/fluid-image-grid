@@ -732,10 +732,10 @@
         (c = a[b]) && !(c.hasAttribute("data-src") || c.hasAttribute("src") && 0 != c.getAttribute("src").indexOf("data:")); b++);
       return b
     };
-  s.prototype.ia = function (a) {
+  s.prototype.addNewResultsListener = function (a) {
     this.n.push(a)
   };
-  definePublicFunction("addNewResultsListener", s.prototype.ia);
+  definePublicFunction("addNewResultsListener", s.prototype.addNewResultsListener);
   s.prototype.removeNewResultsListener = function (a) {
     var b = this.n,
       c = -1;

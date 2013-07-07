@@ -37,6 +37,12 @@
     return el ? RegExp("(\\s|^)" + cssClass + "(\\s|$)").test(el.className) : false;
   };
 
+  var camelize = function (str) {
+    return String(str).replace(/\-([a-z])/g, function (a, c) {
+      return c.toUpperCase();
+    });
+  };
+
   var typeString = function (obj) {
     var typeOfString = typeof obj;
     if ("object" == typeOfString)
@@ -116,11 +122,7 @@
       return Math.max(Math.min(b *
         a, d), c)
     };
-  var Pa = function (a) {
-      return String(a).replace(/\-([a-z])/g, function (a, c) {
-        return c.toUpperCase()
-      })
-    }, Qa, settings,
+  var Qa, settings,
     lb = numericalSetting("data-mrw", defaults.mrw),
     mb = numericalSetting("data-isuf", defaults.isuf),
     nb = function (a) {
@@ -136,7 +138,7 @@
         Qa = !(!c || -1 == c.indexOf("WebKit") || 0 == c.indexOf("Opera"))
       }
       if (Qa)
-        for (var d in b) c = Pa(d), a.style[c] = b[d];
+        for (var d in b) c = camelize(d), a.style[c] = b[d];
       else {
         c = [];
         for (d in b) c.push(d + ":" + b[d]);

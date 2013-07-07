@@ -1104,23 +1104,23 @@
           ga += Xa.a * (ca.a - 1);
           Qb[G] = ga
         }
-      for (var ha = [], Md = 0, R = 0; R < X.length; R++) {
+      for (var images = [], Md = 0, R = 0; R < X.length; R++) {
         var Ia = X[R];
-        0 < la[0] && (Ia++, la[0]--, 0 == R && (Ia++, ha.push({
+        0 < la[0] && (Ia++, la[0]--, 0 == R && (Ia++, images.push({
           I: !0,
           width: N[0].width,
           height: Qb[0]
-        })), ha.push({
+        })), images.push({
           padding: !0,
           width: N[0].width,
           height: pa[R]
         }));
-        for (G = 0; G < X[R]; G++) ha.push(Jc[Md++]);
-        0 < la[1] && (Ia++, la[1]--, 0 == R && (Ia++, ha.push({
+        for (G = 0; G < X[R]; G++) images.push(Jc[Md++]);
+        0 < la[1] && (Ia++, la[1]--, 0 == R && (Ia++, images.push({
           I: !0,
           width: N[1].width,
           height: Qb[1]
-        })), ha.push({
+        })), images.push({
           padding: !0,
           width: N[1].width,
           height: pa[R]
@@ -1158,21 +1158,21 @@
         z.o += pa[Ja];
         z.o += Xb;
         for (var Nd = J, qa = 0; qa < X[Ja]; qa++) {
-          var C = ha[cb + qa];
-          C.I || C.padding || Nd++
+          var image = images[cb + qa];
+          image.I || image.padding || Nd++
         }
         for (qa = 0; qa < X[Ja]; qa++) {
-          C = ha[cb];
-          if (C.I) {
+          image = images[cb];
+          if (image.I) {
             var Oc = 0 < cb,
               db = Oc ? h[1] : h[0],
               S = db.d;
             S.style.position = "absolute";
             S.style.top = "0";
             U(S, "rg_bb_end") || U(S, "rg_bb_start") || (S.className += Oc ? " rg_bb_end" : " rg_bb_start");
-            S.style.width = C.width + "px";
-            S.style.height = C.height + "px";
-            for (var Rb = db.c.length, Od = (C.height -
+            S.style.width = image.width + "px";
+            S.style.height = image.height + "px";
+            for (var Rb = db.c.length, Od = (image.height -
                 (Rb - 1) * Xb) / Rb, Sb = 0; Sb < Rb; Sb++) {
               var Pc = db.c[Sb],
                 Pd = Wb(Pc.c, db.width, Od);
@@ -1180,19 +1180,19 @@
               for (var Qc = 0, Rc; Rc = Pd[Qc]; Qc++) z.g.push(Rc)
             }
             e[J] && a.e.insertBefore(S, e[J])
-          } else if (C.padding) {
+          } else if (image.padding) {
             var Ka = document.createElement("div");
             Ka.className = "rg_pd";
-            Ka.style.width = C.width + "px";
-            Ka.style.height = C.height + "px";
+            Ka.style.width = image.width + "px";
+            Ka.style.height = image.height + "px";
             e[J] ? e[J].parentNode.insertBefore(Ka, e[J]) : a.e.appendChild(Ka)
           } else {
             var ra = Bb[J];
             if (ra.A) {
               var Qd = a,
                 Sc = ra,
-                Tc = C.width,
-                Uc = C.height,
+                Tc = image.width,
+                Uc = image.height,
                 Vc = z,
                 Wc = Sc.a;
               Wc.style.width = Tc - 2 + "px";
@@ -1203,8 +1203,8 @@
               Array.prototype.push.apply(Qd.a.getResults(), Xc)
             } else {
               var A = ra,
-                B = C.width,
-                K = C.height,
+                B = image.width,
+                K = image.height,
                 eb = A.a,
                 Rd = eb.getElementsByTagName("img")[0],
                 Yc = K,

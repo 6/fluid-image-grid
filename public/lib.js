@@ -298,10 +298,6 @@ var _ = _ || {};
           d && (e || Cf(b)) && d(e)
         }
       } catch (f) {
-        window.google.ml(f, !1, {
-          cause: "m" + a,
-          mid: b
-        })
       }
     };
     var Cf = function (a) {
@@ -1110,13 +1106,10 @@ var _ = _ || {};
       return Mg(this, [a], b)[a]
     };
     Yg.prototype.H = function (a) {
-      if (null === a) window.google.ml(Error("LM null"), !1);
-      else {
-        a = Kaa(this, a);
-        var b = window.document.createElement("script");
-        b.src = a;
-        (0, _.Me)(b)
-      }
+      a = Kaa(this, a);
+      var b = window.document.createElement("script");
+      b.src = a;
+      (0, _.Me)(b)
     };
     var $g = !1;
     (0, _.za)("google.load", _.ah, void 0);
@@ -1667,7 +1660,6 @@ var _ = _ || {};
       try {
         (0, _.Qf)(115, [b])
       } catch (d) {}
-      window.google.ml(c || Error("jesr"), !1, b)
     };
     _.In = function () {};
     _.Jn = function (a) {
@@ -2106,16 +2098,10 @@ var _ = _ || {};
   }
   try {
     _.swa = function (a) {
-      if (!_.nK) return window.google.ml(Error("no-csl: strobe.util.getChunkIndexForResultIndex"), !1, {
-        url: window.google.isr.url
-      }), -1;
       for (var b = window.google.isr.layout.getChunkSizeArray(), c = 0, d = 0; d < b.length; d++) {
         if (c + b[d] > a) return d;
         c += b[d]
       }
-      window.google.ml(Error("bad-idx: strobe.util.getChunkIndexForResultIndex"), !1, {
-        url: window.google.isr.url
-      });
       return -1
     };
     _.twa = function (a) {
@@ -2247,26 +2233,21 @@ var _ = _ || {};
     };
     var TK = function () {
       window.clearTimeout(_.ZK);
-      if (zK && !window.google.isr.bg_ready) window.google.ml(Error("isr:inr"), !1, {
-        url: window.google.isr.url
-      });
-      else {
-        RK("bg");
-        window.google.isr.bg_done = !0;
-        _.$K = !1;
-        _.KK || Pwa();
-        NK();
-        window.setTimeout(function () {
-          wK(5);
-          zK || (window.google.isr.prs || _.KK) || gL()
-        }, 0);
-        if (_.oK && (Qwa(), !zK)) {
-          var a = Math.ceil(hL() / cL());
-          _.pK[a + ""] = "1"
-        }!CK || (window.google.isr.bg_stored || window.location.href.match(/(#q=|#.*&q=)/)) ||
-          (window.google.isr.bg_stored = !0, (0, _.To)());
-        a = zK ? window.google.isr.layout.getNumPages() : Owa().length;
-      }
+      RK("bg");
+      window.google.isr.bg_done = !0;
+      _.$K = !1;
+      _.KK || Pwa();
+      NK();
+      window.setTimeout(function () {
+        wK(5);
+        zK || (window.google.isr.prs || _.KK) || gL()
+      }, 0);
+      if (_.oK && (Qwa(), !zK)) {
+        var a = Math.ceil(hL() / cL());
+        _.pK[a + ""] = "1"
+      }!CK || (window.google.isr.bg_stored || window.location.href.match(/(#q=|#.*&q=)/)) ||
+        (window.google.isr.bg_stored = !0, (0, _.To)());
+      a = zK ? window.google.isr.layout.getNumPages() : Owa().length;
     };
     var jL = function () {
       try {
@@ -2448,9 +2429,7 @@ var _ = _ || {};
         for (b = a.getElementsByTagName("input"), a = 0; c = b[a]; a++) "biw" == c.name ? c.value = OK : "bih" == c.name && (c.value = QK)
     };
     var Kwa = function () {
-      zK ? window.google.ml(Error("isr:csl_ldbg"), !1, {
-        url: window.google.isr.url
-      }) : _.XK ? (_.YK = !1, window.google.isr.bg_done || _.$K || (_.$K = !0, _.oK ? $wa(function () {
+      zK ? null : _.XK ? (_.YK = !1, window.google.isr.bg_done || _.$K || (_.$K = !0, _.oK ? $wa(function () {
         DL();
         TK()
       }) : EL(["bg"], TK))) : _.YK = !0
@@ -2531,14 +2510,9 @@ var _ = _ || {};
               wK(5, c);
               delete _.iL.UB;
               _.oK ? b && b() : d.length ? EL(d, b) : b && b()
-            } else window.google.ml(Error("isr:ordni"), !1, {
-              url: window.location.href
-            })
+            }
           }, 0)
-        } else window.google.ml(Error("isr:res_done"), !1, {
-          chunk: a,
-          url: window.location.href
-        })
+        }
     };
     var Jwa = function (a) {
       var b = (0, _.v)("isr_scm_" + a);
@@ -2622,12 +2596,10 @@ var _ = _ || {};
       FK && (LL += 20);
       var a = 0 < GL.length,
         b = 1 == GL.length;
-      zK && (window.google.isr.bg_done || (window.google.ml(Error("is:csl_hasnotrun"), !1, {
-        url: window.location.href,
-        chunk0: window.google.isr.layout.getChunkSize(0)
-      }), window.google.isr.layout.moveAndLayoutNewResults()), b = (a = 0 < window.google.isr.layout.getChunkSize(0)) && !window.google.isr.layout.getChunkSize(1));
+
+      zK && (window.google.isr.bg_done || window.google.isr.layout.moveAndLayoutNewResults(), b = (a = 0 < window.google.isr.layout.getChunkSize(0)) && !window.google.isr.layout.getChunkSize(1));
       a ? b ? (IL[0] = !0, ML = 1, HK && window.google.log("stbc_mc1",
-        "")) : (IL[0] = !0, IL[1] = !0, ML = 2) : (ML = 0, window.google.log("stbc_mc0", ""));
+        "")) : (IL[0] = !0, IL[1] = !0, ML = 2) : (ML = 0);
       uK(4, NL);
       _.oL = 0;
       OL(!IL[0]);
@@ -2692,9 +2664,7 @@ var _ = _ || {};
       }
     };
     var $wa = function (a) {
-      _.BK || (HK ? (ML = 1, _.JL = -1, IL = [!0], OL(!1), _.PL = !0, HL = [], UL(a)) : window.google.ml(Error("csl: rcoi"), !1, {
-        url: window.location.href
-      }))
+      _.BK || (HK ? (ML = 1, _.JL = -1, IL = [!0], OL(!1), _.PL = !0, HL = [], UL(a)) : null)
     };
     var UL = function (a) {
       QL() || (HL.push(ML++), -1 == _.JL && hxa(a))
@@ -2725,7 +2695,7 @@ var _ = _ || {};
       if ((0, _.Ma)(b) && 0 <= b && !IL[b]) {
         _.JL = b;
         b > (HK ? 1 : 0) && nL(!0);
-        1 == b && HK && window.google.log("stbc_rc1", "");
+        1 == b && HK;
         var c = window.google.isr.url,
           c = xL(c, "tbm", "isch"),
           c = xL(c, "ijn", b),
@@ -2894,11 +2864,6 @@ var _ = _ || {};
     };
     var sxa = function (a, b, c) {
       a = b ? "f" : "t";
-      0 == c % 5 && 100 > c && window.google.ml(Error("isr:thumb_fail"), !1, {
-        second_try: a,
-        fail: c,
-        total: _.nM
-      })
     };
     var txa = function (a) {
       ++_.oM;
@@ -2951,9 +2916,6 @@ var _ = _ || {};
     var sM = function () {
       fL("thumbnails.renderBigGulp_");
       if ((0, _.Ma)(window.google.isr.bg_done) && window.document.getElementById("images-grid")) {
-        -1 == _.pM && (0 == _.nM) && (_.pM = window.setTimeout(function () {
-          window.google.log("stbbgt", "&speed=" + EK.connectionSpeed)
-        }, 1E4));
         1 == cM && (aM(), !zK && window.google.isr.Hover && window.google.isr.Hover.loadDataForScreen(0));
         var a = zK ? window.google.isr.layout.getNumPages() : bM.length;
         cM >= a ? (window.google.stb.csi.updateRowsInfo && window.google.stb.csi.updateRowsInfo(),
@@ -3966,8 +3928,7 @@ var _ = _ || {};
               (0, _.Nf)(118, Hca);
               (0, _.Nf)(119, Ica);
               Mp() && (Op = -1, (0, _.$e)(window.document, "webkitvisibilitychange", Np));
-              rca() || (window.google.log("jbh",
-                "h=" + (0, window.encodeURIComponent)((0, _.Xf)().hash).substr(0, 40)), (0, _.Xf)().hash = "");
+              rca();
               _.Yo._h5h ? (sq(), qq(void 0, !0, h), window.onpopstate = Nca, window.onhashchange = Oca) : _.Yo._hm ? ((0, _.Bl)("", !0), rq(1, h), (0, _.sl)("", Qca)) : (rq(1, h), window.onhashchange = Pca);
               (0, _.Wo)((0, _.Sn)()) && (window.document.body.style.display = "", window.document.body.style.visibility = "", wq = !0);
               window.google.j.init = !0;

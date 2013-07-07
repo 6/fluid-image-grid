@@ -70,9 +70,11 @@
     return settings.hasOwnProperty(key) ? parseFloat(settings[key]) : defaultValue;
   };
 
-  var p, t = function (a, b) {
-      s.prototype[a] = b
-    }, u = function (a, b) {
+  var definePublicFunction = function (name, fn) {
+    s.prototype[name] = fn;
+  };
+
+  var p, u = function (a, b) {
       function c() {}
       c.prototype = b.prototype;
       a.p = b.prototype;
@@ -616,16 +618,16 @@
   s.prototype.getResults = function () {
     return this.U
   };
-  t("getResults", s.prototype.getResults);
-  s.prototype.ka = function () {
+  definePublicFunction("getResults", s.prototype.getResults);
+  s.prototype.getNumPages = function () {
     return this.l.ca()
   };
-  t("getNumPages", s.prototype.ka);
-  s.prototype.la = function (a) {
+  definePublicFunction("getNumPages", s.prototype.getNumPages);
+  s.prototype.getResultsForPage = function (a) {
     return this.l.da(a)
   };
-  t("getResultsForPage", s.prototype.la);
-  s.prototype.k = function (a) {
+  definePublicFunction("getResultsForPage", s.prototype.getResultsForPage);
+  s.prototype.layoutResults = function (a) {
     this.s = this.a.length ? 3 : 0;
     this.c = document.getElementById("rg");
     switch (this.s) {
@@ -642,8 +644,8 @@
       throw Error("Unexpected layout state: " + this.s);
     }
   };
-  t("layoutResults", s.prototype.k);
-  s.prototype.oa = function () {
+  definePublicFunction("layoutResults", s.prototype.layoutResults);
+  s.prototype.moveAndLayoutNewResults = function () {
     var a = document.getElementById("rg"),
       b = document.querySelectorAll("div.rg_add_chunk");
     if (a && 0 != b.length) {
@@ -663,28 +665,28 @@
       tc(this)
     } else 1 == this.a.length && 20 >= this.a[0]
   };
-  t("moveAndLayoutNewResults", s.prototype.oa);
+  definePublicFunction("moveAndLayoutNewResults", s.prototype.moveAndLayoutNewResults);
   var tc = function (a) {
     for (var b = 0; b < a.n.length; ++b) try {
       a.n[b]()
     } catch (c) {}
   };
-  s.prototype.J = function () {
+  s.prototype.areAllResultsLoaded = function () {
     return this.F
   };
-  t("areAllResultsLoaded", s.prototype.J);
-  s.prototype.ja = function (a) {
+  definePublicFunction("areAllResultsLoaded", s.prototype.areAllResultsLoaded);
+  s.prototype.getChunkSize = function (a) {
     return this.a[a] || 0
   };
-  t("getChunkSize", s.prototype.ja);
-  s.prototype.ma = function (a) {
+  definePublicFunction("getChunkSize", s.prototype.getChunkSize);
+  s.prototype.hasRenderedChunk = function (a) {
     return void 0 !== this.a[a]
   };
-  t("hasRenderedChunk", s.prototype.ma);
-  s.prototype.X = function () {
+  definePublicFunction("hasRenderedChunk", s.prototype.hasRenderedChunk);
+  s.prototype.getChunkSizeArray = function () {
     return this.a
   };
-  t("getChunkSizeArray", s.prototype.X);
+  definePublicFunction("getChunkSizeArray", s.prototype.getChunkSizeArray);
   var sc = function (a) {
     a.U = [];
     pc(a);
@@ -735,8 +737,8 @@
   s.prototype.ia = function (a) {
     this.n.push(a)
   };
-  t("addNewResultsListener", s.prototype.ia);
-  s.prototype.pa = function (a) {
+  definePublicFunction("addNewResultsListener", s.prototype.ia);
+  s.prototype.removeNewResultsListener = function (a) {
     var b = this.n,
       c = -1;
     if (Array.prototype.indexOf) c = Array.prototype.indexOf.call(b, a);
@@ -747,7 +749,7 @@
           break
         } a = c; - 1 != a && b.splice(a, 1)
   };
-  t("removeNewResultsListener", s.prototype.pa);
+  definePublicFunction("removeNewResultsListener", s.prototype.removeNewResultsListener);
   var nc = function () {}, dc = function (a) {
       this.a = a
     }, md = dc,
@@ -823,7 +825,7 @@
     this.h && this.h.length && (this.a.k(), tc(this.a))
   };
   p.T = function () {
-    for (var a = this.a.X(), b = 0, c = this.e.childNodes, d = 0, e; e = c[d]; d++)
+    for (var a = this.a.getChunkSizeArray(), b = 0, c = this.e.childNodes, d = 0, e; e = c[d]; d++)
       if (hasClass(e, "rg_di")) uc(this.a, e), e.hasAttribute("data-ci") && (a.push(b), b = 0), b++;
     0 < b && (a.push(b), jd(this.a))
   };
@@ -875,7 +877,7 @@
     }
     if (c.a) {
       4 * a.k > c.a && (a.k = Math.floor(c.a / 4), a.a.h = a.k);
-      for (var Xa = new qd(a.k, !a.a.J()), N = h, Db = c.a, N = N || [], la = [0, 0], Eb = [], G = 0; G < N.length; G++) {
+      for (var Xa = new qd(a.k, !a.a.areAllResultsLoaded()), N = h, Db = c.a, N = N || [], la = [0, 0], Eb = [], G = 0; G < N.length; G++) {
         var ca = N[G];
         if (ca) {
           la[G] = ca.a;
@@ -1091,7 +1093,7 @@
       }
       a.h = [];
       for (var ib = J; ib < e.length; ib++) e[ib].style.display = "none", a.h.push(e[ib]);
-      a.a.J() && (1 == a.c.length && 3 != b) && ld(a.c[0].g.length)
+      a.a.areAllResultsLoaded() && (1 == a.c.length && 3 != b) && ld(a.c[0].g.length)
     }
   }, td = function (a, b) {
       this.d = a;
@@ -1106,7 +1108,7 @@
       this.width = d
     };
   var vd = new s;
-  vd.k();
+  vd.layoutResults();
   var wd = ["google", "isr", "layout"],
     $ = this;
   for (var yd; wd.length && (yd = wd.shift());) wd.length || void 0 === vd ? $ = $[yd] ? $[yd] : $[yd] = {} : $[yd] = vd;

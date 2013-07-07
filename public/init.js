@@ -14,7 +14,6 @@
         "bgtprefetch": "1",
         "bgtprefetchlp": 0,
         "bigGulpEnabled": false,
-        "connectionSpeed": "fast",
         "csLayout": true,
         "genChunk": "1",
         "genChunkMax": 9,

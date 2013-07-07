@@ -43,6 +43,10 @@
     });
   };
 
+  var parseJSON = function (str) {
+    return window.JSON ? window.JSON.parse(str) : eval("(" + str + ")");
+  };
+
   var typeString = function (obj) {
     var typeOfString = typeof obj;
     if ("object" == typeOfString)
@@ -125,9 +129,7 @@
   var Qa, settings,
     lb = numericalSetting("data-mrw", defaults.mrw),
     mb = numericalSetting("data-isuf", defaults.isuf),
-    nb = function (a) {
-      return window.JSON ? window.JSON.parse(a) : eval("(" + a + ")")
-    }, qb = function (a, b, c, d) {
+    qb = function (a, b, c, d) {
       return {
         P: d + "px",
         r: ""
@@ -532,7 +534,7 @@
         Cb = void 0;
         for (var Cd = Va.getElementsByTagName("div"), xc = 0, Ea = void 0; Ea = Cd[xc]; xc++)
           if ("rg_meta" == Ea.className) {
-            Wa = nb(Ea.innerText || Ea.textContent || Ea.innerHTML);
+            Wa = parseJSON(Ea.innerText || Ea.textContent || Ea.innerHTML);
             break
           } if (!Wa) throw Error("No metadata for image.");
       Ad[Bd] = new rb(Va, Wa, Cb)

@@ -1,4 +1,13 @@
 var _ = _ || {};
+window.google = {
+  time: function () {
+    return new Date().getTime();
+  },
+  y: {},
+  pmc: {
+    j: {}
+  }
+};
 (function (_) {
   var window = this;
   try {

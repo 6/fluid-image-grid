@@ -956,9 +956,7 @@ window.google = {
       yf = false,
       lba = _.kf;
     google.med = function() {
-      (0, _.xwa)(true);
       (0, _.zwa)(window.google.pmc.jstr);
-      (0, _.lxa)();
       (0, _.Bxa)();
       yf = true;
     };
@@ -2093,9 +2091,6 @@ window.google = {
     var GK;
     var Bwa;
     var dL;
-    _.xwa = function (a) {
-      window.document.getElementById("tbd") && (_.mK = a || false, (0, _.tK)(), (0, _.$e)(window, "resize", _.tK), wwa())
-    };
     var uK = function (a, b) {
       _.vK[a] || (_.vK[a] = []);
       _.vK[a].push(b)
@@ -2751,12 +2746,6 @@ window.google = {
     var kxa = function () {
       tL = "sw";
       return true
-    };
-    _.lxa = function () {
-      YL[1] = true;
-      WL();
-      _.sc.vx ? window.document.addEventListener("DOMMouseScroll", kxa, false) : (0, _.$e)(window.document, "mousewheel", kxa);
-      uK(4, WL)
     };
     var aM = function () {
       if (!zK) {

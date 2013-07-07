@@ -688,7 +688,9 @@
   var sc = function (a) {
     a.U = [];
     pc(a);
-    a.l.aa()
+    this.c = [];
+    this.h = [];
+    this.n = 0;
   }, uc = function (a, b) {
       b.hasAttribute("data-ri") || b.setAttribute("data-ri", a.qa++)
     }, pc = function (a) {
@@ -848,11 +850,6 @@
     sd(this, a, b, [], d);
     f && this.e.insertBefore(f, e)
   };
-  p.aa = function () {
-    this.c = [];
-    this.h = [];
-    this.n = 0
-  };
   var sd = function (a, b, c, d, e) {
     for (var f, g, h, k = null, l = null, n = 0; n < d.length; n++) {
       for (var r = d[n], v = r.childNodes, m = 0, q = Number.MAX_VALUE, w = [], F = 0, aa; aa = v[F]; F++)
@@ -1011,10 +1008,6 @@
         }
         z.o += pa[Ja];
         z.o += Xb;
-        for (var Nd = J, qa = 0; qa < X[Ja]; qa++) {
-          var image = images[cb + qa];
-          image.I || image.padding || Nd++
-        }
         for (qa = 0; qa < X[Ja]; qa++) {
           image = images[cb];
 
@@ -1116,6 +1109,5 @@
   vd.k();
   var wd = ["google", "isr", "layout"],
     $ = this;
-  wd[0] in $ || !$.execScript || $.execScript("var " + wd[0]);
   for (var yd; wd.length && (yd = wd.shift());) wd.length || void 0 === vd ? $ = $[yd] ? $[yd] : $[yd] = {} : $[yd] = vd;
 })();

@@ -2629,18 +2629,17 @@ window.google = {
       }
     };
     var dM = function (a) {
-      if ((zK || bM && !(0 > a) && bM[a]) && !(0 > a || eM[a] || zK && 1 < a && 0 == scrollTop())) {
+      if (!(0 > a || eM[a] || 1 < a && 0 === scrollTop())) {
         fM.push(a);
-        if (!zK || mxa(a)) eM[a] = true;
-        gM || hM()
+        gM || hM();
       }
     };
     var hM = function () {
       var a = fM.shift();
-      (0, _.Ma)(a) ? (gM = true, (0, _.nxa)(a)) : gM = false
+      _.Ma(a) ? (gM = true, _.nxa(a)) : gM = false;
     };
     _.nxa = function (a) {
-      if ((zK ? !window.google.isr.layout.getResultsForPage(a) : !bM || 0 > a || !bM[a]) || iM[a]) hM();
+      if (!window.google.isr.layout.getResultsForPage(a) || iM[a]) hM();
       else {
         oxa(a);
         var b;

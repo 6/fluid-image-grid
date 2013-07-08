@@ -992,14 +992,32 @@ window.google = {
               b = null;
             c = +window.document.getElementById("images-grid-inner").offsetWidth;
             window.google.isr.layout.layoutResults(true);
-            a ? (a = 0, mL(a)) : BL();
+            a ? (a = 0) : BL();
           }
         }, 50);
       });
       window.google.isr.url = "/";
       window.google.isr.bgd = TK;
       _.XK = true;
-      _.Bxa();
+      _.vK[4] || (_.vK[4] = []);
+      _.vK[4].push(function() {
+        var a = new Date().getTime(),
+        b = a - yxa;
+        if (b >= 15) {
+          var c = scrollTop(),
+            d = c - zxa;
+          yxa = a;
+          zxa = c;
+          Axa++;
+          a = Math.abs(d / b);
+          if (- 1 != rM) {
+            window.clearTimeout(rM);
+            rM = -1;
+          }
+          BL();
+        }
+      });
+      BL();
       yf = true;
     };
     (0, _.za)("google.register", _.vf, void 0);
@@ -2701,28 +2719,6 @@ window.google = {
     };
     var oxa = function (a) {
       zK || (1 > a || tM[a]) || (bM[a].className = "rg_ctlv", tM[a] = true)
-    };
-    _.Bxa = function () {
-      var a = window.document.getElementById("rg");
-      _.vK[4] || (_.vK[4] = []);
-      _.vK[4].push(function() {
-        var a = new Date().getTime(),
-        b = a - yxa;
-        if (b >= 15) {
-          var c = scrollTop(),
-            d = c - zxa;
-          yxa = a;
-          zxa = c;
-          Axa++;
-          a = Math.abs(d / b);
-          if (- 1 != rM) {
-            window.clearTimeout(rM);
-            rM = -1;
-          }
-          BL();
-        }
-      });
-      BL();
     };
     var AL = function () {
       aM();

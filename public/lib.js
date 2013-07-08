@@ -2487,7 +2487,7 @@ window.google = {
       }
     };
     var NL = function () {
-      var a = zK ? zL() : qL(),
+      var a = currentPage(),
         b = zK ? window.google.isr.layout.getNumPages() : GL.length;
       if (!b || QL() || 0 <= _.JL || _.PL || window.google.isr.layout && !window.google.isr.bg_done) _.JL > (HK ? 1 : 0) && nL(true);
       else {
@@ -2578,7 +2578,7 @@ window.google = {
         c = 1728E5;
       0 < +EK.pageAgeLimitMillis && (c = +EK.pageAgeLimitMillis);
       if (b - jxa > c) return true;
-      c = zK ? zL() : qL();
+      c = currentPage();
       if (!zK) {
         fL("getVisibleScreens");
         for (var c = c ? c : qL(), d = cL(), e = 0 < c.length ? [Math.floor(c[0] / d)] : [], f = 0, g = 1; g < c.length; g++) {
@@ -2689,7 +2689,7 @@ window.google = {
       a && jM <= a && hM()
     };
     var prefetchPage = function () {
-      var a = zL();
+      var a = currentPage();
       if (0 != a.length) {
         for (var b = 0; b < a.length; b++) dM(a[b]);
         var c = a[a.length - 1],
@@ -2703,7 +2703,7 @@ window.google = {
           0 < b && d >= b && (e = wxa);
           FK && (e = 2);
           qM = window.setTimeout(function () {
-            for (var a = zK ? 1 : cL(), b = 1; b <= a * e; b++) dM(c + b), dM(d - b)
+            for (var a = 1, b = 1; b <= a * e; b++) dM(c + b), dM(d - b)
           }, a)
         }
       }
@@ -2734,23 +2734,20 @@ window.google = {
       var b = window.google.isr.layout.getNumPages();
       return a < b - 1 ? true : a == b - 1 ? QL() : false
     };
-    var zL = function () {
+    var currentPage = function () {
       var a = [],
         b = scrollTop(),
         c = b + QK;
-      if (window.document.getElementById("rg")) {
-        var d;
-        d = (d = window.document.getElementById("rg")) ? d.querySelectorAll("div.rgsh") : [];
-        if (!d.length) return [0];
-        for (var e = 0; e < d.length; e++) {
-          var f = Cxa(d[e]);
-          if (f > b && (a.push(e), f + d[e].offsetHeight >= c)) break
-        }(b = d[d.length - 1]) && Cxa(b) + b.offsetHeight < c && a.push(d.length)
-      }
-      return a
+        var pages = window.document.getElementById("rg").querySelectorAll("div.rgsh");
+        if (!pages.length) return [0];
+        for (var i = 0; i < pages.length; i++) {
+          var f = yOffset(pages[i]);
+          if (f > b && (a.push(i), f + pages[i].offsetHeight >= c)) break
+        }
+      return a;
     };
-    var Cxa = function (a) {
-      return a.hasAttribute("data-offset") ? (0, window.parseInt)(a.getAttribute("data-offset"), 10) : (0, _.se)(a)
+    var yOffset = function (pageElement) {
+      return pageElement.hasAttribute("data-offset") ? window.parseInt(pageElement.getAttribute("data-offset"), 10) : _.se(pageElement);
     };
     var SL = function (a) {
       var b = void 0 === a ? window.google.isr.layout.getResults() : window.google.isr.layout.getResultsForPage(a);

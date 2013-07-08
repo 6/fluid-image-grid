@@ -997,7 +997,6 @@ window.google = {
         }, 50);
       });
       window.google.isr.url = "/";
-      window.google.isr.bgd = TK;
       _.XK = true;
       _.vK[4] || (_.vK[4] = []);
       _.vK[4].push(function() {
@@ -2164,22 +2163,6 @@ window.google = {
       var a = window.document.getElementById("rg");
       return a ? a.querySelectorAll(eL() + ".rg_ul") : []
     };
-    var TK = function () {
-      window.clearTimeout(_.ZK);
-      RK("bg");
-      window.google.isr.bg_done = true;
-      _.$K = false;
-      _.KK || Pwa();
-      window.setTimeout(function () {
-        zK || (window.google.isr.prs || _.KK)
-      }, 0);
-      if (_.oK && (Qwa(), !zK)) {
-        var a = Math.ceil(hL() / cL());
-        _.pK[a + ""] = "1"
-      }!CK || (window.google.isr.bg_stored || window.location.href.match(/(#q=|#.*&q=)/)) ||
-        (window.google.isr.bg_stored = true, (0, _.To)());
-      a = zK ? window.google.isr.layout.getNumPages() : Owa().length;
-    };
     var jL = function () {
       try {
         var a = window.JSON.parse(window.sessionStorage.getItem("images-sh")) || {};
@@ -2284,7 +2267,6 @@ window.google = {
     var Kwa = function () {
       zK ? null : _.XK ? (_.YK = false, window.google.isr.bg_done || _.$K || (_.$K = true, _.oK ? $wa(function () {
         DL();
-        TK()
       }) : EL(["bg"], TK))) : _.YK = true
     };
     var EL = function (a, b) {

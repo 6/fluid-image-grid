@@ -992,7 +992,7 @@ window.google = {
               b = null;
             c = +window.document.getElementById("images-grid-inner").offsetWidth;
             window.google.isr.layout.layoutResults(true);
-            a ? (a = 0) : BL();
+            a ? (a = 0) : prefetchPage();
           }
         }, 50);
       });
@@ -1014,10 +1014,10 @@ window.google = {
             window.clearTimeout(rM);
             rM = -1;
           }
-          BL();
+          prefetchPage();
         }
       });
-      BL();
+      prefetchPage();
       yf = true;
     };
     (0, _.za)("google.register", _.vf, void 0);
@@ -2688,8 +2688,8 @@ window.google = {
       var a = +EK.nTbnsPending;
       a && jM <= a && hM()
     };
-    var BL = function () {
-      var a = zK ? zL() : qL();
+    var prefetchPage = function () {
+      var a = zL();
       if (0 != a.length) {
         for (var b = 0; b < a.length; b++) dM(a[b]);
         var c = a[a.length - 1],

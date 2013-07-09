@@ -1,17 +1,13 @@
 (function() {
   var _ = {};
 
-  var scrollTop = function () {
-    return window.pageYOffset || window.document.body.scrollTop || window.document.documentElement.scrollTop || 0;
-  };
-
   var yOffset = function (pageElement) {
     return pageElement.hasAttribute("data-offset") ? window.parseInt(pageElement.getAttribute("data-offset"), 10) : _.se(pageElement);
   };
 
   var currentPage = function () {
     var a = [],
-      b = scrollTop(),
+      b = $('body').scrollTop(),
       c = b + QK;
       var pages = window.document.getElementById("rg").querySelectorAll("div.rgsh");
       if (!pages.length) return [0];
@@ -130,7 +126,7 @@
   };
 
   var dM = function (a) {
-    if (!(0 > a || eM[a] || 1 < a && 0 === scrollTop())) {
+    if (!(0 > a || eM[a] || 1 < a && 0 === $('body').scrollTop())) {
       fM.push(a);
       if(!gM) {
         hM();
@@ -247,7 +243,7 @@
       else {
         _.vL = Twa;
       }
-      var top = scrollTop(),
+      var top = $('body').scrollTop(),
         b = top - _.vL;
       if (0 !== b) {
         _.vL = top;
@@ -262,7 +258,7 @@
           b = window.innerHeight || window.document.documentElement.offsetHeight;
         if (a > 0 && b > 0) {
           var grid = _.se(window.document.getElementById("images-grid")),
-            a = scrollTop() > grid,
+            a = $('body').scrollTop() > grid,
             b = null;
           c = +window.document.getElementById("images-grid-inner").offsetWidth;
           window.google.isr.layout.layoutResults(true);
@@ -275,7 +271,7 @@
       var a = new Date().getTime(),
       b = a - yxa;
       if (b >= 15) {
-        var c = scrollTop(),
+        var c = $('body').scrollTop(),
           d = c - zxa;
         yxa = a;
         zxa = c;

@@ -1,10 +1,6 @@
 (function() {
   var _ = {};
 
-  var yOffset = function (pageElement) {
-    return pageElement.hasAttribute("data-offset") ? window.parseInt(pageElement.getAttribute("data-offset"), 10) : _.se(pageElement);
-  };
-
   var currentPage = function () {
     var a = [],
       b = $('body').scrollTop(),
@@ -12,8 +8,9 @@
       var pages = window.document.getElementById("rg").querySelectorAll("div.rgsh");
       if (!pages.length) return [0];
       for (var i = 0; i < pages.length; i++) {
-        var f = yOffset(pages[i]);
-        if (f > b && (a.push(i), f + pages[i].offsetHeight >= c)) break;
+        var page = pages[i];
+        var pageTopOffset = page.hasAttribute("data-offset") ? window.parseInt(page.getAttribute("data-offset"), 10) : $(page).offset().top;
+        if (pageTopOffset > b && (a.push(i), pageTopOffset + page.offsetHeight >= c)) break;
       }
     return a;
   };
@@ -37,38 +34,6 @@
         }, a);
       }
     }
-  };
-
-  _.se = function (a) {
-    return _.qe(a).y;
-  };
-
-  _.Wc = function (a) {
-    return 9 == a.nodeType ? a : a.ownerDocument || a.document;
-  };
-
-  _.Rc = function (a, b) {
-    this.x = undefined !== a ? a : 0;
-    this.y = undefined !== b ? b : 0;
-  };
-
-  _.hd = function (a) {
-    var b = a.documentElement;
-    a = a.parentWindow || a.defaultView;
-    return new _.Rc(a.pageXOffset || b.scrollLeft, a.pageYOffset || b.scrollTop);
-  };
-
-  _.qe = function (a) {
-    var b, c = _.Wc(a),
-      d = $(a).css('position'),
-      f = new _.Rc(0, 0),
-      g = (c ? _.Wc(c) : window.document).documentElement;
-    if (a == g) return f;
-    b = a.getBoundingClientRect();
-    a = _.hd(_.Wc(c));
-    f.x = b.left + a.x;
-    f.y = b.top + a.y;
-    return f;
   };
 
   var dM = function (a) {
@@ -202,8 +167,8 @@
         var a = window.innerWidth || window.document.documentElement.offsetWidth,
           b = window.innerHeight || window.document.documentElement.offsetHeight;
         if (a > 0 && b > 0) {
-          var grid = _.se(window.document.getElementById("images-grid")),
-            a = $('body').scrollTop() > grid,
+          var gridTopOffset = $("#images-grid").offset().top,
+            a = $('body').scrollTop() > gridTopOffset,
             b = null;
           c = +window.document.getElementById("images-grid-inner").offsetWidth;
           window.google.isr.layout.layoutResults(true);

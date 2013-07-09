@@ -2618,33 +2618,39 @@ window.google = {
     };
     var hM = function () {
       var a = fM.shift();
-      _.Ma(a) ? (gM = true, _.nxa(a)) : gM = false;
-    };
-    _.nxa = function (a) {
-      if (!window.google.isr.layout.getResultsForPage(a) || iM[a]) hM();
-      else {
-        oxa(a);
-        var b;
-        if (zK) {
-          b = window.google.isr.layout.getResultsForPage(a);
+      if (undefined !== a) {
+        gM = true;
+        if (!window.google.isr.layout.getResultsForPage(a) || iM[a]) hM();
+        else {
+          oxa(a);
+          var b = window.google.isr.layout.getResultsForPage(a);
           for (var c = [], d = 0; d < b.length; d++) c.push(b[d].querySelector("img.rg_i"));
-          b = c
-        } else b = bM[a].getElementsByTagName("IMG");
-        jM += b.length;
-        for (c = 0; d = b[c++];) {
-          var e = d.getAttribute("data-src");
-          !e || "string" == typeof d.src && d.src ? kM() : ((0, _.$e)(d, "load", kM), (0, _.$e)(d, "error", pxa), FK ? (qxa.push({
-            wY: d,
-            z1: e
-          }), 6 > lM && rxa()) : d.src = e)
+          b = c;
+          jM += b.length;
+          for (c = 0; d = b[c++];) {
+            var e = d.getAttribute("data-src");
+            if(!e || "string" == typeof d.src && d.src) {
+              kM();
+            }
+            else {
+              _.$e(d, "load", kM);
+              FK ? (qxa.push({
+                wY: d,
+                z1: e
+              }), 6 > lM && rxa()) : d.src = e;
+            }
+          }
+          if (mxa(a)) iM[a] = true;
+          0 == +EK.nTbnsPending && hM()
         }
-        if (!zK || mxa(a)) iM[a] = true;
-        0 == +EK.nTbnsPending && hM()
+      }
+      else {
+        gM = false;
       }
     };
     var rxa = function () {
       var a = qxa.shift();
-      (0, _.Ma)(a) && (a.wY.src = a.z1, lM++)
+      undefined !== a && (a.wY.src = a.z1, lM++);
     };
     var pxa = function (a) {
       ++_.mM;

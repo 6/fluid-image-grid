@@ -93,12 +93,8 @@
     return a ? new _.Vc(_.Wc(a)) : Xc || (Xc = new _.Vc);
   };
 
-  _.id = function (a) {
-    return a.documentElement;
-  };
-
   _.hd = function (a) {
-    var b = _.id(a);
+    var b = a.documentElement;
     a = a.parentWindow || a.defaultView;
     return new _.Rc(a.pageXOffset || b.scrollLeft, a.pageYOffset || b.scrollTop);
   };

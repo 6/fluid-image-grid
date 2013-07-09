@@ -106,12 +106,10 @@
   _.qe = function (a) {
     var b, c = _.Wc(a),
       d = _.fe(a, "position"),
-      e = _.Wd && c.getBoxObjectFor && !a.getBoundingClientRect && "absolute" == d && (b = c.getBoxObjectFor(a)) && (0 > b.screenX || 0 > b.screenY),
       f = new _.Rc(0, 0),
       g = _.ne(c);
     if (a == g) return f;
     if (a.getBoundingClientRect) b = oe(a), a = _.Ud(_.Uc(c)), f.x = b.left + a.x, f.y = b.top + a.y;
-    else if (c.getBoxObjectFor && !e) b = c.getBoxObjectFor(a), a = c.getBoxObjectFor(g), f.x = b.screenX - a.screenX, f.y = b.screenY - a.screenY;
     return f;
   };
 

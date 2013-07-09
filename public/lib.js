@@ -83,14 +83,8 @@
     "bgtprefetch": "1",
     "bgtprefetchlp": 0,
     "genChunk": true,
-    "genChunkMax": 9,
-    "genMoreResultsChunkCutoff": 3,
-    "genPrefetchCutoff": 1,
     "mpfStart": 1,
-    "nTbnsPending": 8,
-    "numResults": 1230,
-    "pageAgeLimitMillis": 172800000,
-    "showMoreResults": true
+    "nTbnsPending": 8
   };
   var yxa = new Date().getTime(),
   Swa = 0,
@@ -103,18 +97,10 @@
   vxa = true,
   uxa = false,
   gM = false;
-  _.nK = true;
-  _.XK = true;
-  _.Wd = false;
-  _.Jc = false;
-  _.jd = false;
   _.vL = 0;
   _.wL = -1;
-  _.pM = -1;
-  _.oK = EK.genChunk;
   _.vK = {};
   _.vK[4] || (_.vK[4] = []);
-  _.Ca = this;
 
   window.init = function() {
     $(window).on("scroll", function(a) {

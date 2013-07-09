@@ -3,14 +3,13 @@
 
   var currentPage = function () {
     var a = [],
-      b = $('body').scrollTop(),
-      c = b + QK;
+      b = $('body').scrollTop();
       var pages = window.document.getElementById("rg").querySelectorAll("div.rgsh");
       if (!pages.length) return [0];
       for (var i = 0; i < pages.length; i++) {
         var page = pages[i];
         var pageTopOffset = page.hasAttribute("data-offset") ? window.parseInt(page.getAttribute("data-offset"), 10) : $(page).offset().top;
-        if (pageTopOffset > b && (a.push(i), pageTopOffset + page.offsetHeight >= c)) break;
+        if (pageTopOffset > b && (a.push(i), pageTopOffset + page.offsetHeight >= b)) break;
       }
     return a;
   };
@@ -27,8 +26,7 @@
         var a = 0 < a ? a : 100,
           e = 1,
           b = +EK.mpfStart;
-        0 < b && d >= b && (e = wxa);
-        FK && (e = 2);
+        0 < b && d >= b && (e = 1);
         qM = window.setTimeout(function () {
           for (var a = 1, b = 1; b <= a * e; b++) dM(c + b), dM(d - b)
         }, a);
@@ -37,7 +35,7 @@
   };
 
   var dM = function (a) {
-    if (!(0 > a || eM[a] || 1 < a && 0 === $('body').scrollTop())) {
+    if (!(0 > a || 1 < a && 0 === $('body').scrollTop())) {
       fM.push(a);
       if(!gM) {
         hM();
@@ -49,7 +47,7 @@
     var a = fM.shift();
     if (undefined !== a) {
       gM = true;
-      if (!window.google.isr.layout.getResultsForPage(a) || iM[a]) {
+      if (!window.google.isr.layout.getResultsForPage(a)) {
         hM();
       }
       else {
@@ -74,17 +72,8 @@
     }
   };
 
-  var rxa = function () {
-    var a = qxa.shift();
-    undefined !== a && (a.wY.src = a.z1, lM++);
-  };
-
   var kM = function () {
     ++_.nM; - 1 != _.pM && (window.clearTimeout(_.pM), _.pM = -1);
-    FK && (lM--, 6 > lM && window.setTimeout(function() {
-      var a = qxa.shift();
-      undefined !== a && (a.wY.src = a.z1, lM++);
-    }, 0));
     jM--;
     var a = +EK.nTbnsPending;
     a && jM <= a && hM();
@@ -103,33 +92,17 @@
     "pageAgeLimitMillis": 172800000,
     "showMoreResults": true
   };
-  var GK = EK.showMoreResults,
-  Bwa = EK.numResults,
-  yK = "rg_di",
-  AK = "div",
-  yxa = new Date().getTime(),
-  wxa = 1,
+  var yxa = new Date().getTime(),
   Swa = 0,
-  Axa = 0,
   Twa = 0,
-  QK = 0,
   jM = 0,
-  lM = 0,
   zxa = 0,
   qM = -1,
   rM = -1,
-  eM = [],
   fM = [],
-  iM = [],
-  qxa = [],
-  Xc = null,
-  zK = true,
   vxa = true,
-  FK = false,
   uxa = false,
-  gM = false,
-  HK = false,
-  yf = false;
+  gM = false;
   _.nK = true;
   _.XK = true;
   _.Wd = false;
@@ -185,7 +158,6 @@
           d = c - zxa;
         yxa = a;
         zxa = c;
-        Axa++;
         a = Math.abs(d / b);
         if (- 1 != rM) {
           window.clearTimeout(rM);
@@ -195,6 +167,5 @@
       }
     });
     prefetchPage();
-    yf = true;
   };
 })();

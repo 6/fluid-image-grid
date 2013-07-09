@@ -39,21 +39,6 @@
     }
   };
 
-  var oe = function (a) {
-    var b;
-    try {
-      b = a.getBoundingClientRect();
-    } catch (c) {
-      return {
-        left: 0,
-        top: 0,
-        right: 0,
-        bottom: 0
-      };
-    }
-    return b;
-  };
-
   _.se = function (a) {
     return _.qe(a).y;
   };
@@ -62,35 +47,9 @@
     return 9 == a.nodeType ? a : a.ownerDocument || a.document;
   };
 
-  _.ee = function (a, b) {
-    var c = _.Wc(a);
-    return c.defaultView && c.defaultView.getComputedStyle && (c = c.defaultView.getComputedStyle(a, null)) ? c[b] || c.getPropertyValue(b) || "" : "";
-  };
-
-  _.fe = function (a, b) {
-    return _.ee(a, b) || (a.currentStyle ? a.currentStyle[b] : null) || a.style && a.style[b];
-  };
-
   _.Rc = function (a, b) {
     this.x = undefined !== a ? a : 0;
     this.y = undefined !== b ? b : 0;
-  };
-
-  _.ne = function (a) {
-    a = a ? _.Wc(a) : window.document;
-    return a.documentElement;
-  };
-
-  _.Ud = function (a) {
-    return _.hd(a.A);
-  };
-
-  _.Vc = function (a) {
-    this.A = a || _.Ca.document || window.document;
-  };
-
-  _.Uc = function (a) {
-    return a ? new _.Vc(_.Wc(a)) : Xc || (Xc = new _.Vc);
   };
 
   _.hd = function (a) {
@@ -101,11 +60,14 @@
 
   _.qe = function (a) {
     var b, c = _.Wc(a),
-      d = _.fe(a, "position"),
+      d = $(a).css('position'),
       f = new _.Rc(0, 0),
-      g = _.ne(c);
+      g = (c ? _.Wc(c) : window.document).documentElement;
     if (a == g) return f;
-    if (a.getBoundingClientRect) b = oe(a), a = _.Ud(_.Uc(c)), f.x = b.left + a.x, f.y = b.top + a.y;
+    b = a.getBoundingClientRect();
+    a = _.hd(_.Wc(c));
+    f.x = b.left + a.x;
+    f.y = b.top + a.y;
     return f;
   };
 

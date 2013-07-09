@@ -128,7 +128,7 @@
     var a = fM.shift();
     if (undefined !== a) {
       gM = true;
-      if (!window.google.isr.layout.getResultsForPage(a) || iM[a]) {;
+      if (!window.google.isr.layout.getResultsForPage(a) || iM[a]) {
         hM();
       }
       else {

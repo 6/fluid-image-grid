@@ -38,17 +38,17 @@
     if (!(0 > a || 1 < a && 0 === $('body').scrollTop())) {
       fM.push(a);
       if(!gM) {
-        hM();
+        loadImages();
       }
     }
   };
 
-  var hM = function () {
+  var loadImages = function () {
     var a = fM.shift();
     if (undefined !== a) {
       gM = true;
       if (!window.google.isr.layout.getResultsForPage(a)) {
-        hM();
+        loadImages();
       }
       else {
         var b = window.google.isr.layout.getResultsForPage(a);
@@ -76,7 +76,7 @@
     ++_.nM; - 1 != _.pM && (window.clearTimeout(_.pM), _.pM = -1);
     jM--;
     var a = +EK.nTbnsPending;
-    a && jM <= a && hM();
+    a && jM <= a && loadImages();
   };
 
   var EK = {

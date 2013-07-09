@@ -1,4 +1,6 @@
 (function () {
+  window.google || (window.google = {});
+  window.google.pmc || (window.google.pmc = {});
   window.google.biw = 1162;
   window.google.bih = 370;
   window.google.pmc.jstr = {

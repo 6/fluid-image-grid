@@ -955,7 +955,7 @@ window.google = {
     var Ef, Ff, xf = {}, wf = [],
       yf = false,
       lba = _.kf;
-    google.med = function() {
+    window.init = function() {
       EK = window.google.pmc.jstr.meta;
       FK = false;
       GK = EK.showMoreResults;

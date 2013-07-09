@@ -39,11 +39,6 @@
     }
   };
 
-  var IK = function (a, b, c) {
-    _.$e(a, b, c);
-    _.Lwa.push([a, b, c]);
-  };
-
   var oe = function (a) {
     var b;
     try {
@@ -57,11 +52,6 @@
       };
     }
     return b;
-  };
-
-  _.$e = function (a, b, c, d) {
-    a.addEventListener ? a.addEventListener(b, c, false) : a.attachEvent("on" + b, c);
-    (a == window || a == window.document || a == window.document.documentElement || a == window.document.body);
   };
 
   _.se = function (a) {
@@ -152,7 +142,7 @@
             kM();
           }
           else {
-            _.$e(d, "load", kM);
+            $(d).on("load", kM);
             d.src = e;
           }
         }
@@ -228,13 +218,12 @@
   _.wL = -1;
   _.pM = -1;
   _.oK = EK.genChunk;
-  _.Lwa = [];
   _.vK = {};
   _.vK[4] || (_.vK[4] = []);
   _.Ca = this;
 
   window.init = function() {
-    IK(window, "scroll", function(a) {
+    $(window).on("scroll", function(a) {
       var currentTime = new Date().getTime();
       if (40 < currentTime - Swa) {
         Swa = currentTime;
@@ -251,7 +240,7 @@
       }
     });
 
-    IK(window, "resize", function() {
+    $(window).on("resize", function() {
       window.clearTimeout(_.wL);
       _.wL = window.setTimeout(function () {
         var a = window.innerWidth || window.document.documentElement.offsetWidth,

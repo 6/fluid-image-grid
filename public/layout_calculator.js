@@ -1,24 +1,4 @@
 (function () {
-  window.google || (window.google = {});
-  window.google.pmc || (window.google.pmc = {});
-  window.google.biw = 1162;
-  window.google.bih = 370;
-  window.google.pmc.jstr = {
-    "meta": {
-      "bgtprefetch": "1",
-      "bgtprefetchlp": 0,
-      "genChunk": true,
-      "genChunkMax": 9,
-      "genMoreResultsChunkCutoff": 3,
-      "genPrefetchCutoff": 1,
-      "mpfStart": 1,
-      "nTbnsPending": 8,
-      "numResults": 1230,
-      "pageAgeLimitMillis": 172800000,
-      "showMoreResults": true
-    }
-  };
-
   var defaults = {
     row_height: 140,
     mrw: 80,

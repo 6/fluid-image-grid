@@ -14,6 +14,14 @@
     return a;
   };
 
+  var prefetchPageIfNeeded = function() {
+    var currentTime = new Date().getTime();
+    if (currentTime - lastPrefetchTime >= 15) {
+      lastPrefetchTime = currentTime;
+      prefetchPage();
+    }
+  };
+
   var prefetchPage = function () {
     var a = currentPage();
     if (0 !== a.length) {
@@ -97,8 +105,6 @@
   gM = false;
   _.vL = 0;
   _.wL = -1;
-  _.vK = {};
-  _.vK[4] || (_.vK[4] = []);
 
   window.init = function() {
     $(window).on("scroll", function(a) {
@@ -114,7 +120,7 @@
         b = top - _.vL;
       if (0 !== b) {
         _.vL = top;
-        _.vK[4][0]({sp: top, sc: b});
+        prefetchPageIfNeeded();
       }
     });
 
@@ -132,14 +138,6 @@
           a ? (a = 0) : prefetchPage();
         }
       }, 50);
-    });
-
-    _.vK[4].push(function() {
-      var currentTime = new Date().getTime();
-      if (currentTime - lastPrefetchTime >= 15) {
-        lastPrefetchTime = currentTime;
-        prefetchPage();
-      }
     });
     prefetchPage();
   };

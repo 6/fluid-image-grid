@@ -86,13 +86,11 @@
     "mpfStart": 1,
     "nTbnsPending": 8
   };
-  var yxa = new Date().getTime(),
+  var lastPrefetchTime = new Date().getTime(),
   Swa = 0,
   Twa = 0,
   jM = 0,
-  zxa = 0,
   qM = -1,
-  rM = -1,
   fM = [],
   vxa = true,
   uxa = false,
@@ -137,18 +135,9 @@
     });
 
     _.vK[4].push(function() {
-      var a = new Date().getTime(),
-      b = a - yxa;
-      if (b >= 15) {
-        var c = $('body').scrollTop(),
-          d = c - zxa;
-        yxa = a;
-        zxa = c;
-        a = Math.abs(d / b);
-        if (- 1 != rM) {
-          window.clearTimeout(rM);
-          rM = -1;
-        }
+      var currentTime = new Date().getTime();
+      if (currentTime - lastPrefetchTime >= 15) {
+        lastPrefetchTime = currentTime;
         prefetchPage();
       }
     });

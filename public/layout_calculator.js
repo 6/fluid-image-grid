@@ -403,15 +403,8 @@
   };
   definePublicFunction("addNewResultsListener", s.prototype.addNewResultsListener);
   s.prototype.removeNewResultsListener = function (a) {
-    var b = this.n,
-      c = -1;
-    if (Array.prototype.indexOf) c = Array.prototype.indexOf.call(b, a);
-    else
-      for (var d = b.length, e = 0; e < d; e++)
-        if (b[e] === a) {
-          c = e;
-          break
-        } a = c; - 1 != a && b.splice(a, 1)
+    a = Array.prototype.indexOf.call(this.n, a);
+    - 1 !== a && this.n.splice(a, 1);
   };
   definePublicFunction("removeNewResultsListener", s.prototype.removeNewResultsListener);
   var nc = function () {}, dc = function (a) {

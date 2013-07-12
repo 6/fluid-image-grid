@@ -113,17 +113,20 @@
         P: d + "px",
         r: ""
       };
-    }, Z = function (a, b) {
+    }, setCSS = function (element, cssProperties) {
       if (undefined === Qa) {
         var c = window.navigator.userAgent;
         Qa = !(!c || -1 == c.indexOf("WebKit") || 0 == c.indexOf("Opera"))
       }
-      if (Qa)
-        for (var d in b) c = camelize(d), a.style[c] = b[d];
+      if (Qa) {
+        for (var cssProperty in cssProperties)
+          element.style[camelize(cssProperty)] = cssProperties[cssProperty];
+      }
       else {
-        c = [];
-        for (d in b) c.push(d + ":" + b[d]);
-        a.setAttribute("style", c.join(";"))
+        var stringifiedProperties = [];
+        for (var cssProperty in cssProperties)
+          stringifiedProperties.push(cssProperty + ":" + cssProperties[cssProperty]);
+        element.setAttribute("style", stringifiedProperties.join(";"));
       }
     }, rb = function (a, b, c) {
       this.a = a;
@@ -438,10 +441,9 @@
       this.a = a;
       this.e = document.getElementById("rg");
       this.c = [];
-      a = document.getElementById("isr_spnm");
-      this.s = !! a;
-      this.F = a ? a.innerHTML : "";
-      this.n = 0
+      this.s = false;
+      this.F = "";
+      this.n = 0;
     };
   u(rd, dc);
   ec(rd);
@@ -461,12 +463,10 @@
     0 < b && (a.push(b), jd(this.a))
   };
   p.W = function (a, b, c) {
-    for (var d = [], e = [], f = this.e.childNodes, g = 0, h; h = f[g]; g++) {
-      if (hasClass(h, "rg_di")) d.push(h);
+    for (var imageDivs = [], childElements = this.e.childNodes, g = 0, childElement; childElement = childElements[g]; g++) {
+      if (hasClass(childElement, "rg_di")) imageDivs.push(childElement);
     }
-    if (c)
-      for (c = c.childNodes, g = 0; f = c[g]; g++) d.push(f);
-    (0 < d.length || 0 < e.length) && sd(this, a, b, e, d)
+    (0 < imageDivs.length) && sd(this, a, b, [], imageDivs)
   };
   p.S = function (a, b, c) {
     var d = [],
@@ -488,7 +488,7 @@
     this.h = [];
     this.n = 0
   };
-  var sd = function (a, b, c, d, e) {
+  var sd = function (a, b, c, d, imageDivs) {
     for (var f, g, h, k = null, l = null, n = 0; n < d.length; n++) {
       for (var r = d[n], v = r.childNodes, m = 0, q = Number.MAX_VALUE, w = [], F = 0, aa; aa = v[F]; F++)
         for (F = 0; F < w.length; F++) w[F].width = q;
@@ -496,20 +496,20 @@
       w[0].ea ? l = vc : k = vc
     }
     h = [k, l];
-    for (var zd = a.a, Bb = [], Ua = 0; Ua < e.length; Ua++) {
+    for (var zd = a.a, Bb = [], Ua = 0; Ua < imageDivs.length; Ua++) {
       var Ad =
         Bb,
         Bd = Ua,
         wc = zd,
-        Va = e[Ua],
-        Wa = undefined,
+        imageDiv = imageDivs[Ua],
+        metadataJSON = undefined,
         Cb = undefined;
-        for (var Cd = Va.getElementsByTagName("div"), xc = 0, Ea = undefined; Ea = Cd[xc]; xc++)
-          if ("rg_meta" == Ea.className) {
-            Wa = parseJSON(Ea.innerText || Ea.textContent || Ea.innerHTML);
-            break
-          } if (!Wa) throw Error("No metadata for image.");
-      Ad[Bd] = new rb(Va, Wa, Cb)
+        for (var innerDivs = imageDiv.getElementsByTagName("div"), xc = 0, innerDiv = undefined; innerDiv = innerDivs[xc]; xc++)
+          if ("rg_meta" == innerDiv.className) {
+            metadataJSON = parseJSON(innerDiv.innerText || innerDiv.textContent || innerDiv.innerHTML);
+            break;
+          }
+      Ad[Bd] = new rb(imageDiv, metadataJSON, Cb)
     }
     if (c.a) {
       4 * a.k > c.a && (a.k = Math.floor(c.a / 4), a.a.h = a.k);
@@ -633,14 +633,14 @@
           };
           a.c.push(z);
           var Nc = c.c,
-            Y = document.createElement("div");
-          Y.className = "rgsh";
-          a.s ? Y.innerHTML = a.F.replace(/\%1\$d/, String(a.c.length)) : Y.style.display = "none";
-          Y.setAttribute("id", "page" + a.c.length);
-          Y.setAttribute("data-pg", a.c.length);
-          Y.setAttribute("data-offset", c.e + a.n + z.o);
-          Y.setAttribute("data-fri", a.a.getResults().length);
-          e[J].parentNode.insertBefore(Y, e[J]);
+            pageDiv = document.createElement("div");
+          pageDiv.className = "rgsh";
+          a.s ? pageDiv.innerHTML = a.F.replace(/\%1\$d/, String(a.c.length)) : pageDiv.style.display = "none";
+          pageDiv.setAttribute("id", "page" + a.c.length);
+          pageDiv.setAttribute("data-pg", a.c.length);
+          pageDiv.setAttribute("data-offset", c.e + a.n + z.o);
+          pageDiv.setAttribute("data-fri", a.a.getResults().length);
+          imageDivs[J].parentNode.insertBefore(pageDiv, imageDivs[J]);
           a.s && (z.o += 32);
           3 != b && 2 == a.c.length && ld(a.c[0].g.length)
         }
@@ -652,25 +652,24 @@
           var ra = Bb[J];
           var A = ra,
             B = image.width,
-            K = image.height,
             eb = A.a,
-            Rd = eb.getElementsByTagName("img")[0],
-            Yc = K,
-            Zc = K,
+            imageElement = eb.getElementsByTagName("img")[0],
+            Yc = image.height,
+            imageWrapHeight = image.height,
             x = A.width,
             D = A.height;
-          if (A.width > B || A.height > K) {
-            var $c = B / K,
+          if (A.width > B || A.height > image.height) {
+            var $c = B / image.height,
               fb = Math.min(wa(A), Math.max($c, va(A)));
             if (aspectRatio(A) > fb) var ad = Math.min(A.height, B / fb),
             x = ad * aspectRatio(A), D = ad;
-            else var bd = Math.min(A.width, fb > $c ? B : K * fb),
+            else var bd = Math.min(A.width, fb > $c ? B : image.height * fb),
             x = bd, D = bd / aspectRatio(A)
           }
           if (0 < mb && !A.c) {
             var gb = mb + 1,
               Tb = B / x,
-              sa = K / D;
+              sa = image.height / D;
             if (1 < Tb && Tb <= gb) {
               var hb = Tb;
               sa > hb && sa <= gb && (hb = sa);
@@ -679,7 +678,7 @@
             } else if (1 <
               sa && sa <= gb) {
               var Ub = x * sa;
-              if (Ub > B || Ub * gb < B) D = K, x = Ub
+              if (Ub > B || Ub * gb < B) D = image.height, x = Ub
             }
           }
           var x = Math.round(x),
@@ -692,31 +691,30 @@
             gd = 0;
           if (x > B) var Sd = x - B,
           Vb = -1 * ub(x - B), fd = -Sd - Vb;
-          else x < B && (cd = (B - x) / 2); if (D > K) gd = -1 * tb(D - K);
-          else if (D < K) var Yc = Zc = D,
-          hd = K - D, dd = Math.floor(hd / 2), ed = Math.ceil(hd / 2);
-          Z(eb, {
+          else x < B && (cd = (B - x) / 2); if (D > image.height) gd = -1 * tb(D - image.height);
+          else if (D < image.height) var Yc = imageWrapHeight = D,
+          hd = image.height - D, dd = Math.floor(hd / 2), ed = Math.ceil(hd / 2);
+          setCSS(eb, {
             width: B + "px",
             height: Yc + "px",
             "padding-top": dd + "px",
             "padding-bottom": ed + "px"
           });
-          Z(Rd, {
+          setCSS(imageElement, {
             width: x + "px",
             height: D + "px",
             "margin-left": Vb + "px",
             "margin-right": fd + "px",
             "margin-top": gd + "px"
           });
-          var Td = eb.getElementsByTagName("a")[0],
-            Ud =
-              Math.min(x, B),
-            id = qb(eb, B, x, cd);
-          Z(Td, {
-            width: Ud + "px",
-            height: Zc + "px",
-            left: id.P,
-            right: id.r
+          var imageWrap = eb.getElementsByTagName("a")[0],
+            imageWrapWidth = Math.min(x, B),
+            imageWrapPosition = qb(eb, B, x, cd);
+          setCSS(imageWrap, {
+            width: imageWrapWidth + "px",
+            height: imageWrapHeight + "px",
+            left: imageWrapPosition.P,
+            right: imageWrapPosition.r
           });
           z.g.push(ra.a);
           a.a.getResults().push(ra.a);
@@ -728,7 +726,8 @@
         }
       }
       a.h = [];
-      for (var ib = J; ib < e.length; ib++) e[ib].style.display = "none", a.h.push(e[ib]);
+      for (var ib = J; ib < imageDivs.length; ib++)
+        imageDivs[ib].style.display = "none", a.h.push(imageDivs[ib]);
       a.a.areAllResultsLoaded() && (1 == a.c.length && 3 != b) && ld(a.c[0].g.length)
     }
   }, td = function (a, b) {

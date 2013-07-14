@@ -2,16 +2,13 @@
   var _ = {};
 
   var currentPage = function () {
-    var a = [],
-      b = $('body').scrollTop();
-      var pages = $("#rg div.rgsh");
-      if (!pages.length) return [0];
-      for (var i = 0; i < pages.length; i++) {
-        var page = pages[i];
-        var pageTopOffset = $(page).data("offset") || $(page).offset().top;
-        if (pageTopOffset > b && (a.push(i), pageTopOffset + page.offsetHeight >= b)) break;
-      }
-    return a;
+    var pages = $("#rg div.rgsh");
+    for (var i = 0; i < pages.length; i++) {
+      var $page = $(pages[i]);
+      var pageTopOffset = $page.data("offset") || $page.offset().top;
+      if (pageTopOffset > $('body').scrollTop()) return i;
+    }
+    return 0;
   };
 
   var loadPagesIfNeeded = function() {
@@ -23,16 +20,9 @@
   };
 
   var loadPages = function () {
-    var a = currentPage();
-    if (0 !== a.length) {
-      for (var b = 0; b < a.length; b++) loadPage(a[b]);
-      var c = a[a.length - 1],
-        d = a[0];
-      window.setTimeout(function () {
-        for (var a = 1, b = 1; b <= a; b++)
-          loadPage(c + b), loadPage(d - b);
-      }, 100);
-    }
+    var page = currentPage();
+    loadPage(page);
+    loadPage(page + 1);
   };
 
   var loadPage = function (pageNumber) {

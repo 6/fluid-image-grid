@@ -101,12 +101,13 @@
     }, settings.resizeThrottleRate);
   };
 
-  var settings = {
+  var defaultSettings = {
     "nTbnsPending": 8,
     "resizeThrottleRate": 50,
     "scrollThrottleRate": 40
-  };
-  var lastPrefetchTime = new Date().getTime(),
+  },
+  settings = {},
+  lastPrefetchTime = new Date().getTime(),
   lastScrollTime = 0,
   lastScrollY = 0,
   jM = 0,
@@ -115,7 +116,8 @@
   currentScrollY = 0,
   resizeTimeout = -1;
 
-  window.init = function() {
+  window.init = function(options) {
+    settings = $.extend(defaultSettings, options || {});
     $(window).on("scroll", onScrollThrottled);
     $(window).on("resize", onResizeThrottled);
     prefetchPage();

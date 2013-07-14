@@ -44,7 +44,7 @@
     for (var i = 0; i < results.length; i++)
       resultImages.push($(results[i]).find('img.rg_i')[0]);
 
-    jM += resultImages.length;
+    nImagesPendingLoad += resultImages.length;
     for (var i = 0; i < resultImages.length; i++) {
       var image = resultImages[i];
       if(!$(image).data("src") || "string" == typeof image.src && image.src) {
@@ -58,8 +58,8 @@
   };
 
   var onImageLoad = function () {
-    jM--;
-    jM <= +settings.nTbnsPending && loadImagesForNextPage();
+    nImagesPendingLoad--;
+    nImagesPendingLoad <= +settings.nTbnsPending && loadImagesForNextPage();
   };
 
   var onScrollThrottled = function() {
@@ -94,7 +94,7 @@
   lastPageLoadedTime = new Date().getTime(),
   lastScrollTime = 0,
   lastScrollY = 0,
-  jM = 0,
+  nImagesPendingLoad = 0,
   pagesToLoad = [],
   gM = false;
   currentScrollY = 0,

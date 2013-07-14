@@ -14,42 +14,42 @@
     return a;
   };
 
-  var prefetchPageIfNeeded = function() {
+  var loadPagesIfNeeded = function() {
     var currentTime = new Date().getTime();
-    if (currentTime - lastPrefetchTime >= 15) {
-      lastPrefetchTime = currentTime;
-      prefetchPage();
+    if (currentTime - lastPageLoadedTime >= 15) {
+      lastPageLoadedTime = currentTime;
+      loadPages();
     }
   };
 
-  var prefetchPage = function () {
+  var loadPages = function () {
     var a = currentPage();
     if (0 !== a.length) {
-      for (var b = 0; b < a.length; b++) dM(a[b]);
+      for (var b = 0; b < a.length; b++) loadPage(a[b]);
       var c = a[a.length - 1],
         d = a[0];
       window.setTimeout(function () {
         for (var a = 1, b = 1; b <= a; b++)
-          dM(c + b), dM(d - b);
+          loadPage(c + b), loadPage(d - b);
       }, 100);
     }
   };
 
-  var dM = function (pageNumber) {
+  var loadPage = function (pageNumber) {
     var shouldLoadPage = !(0 > pageNumber || 1 < pageNumber && 0 === $('body').scrollTop());
     if (!shouldLoadPage) return;
     pagesToLoad.push(pageNumber);
     if(!gM) {
-      loadImages();
+      loadImagesForNextPage();
     }
   };
 
-  var loadImages = function () {
+  var loadImagesForNextPage = function () {
     var pageToLoad = pagesToLoad.shift();
     if (undefined !== pageToLoad) {
       gM = true;
       if (!window.google.isr.layout.getResultsForPage(pageToLoad)) {
-        loadImages();
+        loadImagesForNextPage();
       }
       else {
         var b = window.google.isr.layout.getResultsForPage(pageToLoad);
@@ -76,7 +76,7 @@
 
   var kM = function () {
     jM--;
-    jM <= +settings.nTbnsPending && loadImages();
+    jM <= +settings.nTbnsPending && loadImagesForNextPage();
   };
 
   var onScrollThrottled = function() {
@@ -88,7 +88,7 @@
     var top = $('body').scrollTop();
     if (top - lastScrollY > 0) {
       currentScrollY = top;
-      prefetchPageIfNeeded();
+      loadPagesIfNeeded();
     }
   };
 
@@ -97,7 +97,7 @@
     resizeTimeout = window.setTimeout(function () {
       window.google.isr.layout.layoutResults(true);
       if ($('body').scrollTop() > $("#images-grid").offset().top) {
-        prefetchPage();
+        loadPages();
       }
     }, settings.resizeThrottleRate);
   };
@@ -108,7 +108,7 @@
     "scrollThrottleRate": 40
   },
   settings = {},
-  lastPrefetchTime = new Date().getTime(),
+  lastPageLoadedTime = new Date().getTime(),
   lastScrollTime = 0,
   lastScrollY = 0,
   jM = 0,
@@ -121,6 +121,6 @@
     settings = $.extend(defaultSettings, options || {});
     $(window).on("scroll", onScrollThrottled);
     $(window).on("resize", onResizeThrottled);
-    prefetchPage();
+    loadPages();
   };
 })();

@@ -27,16 +27,14 @@
     var shouldLoadPage = !(0 > pageNumber || 1 < pageNumber && 0 === $('body').scrollTop());
     if (!shouldLoadPage) return;
     pagesToLoad.push(pageNumber);
-    if(!gM) {
-      loadImagesForNextPage();
-    }
+    if(shoudRetryLoadImages) loadImagesForNextPage();
   };
 
   var loadImagesForNextPage = function () {
     var pageToLoad = pagesToLoad.shift();
-    if (typeof pageToLoad === "undefined") return gM = false;
+    if (typeof pageToLoad === "undefined") return shoudRetryLoadImages = true;
 
-    gM = true;
+    shoudRetryLoadImages = false;
     var results = window.google.isr.layout.getResultsForPage(pageToLoad);
     if (!results) return loadImagesForNextPage();
 
@@ -96,7 +94,7 @@
   lastScrollY = 0,
   nImagesPendingLoad = 0,
   pagesToLoad = [],
-  gM = false;
+  shoudRetryLoadImages = true,
   currentScrollY = 0,
   resizeTimeout = -1;
 

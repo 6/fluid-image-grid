@@ -35,12 +35,12 @@
     }
   };
 
-  var dM = function (a) {
-    if (!(0 > a || 1 < a && 0 === $('body').scrollTop())) {
-      pagesToLoad.push(a);
-      if(!gM) {
-        loadImages();
-      }
+  var dM = function (pageNumber) {
+    var shouldLoadPage = !(0 > pageNumber || 1 < pageNumber && 0 === $('body').scrollTop());
+    if (!shouldLoadPage) return;
+    pagesToLoad.push(pageNumber);
+    if(!gM) {
+      loadImages();
     }
   };
 

@@ -34,31 +34,26 @@
 
   var loadImagesForNextPage = function () {
     var pageToLoad = pagesToLoad.shift();
-    if (undefined !== pageToLoad) {
-      gM = true;
-      if (!window.google.isr.layout.getResultsForPage(pageToLoad)) {
-        loadImagesForNextPage();
+    if (typeof pageToLoad === "undefined") return gM = false;
+
+    gM = true;
+    var results = window.google.isr.layout.getResultsForPage(pageToLoad);
+    if (!results) return loadImagesForNextPage();
+
+    var resultImages = [];
+    for (var i = 0; i < results.length; i++)
+      resultImages.push($(results[i]).find('img.rg_i')[0]);
+
+    jM += resultImages.length;
+    for (var i = 0; i < resultImages.length; i++) {
+      var image = resultImages[i];
+      if(!$(image).data("src") || "string" == typeof image.src && image.src) {
+        kM();
       }
       else {
-        var b = window.google.isr.layout.getResultsForPage(pageToLoad);
-        for (var c = [], d = 0; d < b.length; d++)
-          c.push($(b[d]).find('img.rg_i')[0]);
-        b = c;
-        jM += b.length;
-        for (c = 0; d = b[c++];) {
-          var e = $(d).data("src");
-          if(!e || "string" == typeof d.src && d.src) {
-            kM();
-          }
-          else {
-            $(d).on("load", kM);
-            d.src = e;
-          }
-        }
+        $(image).on("load", kM);
+        image.src = $(image).data("src");
       }
-    }
-    else {
-      gM = false;
     }
   };
 

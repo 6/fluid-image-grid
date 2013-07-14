@@ -37,7 +37,7 @@
 
   var dM = function (a) {
     if (!(0 > a || 1 < a && 0 === $('body').scrollTop())) {
-      fM.push(a);
+      pagesToLoad.push(a);
       if(!gM) {
         loadImages();
       }
@@ -45,14 +45,14 @@
   };
 
   var loadImages = function () {
-    var a = fM.shift();
-    if (undefined !== a) {
+    var pageToLoad = pagesToLoad.shift();
+    if (undefined !== pageToLoad) {
       gM = true;
-      if (!window.google.isr.layout.getResultsForPage(a)) {
+      if (!window.google.isr.layout.getResultsForPage(pageToLoad)) {
         loadImages();
       }
       else {
-        var b = window.google.isr.layout.getResultsForPage(a);
+        var b = window.google.isr.layout.getResultsForPage(pageToLoad);
         for (var c = [], d = 0; d < b.length; d++) c.push(b[d].querySelector("img.rg_i"));
         b = c;
         jM += b.length;
@@ -111,7 +111,7 @@
   lastScrollTime = 0,
   lastScrollY = 0,
   jM = 0,
-  fM = [],
+  pagesToLoad = [],
   gM = false;
   currentScrollY = 0,
   resizeTimeout = -1;

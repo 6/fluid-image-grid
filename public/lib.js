@@ -4,11 +4,11 @@
   var currentPage = function () {
     var a = [],
       b = $('body').scrollTop();
-      var pages = window.document.getElementById("rg").querySelectorAll("div.rgsh");
+      var pages = $("#rg div.rgsh");
       if (!pages.length) return [0];
       for (var i = 0; i < pages.length; i++) {
         var page = pages[i];
-        var pageTopOffset = page.hasAttribute("data-offset") ? window.parseInt(page.getAttribute("data-offset"), 10) : $(page).offset().top;
+        var pageTopOffset = $(page).data("offset") || $(page).offset().top;
         if (pageTopOffset > b && (a.push(i), pageTopOffset + page.offsetHeight >= b)) break;
       }
     return a;
@@ -53,11 +53,12 @@
       }
       else {
         var b = window.google.isr.layout.getResultsForPage(pageToLoad);
-        for (var c = [], d = 0; d < b.length; d++) c.push(b[d].querySelector("img.rg_i"));
+        for (var c = [], d = 0; d < b.length; d++)
+          c.push($(b[d]).find('img.rg_i')[0]);
         b = c;
         jM += b.length;
         for (c = 0; d = b[c++];) {
-          var e = d.getAttribute("data-src");
+          var e = $(d).data("src");
           if(!e || "string" == typeof d.src && d.src) {
             kM();
           }

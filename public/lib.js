@@ -94,15 +94,9 @@
   var onResizeThrottled = function() {
     window.clearTimeout(resizeTimeout);
     resizeTimeout = window.setTimeout(function () {
-      var a = window.innerWidth || window.document.documentElement.offsetWidth,
-        b = window.innerHeight || window.document.documentElement.offsetHeight;
-      if (a > 0 && b > 0) {
-        var gridTopOffset = $("#images-grid").offset().top,
-          a = $('body').scrollTop() > gridTopOffset,
-          b = null;
-        c = +window.document.getElementById("images-grid-inner").offsetWidth;
-        window.google.isr.layout.layoutResults(true);
-        a ? (a = 0) : prefetchPage();
+      window.google.isr.layout.layoutResults(true);
+      if ($('body').scrollTop() > $("#images-grid").offset().top) {
+        prefetchPage();
       }
     }, 50);
   };

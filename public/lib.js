@@ -48,16 +48,16 @@
     for (var i = 0; i < resultImages.length; i++) {
       var image = resultImages[i];
       if(!$(image).data("src") || "string" == typeof image.src && image.src) {
-        kM();
+        onImageLoad();
       }
       else {
-        $(image).on("load", kM);
+        $(image).on("load", onImageLoad);
         image.src = $(image).data("src");
       }
     }
   };
 
-  var kM = function () {
+  var onImageLoad = function () {
     jM--;
     jM <= +settings.nTbnsPending && loadImagesForNextPage();
   };

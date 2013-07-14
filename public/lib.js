@@ -78,6 +78,35 @@
     jM <= +settings.nTbnsPending && loadImages();
   };
 
+  var onScrollThrottled = function() {
+    var currentTime = new Date().getTime();
+    if (40 < currentTime - lastScrollTime) {
+      lastScrollTime = currentTime;
+      lastScrollY = currentScrollY;
+    }
+    var top = $('body').scrollTop();
+    if (top - lastScrollY > 0) {
+      currentScrollY = top;
+      prefetchPageIfNeeded();
+    }
+  };
+
+  var onResizeThrottled = function() {
+    window.clearTimeout(resizeTimeout);
+    resizeTimeout = window.setTimeout(function () {
+      var a = window.innerWidth || window.document.documentElement.offsetWidth,
+        b = window.innerHeight || window.document.documentElement.offsetHeight;
+      if (a > 0 && b > 0) {
+        var gridTopOffset = $("#images-grid").offset().top,
+          a = $('body').scrollTop() > gridTopOffset,
+          b = null;
+        c = +window.document.getElementById("images-grid-inner").offsetWidth;
+        window.google.isr.layout.layoutResults(true);
+        a ? (a = 0) : prefetchPage();
+      }
+    }, 50);
+  };
+
   var settings = {
     "nTbnsPending": 8
   };
@@ -87,38 +116,12 @@
   jM = 0,
   fM = [],
   gM = false;
-  currentScrollY = 0;
+  currentScrollY = 0,
   resizeTimeout = -1;
 
   window.init = function() {
-    $(window).on("scroll", function(a) {
-      var currentTime = new Date().getTime();
-      if (40 < currentTime - lastScrollTime) {
-        lastScrollTime = currentTime;
-        lastScrollY = currentScrollY;
-      }
-      var top = $('body').scrollTop();
-      if (top - lastScrollY > 0) {
-        currentScrollY = top;
-        prefetchPageIfNeeded();
-      }
-    });
-
-    $(window).on("resize", function() {
-      window.clearTimeout(resizeTimeout);
-      resizeTimeout = window.setTimeout(function () {
-        var a = window.innerWidth || window.document.documentElement.offsetWidth,
-          b = window.innerHeight || window.document.documentElement.offsetHeight;
-        if (a > 0 && b > 0) {
-          var gridTopOffset = $("#images-grid").offset().top,
-            a = $('body').scrollTop() > gridTopOffset,
-            b = null;
-          c = +window.document.getElementById("images-grid-inner").offsetWidth;
-          window.google.isr.layout.layoutResults(true);
-          a ? (a = 0) : prefetchPage();
-        }
-      }, 50);
-    });
+    $(window).on("scroll", onScrollThrottled);
+    $(window).on("resize", onResizeThrottled);
     prefetchPage();
   };
 })();

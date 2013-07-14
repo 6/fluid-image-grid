@@ -80,7 +80,7 @@
 
   var onScrollThrottled = function() {
     var currentTime = new Date().getTime();
-    if (40 < currentTime - lastScrollTime) {
+    if (settings.scrollThrottleRate < currentTime - lastScrollTime) {
       lastScrollTime = currentTime;
       lastScrollY = currentScrollY;
     }
@@ -98,11 +98,13 @@
       if ($('body').scrollTop() > $("#images-grid").offset().top) {
         prefetchPage();
       }
-    }, 50);
+    }, settings.resizeThrottleRate);
   };
 
   var settings = {
-    "nTbnsPending": 8
+    "nTbnsPending": 8,
+    "resizeThrottleRate": 50,
+    "scrollThrottleRate": 40
   };
   var lastPrefetchTime = new Date().getTime(),
   lastScrollTime = 0,

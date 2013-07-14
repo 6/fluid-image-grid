@@ -27,18 +27,11 @@
     if (0 !== a.length) {
       for (var b = 0; b < a.length; b++) dM(a[b]);
       var c = a[a.length - 1],
-        d = a[0],
-        a = +EK.bgtprefetchlp; - 1 != qM && 0 < a && (window.clearTimeout(qM), qM = -1);
-      uxa || (uxa = true, EK.bgtprefetch || (vxa = false));
-      if (vxa) {
-        var a = 0 < a ? a : 100,
-          e = 1,
-          b = +EK.mpfStart;
-        0 < b && d >= b && (e = 1);
-        qM = window.setTimeout(function () {
-          for (var a = 1, b = 1; b <= a * e; b++) dM(c + b), dM(d - b)
-        }, a);
-      }
+        d = a[0];
+      window.setTimeout(function () {
+        for (var a = 1, b = 1; b <= a; b++)
+          dM(c + b), dM(d - b);
+      }, 100);
     }
   };
 
@@ -81,52 +74,39 @@
   };
 
   var kM = function () {
-    ++_.nM; - 1 != _.pM && (window.clearTimeout(_.pM), _.pM = -1);
     jM--;
-    var a = +EK.nTbnsPending;
-    a && jM <= a && loadImages();
+    jM <= +settings.nTbnsPending && loadImages();
   };
 
-  var EK = {
-    "bgtprefetch": "1",
-    "bgtprefetchlp": 0,
-    "genChunk": true,
-    "mpfStart": 1,
+  var settings = {
     "nTbnsPending": 8
   };
   var lastPrefetchTime = new Date().getTime(),
-  Swa = 0,
-  Twa = 0,
+  lastScrollTime = 0,
+  lastScrollY = 0,
   jM = 0,
-  qM = -1,
   fM = [],
-  vxa = true,
-  uxa = false,
   gM = false;
-  _.vL = 0;
-  _.wL = -1;
+  currentScrollY = 0;
+  resizeTimeout = -1;
 
   window.init = function() {
     $(window).on("scroll", function(a) {
       var currentTime = new Date().getTime();
-      if (40 < currentTime - Swa) {
-        Swa = currentTime;
-        Twa = _.vL;
+      if (40 < currentTime - lastScrollTime) {
+        lastScrollTime = currentTime;
+        lastScrollY = currentScrollY;
       }
-      else {
-        _.vL = Twa;
-      }
-      var top = $('body').scrollTop(),
-        b = top - _.vL;
-      if (0 !== b) {
-        _.vL = top;
+      var top = $('body').scrollTop();
+      if (top - lastScrollY > 0) {
+        currentScrollY = top;
         prefetchPageIfNeeded();
       }
     });
 
     $(window).on("resize", function() {
-      window.clearTimeout(_.wL);
-      _.wL = window.setTimeout(function () {
+      window.clearTimeout(resizeTimeout);
+      resizeTimeout = window.setTimeout(function () {
         var a = window.innerWidth || window.document.documentElement.offsetWidth,
           b = window.innerHeight || window.document.documentElement.offsetHeight;
         if (a > 0 && b > 0) {

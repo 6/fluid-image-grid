@@ -98,7 +98,8 @@
   currentScrollY = 0,
   resizeTimeout = -1;
 
-  window.init = function(options) {
+  window.FluidImageGrid = {};
+  window.FluidImageGrid.init = function(options) {
     settings = $.extend(defaultSettings, options || {});
     $(window).on("scroll", onScrollThrottled);
     $(window).on("resize", onResizeThrottled);

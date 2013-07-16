@@ -62,10 +62,10 @@
 
   var onScrollThrottled = function() {
     var currentTime = new Date().getTime();
-    if (settings.scrollThrottleRate < currentTime - lastScrollTime) {
-      lastScrollTime = currentTime;
-      lastScrollY = currentScrollY;
-    }
+    if (settings.scrollThrottleRate >= currentTime - lastScrollTime) return;
+
+    lastScrollTime = currentTime;
+    lastScrollY = currentScrollY;
     var top = $('body').scrollTop();
     if (top - lastScrollY > 0) {
       currentScrollY = top;

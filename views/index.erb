@@ -16,7 +16,11 @@
   <script src="/layout_calculator.js"></script>
   <script>
     $(function () {
-      FluidImageGrid.init({resizeThrottleRate: 100});
+      FluidImageGrid.init({
+        resizeThrottleRate: 100, // how often to recalculate layout on resize (ms)
+        scrollThrottleRate: 50, // how often to check if new results need to be loaded (ms)
+        nTbnsPending: 8 // number of pending images to allow at once before loading more results
+      });
     });
   </script>
 </body>

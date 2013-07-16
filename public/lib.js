@@ -77,6 +77,7 @@
     window.clearTimeout(resizeTimeout);
     resizeTimeout = window.setTimeout(function () {
       window.google.isr.layout.layoutResults(true);
+      $('body').scrollTop(lastScrollY);
       if ($('body').scrollTop() > $("#images-grid").offset().top) {
         loadPages();
       }

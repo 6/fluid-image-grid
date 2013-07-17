@@ -1,6 +1,6 @@
 (function() {
   var currentPage = function () {
-    var pages = $("#rg div.rgsh");
+    var pages = $("#rg .fluid-image-grid-page-separator");
     for (var i = 0; i < pages.length; i++) {
       var $page = $(pages[i]);
       var pageTopOffset = $page.data("offset") || $page.offset().top;

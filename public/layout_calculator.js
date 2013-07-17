@@ -610,9 +610,9 @@
           };
           a.c.push(z);
           var Nc = c.c,
-            pageDiv = document.createElement("div");
-          pageDiv.className = "rgsh";
-          a.s ? pageDiv.innerHTML = a.F.replace(/\%1\$d/, String(a.c.length)) : pageDiv.style.display = "none";
+          pageDiv = document.createElement("div");
+          pageDiv.style.display = "none";
+          pageDiv.className = "fluid-image-grid-page-separator";
           pageDiv.setAttribute("id", "page" + a.c.length);
           pageDiv.setAttribute("data-pg", a.c.length);
           pageDiv.setAttribute("data-offset", c.e + a.n + z.o);

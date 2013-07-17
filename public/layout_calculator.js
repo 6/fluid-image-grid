@@ -741,6 +741,6 @@
   var vd = new s;
   vd.layoutResults();
   var wd = ["google", "isr", "layout"],
-    $ = this;
-  for (var yd; wd.length && (yd = wd.shift());) wd.length || undefined === vd ? $ = $[yd] ? $[yd] : $[yd] = {} : $[yd] = vd;
+    _this = this;
+  for (var yd; wd.length && (yd = wd.shift());) wd.length || undefined === vd ? _this = _this[yd] ? _this[yd] : _this[yd] = {} : _this[yd] = vd;
 })();

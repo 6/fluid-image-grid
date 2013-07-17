@@ -12,10 +12,6 @@
     return image.width / image.height;
   };
 
-  var hasClass = function (el, cssClass) {
-    return el ? RegExp("(\\s|^)" + cssClass + "(\\s|$)").test(el.className) : false;
-  };
-
   var camelize = function (str) {
     return String(str).replace(/\-([a-z])/g, function (a, c) {
       return c.toUpperCase();
@@ -455,12 +451,12 @@
   };
   p.T = function () {
     for (var a = this.a.getChunkSizeArray(), b = 0, c = this.e.childNodes, d = 0, e; e = c[d]; d++)
-      if (hasClass(e, "rg_di")) uc(this.a, e), e.hasAttribute("data-ci") && (a.push(b), b = 0), b++;
+      if ($(e).hasClass("rg_di")) uc(this.a, e), e.hasAttribute("data-ci") && (a.push(b), b = 0), b++;
     0 < b && (a.push(b), jd(this.a))
   };
   p.W = function (a, b, c) {
     for (var imageDivs = [], childElements = this.e.childNodes, g = 0, childElement; childElement = childElements[g]; g++) {
-      if (hasClass(childElement, "rg_di")) imageDivs.push(childElement);
+      if ($(childElement).hasClass("rg_di")) imageDivs.push(childElement);
     }
     (0 < imageDivs.length) && sd(this, a, b, [], imageDivs)
   };

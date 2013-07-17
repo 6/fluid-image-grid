@@ -361,7 +361,7 @@
     pc(a);
     a.l.aa();
   }, uc = function (a, b) {
-      b.hasAttribute("data-ri") || b.setAttribute("data-ri", a.qa++)
+      $(b).attr("data-ri") || $(b).attr("data-ri", a.qa++)
     }, pc = function (a) {
       for (var b = a.d.c = window.innerHeight || document.documentElement.offsetHeight, c = a.c, d = 0; c && !isNaN(c.offsetTop);) d += c.offsetTop, c = c.offsetParent;
       c = a.d.e = d;
@@ -390,7 +390,7 @@
     }, ld = function (a) {}, qc = function (a) {
       a = a.c.getElementsByTagName("img");
       for (var b = 0, c;
-        (c = a[b]) && !(c.hasAttribute("data-src") || c.hasAttribute("src") && 0 != c.getAttribute("src").indexOf("data:")); b++);
+        (c = a[b]) && !($(c).attr("data-src") || $(c).attr("src")); b++);
       return b
     };
   s.prototype.addNewResultsListener = function (a) {
@@ -451,7 +451,7 @@
   };
   p.T = function () {
     for (var a = this.a.getChunkSizeArray(), b = 0, c = this.e.childNodes, d = 0, e; e = c[d]; d++)
-      if ($(e).hasClass("rg_di")) uc(this.a, e), e.hasAttribute("data-ci") && (a.push(b), b = 0), b++;
+      if ($(e).hasClass("rg_di")) uc(this.a, e), $(e).attr("data-ci") && (a.push(b), b = 0), b++;
     0 < b && (a.push(b), jd(this.a))
   };
   p.W = function (a, b, c) {

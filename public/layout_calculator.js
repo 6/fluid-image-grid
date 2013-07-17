@@ -105,21 +105,6 @@
         P: d + "px",
         r: ""
       };
-    }, setCSS = function (element, cssProperties) {
-      if (undefined === Qa) {
-        var c = window.navigator.userAgent;
-        Qa = !(!c || -1 == c.indexOf("WebKit") || 0 == c.indexOf("Opera"))
-      }
-      if (Qa) {
-        for (var cssProperty in cssProperties)
-          element.style[camelize(cssProperty)] = cssProperties[cssProperty];
-      }
-      else {
-        var stringifiedProperties = [];
-        for (var cssProperty in cssProperties)
-          stringifiedProperties.push(cssProperty + ":" + cssProperties[cssProperty]);
-        element.setAttribute("style", stringifiedProperties.join(";"));
-      }
     }, rb = function (a, b, c) {
       this.a = a;
       this.c = false;
@@ -686,23 +671,23 @@
           else x < B && (cd = (B - x) / 2); if (D > image.height) gd = -1 * tb(D - image.height);
           else if (D < image.height) var Yc = imageWrapHeight = D,
           hd = image.height - D, dd = Math.floor(hd / 2), ed = Math.ceil(hd / 2);
-          setCSS(eb, {
+          $(eb).css({
             width: B + "px",
             height: Yc + "px",
             "padding-top": dd + "px",
             "padding-bottom": ed + "px"
           });
-          setCSS(imageElement, {
+          $(imageElement).css({
             width: x + "px",
             height: D + "px",
             "margin-left": Vb + "px",
             "margin-right": fd + "px",
             "margin-top": gd + "px"
           });
-          var imageWrap = eb.getElementsByTagName("a")[0],
+          var imageWrap = $(eb).find("a")[0],
             imageWrapWidth = Math.min(x, B),
             imageWrapPosition = qb(eb, B, x, cd);
-          setCSS(imageWrap, {
+          $(imageWrap).css({
             width: imageWrapWidth + "px",
             height: imageWrapHeight + "px",
             left: imageWrapPosition.P,

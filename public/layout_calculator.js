@@ -319,11 +319,11 @@
   };
   definePublicFunction("layoutResults", s.prototype.layoutResults);
   s.prototype.moveAndLayoutNewResults = function () {
-    var a = document.getElementById("rg"),
-      b = document.querySelectorAll("div.rg_add_chunk");
+    var a = $("#rg"),
+      b = $("div.rg_add_chunk");
     if (a && 0 != b.length) {
       for (var c, d = 0; c = b[d]; ++d) {
-        var e = c.getAttribute("data-cei");
+        var e = $(c).attr("data-cei");
         if (e && !this.R[e]) {
           this.R[e] = true;
           var f = 1 == this.a.length && 100 > this.a[0],
@@ -366,15 +366,15 @@
       for (var b = a.d.c = window.innerHeight || document.documentElement.offsetHeight, c = a.c, d = 0; c && !isNaN(c.offsetTop);) d += c.offsetTop, c = c.offsetParent;
       c = a.d.e = d;
       a.d.d = b - c;
-      b = document.getElementById("images-grid-inner").offsetWidth;
+      b = $("#images-grid-inner")[0].offsetWidth;
       0 < b && (a.d.a = b);
-      document.getElementById("rg").style.width = (a.d.a || 0) + "px"
+      $("#rg").css("width", (a.d.a || 0) + "px")
     }, rc = function (a) {
       var b = a.c.parentNode,
         c = a.c.nextSibling;
       b.removeChild(a.c);
       a.l.W(a.s, a.d, a.e);
-      a.c.style.visibility = "visible";
+      $(a.c).css("visibility", "visible");
       b.insertBefore(a.c, c)
     }, jd = function (a) {
       if (!a.a.length) return false;
@@ -431,7 +431,7 @@
     this.a = Xb
   }, rd = function (a) {
       this.a = a;
-      this.e = document.getElementById("rg");
+      this.e = $("#rg")[0];
       this.c = [];
       this.s = false;
       this.F = "";
@@ -645,7 +645,7 @@
           var A = ra,
             B = image.width,
             eb = A.a,
-            imageElement = eb.getElementsByTagName("img")[0],
+            imageElement = $(eb).find("img")[0],
             Yc = image.height,
             imageWrapHeight = image.height,
             x = A.width,
@@ -711,15 +711,17 @@
           z.g.push(ra.a);
           a.a.getResults().push(ra.a);
 
-          ra.a.style.display = "inline-block";
+          $(ra.a).css("display", "inline-block");
           J++;
 
           cb++
         }
       }
       a.h = [];
-      for (var ib = J; ib < imageDivs.length; ib++)
-        imageDivs[ib].style.display = "none", a.h.push(imageDivs[ib]);
+      for (var ib = J; ib < imageDivs.length; ib++) {
+        $(imageDivs[ib]).css("display", "none");
+        a.h.push(imageDivs[ib]);
+      }
       a.a.areAllResultsLoaded() && (1 == a.c.length && 3 != b) && ld(a.c[0].g.length)
     }
   }, td = function (a, b) {

@@ -351,11 +351,6 @@
         return 100 > a.a[a.a.length - 1]
       } else return 100 > a.a[a.a.length -
         1]
-    }, qc = function (a) {
-      a = $(a.container).find("img");
-      for (var b = 0, c;
-        (c = a[b]) && !($(c).attr("data-src") || $(c).attr("src")); b++);
-      return b
     };
   s.prototype.addNewResultsListener = function (a) {
     this.resultsListeners.push(a)

@@ -351,7 +351,7 @@
         return 100 > a.a[a.a.length - 1]
       } else return 100 > a.a[a.a.length -
         1]
-    }, ld = function (a) {}, qc = function (a) {
+    }, qc = function (a) {
       a = $(a.container).find("img");
       for (var b = 0, c;
         (c = a[b]) && !($(c).attr("data-src") || $(c).attr("src")); b++);
@@ -598,7 +598,6 @@
           pageDiv.setAttribute("data-fri", a.a.getResults().length);
           imageDivs[J].parentNode.insertBefore(pageDiv, imageDivs[J]);
           a.s && (z.o += 32);
-          3 != b && 2 == a.c.length && ld(a.c[0].g.length)
         }
         z.o += pa[Ja];
         z.o += Xb;
@@ -686,7 +685,6 @@
         $(imageDivs[ib]).css("display", "none");
         a.h.push(imageDivs[ib]);
       }
-      a.a.areAllResultsLoaded() && (1 == a.c.length && 3 != b) && ld(a.c[0].g.length)
     }
   }, td = function (a, b) {
       this.d = a;

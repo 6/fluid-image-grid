@@ -684,13 +684,7 @@
         a.h.push(imageDivs[ib]);
       }
     }
-  }, td = function (a, b) {
-      this.d = a;
-      this.width = b.bw;
-      this.a = b.rs || 2;
-      this.ea = !! b.fl;
-      this.c = new wb(a)
-    }, ud = function (a, b, c, d) {
+  }, ud = function (a, b, c, d) {
       this.d = a;
       this.c = b;
       this.a = c;

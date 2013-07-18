@@ -588,25 +588,23 @@
         z.o += Xb;
         for (qa = 0; qa < X[Ja]; qa++) {
           image = images[cb];
-
           var ra = Bb[J];
-          var A = ra,
-            B = image.width,
-            resultElement = A.a,
+          var B = image.width,
+            resultElement = ra.a,
             imageElement = $(resultElement).find("img")[0],
             Yc = image.height,
             imageWrapHeight = image.height,
-            x = A.width,
-            D = A.height;
-          if (A.width > B || A.height > image.height) {
+            x = ra.width,
+            D = ra.height;
+          if (ra.width > B || ra.height > image.height) {
             var $c = B / image.height,
-              fb = Math.min(wa(A), Math.max($c, va(A)));
-            if (aspectRatio(A) > fb) var ad = Math.min(A.height, B / fb),
-            x = ad * aspectRatio(A), D = ad;
-            else var bd = Math.min(A.width, fb > $c ? B : image.height * fb),
-            x = bd, D = bd / aspectRatio(A)
+              fb = Math.min(wa(ra), Math.max($c, va(ra)));
+            if (aspectRatio(ra) > fb) var ad = Math.min(ra.height, B / fb),
+            x = ad * aspectRatio(ra), D = ad;
+            else var bd = Math.min(ra.width, fb > $c ? B : image.height * fb),
+            x = bd, D = bd / aspectRatio(ra)
           }
-          if (0 < mb && !A.c) {
+          if (0 < mb && !ra.c) {
             var gb = mb + 1,
               Tb = B / x,
               sa = image.height / D;

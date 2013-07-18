@@ -287,7 +287,7 @@
   definePublicFunction("getResultsForPage", s.prototype.getResultsForPage);
   s.prototype.layoutResults = function (a) {
     this.s = this.a.length ? 3 : 0;
-    this.c = document.getElementById("rg");
+    this.container = $("#rg")[0];
     switch (this.s) {
     case 0:
       this.l.T();
@@ -327,19 +327,19 @@
   }, uc = function (a, b) {
       $(b).attr("data-ri") || $(b).attr("data-ri", a.qa++)
     }, pc = function (a) {
-      for (var b = a.d.c = window.innerHeight || document.documentElement.offsetHeight, c = a.c, d = 0; c && !isNaN(c.offsetTop);) d += c.offsetTop, c = c.offsetParent;
+      for (var b = a.d.c = window.innerHeight || document.documentElement.offsetHeight, c = a.container, d = 0; c && !isNaN(c.offsetTop);) d += c.offsetTop, c = c.offsetParent;
       c = a.d.e = d;
       a.d.d = b - c;
       b = $("#images-grid-inner")[0].offsetWidth;
       0 < b && (a.d.a = b);
       $("#rg").css("width", (a.d.a || 0) + "px")
     }, rc = function (a) {
-      var b = a.c.parentNode,
-        c = a.c.nextSibling;
-      b.removeChild(a.c);
+      var b = a.container.parentNode,
+        c = a.container.nextSibling;
+      b.removeChild(a.container);
       a.l.W(a.s, a.d, a.e);
-      $(a.c).css("visibility", "visible");
-      b.insertBefore(a.c, c)
+      $(a.container).css("visibility", "visible");
+      b.insertBefore(a.container, c)
     }, jd = function (a) {
       if (!a.a.length) return false;
       if (oc || !a.V) switch (a.a.length) {

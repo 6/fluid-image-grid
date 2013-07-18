@@ -323,7 +323,6 @@
     console.log("this is called when window width/height changes");
     a.U = [];
     pc(a);
-    a.l.aa();
   }, setResultIndex = function (a, imageElement) {
       $(imageElement).attr("data-ri") || $(imageElement).attr("data-ri", a.resultIndex++);
     }, pc = function (a) {
@@ -436,11 +435,6 @@
       for (c = c.childNodes, g = 0; h = c[g]; g++) d.push(h);
     sd(this, a, b, [], d);
     f && this.e.insertBefore(f, e)
-  };
-  p.aa = function () {
-    this.c = [];
-    this.h = [];
-    this.n = 0
   };
   var sd = function (a, b, c, d, imageDivs) {
     for (var zd = a.a, Bb = [], Ua = 0; Ua < imageDivs.length; Ua++) {

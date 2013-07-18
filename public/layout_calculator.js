@@ -372,11 +372,7 @@
   };
   u(pd, dc);
   ec(pd);
-  var qd = function (a, b) {
-    this.d = a;
-    this.c = new Yb(a, b);
-    this.a = Xb
-  }, rd = function (a) {
+  var rd = function (a) {
       this.a = a;
       this.e = $("#rg")[0];
       this.c = [];
@@ -454,7 +450,12 @@
     }
     if (c.a) {
       4 * a.k > c.a && (a.k = Math.floor(c.a / 4), a.a.h = a.k);
-      for (var Xa = new qd(a.k, !a.a.areAllResultsLoaded()), N = null, Db = c.a, N = N || [], la = [0, 0], Eb = [], G = 0; G < N.length; G++) {
+      var Xa = {
+        d: a.k,
+        c: new Yb(a.k, !a.a.areAllResultsLoaded()),
+        a: Xb
+      };
+      for (var N = null, Db = c.a, N = N || [], la = [0, 0], Eb = [], G = 0; G < N.length; G++) {
         var ca = N[G];
         if (ca) {
           la[G] = ca.a;

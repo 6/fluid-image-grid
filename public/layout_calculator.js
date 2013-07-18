@@ -671,9 +671,6 @@
       }
     }
   };
-  var vd = new s;
-  vd.layoutResults();
-  var wd = ["google", "isr", "layout"],
-    _this = this;
-  for (var yd; wd.length && (yd = wd.shift());) wd.length || undefined === vd ? _this = _this[yd] ? _this[yd] : _this[yd] = {} : _this[yd] = vd;
+  window.FluidImageGrid = window.FluidImageGrid || {};
+  $.extend(window.FluidImageGrid, new s());
 })();

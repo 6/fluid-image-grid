@@ -35,7 +35,7 @@
     if (typeof pageToLoad === "undefined") return shoudRetryLoadImages = true;
 
     shoudRetryLoadImages = false;
-    var results = window.google.isr.layout.getResultsForPage(pageToLoad);
+    var results = window.FluidImageGrid.getResultsForPage(pageToLoad);
     if (!results) return loadImagesForNextPage();
 
     var resultImages = [];
@@ -76,7 +76,7 @@
   var onResizeThrottled = function() {
     window.clearTimeout(resizeTimeout);
     resizeTimeout = window.setTimeout(function () {
-      window.google.isr.layout.layoutResults(true);
+      window.FluidImageGrid.layoutResults(true);
       $('body').scrollTop(lastScrollY);
       if ($('body').scrollTop() > $("#images-grid").offset().top) {
         loadPages();
@@ -99,8 +99,9 @@
   currentScrollY = 0,
   resizeTimeout = -1;
 
-  window.FluidImageGrid = {};
+  window.FluidImageGrid = window.FluidImageGrid || {};
   window.FluidImageGrid.init = function(options) {
+    this.layoutResults();
     settings = $.extend(defaultSettings, options || {});
     $(window).on("scroll", onScrollThrottled);
     $(window).on("resize", onResizeThrottled);

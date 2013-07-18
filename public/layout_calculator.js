@@ -35,7 +35,7 @@
 
   var initializeSettingsCache = function () {
     settings = {};
-    var grid = document.getElementById("images-grid");
+    var grid = $("#images-grid")[0];
     if (grid) {
       for (var i = 0; i < grid.attributes.length; ++i) {
         var attribute = grid.attributes[i];
@@ -352,7 +352,7 @@
       } else return 100 > a.a[a.a.length -
         1]
     }, ld = function (a) {}, qc = function (a) {
-      a = a.c.getElementsByTagName("img");
+      a = $(a.container).find("img");
       for (var b = 0, c;
         (c = a[b]) && !($(c).attr("data-src") || $(c).attr("src")); b++);
       return b

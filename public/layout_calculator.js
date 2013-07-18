@@ -592,8 +592,8 @@
           var ra = Bb[J];
           var A = ra,
             B = image.width,
-            eb = A.a,
-            imageElement = $(eb).find("img")[0],
+            resultElement = A.a,
+            imageElement = $(resultElement).find("img")[0],
             Yc = image.height,
             imageWrapHeight = image.height,
             x = A.width,
@@ -634,7 +634,7 @@
           else x < B && (cd = (B - x) / 2); if (D > image.height) gd = -1 * tb(D - image.height);
           else if (D < image.height) var Yc = imageWrapHeight = D,
           hd = image.height - D, dd = Math.floor(hd / 2), ed = Math.ceil(hd / 2);
-          $(eb).css({
+          $(resultElement).css({
             width: B + "px",
             height: Yc + "px",
             "padding-top": dd + "px",
@@ -647,9 +647,9 @@
             "margin-right": fd + "px",
             "margin-top": gd + "px"
           });
-          var imageWrap = $(eb).find("a")[0],
+          var imageWrap = $(resultElement).find("a")[0],
             imageWrapWidth = Math.min(x, B),
-            imageWrapPosition = qb(eb, B, x, cd);
+            imageWrapPosition = qb(resultElement, B, x, cd);
           $(imageWrap).css({
             width: imageWrapWidth + "px",
             height: imageWrapHeight + "px",

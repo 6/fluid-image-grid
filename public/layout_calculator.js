@@ -262,7 +262,7 @@
       this.a = [];
       this.R = [];
       this.U = [];
-      this.n = [];
+      this.resultsListeners = [];
       this.h = numericalSetting("data-row-height", defaults.row_height);
       this.V = false;
       this.l.initialize(this.h)
@@ -379,12 +379,12 @@
       return b
     };
   s.prototype.addNewResultsListener = function (a) {
-    this.n.push(a)
+    this.resultsListeners.push(a)
   };
   definePublicFunction("addNewResultsListener", s.prototype.addNewResultsListener);
   s.prototype.removeNewResultsListener = function (a) {
-    a = Array.prototype.indexOf.call(this.n, a);
-    - 1 !== a && this.n.splice(a, 1);
+    a = Array.prototype.indexOf.call(this.resultsListeners, a);
+    - 1 !== a && this.resultsListeners.splice(a, 1);
   };
   definePublicFunction("removeNewResultsListener", s.prototype.removeNewResultsListener);
   var nc = function () {}, dc = function (a) {

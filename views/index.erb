@@ -18,7 +18,7 @@
     $(function () {
       FluidImageGrid.init({
         resizeThrottleRate: 100, // how often to recalculate layout on resize (ms)
-        scrollThrottleRate: 50, // how often to check if new results need to be loaded (ms)
+        scrollThrottleRate: 10, // how often to check if new results need to be loaded (ms)
         nTbnsPending: 8 // number of pending images to allow at once before loading more results
       });
     });

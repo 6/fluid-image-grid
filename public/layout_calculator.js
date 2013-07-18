@@ -105,17 +105,6 @@
         P: d + "px",
         r: ""
       };
-    }, rb = function (a, b, c) {
-      this.a = a;
-      this.c = false;
-      this.e = 0;
-      this.h = 0;
-      this.d = 0;
-      this.k = 0;
-      this.n = false;
-      this.width = b.width;
-      this.height = b.height;
-      this.s = false
     }, sb = numericalSetting("data-eca", defaults.eca),
     va = function (a) {
       var b = (a.d + a.k) / 100;
@@ -450,7 +439,18 @@
             metadataJSON = window.JSON.parse(innerDiv.innerText || innerDiv.textContent || innerDiv.innerHTML);
             break;
           }
-      Ad[Bd] = new rb(imageDiv, metadataJSON, Cb)
+      Ad[Bd] = {
+        a: imageDiv,
+        c: false,
+        e: 0,
+        h: 0,
+        d: 0,
+        k: 0,
+        n: false,
+        width: metadataJSON.width,
+        height: metadataJSON.height,
+        s: false
+      };
     }
     if (c.a) {
       4 * a.k > c.a && (a.k = Math.floor(c.a / 4), a.a.h = a.k);

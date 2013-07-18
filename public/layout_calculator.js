@@ -443,13 +443,6 @@
     this.n = 0
   };
   var sd = function (a, b, c, d, imageDivs) {
-    for (var f, g, h, k = null, l = null, n = 0; n < d.length; n++) {
-      for (var r = d[n], v = r.childNodes, m = 0, q = Number.MAX_VALUE, w = [], F = 0, aa; aa = v[F]; F++)
-        for (F = 0; F < w.length; F++) w[F].width = q;
-      var vc = new ud(r, w, m, q);
-      w[0].ea ? l = vc : k = vc
-    }
-    h = [k, l];
     for (var zd = a.a, Bb = [], Ua = 0; Ua < imageDivs.length; Ua++) {
       var Ad =
         Bb,
@@ -467,7 +460,7 @@
     }
     if (c.a) {
       4 * a.k > c.a && (a.k = Math.floor(c.a / 4), a.a.h = a.k);
-      for (var Xa = new qd(a.k, !a.a.areAllResultsLoaded()), N = h, Db = c.a, N = N || [], la = [0, 0], Eb = [], G = 0; G < N.length; G++) {
+      for (var Xa = new qd(a.k, !a.a.areAllResultsLoaded()), N = null, Db = c.a, N = N || [], la = [0, 0], Eb = [], G = 0; G < N.length; G++) {
         var ca = N[G];
         if (ca) {
           la[G] = ca.a;
@@ -684,12 +677,7 @@
         a.h.push(imageDivs[ib]);
       }
     }
-  }, ud = function (a, b, c, d) {
-      this.d = a;
-      this.c = b;
-      this.a = c;
-      this.width = d
-    };
+  };
   var vd = new s;
   vd.layoutResults();
   var wd = ["google", "isr", "layout"],

@@ -449,10 +449,10 @@
     var d = [],
       e = null;
     if (this.h && this.h.length)
-      for (var f = document.createDocumentFragment(), g = 0; g < this.h.length; g++) {
+      for (var fragment = document.createDocumentFragment(), g = 0; g < this.h.length; g++) {
         var h = this.h[g],
           e = h.nextSibling;
-        f.appendChild(h);
+        fragment.appendChild(h);
         d.push(h)
       }
     if (c)

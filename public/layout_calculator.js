@@ -303,27 +303,6 @@
     }
   };
   definePublicFunction("layoutResults", s.prototype.layoutResults);
-  s.prototype.moveAndLayoutNewResults = function () {
-    var a = $("#rg"),
-      b = $("div.rg_add_chunk");
-    if (a && 0 != b.length) {
-      for (var c, d = 0; c = b[d]; ++d) {
-        var e = $(c).attr("data-cei");
-        if (e && !this.R[e]) {
-          this.R[e] = true;
-          var f = 1 == this.a.length && 100 > this.a[0],
-            g = 3 == this.a.length;
-          for (this.e = document.createDocumentFragment(); 0 < c.childNodes.length;) this.e.appendChild(c.childNodes[0]);
-          this.k();
-          a.appendChild(this.e);
-          this.e = null
-        }
-        c.parentNode.removeChild(c);
-      }
-      tc(this)
-    } else 1 == this.a.length && 20 >= this.a[0]
-  };
-  definePublicFunction("moveAndLayoutNewResults", s.prototype.moveAndLayoutNewResults);
   s.prototype.areAllResultsLoaded = function () {
     return this.F
   };

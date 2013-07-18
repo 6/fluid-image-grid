@@ -272,7 +272,7 @@
   var oc = settings.hasOwnProperty("data-bge") ? "true" == settings["data-bge"] : defaults.bge;
   s.prototype.F = false;
   s.prototype.H = false;
-  s.prototype.qa = 0;
+  s.prototype.resultIndex = 0;
   s.prototype.getResults = function () {
     return this.U
   };
@@ -324,8 +324,8 @@
     a.U = [];
     pc(a);
     a.l.aa();
-  }, uc = function (a, b) {
-      $(b).attr("data-ri") || $(b).attr("data-ri", a.qa++)
+  }, setResultIndex = function (a, imageElement) {
+      $(imageElement).attr("data-ri") || $(imageElement).attr("data-ri", a.resultIndex++);
     }, pc = function (a) {
       for (var b = a.d.c = window.innerHeight || document.documentElement.offsetHeight, c = a.container, d = 0; c && !isNaN(c.offsetTop);) d += c.offsetTop, c = c.offsetParent;
       c = a.d.e = d;
@@ -409,8 +409,11 @@
     return (a = this.c[a]) ? a.g : null
   };
   p.T = function () {
-    for (var a = this.a.getChunkSizeArray(), b = 0, c = this.e.childNodes, d = 0, e; e = c[d]; d++)
-      if ($(e).hasClass("rg_di")) uc(this.a, e), $(e).attr("data-ci") && (a.push(b), b = 0), b++;
+    for (var a = this.a.getChunkSizeArray(), b = 0, c = this.e.childNodes, d = 0, e; resultElement = c[d]; d++)
+      if ($(resultElement).hasClass("rg_di")) {
+        setResultIndex(this.a, resultElement);
+        $(resultElement).attr("data-ci") && (a.push(b), b = 0), b++;
+      }
     0 < b && (a.push(b), jd(this.a))
   };
   p.W = function (a, b, c) {

@@ -64,11 +64,11 @@
     var currentTime = new Date().getTime();
     if (settings.scrollThrottleRate >= currentTime - lastScrollTime) return;
 
-    lastScrollTime = currentTime;
-    lastScrollY = currentScrollY;
     var top = $('body').scrollTop();
-    if (top - lastScrollY > 0) {
-      currentScrollY = top;
+    lastScrollTime = currentTime;
+    lastScrollY = top;
+    if (top - farthestScrolledY > 0) {
+      farthestScrolledY = top;
       loadPagesIfNeeded();
     }
   };
@@ -93,6 +93,7 @@
   lastPageLoadedTime = new Date().getTime(),
   lastScrollTime = 0,
   lastScrollY = 0,
+  farthestScrolledY = 0,
   nImagesPendingLoad = 0,
   pagesToLoad = [],
   shoudRetryLoadImages = true,

@@ -1,6 +1,11 @@
 (function() {
   var currentPage = function () {
     var pages = $("#rg .fluid-image-grid-page-separator");
+    pages.sort(function (a, b) {
+      var pageA = parseInt($(a).data('pg'));
+      var pageB = parseInt($(b).data('pg'));
+      return (pageA < pageB) ? -1 : (pageA > pageB) ? 1 : 0;
+    });
     for (var i = 0; i < pages.length; i++) {
       var $page = $(pages[i]);
       var pageTopOffset = $page.data("offset") || $page.offset().top;

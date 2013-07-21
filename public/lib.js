@@ -8,7 +8,7 @@
     });
     for (var i = 0; i < pages.length; i++) {
       var $page = $(pages[i]);
-      var pageTopOffset = $page.data("offset") || $page.offset().top;
+      var pageTopOffset = ($page.next('.rg_di').offset() || $page.prev('.rg_di').offset()).top;
       if (pageTopOffset > $('body').scrollTop()) return i;
     }
     return 0;

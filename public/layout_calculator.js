@@ -568,7 +568,6 @@
       });
       for (var z = a.c[a.c.length - 1], Nc = 1 == a.c.length ? c.d : c.c, Ja = 0; Ja < X.length; Ja++) {
         if (0 != z.o && 32 > Nc - z.o) {
-          a.n += z.o;
           z = {
             g: [],
             o: 0
@@ -580,7 +579,6 @@
           pageDiv.className = "fluid-image-grid-page-separator";
           pageDiv.setAttribute("id", "page" + a.c.length);
           pageDiv.setAttribute("data-pg", a.c.length);
-          pageDiv.setAttribute("data-offset", c.e + a.n + z.o);
           pageDiv.setAttribute("data-fri", a.a.getResults().length);
           imageDivs[J].parentNode.insertBefore(pageDiv, imageDivs[J]);
           a.s && (z.o += 32);

@@ -6,19 +6,19 @@
 body {
   background-color: #eee;
   overflow-y: scroll;
+  padding: 12px 0 12px 12px;
 }
 
-#images-grid {
+.fluid-image-grid {
   clear:both;
   position:relative;
   zoom:1;
-  min-width: 760px;
-  padding: 12px 0 12px 12px;
   font-size: medium;
+  min-width: 760px;
   font-weight: normal;
 }
 
-#rg {
+.fluid-image-grid-inner {
   height: 100%;
   width: 100%;
   position: relative;

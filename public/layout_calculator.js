@@ -35,7 +35,7 @@
 
   var initializeSettingsCache = function () {
     settings = {};
-    var grid = $("#images-grid")[0];
+    var grid = $(".fluid-image-grid")[0];
     if (grid) {
       for (var i = 0; i < grid.attributes.length; ++i) {
         var attribute = grid.attributes[i];
@@ -276,7 +276,7 @@
   definePublicFunction("getResultsForPage", s.prototype.getResultsForPage);
   s.prototype.layoutResults = function (a) {
     this.s = this.a.length ? 3 : 0;
-    this.container = $("#rg")[0];
+    this.container = $(".fluid-image-grid-inner")[0];
     switch (this.s) {
     case 0:
       this.l.T();
@@ -318,9 +318,9 @@
       for (var b = a.d.c = window.innerHeight || document.documentElement.offsetHeight, c = a.container, d = 0; c && !isNaN(c.offsetTop);) d += c.offsetTop, c = c.offsetParent;
       c = a.d.e = d;
       a.d.d = b - c;
-      b = $("#images-grid-inner")[0].offsetWidth;
+      b = $(".fluid-image-grid")[0].offsetWidth;
       0 < b && (a.d.a = b);
-      $("#rg").css("width", (a.d.a || 0) + "px")
+      $(".fluid-image-grid-inner").css("width", (a.d.a || 0) + "px")
     }, rc = function (a) {
       var b = a.container.parentNode,
         c = a.container.nextSibling;
@@ -374,7 +374,7 @@
   ec(pd);
   var rd = function (a) {
       this.a = a;
-      this.e = $("#rg")[0];
+      this.e = $(".fluid-image-grid-inner")[0];
       this.c = [];
       this.s = false;
       this.F = "";

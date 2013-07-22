@@ -1,6 +1,6 @@
 (function() {
   var currentPage = function () {
-    var pages = $("#rg .fluid-image-grid-page-separator");
+    var pages = $(".fluid-image-grid-page-separator");
     pages.sort(function (a, b) {
       var pageA = parseInt($(a).data('pg'));
       var pageB = parseInt($(b).data('pg'));
@@ -83,7 +83,7 @@
     resizeTimeout = window.setTimeout(function () {
       window.FluidImageGrid.layoutResults(true);
       $('body').scrollTop(lastScrollY);
-      if ($('body').scrollTop() > $("#images-grid").offset().top) {
+      if ($('body').scrollTop() > $(".fluid-image-grid").offset().top) {
         loadPages();
       }
     }, settings.resizeThrottleRate);

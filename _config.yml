@@ -1,1 +1,2 @@
-pygments: true
+exclude: ['Gemfile', 'Gemfile.lock', '.gitignore', '.rvmrc', 'README.md']
+port: 4567

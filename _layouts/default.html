@@ -1,17 +1,17 @@
 <!doctype html>
 <html>
 <head>
-  <title>scuba diving - Google Search</title>
-  <link rel="stylesheet" href="/fluid-image-grid.css">
+  <title>{{ page.title }}</title>
+  <link rel="stylesheet" href="/assets/fluid-image-grid.css">
   <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-  <script>window.jQuery || document.write('<script src="/vendor/jquery-1.9.1.js"><\/script>')</script>
+  <script>window.jQuery || document.write('<script src="/assets/vendor/jquery-1.9.1.js"><\/script>')</script>
 </head>
 <body>
   <div class='fluid-image-grid' data-row-height="180" data-ma="12" data-eca="0.1" data-mrw="80" data-bge="false" data-isuf="0">
-    <div class="fluid-image-grid-inner"><%= erb :results %></div>
+    <div class="fluid-image-grid-inner">{{ content }}</div>
   </div>
 
-  <script src="/fluid-image-grid.js"></script>
+  <script src="/assets/fluid-image-grid.js"></script>
   <script>
     $(function () {
       FluidImageGrid.init({

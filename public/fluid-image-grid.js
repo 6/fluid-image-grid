@@ -669,11 +669,7 @@
       }
     }
   };
-  window.FluidImageGrid = window.FluidImageGrid || {};
-  $.extend(window.FluidImageGrid, new s());
-})();
 
-(function() {
   var currentPage = function () {
     var pages = $(".fluid-image-grid-page-separator");
     pages.sort(function (a, b) {
@@ -764,6 +760,7 @@
     }, settings.resizeThrottleRate);
   };
 
+  window.FluidImageGrid = new s();
   var defaultSettings = {
     "nTbnsPending": 8,
     "resizeThrottleRate": 50,
@@ -780,7 +777,6 @@
   currentScrollY = 0,
   resizeTimeout = -1;
 
-  window.FluidImageGrid = window.FluidImageGrid || {};
   window.FluidImageGrid.init = function(options) {
     this.layoutResults();
     settings = $.extend(defaultSettings, options || {});

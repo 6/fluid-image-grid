@@ -394,11 +394,8 @@
         imageDiv = imageDivs[Ua],
         metadataJSON = undefined,
         Cb = undefined;
-        for (var innerDivs = imageDiv.getElementsByTagName("div"), xc = 0, innerDiv = undefined; innerDiv = innerDivs[xc]; xc++)
-          if ("rg_meta" == innerDiv.className) {
-            metadataJSON = window.JSON.parse(innerDiv.innerText || innerDiv.textContent || innerDiv.innerHTML);
-            break;
-          }
+        var metadataDiv = $(imageDiv).find('.rg_meta');
+        metadataJSON = window.JSON.parse($(metadataDiv).text());
       Ad[Bd] = {
         a: imageDiv,
         c: false,

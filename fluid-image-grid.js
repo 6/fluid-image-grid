@@ -1,11 +1,14 @@
 (function () {
-  var defaults = {
+  var defaultSettings = {
     row_height: 140,
     mrw: 80,
     isuf: 0,
     eca: 0.1,
     ma: 12,
-    bge: true
+    bge: true,
+    nTbnsPending: 8,
+    resizeThrottleRate: 50,
+    scrollThrottleRate: 40
   };
 
   var aspectRatio = function (image) {
@@ -64,14 +67,14 @@
         a, d), c)
     };
   var Qa, settings,
-    lb = numericalSetting("mrw", defaults.mrw),
-    mb = numericalSetting("isuf", defaults.isuf),
+    lb = numericalSetting("mrw", defaultSettings.mrw),
+    mb = numericalSetting("isuf", defaultSettings.isuf),
     qb = function (a, b, c, d) {
       return {
         P: d + "px",
         r: ""
       };
-    }, sb = numericalSetting("eca", defaults.eca),
+    }, sb = numericalSetting("eca", defaultSettings.eca),
     va = function (a) {
       var b = (a.d + a.k) / 100;
       b = Math.min(1, b + sb);
@@ -214,12 +217,12 @@
       this.R = [];
       this.U = [];
       this.resultsListeners = [];
-      this.h = numericalSetting("row-height", defaults.row_height);
+      this.h = numericalSetting("row-height", defaultSettings.row_height);
       this.V = false;
       this.l.initialize(this.h)
-    }, Xb = numericalSetting("ma", defaults.ma);
-  numericalSetting("mrw", defaults.mrw);
-  var oc = $('.fluid-image-grid').data("bge") ? "true" === $('.fluid-image-grid').data("bge") : defaults.bge;
+    }, Xb = numericalSetting("ma", defaultSettings.ma);
+  numericalSetting("mrw", defaultSettings.mrw);
+  var oc = $('.fluid-image-grid').data("bge") ? "true" === $('.fluid-image-grid').data("bge") : defaultSettings.bge;
   s.prototype.F = false;
   s.prototype.H = false;
   s.prototype.resultIndex = 0;
@@ -722,11 +725,6 @@
   };
 
   window.FluidImageGrid = new s();
-  var defaultSettings = {
-    "nTbnsPending": 8,
-    "resizeThrottleRate": 50,
-    "scrollThrottleRate": 40
-  },
   settings = {},
   lastPageLoadedTime = new Date().getTime(),
   lastScrollTime = 0,

@@ -386,17 +386,12 @@
     f && this.e.insertBefore(f, e)
   };
   var sd = function (a, b, c, d, imageDivs) {
-    for (var zd = a.a, Bb = [], Ua = 0; Ua < imageDivs.length; Ua++) {
-      var Ad =
-        Bb,
-        Bd = Ua,
-        wc = zd,
-        imageDiv = imageDivs[Ua],
-        metadataJSON = undefined,
-        Cb = undefined;
+    var imagesData = [];
+    for (var i = 0; i < imageDivs.length; i++) {
+      var imageDiv = imageDivs[i];
         var metadataDiv = $(imageDiv).find('.rg_meta');
-        metadataJSON = window.JSON.parse($(metadataDiv).text());
-      Ad[Bd] = {
+        var metadataJSON = window.JSON.parse($(metadataDiv).text());
+      imagesData[i] = {
         a: imageDiv,
         c: false,
         e: 0,
@@ -424,10 +419,9 @@
         }
       }
       var ma = Xa.c,
-        Ya = Bb,
         yc = Number.MAX_VALUE,
         zc = Eb || [],
-        Ya = Ya.slice(0),
+        Ya = imagesData.slice(0),
         Ac = ma.d,
         na = [],
         da = [];
@@ -548,7 +542,7 @@
         z.o += Xb;
         for (qa = 0; qa < X[Ja]; qa++) {
           image = images[cb];
-          var ra = Bb[J];
+          var ra = imagesData[J];
           var B = image.width,
             resultElement = ra.a,
             imageElement = $(resultElement).find("img")[0],

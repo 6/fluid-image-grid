@@ -421,26 +421,25 @@
       var ma = Xa.c,
         yc = Number.MAX_VALUE,
         zc = Eb || [],
-        Ya = imagesData.slice(0),
         Ac = ma.d,
         na = [],
         da = [];
       for (f = 0; 4 > f; f++) {
-        for (var I = ma, Bc = Ya, Dd = Db, Za = yc, Fb = Ac, Cc = na, Ed = zc, Gb = 0, W = [], Hb = [], Ib = 0, Dc = Cc.length || Za / Fb, P = 0; P < Dc; P++) {
-          for (var Jb = Ed[P] || 0, $a = Cc[P] || Fb, ea = Dd - Jb, Fd = Math.floor(ea / (I.a + I.c)), Fa = 0, Kb = 0, Lb = 0, Ga = 0, Mb = 0; Gb < Bc.length && Ga < Fd;) {
-            var fa = Bc[Gb],
-              Gd = Q(aspectRatio(fa), $a, I.c, fa.width, 2),
+        for (var I = ma, Dd = Db, Za = yc, Fb = Ac, Cc = na, Ed = zc, Gb = 0, W = [], Hb = [], Ib = 0, Dc = Cc.length || Za / Fb, P = 0; P < Dc; P++) {
+          for (var Jb = Ed[P] || 0, $a = Cc[P] || Fb, ea = Dd - Jb, Fd = Math.floor(ea / (I.a + I.c)), Fa = 0, Kb = 0, Lb = 0, Ga = 0, Mb = 0; Gb < imagesData.length && Ga < Fd;) {
+            var imageData = imagesData[Gb],
+              Gd = Q(aspectRatio(imageData), $a, I.c, imageData.width, 2),
               Nb = Fa + Gd + I.a,
-              Hd = Q(va(fa), $a, I.c, fa.width, 2),
+              Hd = Q(va(imageData), $a, I.c, imageData.width, 2),
               Kb = Kb + (Hd + I.a);
             if (Nb > ea && Nb - ea > ea - Fa)
               if (Lb >= ea) break;
               else if (Kb > ea) break;
             Ga++;
             var Fa = Nb,
-              Id = Q(wa(fa), $a, I.c, fa.width, 2),
+              Id = Q(wa(imageData), $a, I.c, imageData.width, 2),
               Lb = Lb + (Id + I.a),
-              Mb = Mb + aspectRatio(fa);
+              Mb = Mb + aspectRatio(imageData);
             Gb++;
             if (Fa > ea) break
           }
@@ -469,14 +468,14 @@
         for (var Gc = false, oa = 0; oa < da.length; oa++) na[oa] != da[oa].G && (na[oa] = da[oa].G, Gc = true);
         if (!Gc) break
       }
-      for (var Hc = Ya, Ic = da, Ha = 0, X = [], pa = [], Jc = [], bb = 0; bb < Ic.length; bb++) {
-        var H = Ic[bb];
+      for (var Ic = da, Ha = 0, X = [], pa = [], Jc = [], i = 0; i < Ic.length; i++) {
+        var H = Ic[i];
         if (!H.count) break;
-        var Kd = Hc.slice(Ha, Ha + H.count),
+        var Kd = imagesData.slice(Ha, Ha + H.count),
           Ld = Db - H.width,
-          Kc = Ha + H.count == Hc.length && Ld > H.width / H.count;
+          Kc = Ha + H.count == imagesData.length && Ld > H.width / H.count;
         if (Kc && ma.e) break;
-        for (var Lc = xa(Kd, Db, H.width, H.height, ma.a, ma.c, 2, zc[bb], Kc), Pb = 0; Pb < Lc.length; Pb++) Jc.push({
+        for (var Lc = xa(Kd, Db, H.width, H.height, ma.a, ma.c, 2, zc[i], Kc), Pb = 0; Pb < Lc.length; Pb++) Jc.push({
           width: Lc[Pb],
           height: H.height
         });

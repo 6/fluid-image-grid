@@ -12,22 +12,9 @@
     return image.width / image.height;
   };
 
-  var initializeSettingsCache = function () {
-    settings = {};
-    var grid = $(".fluid-image-grid")[0];
-    if (grid) {
-      for (var i = 0; i < grid.attributes.length; ++i) {
-        var attribute = grid.attributes[i];
-        if (attribute.specified && 0 === attribute.name.indexOf("data-")) {
-          settings[attribute.name] = attribute.value;
-        }
-      }
-    }
-  };
-
   var numericalSetting = function (key, defaultValue) {
-    settings || initializeSettingsCache();
-    return settings.hasOwnProperty(key) ? parseFloat(settings[key]) : defaultValue;
+    var value = $('.fluid-image-grid').data(key);
+    return value ? parseFloat(value) : defaultValue;
   };
 
   var definePublicFunction = function (name, fn) {
@@ -77,14 +64,14 @@
         a, d), c)
     };
   var Qa, settings,
-    lb = numericalSetting("data-mrw", defaults.mrw),
-    mb = numericalSetting("data-isuf", defaults.isuf),
+    lb = numericalSetting("mrw", defaults.mrw),
+    mb = numericalSetting("isuf", defaults.isuf),
     qb = function (a, b, c, d) {
       return {
         P: d + "px",
         r: ""
       };
-    }, sb = numericalSetting("data-eca", defaults.eca),
+    }, sb = numericalSetting("eca", defaults.eca),
     va = function (a) {
       var b = (a.d + a.k) / 100;
       b = Math.min(1, b + sb);
@@ -227,13 +214,12 @@
       this.R = [];
       this.U = [];
       this.resultsListeners = [];
-      this.h = numericalSetting("data-row-height", defaults.row_height);
+      this.h = numericalSetting("row-height", defaults.row_height);
       this.V = false;
       this.l.initialize(this.h)
-    }, Xb = numericalSetting("data-ma", defaults.ma);
-  numericalSetting("data-mrw", defaults.mrw);
-  settings || initializeSettingsCache();
-  var oc = settings.hasOwnProperty("data-bge") ? "true" == settings["data-bge"] : defaults.bge;
+    }, Xb = numericalSetting("ma", defaults.ma);
+  numericalSetting("mrw", defaults.mrw);
+  var oc = $('.fluid-image-grid').data("bge") ? "true" === $('.fluid-image-grid').data("bge") : defaults.bge;
   s.prototype.F = false;
   s.prototype.H = false;
   s.prototype.resultIndex = 0;

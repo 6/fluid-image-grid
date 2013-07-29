@@ -105,7 +105,14 @@
     this.e = !! b;
     this.c = lb || 0
   };
-  var cc = function () {}, ec = function (a) {
+  var bc = function (a, b) {
+      for (var c = 1; c < arguments.length; c++) {
+        var d = arguments[c],
+          e,
+          f = a.length;
+        for (var g = d.length, h = 0; h < g; h++) a[f + h] = d[h];
+      }
+    }, cc = function () {}, ec = function (a) {
       var b =
         dc;
       a.$ = 0;
@@ -130,6 +137,7 @@
       u(b, c);
       for (var d = []; a;) {
         if (c = a.w) {
+          c.m && bc(d, c.m);
           var c = c.prototype,
             e;
           for (e in c)

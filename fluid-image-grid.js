@@ -12,12 +12,6 @@
     return image.width / image.height;
   };
 
-  var camelize = function (str) {
-    return String(str).replace(/\-([a-z])/g, function (a, c) {
-      return c.toUpperCase();
-    });
-  };
-
   var initializeSettingsCache = function () {
     settings = {};
     var grid = $(".fluid-image-grid")[0];

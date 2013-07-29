@@ -18,21 +18,6 @@
     });
   };
 
-  var typeString = function (obj) {
-    var typeOfString = typeof obj;
-    if ("object" == typeOfString)
-      if (obj) {
-        if (obj instanceof Array) return "array";
-        if (obj instanceof Object) return typeOfString;
-        var toString = Object.prototype.toString.call(obj);
-        if ("[object Window]" == toString) return "object";
-        if ("[object Array]" == toString || "number" == typeof obj.length && "undefined" != typeof obj.splice && "undefined" != typeof obj.propertyIsEnumerable && !obj.propertyIsEnumerable("splice")) return "array";
-        if ("[object Function]" == toString || "undefined" != typeof obj.call && "undefined" != typeof obj.propertyIsEnumerable && !obj.propertyIsEnumerable("call")) return "function";
-      } else return "null";
-      else if ("function" == typeOfString && "undefined" == typeof obj.call) return "object";
-    return typeOfString;
-  };
-
   var initializeSettingsCache = function () {
     settings = {};
     var grid = $(".fluid-image-grid")[0];
@@ -154,7 +139,7 @@
           var c = c.prototype,
             e;
           for (e in c)
-            if (c.hasOwnProperty(e) && "function" == typeString(c[e]) && c[e] !== a) {
+            if (c.hasOwnProperty(e) && $.isFunction(c[e]) && c[e] !== a) {
               var f = !! c[e].ga,
                 g = fc(e, c, d, f);
               (f = gc(e, c, g, f)) && (b.prototype[e] = f)

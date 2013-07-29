@@ -643,7 +643,8 @@
     });
     for (var i = 0; i < pages.length; i++) {
       var $page = $(pages[i]);
-      var pageTopOffset = ($page.next('.rg_di').offset() || $page.prev('.rg_di').offset()).top;
+      var closestImage = $page.next('.rg_di').offset() || $page.prev('.rg_di').offset();
+      var pageTopOffset = (closestImage && closestImage.top) || 0;
       if (pageTopOffset > $('body').scrollTop()) return i;
     }
     return 0;

@@ -74,14 +74,12 @@
         P: d + "px",
         r: ""
       };
-    }, sb = numericalSetting("eca", defaultSettings.eca),
+    },
     va = function (a) {
-      var b = (a.d + a.k) / 100;
-      b = Math.min(1, b + sb);
-      return (a.width - a.width * b) / a.height
+      var b = Math.min(1, numericalSetting("eca", defaultSettings.eca));
+      return (a.width - a.width * b) / a.height;
     }, wa = function (a) {
-      var b = (a.e + a.h) / 100;
-      b = Math.min(1, b + sb);
+      var b = Math.min(1, numericalSetting("eca", defaultSettings.eca));
       return a.width / (a.height - a.height * b)
     }, tb = function (b) {
       return Math.floor(0.5 * b)
@@ -392,16 +390,9 @@
         var metadataDiv = $(imageDiv).find('.rg_meta');
         var metadataJSON = window.JSON.parse($(metadataDiv).text());
       imagesData[i] = {
-        a: imageDiv,
-        c: false,
-        e: 0,
-        h: 0,
-        d: 0,
-        k: 0,
-        n: false,
+        el: imageDiv,
         width: metadataJSON.width,
-        height: metadataJSON.height,
-        s: false
+        height: metadataJSON.height
       };
     }
     if (c.a) {
@@ -419,15 +410,13 @@
         }
       }
       var ma = Xa.c,
-        yc = Number.MAX_VALUE,
-        zc = Eb || [],
         Ac = ma.d,
         na = [],
-        da = [];
+        da, Za;
       for (f = 0; 4 > f; f++) {
-        for (var I = ma, Dd = Db, Za = yc, Fb = Ac, Cc = na, Ed = zc, Gb = 0, W = [], Hb = [], Ib = 0, Dc = Cc.length || Za / Fb, P = 0; P < Dc; P++) {
-          for (var Jb = Ed[P] || 0, $a = Cc[P] || Fb, ea = Dd - Jb, Fd = Math.floor(ea / (I.a + I.c)), Fa = 0, Kb = 0, Lb = 0, Ga = 0, Mb = 0; Gb < imagesData.length && Ga < Fd;) {
-            var imageData = imagesData[Gb],
+        for (var I = ma, Dd = Db, Fb = Ac, imageIndex = 0, W = [], Hb = [], Ib = 0, Dc = na.length || Number.MAX_VALUE / Fb, P = 0; P < Dc; P++) {
+          for (var Jb = Eb[P] || 0, $a = na[P] || Fb, ea = Dd - Jb, Fd = Math.floor(ea / (I.a + I.c)), Fa = 0, Kb = 0, Lb = 0, Ga = 0, Mb = 0; imageIndex < imagesData.length && Ga < Fd;) {
+            var imageData = imagesData[imageIndex],
               Gd = Q(aspectRatio(imageData), $a, I.c, imageData.width, 2),
               Nb = Fa + Gd + I.a,
               Hd = Q(va(imageData), $a, I.c, imageData.width, 2),
@@ -440,7 +429,7 @@
               Id = Q(wa(imageData), $a, I.c, imageData.width, 2),
               Lb = Lb + (Id + I.a),
               Mb = Mb + aspectRatio(imageData);
-            Gb++;
+            imageIndex++;
             if (Fa > ea) break
           }
           if (0 == Ga && !Jb) break;
@@ -475,7 +464,7 @@
           Ld = Db - H.width,
           Kc = Ha + H.count == imagesData.length && Ld > H.width / H.count;
         if (Kc && ma.e) break;
-        for (var Lc = xa(Kd, Db, H.width, H.height, ma.a, ma.c, 2, zc[i], Kc), Pb = 0; Pb < Lc.length; Pb++) Jc.push({
+        for (var Lc = xa(Kd, Db, H.width, H.height, ma.a, ma.c, 2, Eb[i], Kc), Pb = 0; Pb < Lc.length; Pb++) Jc.push({
           width: Lc[Pb],
           height: H.height
         });
@@ -541,23 +530,23 @@
         z.o += Xb;
         for (qa = 0; qa < X[Ja]; qa++) {
           image = images[cb];
-          var ra = imagesData[J];
+          var imageData = imagesData[J];
           var B = image.width,
-            resultElement = ra.a,
+            resultElement = imageData.el,
             imageElement = $(resultElement).find("img")[0],
             Yc = image.height,
             imageWrapHeight = image.height,
-            x = ra.width,
-            D = ra.height;
-          if (ra.width > B || ra.height > image.height) {
+            x = imageData.width,
+            D = imageData.height;
+          if (imageData.width > B || imageData.height > image.height) {
             var $c = B / image.height,
-              fb = Math.min(wa(ra), Math.max($c, va(ra)));
-            if (aspectRatio(ra) > fb) var ad = Math.min(ra.height, B / fb),
-            x = ad * aspectRatio(ra), D = ad;
-            else var bd = Math.min(ra.width, fb > $c ? B : image.height * fb),
-            x = bd, D = bd / aspectRatio(ra)
+              fb = Math.min(wa(imageData), Math.max($c, va(imageData)));
+            if (aspectRatio(imageData) > fb) var ad = Math.min(imageData.height, B / fb),
+            x = ad * aspectRatio(imageData), D = ad;
+            else var bd = Math.min(imageData.width, fb > $c ? B : image.height * fb),
+            x = bd, D = bd / aspectRatio(imageData)
           }
-          if (0 < mb && !ra.c) {
+          if (0 < mb) {
             var gb = mb + 1,
               Tb = B / x,
               sa = image.height / D;
@@ -607,10 +596,10 @@
             left: imageWrapPosition.P,
             right: imageWrapPosition.r
           });
-          z.g.push(ra.a);
-          a.a.getResults().push(ra.a);
+          z.g.push(imageData.el);
+          a.a.getResults().push(imageData.el);
 
-          $(ra.a).css("display", "inline-block");
+          $(imageData.el).css("display", "inline-block");
           J++;
 
           cb++

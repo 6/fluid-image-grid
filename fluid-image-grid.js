@@ -272,13 +272,13 @@
       $(imageElement).attr("data-ri") || $(imageElement).attr("data-ri", a.resultIndex++);
     }, setGridWidth = function (a) {
       var gridWidth = $(".fluid-image-grid")[0].offsetWidth;
-      0 < gridWidth && (a.d.gridWidth = gridWidth);
-      $(".fluid-image-grid-inner").css("width", (a.d.gridWidth || 0) + "px")
+      0 < gridWidth && (a.gridWidth = gridWidth);
+      $(".fluid-image-grid-inner").css("width", (a.gridWidth || 0) + "px")
     }, rc = function (a) {
       var b = a.container.parentNode,
         c = a.container.nextSibling;
       b.removeChild(a.container);
-      a.l.W(a.s, a.d, a.e);
+      a.l.W(a.s, a.gridWidth, a.e);
       $(a.container).css("visibility", "visible");
       b.insertBefore(a.container, c)
     };
@@ -342,11 +342,11 @@
       }
     0 < b && a.push(b);
   };
-  p.W = function (a, dimensions, c) {
+  p.W = function (a, gridWidth, c) {
     for (var imageDivs = [], childElements = this.e.childNodes, g = 0, childElement; childElement = childElements[g]; g++) {
       if ($(childElement).hasClass("rg_di")) imageDivs.push(childElement);
     }
-    (0 < imageDivs.length) && sd(this, a, dimensions, [], imageDivs)
+    (0 < imageDivs.length) && sd(this, a, gridWidth, [], imageDivs)
   };
   p.S = function (a, b, c) {
     var d = [],
@@ -363,7 +363,7 @@
     sd(this, a, b, [], d);
     f && this.e.insertBefore(f, e)
   };
-  var sd = function (a, b, dimensions, d, imageDivs) {
+  var sd = function (a, b, gridWidth, d, imageDivs) {
     var imagesData = [];
     for (var i = 0; i < imageDivs.length; i++) {
       var imageDiv = imageDivs[i];
@@ -375,14 +375,14 @@
         height: metadataJSON.height
       };
     }
-    if (dimensions.gridWidth) {
-      4 * a.k > dimensions.gridWidth && (a.k = Math.floor(dimensions.gridWidth / 4), a.a.h = a.k);
+    if (gridWidth) {
+      4 * a.k > gridWidth && (a.k = Math.floor(gridWidth / 4), a.a.h = a.k);
       var Xa = {
         d: a.k,
         c: new Yb(a.k, !a.a.areAllResultsLoaded()),
         a: Xb
       };
-      for (var N = null, Db = dimensions.gridWidth, N = N || [], la = [0, 0], Eb = [], G = 0; G < N.length; G++) {
+      for (var N = null, Db = gridWidth, N = N || [], la = [0, 0], Eb = [], G = 0; G < N.length; G++) {
         var ca = N[G];
         if (ca) {
           la[G] = ca.a;

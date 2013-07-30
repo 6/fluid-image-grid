@@ -271,13 +271,6 @@
   }, setResultIndex = function (a, imageElement) {
       $(imageElement).attr("data-ri") || $(imageElement).attr("data-ri", a.resultIndex++);
     }, resizeGrid = function (a) {
-      a.d.windowHeight = window.innerHeight || document.documentElement.offsetHeight
-      for (var container = a.container, gridMargins = 0; container && !isNaN(container.offsetTop);) {
-        gridMargins += container.offsetTop;
-        container = container.offsetParent;
-      }
-      a.d.gridMargins = gridMargins;
-      a.d.gridHeight = a.d.windowHeight - a.d.gridMargins;
       var gridWidth = $(".fluid-image-grid")[0].offsetWidth;
       0 < gridWidth && (a.d.gridWidth = gridWidth);
       $(".fluid-image-grid-inner").css("width", (a.d.gridWidth || 0) + "px")

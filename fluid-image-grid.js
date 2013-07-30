@@ -279,8 +279,8 @@
       a.d.gridMargins = gridMargins;
       a.d.gridHeight = a.d.windowHeight - a.d.gridMargins;
       var gridWidth = $(".fluid-image-grid")[0].offsetWidth;
-      0 < gridWidth && (a.d.a = gridWidth);
-      $(".fluid-image-grid-inner").css("width", (a.d.a || 0) + "px")
+      0 < gridWidth && (a.d.gridWidth = gridWidth);
+      $(".fluid-image-grid-inner").css("width", (a.d.gridWidth || 0) + "px")
     }, rc = function (a) {
       var b = a.container.parentNode,
         c = a.container.nextSibling;
@@ -349,11 +349,11 @@
       }
     0 < b && a.push(b);
   };
-  p.W = function (a, b, c) {
+  p.W = function (a, dimensions, c) {
     for (var imageDivs = [], childElements = this.e.childNodes, g = 0, childElement; childElement = childElements[g]; g++) {
       if ($(childElement).hasClass("rg_di")) imageDivs.push(childElement);
     }
-    (0 < imageDivs.length) && sd(this, a, b, [], imageDivs)
+    (0 < imageDivs.length) && sd(this, a, dimensions, [], imageDivs)
   };
   p.S = function (a, b, c) {
     var d = [],
@@ -370,7 +370,7 @@
     sd(this, a, b, [], d);
     f && this.e.insertBefore(f, e)
   };
-  var sd = function (a, b, c, d, imageDivs) {
+  var sd = function (a, b, dimensions, d, imageDivs) {
     var imagesData = [];
     for (var i = 0; i < imageDivs.length; i++) {
       var imageDiv = imageDivs[i];
@@ -382,14 +382,14 @@
         height: metadataJSON.height
       };
     }
-    if (c.a) {
-      4 * a.k > c.a && (a.k = Math.floor(c.a / 4), a.a.h = a.k);
+    if (dimensions.gridWidth) {
+      4 * a.k > dimensions.gridWidth && (a.k = Math.floor(dimensions.gridWidth / 4), a.a.h = a.k);
       var Xa = {
         d: a.k,
         c: new Yb(a.k, !a.a.areAllResultsLoaded()),
         a: Xb
       };
-      for (var N = null, Db = c.a, N = N || [], la = [0, 0], Eb = [], G = 0; G < N.length; G++) {
+      for (var N = null, Db = dimensions.gridWidth, N = N || [], la = [0, 0], Eb = [], G = 0; G < N.length; G++) {
         var ca = N[G];
         if (ca) {
           la[G] = ca.a;
@@ -591,7 +591,6 @@
 
           $(imageData.el).css("display", "inline-block");
           J++;
-
           cb++
         }
       }

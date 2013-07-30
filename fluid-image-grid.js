@@ -236,7 +236,7 @@
     switch (this.s) {
     case 0:
       this.l.T();
-      resizeGrid(this);
+      setGridWidth(this);
       rc(this);
       break;
     case 3:
@@ -267,10 +267,10 @@
   var sc = function (a) {
     console.log("this is called when window width/height changes");
     a.U = [];
-    resizeGrid(a);
+    setGridWidth(a);
   }, setResultIndex = function (a, imageElement) {
       $(imageElement).attr("data-ri") || $(imageElement).attr("data-ri", a.resultIndex++);
-    }, resizeGrid = function (a) {
+    }, setGridWidth = function (a) {
       var gridWidth = $(".fluid-image-grid")[0].offsetWidth;
       0 < gridWidth && (a.d.gridWidth = gridWidth);
       $(".fluid-image-grid-inner").css("width", (a.d.gridWidth || 0) + "px")

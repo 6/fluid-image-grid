@@ -55,7 +55,16 @@
             r[c] = m;
             v += m
           }
-      for (c = m = 0; c < a.length; c++) q = k || 0 == v ? 0 : n * r[c] / v, q = Math.round(Math.max(f, Q(aspectRatio(a[c]), d, f, a[c].width, g) + q)), m += q + e, l.push(q);
+      for (c = m = 0; c < a.length; c++) {
+        if(k) q = k;
+        else if(0 == v) q = 0;
+        else {
+          q = n * r[c] / v;
+          q = Math.round(Math.max(f, Q(aspectRatio(a[c]), d, f, a[c].width, g) + q));
+          m += q + e;
+          l.push(q);
+        }
+      }
       if (!k)
         if (b = gridWidth - m - (h || 0), l[l.length - 1] + b < f)
           for (c = l.length - 1; - 1 < c && (a = Math.max(b, f - l[c]), l[c] += a, b -= a, 0 != b); c--);
@@ -346,7 +355,8 @@
     0 < b && a.push(b);
   };
   p.W = function (a) {
-    for (var imageDivs = [], childElements = this.gridInner.childNodes, g = 0, childElement; childElement = childElements[g]; g++) {
+    var imageDivs = [], childElements = this.gridInner.childNodes;
+    for (var i = 0, childElement; childElement = childElements[i]; i++) {
       if ($(childElement).hasClass("rg_di")) imageDivs.push(childElement);
     }
     0 < imageDivs.length && sd(this, a.s, a.dimensions, [], imageDivs);
@@ -396,8 +406,14 @@
         na = [],
         da, Za;
       for (f = 0; 4 > f; f++) {
-        for (var Fb = Ac, imageIndex = 0, W = [], Hb = [], Ib = 0, Dc = na.length || Number.MAX_VALUE / Fb, P = 0; P < Dc; P++) {
-          for (var Jb = Eb[P] || 0, $a = na[P] || Fb, ea = dimensions.gridWidth - Jb, Fd = Math.floor(ea / (Xa.c.a + Xa.c.minimumResultWidth)), Fa = 0, Kb = 0, Lb = 0, Ga = 0, Mb = 0; imageIndex < imagesData.length && Ga < Fd;) {
+        var Fb = Ac, imageIndex = 0, W = [], Hb = [], Ib = 0, Dc = na.length || Number.MAX_VALUE / Fb;
+        for (var P = 0; P < Dc; P++) {
+          var Jb = Eb[P] || 0,
+          $a = na[P] || Fb,
+          ea = dimensions.gridWidth - Jb,
+          Fd = Math.floor(ea / (Xa.c.a + Xa.c.minimumResultWidth)),
+          Fa = 0, Kb = 0, Lb = 0, Mb = 0;
+          for (var Ga = 0; imageIndex < imagesData.length && Ga < Fd;) {
             var imageData = imagesData[imageIndex],
               Gd = Q(aspectRatio(imageData), $a, Xa.c.minimumResultWidth, imageData.width, 2),
               Nb = Fa + Gd + Xa.c.a,
@@ -446,7 +462,8 @@
           Ld = dimensions.gridWidth - H.width,
           Kc = Ha + H.count == imagesData.length && Ld > H.width / H.count;
         if (Kc && Xa.c.e) break;
-        for (var Lc = xa(Kd, dimensions.gridWidth, H.width, H.height, Xa.c.a, Xa.c.minimumResultWidth, 2, Eb[i], Kc), Pb = 0; Pb < Lc.length; Pb++) Jc.push({
+        var Lc = xa(Kd, dimensions.gridWidth, H.width, H.height, Xa.c.a, Xa.c.minimumResultWidth, 2, Eb[i], Kc)
+        for (var Pb = 0; Pb < Lc.length; Pb++) Jc.push({
           width: Lc[Pb],
           height: H.height
         });
@@ -491,7 +508,9 @@
         results: [],
         o: 0
       });
-      for (var page = a.pages[a.pages.length - 1], Nc = 1 == a.pages.length ? dimensions.gridHeight : dimensions.windowHeight, Ja = 0; Ja < X.length; Ja++) {;
+      var page = a.pages[a.pages.length - 1];
+      var Nc = 1 == a.pages.length ? dimensions.gridHeight : dimensions.windowHeight;
+      for (var Ja = 0; Ja < X.length; Ja++) {
         if (0 != page.o && 32 > Nc - page.o) {
           page = {
             results: [],

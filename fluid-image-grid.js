@@ -69,12 +69,6 @@
   var Qa, settings,
     lb = numericalSetting("mrw", defaultSettings.mrw),
     mb = numericalSetting("isuf", defaultSettings.isuf),
-    qb = function (a, b, c, d) {
-      return {
-        P: d + "px",
-        r: ""
-      };
-    },
     va = function (a) {
       var b = Math.min(1, numericalSetting("eca", defaultSettings.eca));
       return (a.width - a.width * b) / a.height;
@@ -531,24 +525,23 @@
         for (qa = 0; qa < X[Ja]; qa++) {
           image = images[cb];
           var imageData = imagesData[J];
-          var B = image.width,
+          var resultElementWidth = image.width,
             resultElement = imageData.el,
             imageElement = $(resultElement).find("img")[0],
-            Yc = image.height,
-            imageWrapHeight = image.height,
+            resultElementHeight = image.height,
             x = imageData.width,
             D = imageData.height;
-          if (imageData.width > B || imageData.height > image.height) {
-            var $c = B / image.height,
+          if (imageData.width > resultElementWidth || imageData.height > image.height) {
+            var $c = resultElementWidth / image.height,
               fb = Math.min(wa(imageData), Math.max($c, va(imageData)));
-            if (aspectRatio(imageData) > fb) var ad = Math.min(imageData.height, B / fb),
+            if (aspectRatio(imageData) > fb) var ad = Math.min(imageData.height, resultElementWidth / fb),
             x = ad * aspectRatio(imageData), D = ad;
-            else var bd = Math.min(imageData.width, fb > $c ? B : image.height * fb),
+            else var bd = Math.min(imageData.width, fb > $c ? resultElementWidth : image.height * fb),
             x = bd, D = bd / aspectRatio(imageData)
           }
           if (0 < mb) {
             var gb = mb + 1,
-              Tb = B / x,
+              Tb = resultElementWidth / x,
               sa = image.height / D;
             if (1 < Tb && Tb <= gb) {
               var hb = Tb;
@@ -558,25 +551,33 @@
             } else if (1 <
               sa && sa <= gb) {
               var Ub = x * sa;
-              if (Ub > B || Ub * gb < B) D = image.height, x = Ub
+              if (Ub > resultElementWidth || Ub * gb < resultElementWidth) D = image.height, x = Ub
             }
           }
           var x = Math.round(x),
             D = Math.round(D),
-            cd = 0,
+            imageWrapLeft = 0,
             dd = 0,
             ed = 0,
             Vb = 0,
             fd = 0,
             gd = 0;
-          if (x > B) var Sd = x - B,
-          Vb = -1 * ub(x - B), fd = -Sd - Vb;
-          else x < B && (cd = (B - x) / 2); if (D > image.height) gd = -1 * tb(D - image.height);
-          else if (D < image.height) var Yc = imageWrapHeight = D,
-          hd = image.height - D, dd = Math.floor(hd / 2), ed = Math.ceil(hd / 2);
+          if (x > resultElementWidth)
+            var Sd = x - resultElementWidth,
+            Vb = -1 * ub(x - resultElementWidth),
+            fd = -Sd - Vb;
+          else if (x < resultElementWidth)
+            imageWrapLeft = (resultElementWidth - x) / 2;
+          if (D > image.height)
+            gd = -1 * tb(D - image.height);
+          else if (D < image.height)
+            var resultElementHeight = D,
+            hd = image.height - D,
+            dd = Math.floor(hd / 2),
+            ed = Math.ceil(hd / 2);
           $(resultElement).css({
-            width: B + "px",
-            height: Yc + "px",
+            width: resultElementWidth + "px",
+            height: resultElementHeight + "px",
             "padding-top": dd + "px",
             "padding-bottom": ed + "px"
           });
@@ -587,14 +588,11 @@
             "margin-right": fd + "px",
             "margin-top": gd + "px"
           });
-          var imageWrap = $(resultElement).find("a")[0],
-            imageWrapWidth = Math.min(x, B),
-            imageWrapPosition = qb(resultElement, B, x, cd);
+          var imageWrap = $(resultElement).find("a")[0];
           $(imageWrap).css({
-            width: imageWrapWidth + "px",
-            height: imageWrapHeight + "px",
-            left: imageWrapPosition.P,
-            right: imageWrapPosition.r
+            width: Math.min(x, resultElementWidth) + "px",
+            height: imageElement.height + "px",
+            left: imageWrapLeft + "px"
           });
           z.g.push(imageData.el);
           a.a.getResults().push(imageData.el);

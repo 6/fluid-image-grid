@@ -1,6 +1,6 @@
 (function () {
   var defaultSettings = {
-    row_height: 140,
+    rowHeight: 140,
     mrw: 80,
     isuf: 0,
     eca: 0.1,
@@ -207,7 +207,7 @@
       this.R = [];
       this.U = [];
       this.resultsListeners = [];
-      this.h = numericalSetting("row-height", defaultSettings.row_height);
+      this.h = numericalSetting("row-height", defaultSettings.rowHeight);
       this.V = false;
       this.l.initialize(this.h)
     }, Xb = numericalSetting("ma", defaultSettings.ma);

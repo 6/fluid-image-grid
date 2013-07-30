@@ -282,7 +282,7 @@
       var b = a.container.parentNode,
         c = a.container.nextSibling;
       b.removeChild(a.container);
-      a.l.W(a.s, a.dimensions, a.e);
+      a.l.W(a);
       $(a.container).css("visibility", "visible");
       b.insertBefore(a.container, c)
     };
@@ -346,11 +346,11 @@
       }
     0 < b && a.push(b);
   };
-  p.W = function (a, dimensions, c) {
+  p.W = function (a) {
     for (var imageDivs = [], childElements = this.e.childNodes, g = 0, childElement; childElement = childElements[g]; g++) {
       if ($(childElement).hasClass("rg_di")) imageDivs.push(childElement);
     }
-    (0 < imageDivs.length) && sd(this, a, dimensions, [], imageDivs)
+    0 < imageDivs.length && sd(this, a.s, a.dimensions, [], imageDivs);
   };
   p.S = function (a, b, c) {
     var d = [],

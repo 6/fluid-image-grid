@@ -68,11 +68,11 @@
     };
   var Qa,
     va = function (a) {
-      var b = Math.min(1, numericalSetting("eca", defaultSettings.eca));
-      return (a.width - a.width * b) / a.height;
+      var eca = Math.min(1, numericalSetting("eca", defaultSettings.eca));
+      return (a.width - a.width * eca) / a.height;
     }, wa = function (a) {
-      var b = Math.min(1, numericalSetting("eca", defaultSettings.eca));
-      return a.width / (a.height - a.height * b)
+      var eca = Math.min(1, numericalSetting("eca", defaultSettings.eca));
+      return a.width / (a.height - a.height * eca)
     }, tb = function (b) {
       return Math.floor(0.5 * b)
     }, ub = function (b) {

@@ -66,7 +66,7 @@
       return Math.max(Math.min(b *
         a, d), c)
     };
-  var Qa, settings,
+  var Qa,
     lb = numericalSetting("mrw", defaultSettings.mrw),
     mb = numericalSetting("isuf", defaultSettings.isuf),
     va = function (a) {
@@ -703,7 +703,7 @@
   };
 
   window.FluidImageGrid = new s();
-  settings = {},
+  var settings = {},
   lastPageLoadedTime = new Date().getTime(),
   lastScrollTime = 0,
   lastScrollY = 0,

@@ -202,7 +202,7 @@
         a.w.N || (a.w.N = hc(a));
         this.l = new a.w.N(this);
       }
-      this.d = new nc;
+      this.dimensions = {};
       this.a = [];
       this.R = [];
       this.U = [];
@@ -268,21 +268,21 @@
   }, setResultIndex = function (a, imageElement) {
       $(imageElement).attr("data-ri") || $(imageElement).attr("data-ri", a.resultIndex++);
     }, setDimensions = function (a) {
-      a.d.windowHeight = window.innerHeight || document.documentElement.offsetHeight;
+      a.dimensions.windowHeight = window.innerHeight || document.documentElement.offsetHeight;
       for (var container = a.container, gridMargins = 0; container && !isNaN(container.offsetTop);) {
         gridMargins += container.offsetTop;
         container = container.offsetParent;
       }
-      a.d.gridHeight = a.d.windowHeight - gridMargins;
+      a.dimensions.gridHeight = a.dimensions.windowHeight - gridMargins;
 
       var gridWidth = $(".fluid-image-grid")[0].offsetWidth;
-      0 < gridWidth && (a.d.gridWidth = gridWidth);
-      $(".fluid-image-grid-inner").css("width", (a.d.gridWidth || 0) + "px")
+      0 < gridWidth && (a.dimensions.gridWidth = gridWidth);
+      $(".fluid-image-grid-inner").css("width", (a.dimensions.gridWidth || 0) + "px")
     }, rc = function (a) {
       var b = a.container.parentNode,
         c = a.container.nextSibling;
       b.removeChild(a.container);
-      a.l.W(a.s, a.d, a.e);
+      a.l.W(a.s, a.dimensions, a.e);
       $(a.container).css("visibility", "visible");
       b.insertBefore(a.container, c)
     };
@@ -295,7 +295,7 @@
     - 1 !== a && this.resultsListeners.splice(a, 1);
   };
   definePublicFunction("removeNewResultsListener", s.prototype.removeNewResultsListener);
-  var nc = function () {}, dc = function (a) {
+  var dc = function (a) {
       this.a = a
     }, md = dc,
     nd = s;

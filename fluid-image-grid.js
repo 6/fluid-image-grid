@@ -1,7 +1,7 @@
 (function () {
   var defaultSettings = {
     rowHeight: 140,
-    mrw: 80,
+    minimumResultWidth: 80,
     isuf: 0,
     eca: 0.1,
     ma: 12,
@@ -83,7 +83,7 @@
     this.d = a;
     this.a = c;
     this.e = !! b;
-    this.mrw = numericalSetting("mrw", defaultSettings.mrw)
+    this.minimumResultWidth = numericalSetting("minimum-result-width", defaultSettings.minimumResultWidth);
   };
   var bc = function (a, b) {
       for (var c = 1; c < arguments.length; c++) {
@@ -211,7 +211,6 @@
       this.V = false;
       this.l.initialize(this.h)
     }, Xb = numericalSetting("ma", defaultSettings.ma);
-  numericalSetting("mrw", defaultSettings.mrw);
   var oc = $('.fluid-image-grid').data("bge") ? "true" === $('.fluid-image-grid').data("bge") : defaultSettings.bge;
   s.prototype.F = false;
   s.prototype.H = false;
@@ -392,18 +391,18 @@
         da, Za;
       for (f = 0; 4 > f; f++) {
         for (var Fb = Ac, imageIndex = 0, W = [], Hb = [], Ib = 0, Dc = na.length || Number.MAX_VALUE / Fb, P = 0; P < Dc; P++) {
-          for (var Jb = Eb[P] || 0, $a = na[P] || Fb, ea = gridWidth - Jb, Fd = Math.floor(ea / (Xa.c.a + Xa.c.mrw)), Fa = 0, Kb = 0, Lb = 0, Ga = 0, Mb = 0; imageIndex < imagesData.length && Ga < Fd;) {
+          for (var Jb = Eb[P] || 0, $a = na[P] || Fb, ea = gridWidth - Jb, Fd = Math.floor(ea / (Xa.c.a + Xa.c.minimumResultWidth)), Fa = 0, Kb = 0, Lb = 0, Ga = 0, Mb = 0; imageIndex < imagesData.length && Ga < Fd;) {
             var imageData = imagesData[imageIndex],
-              Gd = Q(aspectRatio(imageData), $a, Xa.c.mrw, imageData.width, 2),
+              Gd = Q(aspectRatio(imageData), $a, Xa.c.minimumResultWidth, imageData.width, 2),
               Nb = Fa + Gd + Xa.c.a,
-              Hd = Q(va(imageData), $a, Xa.c.mrw, imageData.width, 2),
+              Hd = Q(va(imageData), $a, Xa.c.minimumResultWidth, imageData.width, 2),
               Kb = Kb + (Hd + Xa.c.a);
             if (Nb > ea && Nb - ea > ea - Fa)
               if (Lb >= ea) break;
               else if (Kb > ea) break;
             Ga++;
             var Fa = Nb,
-              Id = Q(wa(imageData), $a, Xa.c.mrw, imageData.width, 2),
+              Id = Q(wa(imageData), $a, Xa.c.minimumResultWidth, imageData.width, 2),
               Lb = Lb + (Id + Xa.c.a),
               Mb = Mb + aspectRatio(imageData);
             imageIndex++;
@@ -441,7 +440,7 @@
           Ld = gridWidth - H.width,
           Kc = Ha + H.count == imagesData.length && Ld > H.width / H.count;
         if (Kc && Xa.c.e) break;
-        for (var Lc = xa(Kd, gridWidth, H.width, H.height, Xa.c.a, Xa.c.mrw, 2, Eb[i], Kc), Pb = 0; Pb < Lc.length; Pb++) Jc.push({
+        for (var Lc = xa(Kd, gridWidth, H.width, H.height, Xa.c.a, Xa.c.minimumResultWidth, 2, Eb[i], Kc), Pb = 0; Pb < Lc.length; Pb++) Jc.push({
           width: Lc[Pb],
           height: H.height
         });

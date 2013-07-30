@@ -67,8 +67,6 @@
         a, d), c)
     };
   var Qa,
-    lb = numericalSetting("mrw", defaultSettings.mrw),
-    mb = numericalSetting("isuf", defaultSettings.isuf),
     va = function (a) {
       var b = Math.min(1, numericalSetting("eca", defaultSettings.eca));
       return (a.width - a.width * b) / a.height;
@@ -85,7 +83,7 @@
     this.d = a;
     this.a = c;
     this.e = !! b;
-    this.c = lb || 0
+    this.mrw = numericalSetting("mrw", defaultSettings.mrw)
   };
   var bc = function (a, b) {
       for (var c = 1; c < arguments.length; c++) {
@@ -389,25 +387,24 @@
           for (var O = 0; O < ca.a; O++) Eb[O] = (Eb[O] || 0) + ca.width + Xa.a
         }
       }
-      var ma = Xa.c,
-        Ac = ma.d,
+      var Ac = Xa.c.d,
         na = [],
         da, Za;
       for (f = 0; 4 > f; f++) {
-        for (var I = ma, Fb = Ac, imageIndex = 0, W = [], Hb = [], Ib = 0, Dc = na.length || Number.MAX_VALUE / Fb, P = 0; P < Dc; P++) {
-          for (var Jb = Eb[P] || 0, $a = na[P] || Fb, ea = gridWidth - Jb, Fd = Math.floor(ea / (I.a + I.c)), Fa = 0, Kb = 0, Lb = 0, Ga = 0, Mb = 0; imageIndex < imagesData.length && Ga < Fd;) {
+        for (var Fb = Ac, imageIndex = 0, W = [], Hb = [], Ib = 0, Dc = na.length || Number.MAX_VALUE / Fb, P = 0; P < Dc; P++) {
+          for (var Jb = Eb[P] || 0, $a = na[P] || Fb, ea = gridWidth - Jb, Fd = Math.floor(ea / (Xa.c.a + Xa.c.mrw)), Fa = 0, Kb = 0, Lb = 0, Ga = 0, Mb = 0; imageIndex < imagesData.length && Ga < Fd;) {
             var imageData = imagesData[imageIndex],
-              Gd = Q(aspectRatio(imageData), $a, I.c, imageData.width, 2),
-              Nb = Fa + Gd + I.a,
-              Hd = Q(va(imageData), $a, I.c, imageData.width, 2),
-              Kb = Kb + (Hd + I.a);
+              Gd = Q(aspectRatio(imageData), $a, Xa.c.mrw, imageData.width, 2),
+              Nb = Fa + Gd + Xa.c.a,
+              Hd = Q(va(imageData), $a, Xa.c.mrw, imageData.width, 2),
+              Kb = Kb + (Hd + Xa.c.a);
             if (Nb > ea && Nb - ea > ea - Fa)
               if (Lb >= ea) break;
               else if (Kb > ea) break;
             Ga++;
             var Fa = Nb,
-              Id = Q(wa(imageData), $a, I.c, imageData.width, 2),
-              Lb = Lb + (Id + I.a),
+              Id = Q(wa(imageData), $a, Xa.c.mrw, imageData.width, 2),
+              Lb = Lb + (Id + Xa.c.a),
               Mb = Mb + aspectRatio(imageData);
             imageIndex++;
             if (Fa > ea) break
@@ -424,16 +421,16 @@
           Ib += Ec
         }
         var ab = Hb.length;
-        ab < Dc && (Za = ab * (Fb + I.a));
-        for (var Jd = Za - I.a * ab, Ob = 0, P = 0; P < ab; P++) {
+        ab < Dc && (Za = ab * (Fb + Xa.c.a));
+        for (var Jd = Za - Xa.c.a * ab, Ob = 0, P = 0; P < ab; P++) {
           var Fc = Math.round(Jd * (Hb[P] / Ib));
           W[P].G = Fc;
-          Ob += Fc + I.a
+          Ob += Fc + Xa.c.a
         }
         0 < W.length && (W[W.length -
           1].G += Za - Ob);
         da = W;
-        da.length != na.length && (na.length = da.length, yc = na.length * (Ac + ma.a));
+        da.length != na.length && (na.length = da.length, yc = na.length * (Ac + Xa.c.a));
         for (var Gc = false, oa = 0; oa < da.length; oa++) na[oa] != da[oa].G && (na[oa] = da[oa].G, Gc = true);
         if (!Gc) break
       }
@@ -443,8 +440,8 @@
         var Kd = imagesData.slice(Ha, Ha + H.count),
           Ld = gridWidth - H.width,
           Kc = Ha + H.count == imagesData.length && Ld > H.width / H.count;
-        if (Kc && ma.e) break;
-        for (var Lc = xa(Kd, gridWidth, H.width, H.height, ma.a, ma.c, 2, Eb[i], Kc), Pb = 0; Pb < Lc.length; Pb++) Jc.push({
+        if (Kc && Xa.c.e) break;
+        for (var Lc = xa(Kd, gridWidth, H.width, H.height, Xa.c.a, Xa.c.mrw, 2, Eb[i], Kc), Pb = 0; Pb < Lc.length; Pb++) Jc.push({
           width: Lc[Pb],
           height: H.height
         });
@@ -525,8 +522,9 @@
             else var bd = Math.min(imageData.width, fb > $c ? resultElementWidth : image.height * fb),
             imageElementWidth = bd, D = bd / aspectRatio(imageData)
           }
-          if (0 < mb) {
-            var gb = mb + 1,
+          var isuf = numericalSetting("isuf", defaultSettings.isuf);
+          if (0 < isuf) {
+            var gb = isuf + 1,
               Tb = resultElementWidth / imageElementWidth,
               sa = image.height / D;
             if (1 < Tb && Tb <= gb) {

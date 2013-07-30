@@ -233,7 +233,7 @@
     switch (this.s) {
     case 0:
       this.l.T();
-      setGridWidth(this);
+      setDimensions(this);
       rc(this);
       break;
     case 3:
@@ -264,18 +264,25 @@
   var sc = function (a) {
     console.log("this is called when window width/height changes");
     a.U = [];
-    setGridWidth(a);
+    setDimensions(a);
   }, setResultIndex = function (a, imageElement) {
       $(imageElement).attr("data-ri") || $(imageElement).attr("data-ri", a.resultIndex++);
-    }, setGridWidth = function (a) {
+    }, setDimensions = function (a) {
+      a.d.windowHeight = window.innerHeight || document.documentElement.offsetHeight;
+      for (var container = a.container, gridMargins = 0; container && !isNaN(container.offsetTop);) {
+        gridMargins += container.offsetTop;
+        container = container.offsetParent;
+      }
+      a.d.gridHeight = a.d.windowHeight - gridMargins;
+
       var gridWidth = $(".fluid-image-grid")[0].offsetWidth;
-      0 < gridWidth && (a.gridWidth = gridWidth);
-      $(".fluid-image-grid-inner").css("width", (a.gridWidth || 0) + "px")
+      0 < gridWidth && (a.d.gridWidth = gridWidth);
+      $(".fluid-image-grid-inner").css("width", (a.d.gridWidth || 0) + "px")
     }, rc = function (a) {
       var b = a.container.parentNode,
         c = a.container.nextSibling;
       b.removeChild(a.container);
-      a.l.W(a.s, a.gridWidth, a.e);
+      a.l.W(a.s, a.d, a.e);
       $(a.container).css("visibility", "visible");
       b.insertBefore(a.container, c)
     };
@@ -339,11 +346,11 @@
       }
     0 < b && a.push(b);
   };
-  p.W = function (a, gridWidth, c) {
+  p.W = function (a, dimensions, c) {
     for (var imageDivs = [], childElements = this.e.childNodes, g = 0, childElement; childElement = childElements[g]; g++) {
       if ($(childElement).hasClass("rg_di")) imageDivs.push(childElement);
     }
-    (0 < imageDivs.length) && sd(this, a, gridWidth, [], imageDivs)
+    (0 < imageDivs.length) && sd(this, a, dimensions, [], imageDivs)
   };
   p.S = function (a, b, c) {
     var d = [],
@@ -360,7 +367,7 @@
     sd(this, a, b, [], d);
     f && this.e.insertBefore(f, e)
   };
-  var sd = function (a, b, gridWidth, d, imageDivs) {
+  var sd = function (a, b, dimensions, d, imageDivs) {
     var imagesData = [];
     for (var i = 0; i < imageDivs.length; i++) {
       var imageDiv = imageDivs[i];
@@ -372,8 +379,8 @@
         height: metadataJSON.height
       };
     }
-    if (gridWidth) {
-      4 * a.k > gridWidth && (a.k = Math.floor(gridWidth / 4), a.a.h = a.k);
+    if (dimensions.gridWidth) {
+      4 * a.k > dimensions.gridWidth && (a.k = Math.floor(dimensions.gridWidth / 4), a.a.h = a.k);
       var Xa = {
         d: a.k,
         c: new Yb(a.k, !a.a.areAllResultsLoaded()),
@@ -391,7 +398,7 @@
         da, Za;
       for (f = 0; 4 > f; f++) {
         for (var Fb = Ac, imageIndex = 0, W = [], Hb = [], Ib = 0, Dc = na.length || Number.MAX_VALUE / Fb, P = 0; P < Dc; P++) {
-          for (var Jb = Eb[P] || 0, $a = na[P] || Fb, ea = gridWidth - Jb, Fd = Math.floor(ea / (Xa.c.a + Xa.c.minimumResultWidth)), Fa = 0, Kb = 0, Lb = 0, Ga = 0, Mb = 0; imageIndex < imagesData.length && Ga < Fd;) {
+          for (var Jb = Eb[P] || 0, $a = na[P] || Fb, ea = dimensions.gridWidth - Jb, Fd = Math.floor(ea / (Xa.c.a + Xa.c.minimumResultWidth)), Fa = 0, Kb = 0, Lb = 0, Ga = 0, Mb = 0; imageIndex < imagesData.length && Ga < Fd;) {
             var imageData = imagesData[imageIndex],
               Gd = Q(aspectRatio(imageData), $a, Xa.c.minimumResultWidth, imageData.width, 2),
               Nb = Fa + Gd + Xa.c.a,
@@ -437,10 +444,10 @@
         var H = Ic[i];
         if (!H.count) break;
         var Kd = imagesData.slice(Ha, Ha + H.count),
-          Ld = gridWidth - H.width,
+          Ld = dimensions.gridWidth - H.width,
           Kc = Ha + H.count == imagesData.length && Ld > H.width / H.count;
         if (Kc && Xa.c.e) break;
-        for (var Lc = xa(Kd, gridWidth, H.width, H.height, Xa.c.a, Xa.c.minimumResultWidth, 2, Eb[i], Kc), Pb = 0; Pb < Lc.length; Pb++) Jc.push({
+        for (var Lc = xa(Kd, dimensions.gridWidth, H.width, H.height, Xa.c.a, Xa.c.minimumResultWidth, 2, Eb[i], Kc), Pb = 0; Pb < Lc.length; Pb++) Jc.push({
           width: Lc[Pb],
           height: H.height
         });
@@ -485,14 +492,14 @@
         g: [],
         o: 0
       });
-      for (var z = a.c[a.c.length - 1], Nc = 1 == a.c.length ? c.d : c.c, Ja = 0; Ja < X.length; Ja++) {
+      for (var z = a.c[a.c.length - 1], Nc = 1 == a.c.length ? dimensions.gridHeight : dimensions.windowHeight, Ja = 0; Ja < X.length; Ja++) {;
         if (0 != z.o && 32 > Nc - z.o) {
           z = {
             g: [],
             o: 0
           };
           a.c.push(z);
-          var Nc = c.c,
+          var Nc = dimensions.gridHeight,
           pageDiv = document.createElement("div");
           pageDiv.style.display = "none";
           pageDiv.className = "fluid-image-grid-page-separator";

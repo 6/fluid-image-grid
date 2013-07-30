@@ -335,7 +335,7 @@
     return this.pages.length;
   };
   p.da = function (a) {
-    return (a = this.pages[a]) ? a.g : null
+    return (a = this.pages[a]) ? a.results : null
   };
   p.T = function () {
     for (var a = this.a.getChunkSizeArray(), b = 0, c = this.gridInner.childNodes, d = 0; resultElement = c[d]; d++)
@@ -488,13 +488,13 @@
       var cb = 0,
         J = 0;
       (a.pages.length > 0) || a.pages.push({
-        g: [],
+        results: [],
         o: 0
       });
       for (var page = a.pages[a.pages.length - 1], Nc = 1 == a.pages.length ? dimensions.gridHeight : dimensions.windowHeight, Ja = 0; Ja < X.length; Ja++) {;
         if (0 != page.o && 32 > Nc - page.o) {
           page = {
-            g: [],
+            results: [],
             o: 0
           };
           a.pages.push(page);
@@ -581,7 +581,7 @@
             height: imageElement.height + "px",
             left: imageLinkLeft + "px"
           });
-          page.g.push(imageData.el);
+          page.results.push(imageData.el);
           a.a.getResults().push(imageData.el);
 
           $(imageData.el).css("display", "inline-block");

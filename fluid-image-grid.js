@@ -577,8 +577,7 @@
             "margin-right": fd + "px",
             "margin-top": gd + "px"
           });
-          var imageLink = $(resultElement).find("a")[0];
-          $(imageLink).css({
+          $(resultElement).find("a").css({
             width: Math.min(imageElementWidth, resultElementWidth) + "px",
             height: imageElement.height + "px",
             left: imageLinkLeft + "px"

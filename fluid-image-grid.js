@@ -320,7 +320,7 @@
   ec(pd);
   var rd = function (a) {
       this.a = a;
-      this.e = $(".fluid-image-grid-inner")[0];
+      this.gridInner = $(".fluid-image-grid-inner")[0];
       this.c = [];
       this.s = false;
       this.F = "";
@@ -339,7 +339,7 @@
     return (a = this.c[a]) ? a.g : null
   };
   p.T = function () {
-    for (var a = this.a.getChunkSizeArray(), b = 0, c = this.e.childNodes, d = 0, e; resultElement = c[d]; d++)
+    for (var a = this.a.getChunkSizeArray(), b = 0, c = this.gridInner.childNodes, d = 0; resultElement = c[d]; d++)
       if ($(resultElement).hasClass("rg_di")) {
         setResultIndex(this.a, resultElement);
         $(resultElement).attr("data-ci") && (a.push(b), b = 0), b++;
@@ -347,7 +347,7 @@
     0 < b && a.push(b);
   };
   p.W = function (a) {
-    for (var imageDivs = [], childElements = this.e.childNodes, g = 0, childElement; childElement = childElements[g]; g++) {
+    for (var imageDivs = [], childElements = this.gridInner.childNodes, g = 0, childElement; childElement = childElements[g]; g++) {
       if ($(childElement).hasClass("rg_di")) imageDivs.push(childElement);
     }
     0 < imageDivs.length && sd(this, a.s, a.dimensions, [], imageDivs);
@@ -365,7 +365,7 @@
     if (c)
       for (c = c.childNodes, g = 0; h = c[g]; g++) d.push(h);
     sd(this, a, b, [], d);
-    f && this.e.insertBefore(f, e)
+    f && this.gridInner.insertBefore(f, e)
   };
   var sd = function (a, b, dimensions, d, imageDivs) {
     var imagesData = [];

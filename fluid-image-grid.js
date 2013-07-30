@@ -492,25 +492,24 @@
         g: [],
         o: 0
       });
-      for (var z = a.pages[a.pages.length - 1], Nc = 1 == a.pages.length ? dimensions.gridHeight : dimensions.windowHeight, Ja = 0; Ja < X.length; Ja++) {;
-        if (0 != z.o && 32 > Nc - z.o) {
-          z = {
+      for (var page = a.pages[a.pages.length - 1], Nc = 1 == a.pages.length ? dimensions.gridHeight : dimensions.windowHeight, Ja = 0; Ja < X.length; Ja++) {;
+        if (0 != page.o && 32 > Nc - page.o) {
+          page = {
             g: [],
             o: 0
           };
-          a.pages.push(z);
-          var Nc = dimensions.gridHeight,
-          pageDiv = document.createElement("div");
+          a.pages.push(page);
+          var pageDiv = document.createElement("div");
           pageDiv.style.display = "none";
           pageDiv.className = "fluid-image-grid-page-separator";
           pageDiv.setAttribute("id", "page" + a.pages.length);
           pageDiv.setAttribute("data-pg", a.pages.length);
           pageDiv.setAttribute("data-fri", a.a.getResults().length);
           imageDivs[J].parentNode.insertBefore(pageDiv, imageDivs[J]);
-          a.s && (z.o += 32);
+          a.s && (page.o += 32);
         }
-        z.o += pa[Ja];
-        z.o += Xb;
+        page.o += pa[Ja];
+        page.o += Xb;
         for (qa = 0; qa < X[Ja]; qa++) {
           image = images[cb];
           var imageData = imagesData[J];
@@ -583,7 +582,7 @@
             height: imageElement.height + "px",
             left: imageLinkLeft + "px"
           });
-          z.g.push(imageData.el);
+          page.g.push(imageData.el);
           a.a.getResults().push(imageData.el);
 
           $(imageData.el).css("display", "inline-block");

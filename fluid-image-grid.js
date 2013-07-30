@@ -205,7 +205,7 @@
       this.dimensions = {};
       this.a = [];
       this.R = [];
-      this.U = [];
+      this.results = [];
       this.resultsListeners = [];
       this.h = numericalSetting("row-height", defaultSettings.rowHeight);
       this.V = false;
@@ -216,11 +216,11 @@
   s.prototype.H = false;
   s.prototype.resultIndex = 0;
   s.prototype.getResults = function () {
-    return this.U
+    return this.results;
   };
   definePublicFunction("getResults", s.prototype.getResults);
   s.prototype.getNumPages = function () {
-    return this.l.ca()
+    return this.l.nPages();
   };
   definePublicFunction("getNumPages", s.prototype.getNumPages);
   s.prototype.getResultsForPage = function (a) {
@@ -321,7 +321,7 @@
   var rd = function (a) {
       this.a = a;
       this.gridInner = $(".fluid-image-grid-inner")[0];
-      this.c = [];
+      this.pages = [];
       this.s = false;
       this.F = "";
       this.n = 0;
@@ -332,11 +332,11 @@
   p.initialize = function (a) {
     this.k = a
   };
-  p.ca = function () {
-    return this.c.length
+  p.nPages = function () {
+    return this.pages.length;
   };
   p.da = function (a) {
-    return (a = this.c[a]) ? a.g : null
+    return (a = this.pages[a]) ? a.g : null
   };
   p.T = function () {
     for (var a = this.a.getChunkSizeArray(), b = 0, c = this.gridInner.childNodes, d = 0; resultElement = c[d]; d++)
@@ -488,23 +488,23 @@
       a.a.H = g;
       var cb = 0,
         J = 0;
-      a.c.length || a.c.push({
+      (a.pages.length > 0) || a.pages.push({
         g: [],
         o: 0
       });
-      for (var z = a.c[a.c.length - 1], Nc = 1 == a.c.length ? dimensions.gridHeight : dimensions.windowHeight, Ja = 0; Ja < X.length; Ja++) {;
+      for (var z = a.pages[a.pages.length - 1], Nc = 1 == a.pages.length ? dimensions.gridHeight : dimensions.windowHeight, Ja = 0; Ja < X.length; Ja++) {;
         if (0 != z.o && 32 > Nc - z.o) {
           z = {
             g: [],
             o: 0
           };
-          a.c.push(z);
+          a.pages.push(z);
           var Nc = dimensions.gridHeight,
           pageDiv = document.createElement("div");
           pageDiv.style.display = "none";
           pageDiv.className = "fluid-image-grid-page-separator";
-          pageDiv.setAttribute("id", "page" + a.c.length);
-          pageDiv.setAttribute("data-pg", a.c.length);
+          pageDiv.setAttribute("id", "page" + a.pages.length);
+          pageDiv.setAttribute("data-pg", a.pages.length);
           pageDiv.setAttribute("data-fri", a.a.getResults().length);
           imageDivs[J].parentNode.insertBefore(pageDiv, imageDivs[J]);
           a.s && (z.o += 32);

@@ -236,7 +236,7 @@
     switch (this.s) {
     case 0:
       this.l.T();
-      pc(this);
+      resizeGrid(this);
       rc(this);
       break;
     case 3:
@@ -267,15 +267,19 @@
   var sc = function (a) {
     console.log("this is called when window width/height changes");
     a.U = [];
-    pc(a);
+    resizeGrid(a);
   }, setResultIndex = function (a, imageElement) {
       $(imageElement).attr("data-ri") || $(imageElement).attr("data-ri", a.resultIndex++);
-    }, pc = function (a) {
-      for (var b = a.d.c = window.innerHeight || document.documentElement.offsetHeight, c = a.container, d = 0; c && !isNaN(c.offsetTop);) d += c.offsetTop, c = c.offsetParent;
-      c = a.d.e = d;
-      a.d.d = b - c;
-      b = $(".fluid-image-grid")[0].offsetWidth;
-      0 < b && (a.d.a = b);
+    }, resizeGrid = function (a) {
+      a.d.windowHeight = window.innerHeight || document.documentElement.offsetHeight
+      for (var container = a.container, gridMargins = 0; container && !isNaN(container.offsetTop);) {
+        gridMargins += container.offsetTop;
+        container = container.offsetParent;
+      }
+      a.d.gridMargins = gridMargins;
+      a.d.gridHeight = a.d.windowHeight - a.d.gridMargins;
+      var gridWidth = $(".fluid-image-grid")[0].offsetWidth;
+      0 < gridWidth && (a.d.a = gridWidth);
       $(".fluid-image-grid-inner").css("width", (a.d.a || 0) + "px")
     }, rc = function (a) {
       var b = a.container.parentNode,

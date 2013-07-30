@@ -31,10 +31,10 @@
       a.prototype = new c;
       a.prototype.constructor = a
     };
-  var xa = function (a, b, c, d, e, f, g, h, k) {
+  var xa = function (a, gridWidth, c, d, e, f, g, h, k) {
       var l = [];
       if (!a.length) return l;
-      var n = b - c,
+      var n = gridWidth - c,
         r = [],
         v = 0;
       if (0 > n)
@@ -57,7 +57,7 @@
           }
       for (c = m = 0; c < a.length; c++) q = k || 0 == v ? 0 : n * r[c] / v, q = Math.round(Math.max(f, Q(aspectRatio(a[c]), d, f, a[c].width, g) + q)), m += q + e, l.push(q);
       if (!k)
-        if (b = b - m - (h || 0), l[l.length - 1] + b < f)
+        if (b = gridWidth - m - (h || 0), l[l.length - 1] + b < f)
           for (c = l.length - 1; - 1 < c && (a = Math.max(b, f - l[c]), l[c] += a, b -= a, 0 != b); c--);
         else a[a.length - 1].s && 0 < b || (l[l.length - 1] += b);
       return l
@@ -382,7 +382,7 @@
         c: new Yb(a.k, !a.a.areAllResultsLoaded()),
         a: Xb
       };
-      for (var N = null, Db = gridWidth, N = N || [], la = [0, 0], Eb = [], G = 0; G < N.length; G++) {
+      for (var N = null, N = N || [], la = [0, 0], Eb = [], G = 0; G < N.length; G++) {
         var ca = N[G];
         if (ca) {
           la[G] = ca.a;
@@ -394,8 +394,8 @@
         na = [],
         da, Za;
       for (f = 0; 4 > f; f++) {
-        for (var I = ma, Dd = Db, Fb = Ac, imageIndex = 0, W = [], Hb = [], Ib = 0, Dc = na.length || Number.MAX_VALUE / Fb, P = 0; P < Dc; P++) {
-          for (var Jb = Eb[P] || 0, $a = na[P] || Fb, ea = Dd - Jb, Fd = Math.floor(ea / (I.a + I.c)), Fa = 0, Kb = 0, Lb = 0, Ga = 0, Mb = 0; imageIndex < imagesData.length && Ga < Fd;) {
+        for (var I = ma, Fb = Ac, imageIndex = 0, W = [], Hb = [], Ib = 0, Dc = na.length || Number.MAX_VALUE / Fb, P = 0; P < Dc; P++) {
+          for (var Jb = Eb[P] || 0, $a = na[P] || Fb, ea = gridWidth - Jb, Fd = Math.floor(ea / (I.a + I.c)), Fa = 0, Kb = 0, Lb = 0, Ga = 0, Mb = 0; imageIndex < imagesData.length && Ga < Fd;) {
             var imageData = imagesData[imageIndex],
               Gd = Q(aspectRatio(imageData), $a, I.c, imageData.width, 2),
               Nb = Fa + Gd + I.a,
@@ -441,10 +441,10 @@
         var H = Ic[i];
         if (!H.count) break;
         var Kd = imagesData.slice(Ha, Ha + H.count),
-          Ld = Db - H.width,
+          Ld = gridWidth - H.width,
           Kc = Ha + H.count == imagesData.length && Ld > H.width / H.count;
         if (Kc && ma.e) break;
-        for (var Lc = xa(Kd, Db, H.width, H.height, ma.a, ma.c, 2, Eb[i], Kc), Pb = 0; Pb < Lc.length; Pb++) Jc.push({
+        for (var Lc = xa(Kd, gridWidth, H.width, H.height, ma.a, ma.c, 2, Eb[i], Kc), Pb = 0; Pb < Lc.length; Pb++) Jc.push({
           width: Lc[Pb],
           height: H.height
         });

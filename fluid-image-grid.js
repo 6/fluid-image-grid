@@ -262,7 +262,6 @@
   };
   definePublicFunction("getChunkSizeArray", s.prototype.getChunkSizeArray);
   var sc = function (a) {
-    console.log("this is called when window width/height changes");
     a.results = [];
     setDimensions(a);
   }, setResultIndex = function (a, imageElement) {

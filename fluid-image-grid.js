@@ -284,17 +284,6 @@
       a.l.W(a.s, a.d, a.e);
       $(a.container).css("visibility", "visible");
       b.insertBefore(a.container, c)
-    }, jd = function (a) {
-      if (!a.a.length) return false;
-      if (oc || !a.V) switch (a.a.length) {
-      case 1:
-        return 20 > a.a[0];
-      case 2:
-        return 80 > a.a[1];
-      default:
-        return 100 > a.a[a.a.length - 1]
-      } else return 100 > a.a[a.a.length -
-        1]
     };
   s.prototype.addNewResultsListener = function (a) {
     this.resultsListeners.push(a)
@@ -354,7 +343,7 @@
         setResultIndex(this.a, resultElement);
         $(resultElement).attr("data-ci") && (a.push(b), b = 0), b++;
       }
-    0 < b && (a.push(b), jd(this.a))
+    0 < b && a.push(b);
   };
   p.W = function (a, b, c) {
     for (var imageDivs = [], childElements = this.e.childNodes, g = 0, childElement; childElement = childElements[g]; g++) {

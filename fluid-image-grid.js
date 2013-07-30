@@ -529,45 +529,45 @@
             resultElement = imageData.el,
             imageElement = $(resultElement).find("img")[0],
             resultElementHeight = image.height,
-            x = imageData.width,
+            imageElementWidth = imageData.width,
             D = imageData.height;
           if (imageData.width > resultElementWidth || imageData.height > image.height) {
             var $c = resultElementWidth / image.height,
               fb = Math.min(wa(imageData), Math.max($c, va(imageData)));
             if (aspectRatio(imageData) > fb) var ad = Math.min(imageData.height, resultElementWidth / fb),
-            x = ad * aspectRatio(imageData), D = ad;
+            imageElementWidth = ad * aspectRatio(imageData), D = ad;
             else var bd = Math.min(imageData.width, fb > $c ? resultElementWidth : image.height * fb),
-            x = bd, D = bd / aspectRatio(imageData)
+            imageElementWidth = bd, D = bd / aspectRatio(imageData)
           }
           if (0 < mb) {
             var gb = mb + 1,
-              Tb = resultElementWidth / x,
+              Tb = resultElementWidth / imageElementWidth,
               sa = image.height / D;
             if (1 < Tb && Tb <= gb) {
               var hb = Tb;
               sa > hb && sa <= gb && (hb = sa);
-              x *= hb;
+              imageElementWidth *= hb;
               D *= hb
             } else if (1 <
               sa && sa <= gb) {
-              var Ub = x * sa;
-              if (Ub > resultElementWidth || Ub * gb < resultElementWidth) D = image.height, x = Ub
+              var Ub = imageElementWidth * sa;
+              if (Ub > resultElementWidth || Ub * gb < resultElementWidth) D = image.height, imageElementWidth = Ub
             }
           }
-          var x = Math.round(x),
+          var imageElementWidth = Math.round(imageElementWidth),
             D = Math.round(D),
-            imageWrapLeft = 0,
+            imageLinkLeft = 0,
             dd = 0,
             ed = 0,
             Vb = 0,
             fd = 0,
             gd = 0;
-          if (x > resultElementWidth)
-            var Sd = x - resultElementWidth,
-            Vb = -1 * ub(x - resultElementWidth),
+          if (imageElementWidth > resultElementWidth)
+            var Sd = imageElementWidth - resultElementWidth,
+            Vb = -1 * ub(imageElementWidth - resultElementWidth),
             fd = -Sd - Vb;
-          else if (x < resultElementWidth)
-            imageWrapLeft = (resultElementWidth - x) / 2;
+          else if (imageElementWidth < resultElementWidth)
+            imageLinkLeft = (resultElementWidth - imageElementWidth) / 2;
           if (D > image.height)
             gd = -1 * tb(D - image.height);
           else if (D < image.height)
@@ -582,17 +582,17 @@
             "padding-bottom": ed + "px"
           });
           $(imageElement).css({
-            width: x + "px",
+            width: imageElementWidth + "px",
             height: D + "px",
             "margin-left": Vb + "px",
             "margin-right": fd + "px",
             "margin-top": gd + "px"
           });
-          var imageWrap = $(resultElement).find("a")[0];
-          $(imageWrap).css({
-            width: Math.min(x, resultElementWidth) + "px",
+          var imageLink = $(resultElement).find("a")[0];
+          $(imageLink).css({
+            width: Math.min(imageElementWidth, resultElementWidth) + "px",
             height: imageElement.height + "px",
-            left: imageWrapLeft + "px"
+            left: imageLinkLeft + "px"
           });
           z.g.push(imageData.el);
           a.a.getResults().push(imageData.el);

@@ -506,15 +506,15 @@
         J = 0;
       (a.pages.length > 0) || a.pages.push({
         results: [],
-        o: 0
+        height: 0
       });
       var page = a.pages[a.pages.length - 1];
       var Nc = 1 == a.pages.length ? dimensions.gridHeight : dimensions.windowHeight;
       for (var Ja = 0; Ja < X.length; Ja++) {
-        if (0 != page.o && 32 > Nc - page.o) {
+        if (0 != page.height && 32 > Nc - page.height) {
           page = {
             results: [],
-            o: 0
+            height: 0
           };
           a.pages.push(page);
           var pageDiv = document.createElement("div");
@@ -524,10 +524,10 @@
           pageDiv.setAttribute("data-pg", a.pages.length);
           pageDiv.setAttribute("data-fri", a.a.getResults().length);
           imageDivs[J].parentNode.insertBefore(pageDiv, imageDivs[J]);
-          a.s && (page.o += 32);
+          a.s && (page.height += 32);
         }
-        page.o += pa[Ja];
-        page.o += Xb;
+        page.height += pa[Ja];
+        page.height += Xb;
         for (qa = 0; qa < X[Ja]; qa++) {
           image = images[cb];
           var imageData = imagesData[J];

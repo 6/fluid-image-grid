@@ -347,7 +347,6 @@
       var Xa = {
         c: {
           ma: numericalSetting("ma", defaultSettings.ma),
-          resultsNotLoaded: !a.a.areAllResultsLoaded(),
           minimumResultWidth: numericalSetting("minimum-result-width", defaultSettings.minimumResultWidth)
         }
       };
@@ -416,7 +415,7 @@
         var Kd = imagesData.slice(Ha, Ha + H.count),
           Ld = dimensions.gridWidth - H.width,
           Kc = Ha + H.count == imagesData.length && Ld > H.width / H.count;
-        if (Kc && Xa.c.resultsNotLoaded) break;
+        if (Kc && !a.a.areAllResultsLoaded()) break;
         var Lc = xa(Kd, dimensions.gridWidth, H.width, H.height, Xa.c.ma, Xa.c.minimumResultWidth, 2, Eb[i], Kc)
         for (var Pb = 0; Pb < Lc.length; Pb++) Jc.push({
           width: Lc[Pb],

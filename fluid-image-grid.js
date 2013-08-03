@@ -261,9 +261,7 @@
   var sc = function (a) {
     a.results = [];
     setDimensions(a);
-  }, setResultIndex = function (a, imageElement) {
-      $(imageElement).attr("data-ri") || $(imageElement).attr("data-ri", a.resultIndex++);
-    }, setDimensions = function (a) {
+  }, setDimensions = function (a) {
       a.dimensions.windowHeight = window.innerHeight || document.documentElement.offsetHeight;
       for (var container = a.container, gridMargins = 0; container && !isNaN(container.offsetTop);) {
         gridMargins += container.offsetTop;
@@ -333,12 +331,10 @@
     return (a = this.pages[a]) ? a.results : null
   };
   p.T = function () {
-    for (var a = this.a.getChunkSizeArray(), b = 0, c = this.gridInner.childNodes, d = 0; resultElement = c[d]; d++)
-      if ($(resultElement).hasClass("rg_di")) {
-        setResultIndex(this.a, resultElement);
-        $(resultElement).attr("data-ci") && (a.push(b), b = 0), b++;
-      }
-    0 < b && a.push(b);
+    var properties = this.a;
+    $(this.gridInner).find(".rg_di").each(function(i, resultElement) {
+      $(resultElement).attr("data-ri") || $(resultElement).attr("data-ri", properties.resultIndex++);
+    });
   };
   p.W = function (a) {
     var imageDivs = [], childElements = this.gridInner.childNodes;

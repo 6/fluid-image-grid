@@ -83,12 +83,6 @@
     }, ub = function (b) {
       return Math.floor(b / 2)
     };
-  var Yb = function (rowHeight, resultsNotLoaded) {
-    this.rowHeight = rowHeight;
-    this.ma = numericalSetting("ma", defaultSettings.ma);
-    this.resultsNotLoaded = !! resultsNotLoaded;
-    this.minimumResultWidth = numericalSetting("minimum-result-width", defaultSettings.minimumResultWidth);
-  };
   var bc = function (a, b) {
       for (var c = 1; c < arguments.length; c++) {
         var d = arguments[c],
@@ -351,7 +345,12 @@
     if (dimensions.gridWidth) {
       4 * a.rowHeight > dimensions.gridWidth && (a.rowHeight = Math.floor(dimensions.gridWidth / 4), a.a.rowHeight = a.rowHeight);
       var Xa = {
-        c: new Yb(a.rowHeight, !a.a.areAllResultsLoaded()),
+        c: {
+          rowHeight: a.rowHeight,
+          ma: numericalSetting("ma", defaultSettings.ma),
+          resultsNotLoaded: !a.a.areAllResultsLoaded(),
+          minimumResultWidth: numericalSetting("minimum-result-width", defaultSettings.minimumResultWidth)
+        },
         a: numericalSetting("ma", defaultSettings.ma)
       };
       for (var N = null, N = N || [], la = [0, 0], Eb = [], G = 0; G < N.length; G++) {

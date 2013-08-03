@@ -207,7 +207,7 @@
       this.resultsListeners = [];
       this.rowHeight = numericalSetting("row-height", defaultSettings.rowHeight);
       this.V = false;
-      this.l.initialize(this.rowHeight);
+      this.l.setRowHeight(this.rowHeight);
     };
   var oc = $('.fluid-image-grid').data("bge") ? "true" === $('.fluid-image-grid').data("bge") : defaultSettings.bge;
   s.prototype.F = false;
@@ -227,7 +227,7 @@
     this.container = $(".fluid-image-grid-inner")[0];
     switch (this.s) {
     case 0:
-      this.l.T();
+      this.l.setResultIndexAttributes();
       setDimensions(this);
       rc(this);
       break;
@@ -269,7 +269,7 @@
       var b = a.container.parentNode,
         c = a.container.nextSibling;
       b.removeChild(a.container);
-      a.l.W(a);
+      a.l.initializeIfResultsPresent(a);
       $(a.container).css("visibility", "visible");
       b.insertBefore(a.container, c)
     };
@@ -290,10 +290,10 @@
   do od = od.p && od.p.constructor; while (od && !od.w);
   if (od && od.w !== md.p.constructor) throw Error("delegate base must derive from superclass delegate base");
   p = dc.prototype;
-  p.initialize = lc();
+  p.setRowHeight = lc();
   p.resultsForPage = jc();
-  p.T = kc();
-  p.W = kc();
+  p.setResultIndexAttributes = kc();
+  p.initializeIfResultsPresent = kc();
   var pd = function (a) {
     this.a = a
   };
@@ -310,7 +310,7 @@
   u(rd, dc);
   ec(rd);
   p = rd.prototype;
-  p.initialize = function (rowHeight) {
+  p.setRowHeight = function (rowHeight) {
     this.rowHeight = rowHeight;
   };
   p.nPages = function () {
@@ -319,17 +319,17 @@
   p.resultsForPage = function (page) {
     return (page = this.pages[page]) ? page.results : null;
   };
-  p.T = function () {
+  p.setResultIndexAttributes = function () {
     var properties = this.a;
     this.$gridInner.find(".rg_di").each(function(i, resultElement) {
       $(resultElement).attr("data-ri") || $(resultElement).attr("data-ri", properties.resultIndex++);
     });
   };
-  p.W = function (a) {
+  p.initializeIfResultsPresent = function (a) {
     var imageDivs = this.$gridInner.find(".rg_di");
-    0 < imageDivs.length && sd(this, a.s, a.dimensions, [], imageDivs);
+    0 < imageDivs.length && initialize(this, a.s, a.dimensions, [], imageDivs);
   };
-  var sd = function (a, b, dimensions, d, imageDivs) {
+  var initialize = function (a, b, dimensions, d, imageDivs) {
     var imagesData = [];
     for (var i = 0; i < imageDivs.length; i++) {
       var imageDiv = imageDivs[i];

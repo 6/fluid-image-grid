@@ -212,9 +212,9 @@
       this.R = [];
       this.results = [];
       this.resultsListeners = [];
-      this.h = numericalSetting("row-height", defaultSettings.rowHeight);
+      this.rowHeight = numericalSetting("row-height", defaultSettings.rowHeight);
       this.V = false;
-      this.l.initialize(this.h)
+      this.l.initialize(this.rowHeight);
     };
   var oc = $('.fluid-image-grid').data("bge") ? "true" === $('.fluid-image-grid').data("bge") : defaultSettings.bge;
   s.prototype.F = false;
@@ -318,8 +318,8 @@
   u(rd, dc);
   ec(rd);
   p = rd.prototype;
-  p.initialize = function (a) {
-    this.k = a
+  p.initialize = function (rowHeight) {
+    this.rowHeight = rowHeight;
   };
   p.nPages = function () {
     return this.pages.length;
@@ -350,10 +350,10 @@
       };
     }
     if (dimensions.gridWidth) {
-      4 * a.k > dimensions.gridWidth && (a.k = Math.floor(dimensions.gridWidth / 4), a.a.h = a.k);
+      4 * a.rowHeight > dimensions.gridWidth && (a.rowHeight = Math.floor(dimensions.gridWidth / 4), a.a.rowHeight = a.rowHeight);
       var Xa = {
-        d: a.k,
-        c: new Yb(a.k, !a.a.areAllResultsLoaded()),
+        d: a.rowHeight,
+        c: new Yb(a.rowHeight, !a.a.areAllResultsLoaded()),
         a: numericalSetting("ma", defaultSettings.ma)
       };
       for (var N = null, N = N || [], la = [0, 0], Eb = [], G = 0; G < N.length; G++) {

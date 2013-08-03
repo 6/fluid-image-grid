@@ -346,7 +346,6 @@
       4 * a.rowHeight > dimensions.gridWidth && (a.rowHeight = Math.floor(dimensions.gridWidth / 4), a.a.rowHeight = a.rowHeight);
       var Xa = {
         c: {
-          rowHeight: a.rowHeight,
           ma: numericalSetting("ma", defaultSettings.ma),
           resultsNotLoaded: !a.a.areAllResultsLoaded(),
           minimumResultWidth: numericalSetting("minimum-result-width", defaultSettings.minimumResultWidth)
@@ -360,14 +359,13 @@
           for (var O = 0; O < ca.a; O++) Eb[O] = (Eb[O] || 0) + ca.width + Xa.a
         }
       }
-      var Ac = Xa.c.rowHeight,
-        na = [],
+      var na = [],
         da, Za;
       for (f = 0; 4 > f; f++) {
-        var Fb = Ac, imageIndex = 0, W = [], Hb = [], Ib = 0, Dc = na.length || Number.MAX_VALUE / Fb;
+        var imageIndex = 0, W = [], Hb = [], Ib = 0, Dc = na.length || Number.MAX_VALUE / a.rowHeight;
         for (var P = 0; P < Dc; P++) {
           var Jb = Eb[P] || 0,
-          $a = na[P] || Fb,
+          $a = na[P] || a.rowHeight,
           ea = dimensions.gridWidth - Jb,
           Fd = Math.floor(ea / (Xa.c.ma + Xa.c.minimumResultWidth)),
           Fa = 0, Kb = 0, Lb = 0, Mb = 0;
@@ -400,7 +398,7 @@
           Ib += Ec
         }
         var ab = Hb.length;
-        ab < Dc && (Za = ab * (Fb + Xa.c.ma));
+        ab < Dc && (Za = ab * (a.rowHeight + Xa.c.ma));
         for (var Jd = Za - Xa.c.ma * ab, Ob = 0, P = 0; P < ab; P++) {
           var Fc = Math.round(Jd * (Hb[P] / Ib));
           W[P].G = Fc;
@@ -409,7 +407,7 @@
         0 < W.length && (W[W.length -
           1].G += Za - Ob);
         da = W;
-        da.length != na.length && (na.length = da.length, yc = na.length * (Ac + Xa.c.ma));
+        da.length != na.length && (na.length = da.length, yc = na.length * (a.rowHeight + Xa.c.ma));
         for (var Gc = false, oa = 0; oa < da.length; oa++) na[oa] != da[oa].G && (na[oa] = da[oa].G, Gc = true);
         if (!Gc) break
       }

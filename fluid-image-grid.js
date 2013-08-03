@@ -349,14 +349,13 @@
           ma: numericalSetting("ma", defaultSettings.ma),
           resultsNotLoaded: !a.a.areAllResultsLoaded(),
           minimumResultWidth: numericalSetting("minimum-result-width", defaultSettings.minimumResultWidth)
-        },
-        a: numericalSetting("ma", defaultSettings.ma)
+        }
       };
       for (var N = null, N = N || [], la = [0, 0], Eb = [], G = 0; G < N.length; G++) {
         var ca = N[G];
         if (ca) {
           la[G] = ca.a;
-          for (var O = 0; O < ca.a; O++) Eb[O] = (Eb[O] || 0) + ca.width + Xa.a
+          for (var O = 0; O < ca.a; O++) Eb[O] = (Eb[O] || 0) + ca.width + Xa.c.ma
         }
       }
       var na = [],
@@ -430,7 +429,7 @@
       for (var Qb = [], Mc = false, G = 0; G < N.length; G++)
         if (ca = N[G]) {
           for (var ga = 0, O = 0; O < ca.a; O++) pa[O] ? ga += pa[O] : (ga += a.rowHeight, Mc = true, la[O]--);
-          ga += Xa.a * (ca.a - 1);
+          ga += Xa.c.ma * (ca.a - 1);
           Qb[G] = ga
         }
       for (var images = [], Md = 0, R = 0; R < X.length; R++) {

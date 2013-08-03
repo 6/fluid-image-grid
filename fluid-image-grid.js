@@ -291,7 +291,6 @@
   if (od && od.w !== md.p.constructor) throw Error("delegate base must derive from superclass delegate base");
   p = dc.prototype;
   p.initialize = lc();
-  p.ca = jc();
   p.resultsForPage = jc();
   p.T = kc();
   p.W = kc();

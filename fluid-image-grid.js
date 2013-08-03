@@ -303,7 +303,6 @@
   p.ba = lc();
   p.T = kc();
   p.W = kc();
-  p.S = kc();
   p.aa = lc();
   var pd = function (a) {
     this.a = a
@@ -342,21 +341,6 @@
       if ($(childElement).hasClass("rg_di")) imageDivs.push(childElement);
     }
     0 < imageDivs.length && sd(this, a.s, a.dimensions, [], imageDivs);
-  };
-  p.S = function (a, b, c) {
-    var d = [],
-      e = null;
-    if (this.h && this.h.length)
-      for (var fragment = document.createDocumentFragment(), g = 0; g < this.h.length; g++) {
-        var h = this.h[g],
-          e = h.nextSibling;
-        fragment.appendChild(h);
-        d.push(h)
-      }
-    if (c)
-      for (c = c.childNodes, g = 0; h = c[g]; g++) d.push(h);
-    sd(this, a, b, [], d);
-    f && this.gridInner.insertBefore(f, e)
   };
   var sd = function (a, b, dimensions, d, imageDivs) {
     var imagesData = [];

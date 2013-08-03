@@ -300,10 +300,8 @@
   p.initialize = lc();
   p.ca = jc();
   p.da = jc();
-  p.ba = lc();
   p.T = kc();
   p.W = kc();
-  p.aa = lc();
   var pd = function (a) {
     this.a = a
   };

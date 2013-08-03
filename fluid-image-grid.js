@@ -352,7 +352,6 @@
     if (dimensions.gridWidth) {
       4 * a.rowHeight > dimensions.gridWidth && (a.rowHeight = Math.floor(dimensions.gridWidth / 4), a.a.rowHeight = a.rowHeight);
       var Xa = {
-        d: a.rowHeight,
         c: new Yb(a.rowHeight, !a.a.areAllResultsLoaded()),
         a: numericalSetting("ma", defaultSettings.ma)
       };
@@ -434,7 +433,7 @@
       }
       for (var Qb = [], Mc = false, G = 0; G < N.length; G++)
         if (ca = N[G]) {
-          for (var ga = 0, O = 0; O < ca.a; O++) pa[O] ? ga += pa[O] : (ga += Xa.d, Mc = true, la[O]--);
+          for (var ga = 0, O = 0; O < ca.a; O++) pa[O] ? ga += pa[O] : (ga += a.rowHeight, Mc = true, la[O]--);
           ga += Xa.a * (ca.a - 1);
           Qb[G] = ga
         }

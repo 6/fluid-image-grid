@@ -309,7 +309,7 @@
   ec(pd);
   var rd = function (a) {
       this.a = a;
-      this.gridInner = $(".fluid-image-grid-inner")[0];
+      this.$gridInner = $(".fluid-image-grid-inner");
       this.pages = [];
       this.s = false;
       this.F = "";
@@ -329,12 +329,12 @@
   };
   p.T = function () {
     var properties = this.a;
-    $(this.gridInner).find(".rg_di").each(function(i, resultElement) {
+    this.$gridInner.find(".rg_di").each(function(i, resultElement) {
       $(resultElement).attr("data-ri") || $(resultElement).attr("data-ri", properties.resultIndex++);
     });
   };
   p.W = function (a) {
-    var imageDivs = $(this.gridInner).find(".rg_di");
+    var imageDivs = this.$gridInner.find(".rg_di");
     0 < imageDivs.length && sd(this, a.s, a.dimensions, [], imageDivs);
   };
   var sd = function (a, b, dimensions, d, imageDivs) {

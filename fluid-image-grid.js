@@ -20,10 +20,6 @@
     return value ? parseFloat(value) : defaultValue;
   };
 
-  var definePublicFunction = function (name, fn) {
-    s.prototype[name] = fn;
-  };
-
   var p, u = function (a, b) {
       function c() {}
       c.prototype = b.prototype;
@@ -227,15 +223,12 @@
   s.prototype.getResults = function () {
     return this.results;
   };
-  definePublicFunction("getResults", s.prototype.getResults);
   s.prototype.getNumPages = function () {
     return this.l.nPages();
   };
-  definePublicFunction("getNumPages", s.prototype.getNumPages);
   s.prototype.getResultsForPage = function (a) {
     return this.l.da(a)
   };
-  definePublicFunction("getResultsForPage", s.prototype.getResultsForPage);
   s.prototype.layoutResults = function (a) {
     this.s = this.a.length ? 3 : 0;
     this.container = $(".fluid-image-grid-inner")[0];
@@ -253,23 +246,18 @@
       throw Error("Unexpected layout state: " + this.s);
     }
   };
-  definePublicFunction("layoutResults", s.prototype.layoutResults);
   s.prototype.areAllResultsLoaded = function () {
     return this.F
   };
-  definePublicFunction("areAllResultsLoaded", s.prototype.areAllResultsLoaded);
   s.prototype.getChunkSize = function (a) {
     return this.a[a] || 0
   };
-  definePublicFunction("getChunkSize", s.prototype.getChunkSize);
   s.prototype.hasRenderedChunk = function (a) {
     return undefined !== this.a[a]
   };
-  definePublicFunction("hasRenderedChunk", s.prototype.hasRenderedChunk);
   s.prototype.getChunkSizeArray = function () {
     return this.a
   };
-  definePublicFunction("getChunkSizeArray", s.prototype.getChunkSizeArray);
   var sc = function (a) {
     a.results = [];
     setDimensions(a);
@@ -297,12 +285,10 @@
   s.prototype.addNewResultsListener = function (a) {
     this.resultsListeners.push(a)
   };
-  definePublicFunction("addNewResultsListener", s.prototype.addNewResultsListener);
   s.prototype.removeNewResultsListener = function (a) {
     a = Array.prototype.indexOf.call(this.resultsListeners, a);
     - 1 !== a && this.resultsListeners.splice(a, 1);
   };
-  definePublicFunction("removeNewResultsListener", s.prototype.removeNewResultsListener);
   var dc = function (a) {
       this.a = a
     }, md = dc,

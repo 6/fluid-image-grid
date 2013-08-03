@@ -334,10 +334,7 @@
     });
   };
   p.W = function (a) {
-    var imageDivs = [], childElements = this.gridInner.childNodes;
-    for (var i = 0, childElement; childElement = childElements[i]; i++) {
-      if ($(childElement).hasClass("rg_di")) imageDivs.push(childElement);
-    }
+    var imageDivs = $(this.gridInner).find(".rg_di");
     0 < imageDivs.length && sd(this, a.s, a.dimensions, [], imageDivs);
   };
   var sd = function (a, b, dimensions, d, imageDivs) {

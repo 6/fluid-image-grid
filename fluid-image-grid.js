@@ -227,7 +227,7 @@
     return this.l.nPages();
   };
   s.prototype.getResultsForPage = function (a) {
-    return this.l.da(a)
+    return this.l.resultsForPage(a)
   };
   s.prototype.layoutResults = function (a) {
     this.s = this.a.length ? 3 : 0;
@@ -299,7 +299,7 @@
   p = dc.prototype;
   p.initialize = lc();
   p.ca = jc();
-  p.da = jc();
+  p.resultsForPage = jc();
   p.T = kc();
   p.W = kc();
   var pd = function (a) {
@@ -324,8 +324,8 @@
   p.nPages = function () {
     return this.pages.length;
   };
-  p.da = function (a) {
-    return (a = this.pages[a]) ? a.results : null
+  p.resultsForPage = function (page) {
+    return (page = this.pages[page]) ? page.results : null;
   };
   p.T = function () {
     var properties = this.a;

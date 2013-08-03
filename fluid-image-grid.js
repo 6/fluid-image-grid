@@ -344,17 +344,13 @@
     }
     if (dimensions.gridWidth) {
       4 * a.rowHeight > dimensions.gridWidth && (a.rowHeight = Math.floor(dimensions.gridWidth / 4), a.a.rowHeight = a.rowHeight);
-      var Xa = {
-        c: {
-          ma: numericalSetting("ma", defaultSettings.ma),
-          minimumResultWidth: numericalSetting("minimum-result-width", defaultSettings.minimumResultWidth)
-        }
-      };
+      var minimumResultWidth = numericalSetting("minimum-result-width", defaultSettings.minimumResultWidth);
+      var ma = numericalSetting("ma", defaultSettings.ma)
       for (var N = null, N = N || [], la = [0, 0], Eb = [], G = 0; G < N.length; G++) {
         var ca = N[G];
         if (ca) {
           la[G] = ca.a;
-          for (var O = 0; O < ca.a; O++) Eb[O] = (Eb[O] || 0) + ca.width + Xa.c.ma
+          for (var O = 0; O < ca.a; O++) Eb[O] = (Eb[O] || 0) + ca.width + ma
         }
       }
       var na = [],
@@ -365,21 +361,21 @@
           var Jb = Eb[P] || 0,
           $a = na[P] || a.rowHeight,
           ea = dimensions.gridWidth - Jb,
-          Fd = Math.floor(ea / (Xa.c.ma + Xa.c.minimumResultWidth)),
+          Fd = Math.floor(ea / (ma + minimumResultWidth)),
           Fa = 0, Kb = 0, Lb = 0, Mb = 0;
           for (var Ga = 0; imageIndex < imagesData.length && Ga < Fd;) {
             var imageData = imagesData[imageIndex],
-              Gd = Q(aspectRatio(imageData), $a, Xa.c.minimumResultWidth, imageData.width, 2),
-              Nb = Fa + Gd + Xa.c.ma,
-              Hd = Q(va(imageData), $a, Xa.c.minimumResultWidth, imageData.width, 2),
-              Kb = Kb + (Hd + Xa.c.ma);
+              Gd = Q(aspectRatio(imageData), $a, minimumResultWidth, imageData.width, 2),
+              Nb = Fa + Gd + ma,
+              Hd = Q(va(imageData), $a, minimumResultWidth, imageData.width, 2),
+              Kb = Kb + (Hd + ma);
             if (Nb > ea && Nb - ea > ea - Fa)
               if (Lb >= ea) break;
               else if (Kb > ea) break;
             Ga++;
             var Fa = Nb,
-              Id = Q(wa(imageData), $a, Xa.c.minimumResultWidth, imageData.width, 2),
-              Lb = Lb + (Id + Xa.c.ma),
+              Id = Q(wa(imageData), $a, minimumResultWidth, imageData.width, 2),
+              Lb = Lb + (Id + ma),
               Mb = Mb + aspectRatio(imageData);
             imageIndex++;
             if (Fa > ea) break
@@ -396,16 +392,16 @@
           Ib += Ec
         }
         var ab = Hb.length;
-        ab < Dc && (Za = ab * (a.rowHeight + Xa.c.ma));
-        for (var Jd = Za - Xa.c.ma * ab, Ob = 0, P = 0; P < ab; P++) {
+        ab < Dc && (Za = ab * (a.rowHeight + ma));
+        for (var Jd = Za - ma * ab, Ob = 0, P = 0; P < ab; P++) {
           var Fc = Math.round(Jd * (Hb[P] / Ib));
           W[P].G = Fc;
-          Ob += Fc + Xa.c.ma
+          Ob += Fc + ma
         }
         0 < W.length && (W[W.length -
           1].G += Za - Ob);
         da = W;
-        da.length != na.length && (na.length = da.length, yc = na.length * (a.rowHeight + Xa.c.ma));
+        da.length != na.length && (na.length = da.length, yc = na.length * (a.rowHeight + ma));
         for (var Gc = false, oa = 0; oa < da.length; oa++) na[oa] != da[oa].G && (na[oa] = da[oa].G, Gc = true);
         if (!Gc) break
       }
@@ -416,7 +412,7 @@
           Ld = dimensions.gridWidth - H.width,
           Kc = Ha + H.count == imagesData.length && Ld > H.width / H.count;
         if (Kc && !a.a.areAllResultsLoaded()) break;
-        var Lc = xa(Kd, dimensions.gridWidth, H.width, H.height, Xa.c.ma, Xa.c.minimumResultWidth, 2, Eb[i], Kc)
+        var Lc = xa(Kd, dimensions.gridWidth, H.width, H.height, ma, minimumResultWidth, 2, Eb[i], Kc)
         for (var Pb = 0; Pb < Lc.length; Pb++) Jc.push({
           width: Lc[Pb],
           height: H.height
@@ -428,7 +424,7 @@
       for (var Qb = [], Mc = false, G = 0; G < N.length; G++)
         if (ca = N[G]) {
           for (var ga = 0, O = 0; O < ca.a; O++) pa[O] ? ga += pa[O] : (ga += a.rowHeight, Mc = true, la[O]--);
-          ga += Xa.c.ma * (ca.a - 1);
+          ga += ma * (ca.a - 1);
           Qb[G] = ga
         }
       for (var images = [], Md = 0, R = 0; R < X.length; R++) {

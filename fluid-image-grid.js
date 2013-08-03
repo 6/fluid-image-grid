@@ -83,11 +83,10 @@
     }, ub = function (b) {
       return Math.floor(b / 2)
     };
-  var Yb = function (a, b) {
-    var c = numericalSetting("ma", defaultSettings.ma);
-    this.d = a;
-    this.a = c;
-    this.e = !! b;
+  var Yb = function (rowHeight, resultsNotLoaded) {
+    this.rowHeight = rowHeight;
+    this.ma = numericalSetting("ma", defaultSettings.ma);
+    this.resultsNotLoaded = !! resultsNotLoaded;
     this.minimumResultWidth = numericalSetting("minimum-result-width", defaultSettings.minimumResultWidth);
   };
   var bc = function (a, b) {
@@ -362,7 +361,7 @@
           for (var O = 0; O < ca.a; O++) Eb[O] = (Eb[O] || 0) + ca.width + Xa.a
         }
       }
-      var Ac = Xa.c.d,
+      var Ac = Xa.c.rowHeight,
         na = [],
         da, Za;
       for (f = 0; 4 > f; f++) {
@@ -371,21 +370,21 @@
           var Jb = Eb[P] || 0,
           $a = na[P] || Fb,
           ea = dimensions.gridWidth - Jb,
-          Fd = Math.floor(ea / (Xa.c.a + Xa.c.minimumResultWidth)),
+          Fd = Math.floor(ea / (Xa.c.ma + Xa.c.minimumResultWidth)),
           Fa = 0, Kb = 0, Lb = 0, Mb = 0;
           for (var Ga = 0; imageIndex < imagesData.length && Ga < Fd;) {
             var imageData = imagesData[imageIndex],
               Gd = Q(aspectRatio(imageData), $a, Xa.c.minimumResultWidth, imageData.width, 2),
-              Nb = Fa + Gd + Xa.c.a,
+              Nb = Fa + Gd + Xa.c.ma,
               Hd = Q(va(imageData), $a, Xa.c.minimumResultWidth, imageData.width, 2),
-              Kb = Kb + (Hd + Xa.c.a);
+              Kb = Kb + (Hd + Xa.c.ma);
             if (Nb > ea && Nb - ea > ea - Fa)
               if (Lb >= ea) break;
               else if (Kb > ea) break;
             Ga++;
             var Fa = Nb,
               Id = Q(wa(imageData), $a, Xa.c.minimumResultWidth, imageData.width, 2),
-              Lb = Lb + (Id + Xa.c.a),
+              Lb = Lb + (Id + Xa.c.ma),
               Mb = Mb + aspectRatio(imageData);
             imageIndex++;
             if (Fa > ea) break
@@ -402,16 +401,16 @@
           Ib += Ec
         }
         var ab = Hb.length;
-        ab < Dc && (Za = ab * (Fb + Xa.c.a));
-        for (var Jd = Za - Xa.c.a * ab, Ob = 0, P = 0; P < ab; P++) {
+        ab < Dc && (Za = ab * (Fb + Xa.c.ma));
+        for (var Jd = Za - Xa.c.ma * ab, Ob = 0, P = 0; P < ab; P++) {
           var Fc = Math.round(Jd * (Hb[P] / Ib));
           W[P].G = Fc;
-          Ob += Fc + Xa.c.a
+          Ob += Fc + Xa.c.ma
         }
         0 < W.length && (W[W.length -
           1].G += Za - Ob);
         da = W;
-        da.length != na.length && (na.length = da.length, yc = na.length * (Ac + Xa.c.a));
+        da.length != na.length && (na.length = da.length, yc = na.length * (Ac + Xa.c.ma));
         for (var Gc = false, oa = 0; oa < da.length; oa++) na[oa] != da[oa].G && (na[oa] = da[oa].G, Gc = true);
         if (!Gc) break
       }
@@ -421,8 +420,8 @@
         var Kd = imagesData.slice(Ha, Ha + H.count),
           Ld = dimensions.gridWidth - H.width,
           Kc = Ha + H.count == imagesData.length && Ld > H.width / H.count;
-        if (Kc && Xa.c.e) break;
-        var Lc = xa(Kd, dimensions.gridWidth, H.width, H.height, Xa.c.a, Xa.c.minimumResultWidth, 2, Eb[i], Kc)
+        if (Kc && Xa.c.resultsNotLoaded) break;
+        var Lc = xa(Kd, dimensions.gridWidth, H.width, H.height, Xa.c.ma, Xa.c.minimumResultWidth, 2, Eb[i], Kc)
         for (var Pb = 0; Pb < Lc.length; Pb++) Jc.push({
           width: Lc[Pb],
           height: H.height

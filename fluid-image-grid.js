@@ -84,7 +84,7 @@
       return Math.floor(b / 2)
     };
   var Yb = function (a, b) {
-    var c = Xb;
+    var c = numericalSetting("ma", defaultSettings.ma);
     this.d = a;
     this.a = c;
     this.e = !! b;
@@ -215,7 +215,7 @@
       this.h = numericalSetting("row-height", defaultSettings.rowHeight);
       this.V = false;
       this.l.initialize(this.h)
-    }, Xb = numericalSetting("ma", defaultSettings.ma);
+    };
   var oc = $('.fluid-image-grid').data("bge") ? "true" === $('.fluid-image-grid').data("bge") : defaultSettings.bge;
   s.prototype.F = false;
   s.prototype.H = false;
@@ -354,7 +354,7 @@
       var Xa = {
         d: a.k,
         c: new Yb(a.k, !a.a.areAllResultsLoaded()),
-        a: Xb
+        a: numericalSetting("ma", defaultSettings.ma)
       };
       for (var N = null, N = N || [], la = [0, 0], Eb = [], G = 0; G < N.length; G++) {
         var ca = N[G];
@@ -488,7 +488,7 @@
           a.s && (page.height += 32);
         }
         page.height += pa[Ja];
-        page.height += Xb;
+        page.height += numericalSetting("ma", defaultSettings.ma);
         for (qa = 0; qa < X[Ja]; qa++) {
           image = images[cb];
           var imageData = imagesData[J];

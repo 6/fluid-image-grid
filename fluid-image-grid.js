@@ -5,7 +5,6 @@
     isuf: 0,
     eca: 0.1,
     ma: 12,
-    bge: true,
     nTbnsPending: 8,
     resizeThrottleRate: 50,
     scrollThrottleRate: 40
@@ -199,7 +198,6 @@
       this.V = false;
       this.l.setRowHeight(this.rowHeight);
     };
-  var oc = $('.fluid-image-grid').data("bge") ? "true" === $('.fluid-image-grid').data("bge") : defaultSettings.bge;
   s.prototype.F = false;
   s.prototype.H = false;
   s.prototype.resultIndex = 0;

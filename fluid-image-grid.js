@@ -198,7 +198,6 @@
       this.V = false;
       this.l.setRowHeight(this.rowHeight);
     };
-  s.prototype.F = false;
   s.prototype.resultIndex = 0;
   s.prototype.getResults = function () {
     return this.results;
@@ -225,9 +224,6 @@
     default:
       throw Error("Unexpected layout state: " + this.s);
     }
-  };
-  s.prototype.areAllResultsLoaded = function () {
-    return this.F
   };
   s.prototype.getChunkSize = function (a) {
     return this.a[a] || 0
@@ -293,7 +289,6 @@
       this.$gridInner = $(".fluid-image-grid-inner");
       this.pages = [];
       this.s = false;
-      this.F = "";
       this.n = 0;
     };
   u(rd, dc);
@@ -399,7 +394,7 @@
         var Kd = imagesData.slice(Ha, Ha + H.count),
           Ld = dimensions.gridWidth - H.width,
           Kc = Ha + H.count == imagesData.length && Ld > H.width / H.count;
-        if (Kc && !a.a.areAllResultsLoaded()) break;
+        if (Kc) break;
         var Lc = xa(Kd, dimensions.gridWidth, H.width, H.height, ma, minimumResultWidth, 2, Eb[i], Kc)
         for (var Pb = 0; Pb < Lc.length; Pb++) Jc.push({
           width: Lc[Pb],

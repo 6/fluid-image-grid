@@ -190,10 +190,6 @@
       var a = function () {};
       a.ga = true;
       return a
-    }, lc = function () {
-      var a = function () {};
-      a.Z = true;
-      return a
     }, s = function () {
       if (!this.l) {
         for (var a = this.constructor; a && !a.w;) a = a.p && a.p.constructor;
@@ -290,7 +286,8 @@
   do od = od.p && od.p.constructor; while (od && !od.w);
   if (od && od.w !== md.p.constructor) throw Error("delegate base must derive from superclass delegate base");
   p = dc.prototype;
-  p.setRowHeight = lc();
+  p.setRowHeight = function() {};
+  p.setRowHeight.Z = true;
   p.resultsForPage = jc();
   p.setResultIndexAttributes = kc();
   p.initializeIfResultsPresent = kc();

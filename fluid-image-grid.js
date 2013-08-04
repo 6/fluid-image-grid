@@ -179,8 +179,6 @@
         }
         return g
       } : d || b[a].ha || b[a].Y || b[a].Z ? null : ic
-    }, ic = function () {
-      return []
     };
   var kc = function () {
       var a = function () {};

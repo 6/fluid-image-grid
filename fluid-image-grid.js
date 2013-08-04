@@ -462,7 +462,7 @@
           pageDiv.setAttribute("id", "page" + a.pages.length);
           pageDiv.setAttribute("data-pg", a.pages.length);
           pageDiv.setAttribute("data-fri", a.a.getResults().length);
-          imageDivs[J].parentNode.insertBefore(pageDiv, imageDivs[J]);
+          $(pageDiv).insertBefore(imageDivs[J]);
           a.s && (page.height += 32);
         }
         page.height += pa[Ja];

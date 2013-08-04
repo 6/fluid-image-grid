@@ -182,11 +182,7 @@
     }, ic = function () {
       return []
     };
-  var jc = function () {
-    var a = function () {};
-    a.Y = true;
-    return a
-  }, kc = function () {
+  var kc = function () {
       var a = function () {};
       a.ga = true;
       return a
@@ -288,7 +284,8 @@
   p = dc.prototype;
   p.setRowHeight = function() {};
   p.setRowHeight.Z = true;
-  p.resultsForPage = jc();
+  p.resultsForPage = function() {};
+  p.resultsForPage.Y = true;
   p.setResultIndexAttributes = kc();
   p.initializeIfResultsPresent = kc();
   var pd = function (a) {

@@ -199,7 +199,6 @@
       this.l.setRowHeight(this.rowHeight);
     };
   s.prototype.F = false;
-  s.prototype.H = false;
   s.prototype.resultIndex = 0;
   s.prototype.getResults = function () {
     return this.results;
@@ -440,7 +439,6 @@
         X[R] = Ia
       }
       g = Mc;
-      a.a.H = g;
       var cb = 0,
         J = 0;
       (a.pages.length > 0) || a.pages.push({

@@ -510,38 +510,38 @@
             }
           }
           var imageElementWidth = Math.round(imageElementWidth),
-            D = Math.round(D),
+            imageElementHeight = Math.round(D),
             imageLinkLeft = 0,
-            dd = 0,
-            ed = 0,
-            Vb = 0,
-            fd = 0,
-            gd = 0;
+            resultElementPaddingTop = 0,
+            resultElementPaddingBottom = 0,
+            imageElementMarginLeft = 0,
+            imageElementMarginRight = 0,
+            imageElementMarginTop = 0;
           if (imageElementWidth > resultElementWidth)
             var Sd = imageElementWidth - resultElementWidth,
-            Vb = -1 * ub(imageElementWidth - resultElementWidth),
-            fd = -Sd - Vb;
+            imageElementMarginLeft = -1 * ub(imageElementWidth - resultElementWidth),
+            imageElementMarginRight = -Sd - imageElementMarginLeft;
           else if (imageElementWidth < resultElementWidth)
             imageLinkLeft = (resultElementWidth - imageElementWidth) / 2;
-          if (D > image.height)
-            gd = -1 * tb(D - image.height);
-          else if (D < image.height)
-            var resultElementHeight = D,
-            hd = image.height - D,
-            dd = Math.floor(hd / 2),
-            ed = Math.ceil(hd / 2);
+          if (imageElementHeight > image.height)
+            imageElementMarginTop = -1 * tb(imageElementHeight - image.height);
+          else if (imageElementHeight < image.height)
+            var resultElementHeight = imageElementHeight,
+            hd = image.height - imageElementHeight,
+            resultElementPaddingTop = Math.floor(hd / 2),
+            resultElementPaddingBottom = Math.ceil(hd / 2);
           $(resultElement).css({
             width: resultElementWidth + "px",
             height: resultElementHeight + "px",
-            "padding-top": dd + "px",
-            "padding-bottom": ed + "px"
+            "padding-top": resultElementPaddingTop + "px",
+            "padding-bottom": resultElementPaddingBottom + "px"
           });
           $(imageElement).css({
             width: imageElementWidth + "px",
-            height: D + "px",
-            "margin-left": Vb + "px",
-            "margin-right": fd + "px",
-            "margin-top": gd + "px"
+            height: imageElementHeight + "px",
+            "margin-left": imageElementMarginLeft + "px",
+            "margin-right": imageElementMarginRight + "px",
+            "margin-top": imageElementMarginTop + "px"
           });
           $(resultElement).find("a").css({
             width: Math.min(imageElementWidth, resultElementWidth) + "px",

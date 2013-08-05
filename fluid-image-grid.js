@@ -251,10 +251,8 @@
     }, rc = function (a) {
       var b = a.container.parentNode,
         c = a.container.nextSibling;
-      b.removeChild(a.container);
       a.l.initializeIfResultsPresent(a);
       $(a.container).css("visibility", "visible");
-      b.insertBefore(a.container, c)
     };
   s.prototype.addNewResultsListener = function (a) {
     this.resultsListeners.push(a)
@@ -286,7 +284,7 @@
   ec(pd);
   var rd = function (a) {
       this.a = a;
-      this.$gridInner = $(".fluid-image-grid-inner");
+      this.$gridInner = function() { return $(".fluid-image-grid-inner"); };
       this.pages = [];
       this.s = false;
       this.n = 0;
@@ -305,12 +303,12 @@
   };
   p.setResultIndexAttributes = function () {
     var properties = this.a;
-    this.$gridInner.find(".rg_di").each(function(i, resultElement) {
+    this.$gridInner().find(".rg_di").each(function(i, resultElement) {
       $(resultElement).attr("data-ri") || $(resultElement).attr("data-ri", properties.resultIndex++);
     });
   };
   p.initializeIfResultsPresent = function (a) {
-    var imageDivs = this.$gridInner.find(".rg_di");
+    var imageDivs = this.$gridInner().find(".rg_di");
     0 < imageDivs.length && initialize(this, a.s, a.dimensions, [], imageDivs);
   };
   var initialize = function (a, b, dimensions, d, imageDivs) {

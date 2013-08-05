@@ -324,20 +324,25 @@
       };
     }
     if (dimensions.gridWidth) {
-      4 * a.rowHeight > dimensions.gridWidth && (a.rowHeight = Math.floor(dimensions.gridWidth / 4), a.a.rowHeight = a.rowHeight);
+      if (4 * a.rowHeight > dimensions.gridWidth) {
+        a.rowHeight = Math.floor(dimensions.gridWidth / 4);
+        a.a.rowHeight = a.rowHeight;
+      }
       var minimumResultWidth = numericalSetting("minimum-result-width", defaultSettings.minimumResultWidth);
       var ma = numericalSetting("ma", defaultSettings.ma)
       for (var N = null, N = N || [], la = [0, 0], Eb = [], G = 0; G < N.length; G++) {
         var ca = N[G];
         if (ca) {
           la[G] = ca.a;
-          for (var O = 0; O < ca.a; O++) Eb[O] = (Eb[O] || 0) + ca.width + ma
+          for (var O = 0; O < ca.a; O++)
+            Eb[O] = (Eb[O] || 0) + ca.width + ma;
         }
       }
       var na = [],
         da, Za;
       for (f = 0; 4 > f; f++) {
-        var imageIndex = 0, W = [], Hb = [], Ib = 0, Dc = na.length || Number.MAX_VALUE / a.rowHeight;
+        var imageIndex = 0, W = [], Hb = [], Ib = 0;
+        var Dc = na.length || Number.MAX_VALUE / a.rowHeight;
         for (var P = 0; P < Dc; P++) {
           var Jb = Eb[P] || 0,
           $a = na[P] || a.rowHeight,
@@ -404,31 +409,48 @@
       }
       for (var Qb = [], Mc = false, G = 0; G < N.length; G++)
         if (ca = N[G]) {
-          for (var ga = 0, O = 0; O < ca.a; O++) pa[O] ? ga += pa[O] : (ga += a.rowHeight, Mc = true, la[O]--);
+          for (var ga = 0, O = 0; O < ca.a; O++)
+            pa[O] ? ga += pa[O] : (ga += a.rowHeight, Mc = true, la[O]--);
           ga += ma * (ca.a - 1);
           Qb[G] = ga
         }
       for (var images = [], Md = 0, R = 0; R < X.length; R++) {
         var Ia = X[R];
-        0 < la[0] && (Ia++, la[0]--, 0 == R && (Ia++, images.push({
-          I: true,
-          width: N[0].width,
-          height: Qb[0]
-        })), images.push({
-          padding: true,
-          width: N[0].width,
-          height: pa[R]
-        }));
+        if (0 < la[0]) {
+          Ia++;
+          la[0]--
+          if (0 == R) {
+            Ia++;
+            images.push({
+              I: true,
+              width: N[0].width,
+              height: Qb[0]
+            })
+          }
+          images.push({
+            padding: true,
+            width: N[0].width,
+            height: pa[R]
+          });
+        }
         for (G = 0; G < X[R]; G++) images.push(Jc[Md++]);
-        0 < la[1] && (Ia++, la[1]--, 0 == R && (Ia++, images.push({
-          I: true,
-          width: N[1].width,
-          height: Qb[1]
-        })), images.push({
-          padding: true,
-          width: N[1].width,
-          height: pa[R]
-        }));
+        if (0 < la[1]) {
+          Ia++;
+          la[1]--;
+          if (0 == R) {
+            Ia++;
+            images.push({
+              I: true,
+              width: N[1].width,
+              height: Qb[1]
+            });
+          }
+          images.push({
+            padding: true,
+            width: N[1].width,
+            height: pa[R]
+          });
+        }
         X[R] = Ia
       }
       g = Mc;

@@ -23,6 +23,12 @@ describe("FluidImageGrid", function() {
     window.FluidImageGrid.init();
   });
 
+  it("sets `data-ri` value in ascending order on result elements", function() {
+    expect($(".rg_di[data-ri]").slice(0).attr("data-ri")).toEqual("0");
+    expect($(".rg_di[data-ri]").slice(1).attr("data-ri")).toEqual("1");
+    expect($(".rg_di[data-ri]").slice(2).attr("data-ri")).toEqual("2");
+  });
+
   context("on window resize", function() {
     it("does not raise any errors", function() {
       $(window).trigger("resize");

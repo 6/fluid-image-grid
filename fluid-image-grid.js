@@ -422,13 +422,11 @@
           if (0 == R) {
             Ia++;
             images.push({
-              I: true,
               width: N[0].width,
               height: Qb[0]
             })
           }
           images.push({
-            padding: true,
             width: N[0].width,
             height: pa[R]
           });
@@ -440,13 +438,11 @@
           if (0 == R) {
             Ia++;
             images.push({
-              I: true,
               width: N[1].width,
               height: Qb[1]
             });
           }
           images.push({
-            padding: true,
             width: N[1].width,
             height: pa[R]
           });
